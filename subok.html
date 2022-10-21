@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <link rel="stylesheet" href="ShuttleDriverAcctCSS.css">
+  </head>
+  <style>
+body {
+ background:#039be5;
+}
+h1 {
+ padding: 20px;
+ font-size: 20px;
+}
+
+/*---------------------------*/
+/* Read Users */
+/*---------------------------*/
+#userList {
+	margin-top: -234px;
+    padding: 0;
+    width: 200px;
+    /* float: left; */
+    margin-left: 24px;
+	border: transparent;
+}
+
+#userList li {
+position: relative;
+top: 18px;
+padding: 20px 0px;
+/* border-top:1px solid #4fc3fc; */
+cursor: pointer;
+color: transparent;
+border: transparent;
+text-decoration: none;
+}
+
+#userDetail {
+	display: inline-flex;
+    /* padding: 10px; */
+    border: transparent;
+    color: black;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#userDetail label{
+	margin: 12px;
+	position: relative;
+}
+
+#userDetail p{
+	width: 190px;
+	height: 38px;
+    background-color: white;
+    font-size: 12px;
+    color: black;
+    margin: 12px;
+    padding: 10px;
+    border-radius: 7px;
+	position: relative;
+}
+  </style>
+  <body>
+	<div id="dvContents" class="tableDiv">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+	<table id="example" class="display" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>EMAIL</th>
+          <th>REGISTRATION DATE</th>
+          <th>STATUS</th>
+          <th class="tago">ID</th>
+          <th class="tago">ACCOUNT</th>
+          <th class="tago">EDIT</th>
+          <th class="tago">ACTION</th>
+        </tr>
+      </thead>
+      <tbody id ="tbody1"> </tbody>
+	  
+  <script type="module">
+	// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
+          authDomain: "shuttle-go-8d87a.firebaseapp.com",
+          databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
+          projectId: "shuttle-go-8d87a",
+          storageBucket: "shuttle-go-8d87a.appspot.com",
+          messagingSenderId: "509853219067",
+          appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
+          measurementId: "G-3YGP2PY9QX"
+};
+
+firebase.initializeApp(config);
+
+
+const dbRef = firebase.database().ref();
+
+const usersRef = dbRef.child('users');
+const userListUI = document.getElementById("userList");
+
+// usersRef.on("child_added", snap => {
+
+// 	let user = snap.val();
+
+// 	let $li = document.createElement("li");
+// 	$li.innerHTML = user.firstName;
+// 	$li.setAttribute("child-key", snap.key);
+// 	$li.addEventListener("click", userClicked)
+// 	userListUI.append($li);
+
+// });
+
+
+function userClicked(e) {
+
+	var userID = e.target.getAttribute("child-key");
+
+	const userRef = dbRef.child('users/' + userID);
+	const userDetailUI = document.getElementById("userDetail");
+
+	userDetailUI.innerHTML = ""
+	userRef.on("child_added", snap => {
+		// var $p = document.createElement("p");
+		// $p.innerHTML = snap.key  + " - " +  snap.val()
+		// userDetailUI.append($p);
+
+	var $firstNamelbl = document.createElement("label");
+	$firstNamelbl.innerHTML = snap.key 
+
+	var $firstNameval = document.createElement("p");
+	$firstNameval.innerHTML = snap.val()
+
+	userDetailUI.append($firstNamelbl);
+	userDetailUI.append($firstNameval);
+	});
+
+}
+
+var std = 0;
+      var tbody = document.getElementById("tbody1");
+        function AddItem(name,email,registration, status) {
+          let trow = document.createElement("tr");
+          let td1 = document.createElement("td");
+          let td2 = document.createElement("td");
+          let td3 = document.createElement("td");
+          let td4 = document.createElement("td");
+          let td5 = document.createElement("td");
+          let td6 = document.createElement("td");
+          let td7 = document.createElement("td");
+          let td8 = document.createElement("td");
+          let td9 = document.createElement("td");
+
+          td1.innerHTML = ++std;
+          td2.innerHTML = name;
+          td3.innerHTML = email;
+          td4.innerHTML = registration;
+          td5.innerHTML = status; //<label class='switch' id='status_slider'><input type='checkbox' onclick='animatedToggle()'><span class='slider round'></span></label><p id='slider_status'>keme</p>        
+          td6.innerHTML = "<a href='viewID.html'><button type='button' name='button' class='viewIDbtn'>View ID</button></a>";
+          td7.innerHTML = "<center> <td class='tago'> <a href='#viewDriversAcct.html' id='view'><img src='images/view.png' id='acct_logo'></a></td> </center>";
+          td8.innerHTML = "<center> <td class='tago'> <a href='editCommutersAcct.html'><img src='images/update.png' id='update'></a></td> </center>";
+          td9.innerHTML = "<td colspan='2' class='actionbtn'> <a href='#activate_action'><img src='images/checkAction.png' id='active_actionbtns'></a><a href='#deactivate_action'><img src='images/Xaction.png' id='actionbtns'></a></td>";
+          
+       
+         
+          
+          trow.appendChild(td1);
+          trow.appendChild(td2);
+          trow.appendChild(td3);
+          trow.appendChild(td4);
+          trow.appendChild(td5);
+          trow.appendChild(td6);
+          trow.appendChild(td7);
+          trow.appendChild(td8);
+          trow.appendChild(td9);
+
+          tbody.appendChild(trow);
+          
+               
+          
+
+        }
+
+         usersRef.on("child_added", snap => {
+
+        let user = snap.val();
+
+        let $li = document.createElement("li");
+        $li.innerHTML = user.firstName;
+        $li.setAttribute("child-key", snap.key);
+        $li.addEventListener("click", userClicked)
+        userListUI.append($li);
+
+        });
+        
+
+		function AddAllItems(users) {
+          std=0;
+          tbody.innerHTML="";
+          users.forEach(element => {
+            var name =element.firstName + " " + element.lastName;
+            AddItem(name, element.email, element.registration,  element.status)
+          });  
+        }
+
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
+          authDomain: "shuttle-go-8d87a.firebaseapp.com",
+          databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
+          projectId: "shuttle-go-8d87a",
+          storageBucket: "shuttle-go-8d87a.appspot.com",
+          messagingSenderId: "509853219067",
+          appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
+          measurementId: "G-3YGP2PY9QX"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import {getDatabase, ref, child, onValue, get } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
+        const db = getDatabase();
+
+        //getting items from firebase
+
+        function getAllData() {
+            const dbref = ref(db);
+            get(child(dbref, "users"))
+            .then((snapshot) => {
+              var commuter = [];
+              snapshot.forEach(childSnapshot => {
+                commuter.push(childSnapshot.val());
+              });
+              AddAllItems(commuter);
+            })
+        }
+
+        function getAllDataRT() {
+            const dbRef = ref(db, "users");
+
+            onValue(dbRef,(snapshot)=>{
+              var commuters = [];
+              snapshot.forEach(childsnapshot => {
+                commuters.push(childsnapshot.val());
+              });
+              AddAllItems(commuters);
+            })
+        }
+
+        window.onLoad = getAllDataRT();
+
+  </script>
+  </div>
+	  </table>
+    <ul id="userList"></ul>
+	<h1>Account details</h1>
+    <div id="userDetail">
+		<!-- <label for="fname" id="lbl_fname"></label>
+		<input type="text" id="inp_fname">
+
+		<label for="mname" id="lbl_mname"></label>
+		<input type="text" id="inp_mname">
+
+		<label for="lname" id="lbl_lname"></label>
+		<input type="text" id="inp_lname">
+
+		<label for="mail" id="lbl_email"></label>
+		<input type="email" id="lbl_email">
+
+		<label for="date" id="lbl_date"></label>
+		<input type="text" id="inp_date">
+
+		<label for="status" id="lbl_status"></label>
+		<input type="text" id="inp_status"> -->
+    </div>
+
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+</html>

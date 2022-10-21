@@ -1,0 +1,640 @@
+@font-face {
+  src: url(fonts/Raleway-VariableFont_wght.ttf);
+  font-family: 'Raleway';
+
+  src: url(fonts/Salsa/Salsa-Regular.ttf);
+  font-family: 'Salsa';
+
+  /*src: url(fonts/Rozha_One/RozhaOne-Regular.ttf);
+  font-family: 'Rozha';*/
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Salsa";
+}
+
+html{
+  scrollbar-width: normal;
+  scrollbar-color: red, green;
+}
+
+html::-webkit-scrollbar{
+  width: 13px;
+}
+
+html::-webkit-scrollbar-thumb{
+  background-color: #3D5A80;
+  border-radius: 10vw;
+}
+
+html::-webkit-scrollbar-thumb:hover{
+  background-color: #2E496D;
+}
+
+body{
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.nav {
+    background: #3D5A80;
+    position: absolute;
+    width: 1440px;
+    height: 67px;
+    left: 0px;
+    top: 0px;
+}
+
+.nav .logo-content .logo .logo-name{
+    position: absolute;
+    left: 140px;
+    top: 7px;
+    font-family: 'Salsa';
+    font-weight: 400;
+    font-size: 35px;
+    line-height: 55px;
+    text-align: center;
+    color: #E0FBFC;
+}
+
+.nav .logo-content .logo img{
+    height: 50px;
+    width: 50px;
+    left: 86px;
+    top: 8px;
+    border-radius: 93px;
+    position: absolute;
+}
+
+.nav #logout{
+    position: absolute;
+    width: 120px;
+    height: 35px;
+    left: 1104px;
+    top: 14px;
+    background-color: #E0FBFC;
+    border-radius: 66px;
+    border-color: #E0FBFC;
+    font-family: "Raleway";
+    font-weight: 900;
+    font-size: 21px;
+    color: #3D5A80;
+}
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 5vw;
+  /*width: 15vw;*/
+  background: #3D5A80;
+  padding: 6px 14px;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+
+.sidebar.active{ /*size ni sidebar kapag active*/
+  height: 100%;
+  width: 20vw;
+}
+
+/*.sidebar.open {
+    width: 293vw;
+}*/
+
+.sidebar #btn{
+  position: absolute;
+  color: #E0FBFC;
+  left: 50%; /*position ng menu kapag di active si sidebar*/
+  top: -13px;
+  height: 26vh;
+  width: 2vw;
+  text-align: center;
+  line-height: 90px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.sidebar.active #btn{
+  left: 90%; /*position ng menu kapag active si sidebar*/
+}
+
+.sidebar ul{
+  margin-top: 50px; /*margin top ng images sa sidabar*/
+}
+
+.sidebar ul li{
+  position: relative;
+  height: 50px;
+  width: 100%;
+   /*margin: 20px 5px;para sa img*/
+  list-style: none;
+}
+
+.sidebar ul li i{
+  font-size: 21px;
+  color: #e0fbfc;
+}
+
+.sidebar ul li .tooltip{
+  position: absolute;
+    text-align: center;
+    left: 79px;
+    /*top: 18px;*/
+    top: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    height: 35px;
+    width: 122px;
+    background: #E0FBFC;
+    line-height: 35px;
+    box-shadow: 0 5px 10pc rgb(0 0 0 / 20%);
+    transition: 0s;
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+}
+
+.sidebar.active ul li .tooltip{
+  display: none;
+}
+
+.sidebar ul li:hover .tooltip{ /*hover ng lumalabas sa gilid kapag di active yung sidebar*/
+  transition: all 0.3s ease;
+  opacity: 1;
+  top: 50%;
+  line-height: 16px;
+}
+
+.sidebar ul li a:hover{ /*hover ng img kapag di active yung sidebar*/
+  /*color: #3D5A80;*/
+  /*background: white;*/
+  height: 50px;
+  width: 45px;
+}
+
+.sidebar .links_name{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar.active .links_name{
+  opacity: 1;
+  pointer-events: auto;
+  left: 9px;
+  position: relative;
+}
+
+.sidebar ul li a{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+  margin: 20px -28px; /*40px -33px*/
+  transition: all 0.4s ease;
+  white-space: nowrap;
+}
+
+.sidebar ul li img{
+  height: 3.5vh;/*3.5vh*/
+  min-width: 2vw; /*3vw*/
+  text-align: center;
+  transform: translateY(2px);
+}
+
+/* Add a black background color to the top navigation bar */
+.topnav {
+  position: absolute;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the "active" element to highlight the current page */
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+/*profile*/
+.containerism{
+  position: relative;
+  top: 70px;
+  left: 132px;
+  margin-bottom: 200px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-areas:
+  "header header"
+  "userProfile userDetails"
+  "work_skills timeline_about";
+  /*background-color: #E0FBFC;*/
+  background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  height: 90vh;
+  width: 85%;
+  padding: 1.5rem;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5) 0 0 25px rgba(0, 0, 0, 0.8);
+  grid-gap: 1rem;
+}
+
+.userProfile{
+  grid-area: userProfile;
+}
+
+.userDetails{
+  grid-area: userDetails;
+}
+
+.timeline_about{
+  grid-area: timeline_about;
+}
+
+.containerism .card{
+  background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  backdrop-filter: blur(3rem);
+  border-radius: .5rem;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+}
+
+.containerism .userProfile{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background: none;
+  width: 400px;
+}
+
+.containerism .userProfile .profile figure img{
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+}
+
+.containerism .work_skills{
+  padding: 1.5rem;
+}
+
+.userProfile{
+  position: relative;
+  padding: 1.5rem 2.5rem;
+}
+
+.userProfile .username .map{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userProfile .username .map .bx{
+  font-size: 0.8rem;
+  color: #0099cc;
+}
+
+.userProfile .username .map span{
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.userProfile .btns ul{
+  margin-left: -2.5rem;
+}
+
+.userProfile .btns ul,
+.userProfile .btns ul li{
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+
+.userProfile .btns ul li{
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.userProfile .btns ul li .bx{
+  margin-right: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.userProfile .btns ul li a{
+  font-size: 1rem;
+  color: #000; /*#000*/
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.userProfile .btns ul li:hover{
+  background-color: #e6f2ff;
+}
+
+/*timeline_about*/
+.timeline_about{
+  /*padding: 2.5rem;*/
+  margin-top: -490px;
+  max-height: 654px;
+}
+
+.timeline_about .tabs ul{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.timeline_about .tabs ul::before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.timeline_about .tabs ul li{
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.timeline_about .tabs ul li a:hover{
+  background-color: #e6f2ff;
+  border-radius: .5rem;
+  padding: .2rem .5rem;
+}
+
+.timeline_about .tabs ul li a{
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  margin-right: 3rem;
+  text-decoration: none;
+}
+
+.timeline_about .tabs ul li .bx,
+.timeline_about .tabs ul li .fa{
+  margin-right: 0.5rem;
+}
+
+/*.timeline_about .tabs ul .active::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0099cc;
+}*/
+
+.timeline_about .contact_info ul,
+.timeline_about .basic_info ul{
+  margin-bottom: 1.5rem;
+}
+
+.timeline_about .contact_info ul li,
+.timeline_about .basic_info ul li{
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.timeline_about .contact_info ul li h1,
+.timeline_about .basic_info ul li h1{
+  font-weight: 500;
+  font-size: 0.9rem;
+  min-width: 12rem;
+}
+
+.timeline_about .contact_info ul li span,
+.timeline_about .basic_info ul li span{
+  font-size: 0.9rem;
+}
+
+/* The footer is fixed to the bottom of the page */
+footer {
+    position: fixed;
+    bottom: 0;
+}
+
+@media (max-height:800px) {
+    footer {
+        position: static;
+    }
+    header {
+        padding-top: 40px;
+    }
+}
+
+.footer-distributed {
+    background-color: #3D5A80;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font: bold 16px sans-serif;
+    padding: 20px 50px 20px 100px;
+    margin-top: 80px;
+}
+
+.footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+/* Footer left */
+.footer-distributed .footer-left {
+    width: 30%;
+}
+
+.footer-distributed h3 {
+    color: #ffffff;
+    font: bold 36px 'Cookie', cursive;
+    margin: 0;
+}
+
+
+.footer-distributed h3 span {
+    color: #e0fbfc;
+}
+
+/* Footer links */
+.footer-distributed .footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+}
+
+.footer-distributed .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+    font-weight: normal;
+}
+
+.footer-center .footer-company-name {
+    color: #8f9296 !important;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 50px 0 0 20px !important;
+}
+
+/* Footer Center */
+.footer-distributed .footer-center {
+    width: 35%;
+    font-weight: normal;
+}
+
+.footer-distributed .footer-center i {
+    background-color: #33383b;
+    color: #ffffff;
+    font-size: 25px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    margin: 10px 15px;
+    vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+    font-size: 17px;
+    line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+    color: #e0fbfc;
+    text-decoration: none;
+}
+
+/* Footer Right */
+.footer-distributed .footer-right {
+    width: 30%;
+}
+
+.footer-distributed .footer-company-about {
+    line-height: 25px;
+    color: #e0fbfc;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: justify;
+    margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+    display: block;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+    margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 3px;
+    margin-bottom: 5px;
+}
+
+.footer-distributed .footer-icons a:hover {
+    background-color: #3F71EA;
+}
+
+.footer-links a:hover {
+    color: #e0fbfc;
+}
+
+/*footer apk link*/
+#coltext{
+  color: white;
+  font-weight: bold;
+  padding-top: 35px;
+}
+
+.content p a{
+  color: white;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+.content p a:hover{
+  color: #e0fbfc;
+}
+
+/*footer responsiveness*/
+@media (max-width: 880px) {
+    .footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+        display: block;
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .footer-distributed .footer-center i {
+        margin-left: 0;
+    }
+}
+
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
+@media screen and (max-width: 600px) {
+  .topnav a, .topnav input[type=text] {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;
+  }
+}*/

@@ -1,0 +1,61 @@
+<footer class="footer-distributed">
+
+        <div class="footer-left">
+            <h3>Washington <span>Place</span></h3>
+
+            <p class="footer-links">
+                <a href="dashboard.html">Dashboard</a>
+                |
+                <a href="commutersTable.html">All commuters</a>
+                |
+                <a href="login.html">Log in</a>
+            </p>
+
+            <p id="coltext">DOWNLOAD OUR APP HERE:</p>
+            <div class="content">
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+            </div>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Sampaloc II, Dasmariñas,</span>
+                    <strong>Philippines</strong></p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>0943 302 9424</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:peteregencia@yahoo.com">peteregencia@yahoo.com</a></p>
+            </div>
+            <div>
+                <i class="fa fa-facebook"></i>
+                <p><a href="https://www.facebook.com/cavitewashington">Washington Place facebook page</a></p>
+            </div>
+            <div>
+              <p class="footer-company-name">Copyright © 2022 <strong>WashingtonPlaceDasmarinas</strong> <br>
+                All rights reserved</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About Washington Place Dasmarinas</span>
+                <strong>Washington Place Dasmarinas</strong> Stateland’s newest and to date, the
+                grandest development, is set to rise in the emerging city of Dasmariñas in Cavite. Encompassing 40
+                hectares of prime property along Aguinaldo Highway, it is envisioned to become a landmark community
+                that boasts of modern-themed architectural designs.
+            </p>
+            <!--div class="footer-icons">
+                <a href="https://www.facebook.com/cavitewashington"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div!-->
+        </div>
+    </footer>

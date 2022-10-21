@@ -1,0 +1,8 @@
+.nav .logo-content .logo img{
+    height: 10vh;
+    width: 4.5vw;
+
+.nav #logout{
+    position: absolute;
+    width: 25vh;
+    height: 3vw;

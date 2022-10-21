@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html>
+    <head> <title>Reload</title>
+        <link rel="stylesheet" href="reloadCSS.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body>
+      <nav class="nav">
+          <div class="logo-content">
+            <div class="logo">
+              <a href="dashboard.html">
+                <img src="images/logo.png"></a>
+                  <div class="logo-name">Reloading</div>
+                  <button id="logout">Logout</button>
+              </div>
+          </div>
+      </nav>
+
+      <div class="sidebar">
+          <i class='bx bx-menu' id="btn"></i>
+          <ul class="navList">
+              <li>
+                  <a href="adminProfile.html">
+                  <img src="images/admin.png">
+                  <span class="links_name">Admin Profile</span>
+                  </a>
+                  <span class="tooltip">Admin</span>
+              </li>
+              <li>
+                  <a href="announcement.html">
+                  <img src="images/announcement.png">
+                  <span class="links_name">Announcement</span>
+                  </a>
+                  <span class="tooltip">Announcement</span>
+              </li>
+              <li>
+                  <a href="ShuttleDriverAcct.html">
+                  <img src="images/Shuttle Drivers Account.png">
+                  <span class="links_name">Shuttle Driver’s Account</span>
+                  </a>
+                  <span class="tooltip">Driver</span>
+              </li>
+              <li>
+                  <a href="CoomutersAcct.html">
+                  <img src="images/Commuters Account.png">
+                  <span class="links_name">Commuter’s Account</span>
+                  </a>
+                  <span class="tooltip">Commuter</span>
+              </li>
+              <li>
+                  <a href="complaintsNfeedback.html">
+                  <img src="images/Complaints and Feedbacks.png">
+                  <span class="links_name">Complaints and Feedbacks</span>
+                  </a>
+                  <span class="tooltip">Complaints</span>
+              </li>
+              <li>
+                  <a href="boundaryRemit.html">
+                  <img src="images/Boundary Remittance.png">
+                  <span class="links_name">Boundary Remittance</span>
+                  </a>
+                  <span class="tooltip">Boundary</span>
+              </li>
+              <li>
+                  <a href="reload.html">
+                    <!--img src="images/reload.png"!-->
+                  <i class='bx bx-wallet'></i>
+                  <span class="links_name">Reload</span>
+                  </a>
+                  <span class="tooltip">Reload</span>
+              </li>
+          </ul>
+      </div>
+
+      <div class="add-record-container">
+        <div class="add-record-content">
+          <div class="add-record-btn">
+            <a href="#addNewLoadRecord">
+            <button type="button" name="button">Add record</button>
+          </a>
+            <a href="#print">
+              <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
+            </a>
+          </div>
+          <div class="add-record-forms">
+          <form>
+            <input type="text" name="name" placeholder="Full name:">
+
+            <input type="text" name="contact-number" placeholder="Contact number:">
+
+            <input type="text" name="remarks" placeholder="Remarks">
+          </form>
+        </div>
+        </div>
+      </div>
+
+
+      <div id="dvContents" class="tableDiv">
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+      <table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>NAME</th>
+          <th>RECEIPT</th>
+          <th>CONTACT NUMBER</th>
+          <th>TIME</th>
+          <th>DATE</th>
+          <th>REMARKS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>001</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td> <button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal2">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td> <button type="button" name="button" id="notloaded"> NOT LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>003</td>
+          <td>Maria Anders</td>
+          <td>
+          <a href="#modal-see-more" id="seeMoreBtn">
+            <button id="seemoreBtnModal3">View receipt</button>
+          </a>
+          <div id="seemoreModal">
+            <div class="seemoremodal-content">
+            <div class="seemoreModal-header">
+              <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+            </div>
+            <div class="seemoreModal-body">
+              <div id="receiptCont">
+                <center><img src="images/receipt.png" id="#receiptimg"></center>
+                <center><form>
+                <label for="csname" id="csnamelabel">Recipient: </label>
+                <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                <br>
+                <label for="amount">Amount to load: </label>
+                <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+              </form></center>
+                <div class="buttons">
+                  <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                  <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>004</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal4">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>005</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal5">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>006</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal6">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>007</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal7">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>008</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal8">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>009</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal9">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>010</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal10">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>011</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal11">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>012</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal12">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>013</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal13">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>014</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal14">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><form>
+                  <label for="csname" id="csnamelabel">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <br>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
+                </form></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+        <tr>
+          <td>015</td>
+          <td>Maria Anders</td>
+          <td>
+            <a href="#modal-see-more" id="seeMoreBtn">
+              <button id="seemoreBtnModal15">View receipt</button>
+            </a>
+            <div id="seemoreModal">
+              <div class="seemoremodal-content">
+              <div class="seemoreModal-header">
+                <span class="seemoreclose-btn" onclick="toggle()">&times;</span>
+              </div>
+              <div class="seemoreModal-body">
+                <div id="receiptCont">
+                  <center><img src="images/receipt.png" id="#receiptimg"></center>
+                  <center><label for="csname">Recipient: </label>
+                  <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
+                  <label for="amount">Amount to load: </label>
+                  <input type="text" id="amount" name="amount" value="P 1000.00" disabled></center>
+                  <div class="buttons">
+                    <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
+                    <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>09876543212</td>
+          <td>9:15</td>
+          <td>26 July 2022</td>
+          <td><button type="button" name="button" id="loaded">LOADED</button> </td>
+        </tr>
+      </tbody>
+      </table>
+    </div>
+
+      <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <h3>Washington <span>Place</span></h3>
+
+            <p class="footer-links">
+                <a href="dashboard.html">Dashboard</a>
+                |
+                <a href="commutersTable.html">All commuters</a>
+                |
+                <a href="login.html">Log in</a>
+            </p>
+
+            <p id="coltext">DOWNLOAD OUR APP HERE:</p>
+            <div class="content">
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+            </div>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Sampaloc II, Dasmariñas,</span>
+                    <strong>Philippines</strong></p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>0943 302 9424</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:peteregencia@yahoo.com">peteregencia@yahoo.com</a></p>
+            </div>
+            <div>
+                <i class="fa fa-facebook"></i>
+                <p><a href="https://www.facebook.com/cavitewashington">Washington Place facebook page</a></p>
+            </div>
+            <div>
+              <p class="footer-company-name">Copyright © 2022 <strong>WashingtonPlaceDasmarinas</strong> <br>
+                All rights reserved</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About Washington Place Dasmarinas</span>
+                <strong>Washington Place Dasmarinas</strong> Stateland’s newest and to date, the
+                grandest development, is set to rise in the emerging city of Dasmariñas in Cavite. Encompassing 40
+                hectares of prime property along Aguinaldo Highway, it is envisioned to become a landmark community
+                that boasts of modern-themed architectural designs.
+            </p>
+            <!--div class="footer-icons">
+                <a href="https://www.facebook.com/cavitewashington"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div!-->
+        </div>
+    </footer>
+
+    <!-- printing css starts here  -->
+    <style id="table_style" type="text/css">
+    @media print{
+      a #seemoreBtnModal, #seemoreBtnModal2, #seemoreBtnModal3, #seemoreBtnModal4, #seemoreBtnModal5, #seemoreBtnModal6,
+      #seemoreBtnModal7, #seemoreBtnModal8, #seemoreBtnModal9, #seemoreBtnModal10, #seemoreBtnModal11, #seemoreBtnModal12,
+      #seemoreBtnModal13, #seemoreBtnModal14, #seemoreBtnModal15{
+        color: #3D5A80;
+        border-color: transparent;
+        background-color: transparent;
+      }
+
+      td #loaded{
+        color: #3d5a80;
+        border-color: transparent;
+        background-color: transparent;
+      }
+
+      td #notloaded{
+        color: #d60000;
+        border-color: transparent;
+        background-color: transparent;
+      }
+      #seemoreModal{
+        display: none; /*none*/
+      }
+      #seemoreModal, .seemoreModal-body #receiptCont img, .seemoreModal-body form{
+        display: none;
+      }
+      table
+      {
+          border: transparent;
+      }
+      #example_length label, #example_filter label{ /*show entries number and search*/
+        display: none;
+      }
+    }
+    </style>
+    <!-- printing css ends here  -->
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script>
+        let btn= document.querySelector("#btn");
+        let sidebar= document.querySelector(".sidebar");
+
+        btn.onclick= function(){
+          sidebar.classList.toggle("active");
+        }
+
+        //hide or show
+        /*const btnreply = document.querySelector('#viewReceiptbtn');
+        const container = document.querySelector('#receiptCont');
+        btnreply.addEventListener("click", function(){
+          if(container.style.display === "block"){
+            container.style.display = "none";
+          }else{
+            container.style.display = "block";
+          }
+        });*/
+        </script>
+
+
+        <script>
+        //table
+        $(document).ready(function() {
+          $('#example').DataTable( {
+            "pagingType": "full_numbers",
+            /*columnDefs[{
+              "targets": {2,6},
+              "orderable": false
+            }]*/
+          } );
+        } );
+
+        //modal receipt
+        let seemoremodal = document.getElementById("seemoreModal");
+        let btnseemore = document.getElementById("seemoreBtnModal");
+        let btnseemore2 = document.getElementById("seemoreBtnModal2");
+        let btnseemore3 = document.getElementById("seemoreBtnModal3");
+        let btnseemore4 = document.getElementById("seemoreBtnModal4");
+        let btnseemore5 = document.getElementById("seemoreBtnModal5");
+        let btnseemore6 = document.getElementById("seemoreBtnModal6");
+        let btnseemore7 = document.getElementById("seemoreBtnModal7");
+        let btnseemore8 = document.getElementById("seemoreBtnModal8");
+        let btnseemore9 = document.getElementById("seemoreBtnModal9");
+        let btnseemore10 = document.getElementById("seemoreBtnModal10");
+        let btnseemore11 = document.getElementById("seemoreBtnModal11");
+        let btnseemore12 = document.getElementById("seemoreBtnModal12");
+        let btnseemore13 = document.getElementById("seemoreBtnModal13");
+        let btnseemore14 = document.getElementById("seemoreBtnModal14");
+        let btnseemore15 = document.getElementById("seemoreBtnModal15");
+        let seemoreclosebtn = document.getElementsByClassName("seemoreclose-btn")[0];
+
+
+        btnseemore.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore2.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore3.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore4.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore5.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore6.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore7.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore8.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore9.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore10.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore11.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore12.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore13.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore14.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        btnseemore15.onclick = function(){
+          seemoremodal.classList.add("show");
+        }
+        seemoreclosebtn.onclick = function(){
+          seemoremodal.classList.remove("show");
+        }
+      </script>
+
+      <script type="text/javascript"> //printing script
+    function PrintTable() {
+        var printWindow = window.open('', '', 'height=700,width=1200');
+        printWindow.document.write('<html><head><title>Table Contents</title>');
+
+        //Print the Table CSS.
+        var table_style = document.getElementById("table_style").innerHTML;
+        printWindow.document.write('<style type = "text/css">');
+        printWindow.document.write(table_style);
+        printWindow.document.write('</style>');
+        printWindow.document.write('</head>');
+
+        //Print the DIV contents i.e. the HTML Table.
+        printWindow.document.write('<body>');
+        var divContents = document.getElementById("dvContents").innerHTML;
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body>');
+
+        printWindow.document.write('</html>');
+        printWindow.document.close();
+        printWindow.print();
+    }
+    </script>
+</html>

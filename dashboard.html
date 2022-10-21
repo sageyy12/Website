@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html>
+    <head> <title>Dashboard</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <link rel="stylesheet" href="dashboardCSS.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <!--BoxCDN icon link-->
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="logo-content">
+              <a href="dashboard.html">
+              <div class="logo">
+                  <img src="images/logo.png"></a>
+                    <div class="logo-name">Dashboard</div>
+                    <button id="logout">Logout</button>
+                </div>
+            </div>
+        </nav>
+        <div class="topnav">
+          <button type="submit" id="backbtn">BACK</button>
+        </div>
+
+        <div class="sidebar">
+            <i class='bx bx-menu' id="btn"></i>
+            <ul class="navList">
+                <li>
+                    <a href="adminProfile.html">
+                    <img src="images/admin.png">
+                    <span class="links_name">Admin Profile</span>
+                    </a>
+                    <span class="tooltip">Admin</span>
+                </li>
+                <li>
+                    <a href="announcement.html">
+                    <img src="images/announcement.png">
+                    <span class="links_name">Announcement</span>
+                    </a>
+                    <span class="tooltip">Announcement</span>
+                </li>
+                <li>
+                    <a href="ShuttleDriverAcct.html">
+                    <img src="images/Shuttle Drivers Account.png">
+                    <span class="links_name">Shuttle Driver’s Account</span>
+                    </a>
+                    <span class="tooltip">Driver</span>
+                </li>
+                <li>
+                    <a href="CoomutersAcct.html">
+                    <img src="images/Commuters Account.png">
+                    <span class="links_name">Commuter’s Account</span>
+                    </a>
+                    <span class="tooltip">Commuter</span>
+                </li>
+                <li>
+                    <a href="complaintsNfeedback.html">
+                    <img src="images/Complaints and Feedbacks.png">
+                    <span class="links_name">Complaints and Feedbacks</span>
+                    </a>
+                    <span class="tooltip">Complaints</span>
+                </li>
+                <li>
+                    <a href="boundaryRemit.html">
+                    <img src="images/Boundary Remittance.png">
+                    <span class="links_name">Boundary Remittance</span>
+                    </a>
+                    <span class="tooltip">Boundary</span>
+                </li>
+                <li>
+                    <a href="reload.html">
+                      <!--img src="images/reload.png"!-->
+                    <i class='bx bx-wallet'></i>
+                    <span class="links_name">Reload</span>
+                    </a>
+                    <span class="tooltip">Reload</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+          <header>
+            <h1>Welcome to ShuttleGo</h1>
+          </header>
+
+          <main>
+            <div class="cards">
+              <div class="card-single">
+                <div>
+                  <h1>160</h1>
+                  <span><a href="commutersTable.html" id="link">Commuters </a> </span>
+                </div>
+                <div>
+                  <span>
+                    <i id="keme" class="fa">&#xf007;</i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-single">
+                <div>
+                  <h1>12,000</h1>
+                  <span>Total Sales</span>
+                </div>
+                <div>
+                  <span>
+                    <i id="keme" class="fa">&#xf0d6;</i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-single">
+                <div>
+                  <h1>250</h1>
+                  <span><a href="feedbacks.html" id="link">Feedbacks </a></span>
+                </div>
+                <div>
+                  <span>
+                    <i id="keme" class="fa">&#xf27a;</i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-single">
+                <div>
+                  <h1>100</h1>
+                  <span><a href="cusComplaints.html" id="link">Complaints </a></span>
+                </div>
+                <div>
+                  <span>
+                    <i id="keme" class="fa">&#xf0e6;</i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="card-single">
+                <div>
+                  <h1>10</h1>
+                  <span><a href="reload.html" id="link">Reload </a></span>
+                </div>
+                <div>
+                  <span>
+                    <i id="keme" class="fa">&#xf10b;</i>
+                  </span>
+                </div>
+              </div>
+            </div> <!-- ending ng cards div  -->
+
+            <div class="buttons">
+              <a href="#Commutersbtn" id="Commuters">
+                <button>Attendance</button>
+              </a>
+
+                <a href="#TotalSalesbtn" id="TotalSales">
+                  <button>Drivers</button>
+                </a>
+
+                  <!--a href="#Feedbacksbtn" id="Feedbacks">
+                    <button>Violations</button>
+                  </a>
+
+                    <a href="#Complaintsbtn" id="Complaints">
+                      <button>Complaints</button>
+                    </a!-->
+
+                      <a href="#Reloadbtn" id="Reload">
+                        <button>Bukyo Vehicles</button>
+                      </a>
+            </div>
+
+            <!-- charts  -->
+            <!--div class="graphBox">
+              <div class="boxy">
+                <canvas id="myChart"></canvas>
+                <a href="CommEveryMonth.html" id="chartbtn">View more</a>
+              </div>
+              <div class="boxy">
+              <canvas id="everyMonth"></canvas>
+              <a href="CommEveryMonth.html" id="chartbtn2">View more</a>
+            </div>
+            <h3>Record of commuters</h3>
+          </div!-->
+
+            <div class="recent-grid">
+              <div class="projects">
+                <div class="cardsy">
+                  <div class="card-header">
+                    <h3>Recent Activity</h3>
+                    <a href="#seeAllbtn" id="seeAllbtn">
+                    <button>See all
+                      <span class="fa">&#xf178;</span>
+                    </button></a>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+                    <table id="example" class="display" width="100%" cellspacing="0">
+                        <!--p id="result">Result here</p>
+                        <p><select name="select" id="opt">
+                               <option value="table">--- Select an option ---</option>
+                               <option value="CommsDiv" id="comm">Commuters</option>
+                               <option value="totalsalesTbl" id="tsales">Total Sales</option>
+                               <option value="content" id="feed">Feedbacks</option>
+                               <option value="content" id="compl">Complaints</option>
+                               <option value="content" id="rel">Reload</option>
+                               <option value="content" id="all">See all</option>
+                           </p!-->
+                           <!--input type="button" id="bt" value="Show data" onclick="GetSelectedText()" /!-->
+                        <thead>
+                          <tr>
+                            <td>No.</td>
+                            <td>Activity</td>
+                            <td>Name</td>
+                            <td>Time</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>001</td>
+                            <td>Booking</td>
+                            <td>Alphanille Reyes</td>
+                            <td>13:00</td>
+                          </tr>
+                          <tr>
+                            <td>002</td>
+                            <td>Reservation</td>
+                            <td>Stephanie Santos</td>
+                            <td>18:00</td>
+                          </tr>
+                          <tr>
+                            <td>003</td>
+                            <td>Complaint</td>
+                            <td>Justin Geronimo</td>
+                            <td>14:00</td>
+                          </tr>
+                          <tr>
+                            <td>004</td>
+                            <td>Complaint</td>
+                            <td>Maria Zaragosa</td>
+                            <td>15:00</td>
+                          </tr>
+                          <tr>
+                            <td>005</td>
+                            <td>Booking</td>
+                            <td>Alphanille Reyes</td>
+                            <td>13:00</td>
+                          </tr>
+
+                            <tr>
+                              <td>006</td>
+                              <td>Booking</td>
+                              <td>Alphanille Reyes</td>
+                              <td>13:00</td>
+                            </tr>
+                            <tr>
+                              <td>007</td>
+                              <td>Reservation</td>
+                              <td>Stephanie Santos</td>
+                              <td>18:00</td>
+                            </tr>
+                            <tr>
+                              <td>008</td>
+                              <td>Complaint</td>
+                              <td>Justin Geronimo</td>
+                              <td>14:00</td>
+                            </tr>
+                            <tr>
+                              <td>009</td>
+                              <td>Complaint</td>
+                              <td>Maria Zaragosa</td>
+                              <td>15:00</td>
+                            </tr>
+                            <tr>
+                              <td>010</td>
+                              <td>Booking</td>
+                              <td>Alphanille Reyes</td>
+                              <td>13:00</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                  <!--div class="CommsDiv">
+                    <div id="commsTbl">
+                    <div id="resp-table-caption">Responsive Table without Table tag</div>
+                      <div id=“resp-table-header”></div>
+                      <div class="table-header-cell">No.</div>
+                      <div class="table-header-cell">Name</div>
+                      <div class="table-header-cell">Address</div>
+                      <div class="table-header-cell">Contact Number</div>
+                      <div id="resp-table-body"></div>
+                      <div class="resp-table-row"></div>
+                      <div class="table-body-cell"></div>
+                      <div class="table-body-cell">001</div>
+                      <div class="table-body-cell">Alphanille Reyes</div>
+                      <div class="table-body-cell">Blk. 26 L. 9</div>
+                      <div class="table-body-cell">09876543212</div>
+
+                      <div id="resp-table-body"></div>
+                      <div class="resp-table-row"></div>
+                      <div class="table-body-cell"></div>
+                      <div class="table-body-cell">002</div>
+                      <div class="table-body-cell">Alphanille Reyes</div>
+                      <div class="table-body-cell">Blk. 26 L. 9</div>
+                      <div class="table-body-cell">09876543212</div>
+
+                      <div id="resp-table-body"></div>
+                      <div class="resp-table-row"></div>
+                      <div class="table-body-cell"></div>
+                      <div class="table-body-cell">003</div>
+                      <div class="table-body-cell">Alphanille Reyes</div>
+                      <div class="table-body-cell">Blk. 26 L. 9</div>
+                      <div class="table-body-cell">09876543212</div>
+
+                      <div id="resp-table-body"></div>
+                      <div class="resp-table-row"></div>
+                      <div class="table-body-cell"></div>
+                      <div class="table-body-cell">004</div>
+                      <div class="table-body-cell">Alphanille Reyes</div>
+                      <div class="table-body-cell">Blk. 26 L. 9</div>
+                      <div class="table-body-cell">09876543212</div>
+
+                      <div id="resp-table-body"></div>
+                      <div class="resp-table-row"></div>
+                      <div class="table-body-cell"></div>
+                      <div class="table-body-cell">005</div>
+                      <div class="table-body-cell">Alphanille Reyes</div>
+                      <div class="table-body-cell">Blk. 26 L. 9</div>
+                      <div class="table-body-cell">09876543212</div>
+                    </div>
+                  </div!-->
+                  <div class="CommsDiv">
+                  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+                  <table id="example" class="display" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <td>No.</td>
+                            <td>Name</td>
+                            <td>Date</td>
+                            <td>Attendance</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>001</td>
+                            <td>Alphanille Reyes</td>
+                            <td>Feb. 20, 2022</td>
+                            <td><i class='bx bxs-check-circle'></i></td>
+                          </tr>
+                          <tr>
+                            <td>002</td>
+                            <td>Stephanie Santos</td>
+                            <td>Feb. 21, 2022</td>
+                            <td><i class='bx bxs-x-circle'></i></td>
+                          </tr>
+                          <tr>
+                            <td>003</td>
+                            <td>Alphanille Reyes</td>
+                            <td>Feb. 22, 2022</td>
+                            <td><i class='bx bxs-check-circle'></i></td>
+                          </tr>
+                          <tr>
+                            <td>004</td>
+                            <td>Stephanie Santos</td>
+                            <td>Feb. 23, 2022</td>
+                            <td><i class='bx bxs-check-circle'></i></td>
+                          </tr>
+                          <tr>
+                            <td>005</td>
+                            <td>Alphanille Reyes</td>
+                            <td>Feb. 24, 2022</td>
+                            <td><i class='bx bxs-check-circle'></i></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="totalSalesDiv">
+                  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+                  <table id="example" class="display" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <td>License No.</td>
+                            <td>Name</td>
+                            <td>Address</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>A01-23-456789</td>
+                            <td>Jose Picardo</td>
+                            <td>Blk. 2 Lot 2</td>
+                          </tr>
+                          <tr>
+                            <td>A02-25-409689</td>
+                            <td>Kenneth Librado</td>
+                            <td>Blk. 5 Lot 23</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <!--div class="feedbacksDiv">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <td>No.</td>
+                            <td>Name</td>
+                            <td>No. of Feedbacks given</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>001</td>
+                            <td>Alphanille Reyes</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>002</td>
+                            <td>Stephanie Santos</td>
+                            <td>1</td>
+                          </tr>
+                          <tr>
+                            <td>003</td>
+                            <td>Justin Geronimo</td>
+                            <td>5</td>
+                          </tr>
+                          <tr>
+                            <td>004</td>
+                            <td>Maria Zaragosa</td>
+                            <td>2</td>
+                          </tr>
+                          <tr>
+                            <td>005</td>
+                            <td>Alphanille Reyes</td>
+                            <td>5</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                  <div class="complaintsDiv">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <td>No.</td>
+                            <td>Name</td>
+                            <td>No. of complaints given</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>001</td>
+                            <td>Alphanille Reyes</td>
+                            <td>4</td>
+                          </tr>
+                          <tr>
+                            <td>002</td>
+                            <td>Stephanie Santos</td>
+                            <td>1</td>
+                          </tr>
+                          <tr>
+                            <td>003</td>
+                            <td>Justin Geronimo</td>
+                            <td>5</td>
+                          </tr>
+                          <tr>
+                            <td>004</td>
+                            <td>Maria Zaragosa</td>
+                            <td>1</td>
+                          </tr>
+                          <tr>
+                            <td>005</td>
+                            <td>Alphanille Reyes</td>
+                            <td>3</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div!-->
+                  <div class="reloadDiv">
+                    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+                    <table id="example" class="display" width="100%" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <td>Vehicle No.</td>
+                            <td>Driver</td>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Bukyo OY 8006</td>
+                            <td>Jose Picardo</td>
+                          </tr>
+                          <tr>
+                            <td>Bukyo AAA 1234</td>
+                            <td>Kenneth Librado</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                  </div>
+                </div>
+              </div>
+              <div class="customers">
+                <div class="projects">
+                  <div class="cardsy">
+                    <div class="card-header">
+                      <h3>New registers</h3>
+                      <a href="#seeAllRegsbtn" id="seeAllRegsbtn">
+                      <button>See all
+                        <span class="fa">&#xf178;</span>
+                      </button></a>
+                    </div>
+                    <div class="card-body">
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta2</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta3</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta4</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta5</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta6</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta7</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta8</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta9</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta10</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta11</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+
+                      <div class="customer">
+                        <div class="info">
+                          <img src="images/user.png" width="40px" height="40px">
+                          <div>
+                            <h4>Samantha Glorieta12</h4>
+                            <small>Phase 2</small>
+                          </div>
+                        </div>
+                        <div class="contact">
+                          <i class="fa">&#xf007;</i> <!-- user icon -->
+                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
+                          <i class="fa">&#xf095;</i> <!-- phone icon -->
+                        </div>
+                      </div>
+                    </div>
+              </div>
+            </div>
+          </main>
+        </div>
+
+        <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <h3>Washington <span>Place</span></h3>
+
+            <p class="footer-links">
+                <a href="dashboard.html">Dashboard</a>
+                |
+                <a href="commutersTable.html">All commuters</a>
+                |
+                <a href="login.html">Log in</a>
+            </p>
+
+            <p id="coltext">DOWNLOAD OUR APP HERE:</p>
+            <div class="content">
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+            </div>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Sampaloc II, Dasmariñas,</span>
+                    <strong>Philippines</strong></p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>0943 302 9424</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:peteregencia@yahoo.com">peteregencia@yahoo.com</a></p>
+            </div>
+            <div>
+                <i class="fa fa-facebook"></i>
+                <p><a href="https://www.facebook.com/cavitewashington">Washington Place facebook page</a></p>
+            </div>
+            <div>
+              <p class="footer-company-name">Copyright © 2022 <strong>WashingtonPlaceDasmarinas</strong> <br>
+                All rights reserved</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About Washington Place Dasmarinas</span>
+                <strong>Washington Place Dasmarinas</strong> Stateland’s newest and to date, the
+                grandest development, is set to rise in the emerging city of Dasmariñas in Cavite. Encompassing 40
+                hectares of prime property along Aguinaldo Highway, it is envisioned to become a landmark community
+                that boasts of modern-themed architectural designs.
+            </p>
+            <!--div class="footer-icons">
+                <a href="https://www.facebook.com/cavitewashington"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div!-->
+        </div>
+    </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+        <!--script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"></script!--> <!-- link for chart  -->
+
+            <script>
+            let btn= document.querySelector("#btn");
+            let sidebar= document.querySelector(".sidebar");
+
+            btn.onclick= function(){
+              sidebar.classList.toggle("active");
+            }
+
+            //show / hide button
+            const CommtoggleBtn = document.querySelector('#Commuters');
+            const toggleBtn = document.querySelector('#TotalSales');
+            //const feedBtn = document.querySelector('#Feedbacks');
+            //const compBtn = document.querySelector('#Complaints');
+            const reloadBtn = document.querySelector('#Reload');
+            const seeAllBtn = document.querySelector('#seeAllbtn');
+            const divList = document.querySelector('.card-body');
+
+            const commsDiv = document.querySelector('.CommsDiv');
+            const totalDiv = document.querySelector('.totalSalesDiv');
+            //const feedsDiv = document.querySelector('.feedbacksDiv');
+            //const complaintsDiv = document.querySelector('.complaintsDiv');
+            const reloadDiv = document.querySelector('.reloadDiv');
+            //const reloadDivh5 = document.querySelector('.h5');
+
+            CommtoggleBtn.addEventListener('click', () => {
+              if (commsDiv.style.display === 'block') {
+                divList.style.display = 'none';
+                totalDiv.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+                /*reloadDivh5.style.display = 'none';*/
+              } else {
+                commsDiv.style.display = 'block';
+                divList.style.display = 'none';
+                totalDiv.style.display = 'none';
+                /*feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDivh5.style.display = 'none';*/
+                reloadDiv.style.display = 'none';
+              }
+            });
+
+            toggleBtn.addEventListener('click', () => {
+              if (totalDiv.style.display === 'block') {
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+                /*reloadDivh5.style.display = 'none';*/
+              } else {
+                totalDiv.style.display = 'block';
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                /*feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDivh5.style.display = 'none';*/
+                reloadDiv.style.display = 'none';
+              }
+            });
+
+            /*feedBtn.addEventListener('click', () => {
+              if (feedsDiv.style.display === 'block') {
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+              } else {
+                feedsDiv.style.display = 'block';
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+              }
+            });
+
+            compBtn.addEventListener('click', () => {
+              if (complaintsDiv.style.display === 'block') {
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+              } else {
+                complaintsDiv.style.display = 'block';
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+              }
+            });*/
+
+            reloadBtn.addEventListener('click', () => {
+              if (reloadDiv.style.display === 'block') {
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                /*feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';*/
+              } else {
+                reloadDiv.style.display = 'block';
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                /*feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';*/
+              }
+            });
+
+            seeAllBtn.addEventListener('click', () => {
+              if (divList.style.display === 'block') {
+                reloadDiv.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                /*reloadDivh5.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';*/
+              } else {
+                divList.style.display = 'block';
+                reloadDiv.style.display = 'none';
+                commsDiv.style.display = 'none';
+                totalDiv.style.display = 'none';
+                /*reloadDivh5.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';*/
+              }
+            });
+
+            //chart
+            /*const ctx = document.getElementById('myChart').getContext('2d');
+            const myChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
+                'September', 'October', 'November', 'December'],
+                datasets: [{
+                  label: 'No. of commuters every month',
+                  data: [120, 100, 310, 350, 220, 340, 120, 190, 310, 350, 200, 400],
+                  backgroundColor: [
+                    '#3D5A80'
+                  ]
+                }]
+              },
+              options: {
+                responsive: true,
+              }
+            });
+
+            const monthly = document.getElementById('everyMonth').getContext('2d');
+            const everyMonth = new Chart(monthly, {
+              type: 'line',
+              data: {
+                labels: ['2020', '2021', '2022'],
+                datasets: [{
+                  label: 'No. of commuters every year',
+                  data: [1200, 1000, 3000],
+                  borderColor: [
+                    '#3D5A80'
+                  ],
+                  backgroundColor: [
+                    '#3D5A80'
+                  ]
+                }]
+              },
+              options: {
+                responsive: true,
+              }
+            });*/
+
+            //dropdown
+            /*function GetSelectedText(){
+              const commsDiv = document.querySelector('.CommsDiv');
+              const totalDiv = document.querySelector('.totalSalesDiv');
+              const feedsDiv = document.querySelector('.feedbacksDiv');
+              const complaintsDiv = document.querySelector('.complaintsDiv');
+              const reloadDiv = document.querySelector('.reloadDiv');
+
+              const opt1= document.getElementById("comm");
+
+              var e = document.getElementById("opt");
+              var result = e.options[e.selectedIndex].text;
+
+              if (e.option == opt1) {
+                commsDiv.style.display ='block';
+                divList.style.display = 'none';
+                totalDiv.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+              }else if (e.option == "Total Sales") {
+                totalDiv.style.display ='block';
+                divList.style.display = 'none';
+                commsDiv.style.display = 'none';
+                feedsDiv.style.display = 'none';
+                complaintsDiv.style.display = 'none';
+                reloadDiv.style.display = 'none';
+              }
+
+              document.getElementById("result").innerHTML = result;
+
+              $("#opt").change(function(){
+               var insi = $('#opt').val();
+                $("#tblID").removeClass( ).addClass( insi );
+            });*/
+
+            //table
+            $(document).ready(function() {
+              $('.display').DataTable( {
+                "pagingType": "full_numbers"
+              } );
+            } );
+
+            </script>
+    </body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+    <head> <title>View ID</title>
+        <link rel="stylesheet" href="viewIDCSS.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- html to pdf js link  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+    </head>
+    <body>
+      <nav class="nav">
+          <div class="logo-content">
+            <div class="logo">
+              <a href="dashboard.html">
+                <img src="images/logo.png"></a>
+                  <div class="logo-name">View ID</div>
+                  <button id="logout">Logout</button>
+              </div>
+          </div>
+      </nav>
+
+      <div class="topnav">
+        <a href="#print">
+          <button type="submit" onclick="generatePDF();" id="btnPrint">Save as PDF and PNG</button>
+        </a>
+      </div>
+
+      <div class="sidebar">
+        <i class='bx bx-menu' id="btn"></i>
+        <ul class="navList">
+            <li>
+                <a href="adminProfile.html">
+                <img src="images/admin.png">
+                <span class="links_name">Admin Profile</span>
+                </a>
+                <span class="tooltip">Admin</span>
+            </li>
+            <li>
+                <a href="announcement.html">
+                <img src="images/announcement.png">
+                <span class="links_name">Announcement</span>
+                </a>
+                <span class="tooltip">Announcement</span>
+            </li>
+            <li>
+                <a href="ShuttleDriverAcct.html">
+                <img src="images/Shuttle Drivers Account.png">
+                <span class="links_name">Shuttle Driver’s Account</span>
+                </a>
+                <span class="tooltip">Driver</span>
+            </li>
+            <li>
+                <a href="CoomutersAcct.html">
+                <img src="images/Commuters Account.png">
+                <span class="links_name">Commuter’s Account</span>
+                </a>
+                <span class="tooltip">Commuter</span>
+            </li>
+            <li>
+                <a href="complaintsNfeedback.html">
+                <img src="images/Complaints and Feedbacks.png">
+                <span class="links_name">Complaints and Feedbacks</span>
+                </a>
+                <span class="tooltip">Complaints</span>
+            </li>
+            <li>
+                <a href="boundaryRemit.html">
+                <img src="images/Boundary Remittance.png">
+                <span class="links_name">Boundary Remittance</span>
+                </a>
+                <span class="tooltip">Boundary</span>
+            </li>
+            <li>
+                <a href="reload.html">
+                  <!--img src="images/reload.png"!-->
+                  <i class='bx bx-wallet'></i>
+                <span class="links_name">Reload</span>
+                </a>
+                <span class="tooltip">Reload</span>
+            </li>
+        </ul>
+    </div>
+
+    <div id="dvContents" class="ID-container">
+      <div class="ID-content">
+        <div class="ID-img">
+          <!--center><img width="100" height="100" src="data:image/jpg;base64,girl.jpg" id="driver_id"></center-->
+          <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
+<div id="imgTest"></div>
+<script type='text/javascript'>
+  function encodeImageFileAsURL() {
+    var filesSelected = document.getElementById("inputFileToLoad").files;
+    if (filesSelected.length > 0) {
+      var fileToLoad = filesSelected[0];
+      var fileReader = new FileReader();
+      fileReader.onload = function(fileLoadedEvent) {
+        var srcData = fileLoadedEvent.target.result; // <--- data: base64
+        var newImage = document.createElement('img');
+        newImage.src = srcData;
+        document.getElementById("imgTest").innerHTML = newImage.outerHTML;
+        alert("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+        console.log("Converted Base64 version is " + document.getElementById("imgTest").innerHTML);
+      }
+      fileReader.readAsDataURL(fileToLoad);
+    }
+  }
+</script>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-distributed">
+
+        <div class="footer-left">
+            <h3>Washington <span>Place</span></h3>
+
+            <p class="footer-links">
+                <a href="dashboard.html">Dashboard</a>
+                |
+                <a href="commutersTable.html">All commuters</a>
+                |
+                <a href="login.html">Log in</a>
+            </p>
+
+            <p id="coltext">DOWNLOAD OUR APP HERE:</p>
+            <div class="content">
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
+              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+            </div>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Sampaloc II, Dasmariñas,</span>
+                    <strong>Philippines</strong></p>
+            </div>
+
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>0943 302 9424</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="mailto:peteregencia@yahoo.com">peteregencia@yahoo.com</a></p>
+            </div>
+            <div>
+                <i class="fa fa-facebook"></i>
+                <p><a href="https://www.facebook.com/cavitewashington">Washington Place facebook page</a></p>
+            </div>
+            <div>
+              <p class="footer-company-name">Copyright © 2022 <strong>WashingtonPlaceDasmarinas</strong> <br>
+                All rights reserved</p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>About Washington Place Dasmarinas</span>
+                <strong>Washington Place Dasmarinas</strong> Stateland’s newest and to date, the
+                grandest development, is set to rise in the emerging city of Dasmariñas in Cavite. Encompassing 40
+                hectares of prime property along Aguinaldo Highway, it is envisioned to become a landmark community
+                that boasts of modern-themed architectural designs.
+            </p>
+            <!--div class="footer-icons">
+                <a href="https://www.facebook.com/cavitewashington"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+            </div!-->
+        </div>
+    </footer>
+    <!-- printing css starts here  -->
+    <style id="table_style" type="text/css">
+    .ID-content{
+      position: relative;
+      display: block;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+      height: 500px;
+      width: 500px;
+      top: 120px;
+      left: 120px;
+    }
+    .ID-container .ID-content .ID-img #driver_id{
+      position: relative;
+      left: 256px;
+      margin-bottom: 200px;
+      height: 400px;
+      width: 400px;
+    }
+    @media print{
+      .ID-container .ID-content .ID-img #driver_id{
+        /*position: relative;
+        left: 256px;
+        margin-bottom: 200px;*/
+        height: 100px;
+        width: 100px;
+      }
+      #example_length label, #example_filter label{ /*show entries number and search*/
+        display: none;
+      }
+    }
+    </style>
+    <!-- printing css ends here  -->
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script>
+        let btn= document.querySelector("#btn");
+        let sidebar= document.querySelector(".sidebar");
+
+        btn.onclick= function(){
+          sidebar.classList.toggle("active");
+        }
+        </script>
+
+        <script type="text/javascript"> //saving into PDF
+          function generatePDF() {
+           var doc = new jsPDF();
+            doc.fromHTML(document.getElementById("dvContents"), // page element which you want to print as PDF
+            3,
+            3,
+            {
+              'width': 10
+            },
+            function(a)
+             {
+              doc.save("Driver's_ID.pdf");
+            });
+            //convert html element into image
+            var container = document.getElementById("dvContents");; /* full page */
+            html2canvas(container, { allowTaint: true }).then(function (canvas) {
+
+                var link = document.createElement("a");
+                document.body.appendChild(link);
+                link.download = "Driver's_.png";
+                link.href = canvas.toDataURL();
+                link.target = '_blank';
+                link.click();
+            });
+          }
+      </script>
+</html>
