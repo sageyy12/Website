@@ -286,9 +286,11 @@
       var registration = document.getElementById('regdate').value;
       var status = document.getElementById('status').value;
       var password = document.getElementById('pass').value;
+      var phonenum = document.getElementById('num').value;
+      var username = document.getElementById('Uname').value;
 
         //sign up user
-        createUserWithEmailAndPassword(auth, email, password, firstName, midName, lastName, address, license, profile, registration, status)  
+        createUserWithEmailAndPassword(auth, email, password, firstName, midName, lastName, address, license, profile, registration, status, phonenum, username)  
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
@@ -302,7 +304,10 @@
                     license: license,
                     profile: profile,
                     registration: registration,
-                    status: status
+                    status: status,
+                    address: address,
+                    phonenum: phonenum,
+                    username: username
                 })
                     .then(() => {
                         // Data saved successfully!

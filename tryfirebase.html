@@ -10,6 +10,10 @@
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+      <!-- bootstrap link for the table -->
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
       <table id="example" class="display" width="100%" cellspacing="0">
         <thead>
           <th>Sno</th>
@@ -21,6 +25,8 @@
           <th>Address</th>
           <th>Phone Number</th>
           <th>Username</th>
+          <th>Password</th>
+          <th>Profile</th>
           <th>Control Center</th>
         </thead>
         <tbody id="tbody1"></tbody>
@@ -32,32 +38,27 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Driver's Account</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <!-- <label class="labs">First name:</label>
-        <input type="text" id="Fname"> <br>
-
-        <label class="labs">Email:</label>
-        <input type="email" id="eeemail"> <br>
-
-        <label class="labs">Last name:</label>
-        <input type="text" id="Lname"> <br>
-
-        <label class="labs">License:</label>
-        <input type="text" id="license"> <br> -->
+      <div class="modal-body" id="new-user-form">
 
         <label class="labs">First name:</label>
-        <input type="text" id="Fname"> <br>
+        <input type="text" name= "Fname" id="Fname"> <br>
 
         <label class="labs">Middle name:</label>
         <input type="text" id="Mname"> <br>
 
         <label class="labs">Last name:</label>
-        <input type="text" id="Lname"> <br>
+        <input type="text" name= "Lname" id="Lname"> <br>
+
+        <label class="labs" id="passText">Password</label>
+        <input type="password" id="pass">
+        <label class="checkContainer">
+        <span id="spany"><input type="checkbox" id= "trigger" onclick="hidePass()">Show Password <span>
+        </label>
 
         <label class="labs">Phone Number:</label>
         <input type="text" id="num"> <br>
@@ -69,7 +70,7 @@
         <input type="text" id="license"> <br>
 
         <label class="labs">Username:</label>
-        <input type="text" id="uname"> <br>
+        <input type="text" name= "username" id="uname"> <br>
 
         <label class="labs">Email:</label>
         <input type="email" id="eeemail"> <br>
@@ -78,18 +79,39 @@
         <input type="text" id="status"> <br>
 
         <label class="labs">Reg Date:</label>
-        <input type="text" id="regdate"> <br>
+        <input type="text" id="regdate" placeholder="Click to auto generate the date" onclick="CurrentDate()"> <br>
 
-        
+        <label class="labs" id="prof_text">Profile</label>
+        <input type="file" id="prof"> <br>
+
+
       </div>
       <div class="modal-footer">
         <button id="addBtn" type="button" class="btn btn-primary" onclick="Add()">Add new account</button>
         <button id="updBtn" type="button" class="btn btn-success" onclick="Upd()">Update</button>
+        <button id="act" type="button" class="btn btn-success">Activate</button>
+        <button id="deact" type="button" class="btn btn-warning">Deactivate</button>
         <button id="delBtn" type="button" class="btn btn-danger" onclick="Del()">Delete</button>
       </div>
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="viewProf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Driver's Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="viewprof_iframe" src="try.html" frameborder="0" height="400" width="1000"></iframe>
+        </div>
+      </div>
+      </div>
+      </div>
 <!-- modal ends here -->
 
     <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
@@ -127,7 +149,9 @@
             var add = childSnapshot.val().address;
             var num = childSnapshot.val().phonenum;
             var unamey = childSnapshot.val().username;
-            AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey);
+            var passs = childSnapshot.val().password;
+            var prof = childSnapshot.val().profile;
+            AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
           });
         });
       }
@@ -137,7 +161,7 @@
       var studentNo = 0;
       var stdList = [];
 
-      function AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey){
+      function AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
@@ -149,8 +173,10 @@
         let td6 = document.createElement("td");
         let td7 = document.createElement("td");
         let td8 = document.createElement("td");
+        let td9 = document.createElement("td");
+        let td10 = document.createElement("td");
 
-        stdList.push([name, emaily, regdate, statusy, licensey, add, num, unamey]);
+        stdList.push([name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof]);
 
         td0.innerHTML = ++studentNo;
         td1.innerHTML = name;
@@ -161,6 +187,8 @@
         td6.innerHTML = add;
         td7.innerHTML = num;
         td8.innerHTML = unamey;
+        td9.innerHTML = passs;
+        td10.innerHTML = prof;
         trow.appendChild(td0);
         trow.appendChild(td1);
         trow.appendChild(td2);
@@ -170,29 +198,40 @@
         trow.appendChild(td6);
         trow.appendChild(td7);
         trow.appendChild(td8);
+        trow.appendChild(td9);
+        trow.appendChild(td10);
 
         var ControlDiv = document.createElement("div");
         ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'
-        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account</button>'
+        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#viewProf">View ID </button>'
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
       }
 
       var firstName = document.getElementById('Fname');
-      var midName = document.getElementById('Mname'); 
+      var midName = document.getElementById('Mname');
       var lastName = document.getElementById('Lname');
-      var address = document.getElementById('address').value; 
-      var license = document.getElementById('license').value; 
-      var email = document.getElementById('eeemail').value;
-      var status = document.getElementById('status').value;
-      var phonenum = document.getElementById('num').value;
-      var uname = document.getElementById('uname').value;
-      var regdate = document.getElementById('regdate').value;
+      var address = document.getElementById('address');
+      var license = document.getElementById('license');
+      var email = document.getElementById('eeemail');
+      var status = document.getElementById('status');
+      var phonenum = document.getElementById('num');
+      var username = document.getElementById('uname');
+      var registration = document.getElementById('regdate');
+      var password = document.getElementById('pass');
+      var passText = document.getElementById('passText');
+      var trigger = document.getElementById('trigger');
+      var spany = document.getElementById('spany');
+      var profile = document.getElementById('prof');
+      var profile_text = document.getElementById('prof_text');
 
       var BtnModAdd = document.getElementById('addBtn');
       var BtnModUpd = document.getElementById('updBtn');
       var BtnModDel = document.getElementById('delBtn');
+      var BtnModDeact = document.getElementById('deact');
+      var BtnModAct = document.getElementById('act');
 
       function FillTboxes(index){
         if(index == null){
@@ -206,85 +245,131 @@
           phonenum.value = "";
           uname.value = "";
           regdate.value = "";
-          alert("nagana si else " + index);
+          password.value = "";
+
+          password.style.display = 'none';
+          passText.style.display = 'none';
+          trigger.style.display = 'none';
+          spany.style.display = 'none';
+          regdate.disabled = false;
+          profile.disabled = false;
+          license.disabled = false;
+
           BtnModAdd.style.display = 'inline-block';
           BtnModUpd.style.display = 'none';
           BtnModDel.style.display = 'none';
-          
+          BtnModDeact.style.display = 'none';
+          BtnModAct.style.display = 'none';
+
         }else{
           --index;
-          // alert("nagana si else " + index);
-          firstName.value = stdList[index][0]; //firstName.value = stdList[index][0]; 
+          regdate.disabled = true;
+          license.disabled = true;
+
+          firstName.value = stdList[index][0]; //firstName.value = stdList[index][0];
           midName.value = stdList[index][0];
           lastName.value = stdList[index][0];
-          email.value = stdList[index][1];
-          regdate.value = stdList[index][2];
-          address.value = stdList[index][5]
-          license.value = stdList[index][4];
-          status.value = stdList[index][3];
+          document.getElementById("pass").value = stdList[index][8];
           phonenum.value = stdList[index][6];
+          address.value = stdList[index][5];
+          license.value = stdList[index][4];
           uname.value = stdList[index][7];
+          email.value = stdList[index][1];
+          document.getElementById("status").value = stdList[index][3];
+          regdate.value = stdList[index][2];
+          // profile.value = stdList[index][10]; //hindi maget yung laman
 
-          midName.disabled = true;
-          lastName.disabled = true;
-          
+          password.style.display = 'inline-block';
+          passText.style.display = 'inline-block';
+          trigger.style.display = 'inline-block';
+          spany.style.display = 'inline-block';
+
           BtnModAdd.style.display = 'none';
           BtnModUpd.style.display = 'inline-block';
           BtnModDel.style.display = 'inline-block';
+          BtnModDeact.style.display = 'inline-block';
+          BtnModAct.style.display = 'inline-block';
         }
       }
 
-       //creating new accounts
-       function Add(){
-        firebase.database().ref("users/" + email.value).set(
-          {
-            email: email,
-            password: password,
-            firstName: firstName,
-            midName: midName,
-            lastName: lastName,
-            license: license,
-            profile: profile,
-            registration: registration,
-            status: status,
-            address: address,
-            phonenum, phonenum
-          },
-          (error)=>{
-            if(error){
-              alert("Account was not created " + error);
-            }else{
-              alert("Account successfully created!");
-              Select_AllData()
-              //hiding the modal
-              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-            }
-          }
-        )
-      }
+       //updating accounts
+       function Upd(){
 
-      //updating the accounts
-      function Upd(){
-        firebase.database().ref("users/" + email.value).update(
+      var status = document.getElementById('status').value;
+      // var password = document.getElementById('pass').value;
+      password.hidden = false;
+
+        firebase.database().ref("users/" + email.value).update( //set
           {
-            email: email,
-            password: password,
-            firstName: firstName,
-            midName: midName,
-            lastName: lastName,
-            license: license,
-            profile: profile,
-            registration: registration,
+            email: email.value,
+            password: password.value,
+            firstName: firstName.value,
+            midName: midName.value,
+            lastName: lastName.value,
+            license: license.value,
+            profile: profile.value,
+            registration: registration.value,
             status: status,
-            address: address,
-            phonenum, phonenum
+            address: address.value,
+            phonenum: phonenum.value,
+            username: username.value,
+            profile: profile.value
           },
           (error)=>{
             if(error){
               alert("Account was not updated " + error);
             }else{
               alert("Account successfully updated!");
-              Select_AllData()
+              // Select_AllData()
+              //hiding the modal
+              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+              regdate.disabled = true;
+              license.disabled = true;
+            }
+          }
+        )
+      }
+
+      //creating new accounts
+      function Add(){
+
+      var status = document.getElementById('status').value; //kailangan to para hindi mag [object HTMLInputElement] value ni status
+      
+      //auto generate password
+        var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var passwordLength = 12;
+        var password = "";
+        for (var i = 0; i <= passwordLength; i++) {
+          var randomNumber = Math.floor(Math.random() * chars.length);
+          password += chars.substring(randomNumber, randomNumber +1);
+          }
+          // document.getElementById("pass").value = password;
+          // document.getElementById("pass").disabled = true;
+          // alert("pass value: " + password)
+
+        firebase.database().ref("users/" + email.value).set( //update
+          {
+            email: email.value,
+            password: document.getElementById("pass").value = password,
+            firstName: firstName.value,
+            midName: midName.value,
+            lastName: lastName.value,
+            license: license.value,
+            profile: profile.value,
+            registration: registration.value,
+            status: status,
+            address: address.value,
+            phonenum: phonenum.value,
+            username: username.value,
+            profile: profile.value
+            //need din pala si profile dito kasi kung wala sya dito di rin nag aupdate yung laman nya
+          },
+          (error)=>{
+            if(error){
+              alert("Account was not created " + error);
+            }else{
+              alert("Account successfully created!");
+              // Select_AllData()
               //hiding the modal
               $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
             }
@@ -296,13 +381,59 @@
       function Del(){
         firebase.database().ref("users/" + email.value).remove().then(
           function(){
-            alert("Succesfully deleted!");
-            Select_AllData()
+            alert("Succesfully deleted!"); //nag dodoble yung display after successfully deleted
+            // Select_AllData()
               //hiding the modal
               $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
           }
         )
       }
+
+      // // //auto generate password
+      // function genPassword() {
+      //   var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      //   var passwordLength = 12;
+      //   var password = "";
+      //   for (var i = 0; i <= passwordLength; i++) {
+      //     var randomNumber = Math.floor(Math.random() * chars.length);
+      //     password += chars.substring(randomNumber, randomNumber +1);
+      //     }
+      //     document.getElementById("pass").value = password;
+      //     document.getElementById("pass").disabled = true;
+      // }
+
+      function hidePass(){
+        var x = document.getElementById("pass");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      //getting current date
+      function CurrentDate(){
+      const date = new Date();
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+
+      let currentDate = `${year}-${month}-${day}`;
+      registration.value = (currentDate);
+      registration.disabled = true;
+      }
+
+      //auto generate uname
+      function createUsername()  {
+      var fname = $('#new-user-form input[name=Fname]').val().toLowerCase();
+      var lname = $('#new-user-form input[name=Lname]').val().toLowerCase();
+      var username = fname + lname;
+      $('#new-user-form input[name=username]').val(username);
+      }
+
+      $('#new-user-form input[name=Fname]').on('keyup', createUsername);
+      $('#new-user-form input[name=Lname]').on('keyup', createUsername);
     </script>
   </body>
 </html>
