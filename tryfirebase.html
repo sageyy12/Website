@@ -208,6 +208,7 @@
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
+        // td0.style.textAlign = 'center';
       }
 
       var firstName = document.getElementById('Fname');
@@ -337,7 +338,7 @@
       
       //auto generate password
         var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var passwordLength = 12;
+        var passwordLength = 7;
         var password = "";
         for (var i = 0; i <= passwordLength; i++) {
           var randomNumber = Math.floor(Math.random() * chars.length);
@@ -428,12 +429,14 @@
       function createUsername()  {
       var fname = $('#new-user-form input[name=Fname]').val().toLowerCase();
       var lname = $('#new-user-form input[name=Lname]').val().toLowerCase();
-      var username = fname + lname;
+      var randomNum = Math.floor(Math.random() * 10);
+      var username = fname + lname + randomNum;
       $('#new-user-form input[name=username]').val(username);
       }
 
       $('#new-user-form input[name=Fname]').on('keyup', createUsername);
       $('#new-user-form input[name=Lname]').on('keyup', createUsername);
+      username.disabled = true;
     </script>
   </body>
 </html>

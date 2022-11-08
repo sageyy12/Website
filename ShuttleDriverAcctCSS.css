@@ -293,9 +293,8 @@ border-radius: 0.5rem;
 /*left: 129px;
 max-width: 95%;*/
 text-align: center;
+align-items: center;
 background-color: transparent;
-/* align-items: center;
-text-align: center; */
 }
 
 thead tr th{
