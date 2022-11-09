@@ -425,6 +425,23 @@ tr, td #update{
   width: auto !important;
 }
 
+#prof, #upload{
+  width: 259px; /*259*/
+  height: 40px;
+  margin: 5px !important;
+  border-radius: 10px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+  padding: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#upload{
+  width: 159px; /*259*/
+  height: 40px;
+}
+
 #viewProf{
   margin-right: 80px;
   /* width: 1020px; */
