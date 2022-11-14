@@ -425,7 +425,7 @@ tr, td #update{
   width: auto !important;
 }
 
-#prof, #upload{
+#prof, #upload, #retrieve{
   width: 259px; /*259*/
   height: 40px;
   margin: 5px !important;
@@ -437,7 +437,7 @@ tr, td #update{
   cursor: pointer;
 }
 
-#upload{
+#upload, #retrieve{
   width: 159px; /*259*/
   height: 40px;
 }
@@ -446,6 +446,10 @@ tr, td #update{
   margin-right: 80px;
   /* width: 1020px; */
   padding-right: 400px !important; /*540*/
+}
+
+#myimg{
+  margin: 20px;
 }
 
 .modal-body input[type=text]{
