@@ -85,7 +85,7 @@
         <button id="prof"> Choose Picture </button> <br>
 
         <center><img id="myimg" height="200px" width="200px"> <label id="upProgress"> </label>
-          <input type="text" id="namebox" id="namebox" placeholder="Insert picture's name here">
+          <input type="text" id="namebox" name="namebox" placeholder="Insert picture's name here">
           <button id="upload"> Upload Profile </button> <br>
           <button id="retrieve">Load profile</button> 
         </center>
@@ -112,7 +112,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <iframe id="viewprof_iframe" src="try.html" frameborder="0" height="400" width="1000"></iframe>
+        <iframe id="viewprof_iframe" src="viewDriversAcct.html" frameborder="0" height="400" width="1000"></iframe>
         </div>
       </div>
       </div>
@@ -292,6 +292,7 @@
       var username = document.getElementById('uname');
       var registration = document.getElementById('regdate');
       var password = document.getElementById('pass');
+      var profname = document.getElementById("namebox");
 
       var passText = document.getElementById('passText');
       var trigger = document.getElementById('trigger');
@@ -320,6 +321,7 @@
           uname.value = "";
           regdate.value = "";
           password.value = "";
+          profname.value = "";
 
           password.style.display = 'none';
           passText.style.display = 'none';
@@ -332,10 +334,10 @@
           BtnModAdd.style.display = 'inline-block';
           BtnModUpd.style.display = 'none';
           BtnModDel.style.display = 'none';
-          BtnModDeact.style.display = 'none';
-          BtnModAct.style.display = 'none';
-          BtnUploadPic.style.display = 'inline-block';
-          BtnRetrievePic.style.display = 'none';
+          // BtnModDeact.style.display = 'none';
+          // BtnModAct.style.display = 'none';
+          // BtnUploadPic.style.display = 'inline-block';
+          // BtnRetrievePic.style.display = 'none';
 
         }else if(email.value === stdList[index]){
           alert("Email already exist");
@@ -356,7 +358,7 @@
           email.value = stdList[index][1];
           document.getElementById("status").value = stdList[index][3];
           regdate.value = stdList[index][2];
-          profile.value = getProf(); //hindi maget yung laman
+          profname.value = getProf(); //hindi maget yung laman
 
           password.style.display = 'inline-block';
           passText.style.display = 'inline-block';
@@ -366,10 +368,10 @@
           BtnModAdd.style.display = 'none';
           BtnModUpd.style.display = 'inline-block';
           BtnModDel.style.display = 'inline-block';
-          BtnModDeact.style.display = 'inline-block';
-          BtnModAct.style.display = 'inline-block';
-          BtnUploadPic.style.display = 'none';
-          BtnRetrievePic.style.display = 'inline-block';
+          // BtnModDeact.style.display = 'inline-block';
+          // BtnModAct.style.display = 'inline-block';
+          // BtnUploadPic.style.display = 'none';
+          // BtnRetrievePic.style.display = 'inline-block';
         }
       }
 
@@ -394,7 +396,7 @@
             address: address.value,
             phonenum: phonenum.value,
             username: username.value,
-            profile: getProf()
+            profname: getProf()
           },
           (error)=>{
             if(error){
@@ -442,7 +444,7 @@
             address: address.value,
             phonenum: phonenum.value,
             username: username.value,
-            profile: profile.value
+            profile: getProf()
             //need din pala si profile dito kasi kung wala sya dito di rin nag aupdate yung laman nya
           },
           (error)=>{
@@ -535,6 +537,21 @@
       $('#new-user-form input[name=Fname]').on('keyup', createUsername);
       $('#new-user-form input[name=Lname]').on('keyup', createUsername);
       username.disabled = true;
+
+      //auto generate picture's name
+      function createPicname()  {
+      var fname = $('#new-user-form input[name=Fname]').val().toLowerCase();
+      var lname = $('#new-user-form input[name=Lname]').val().toLowerCase();
+      var profileName = $('#new-user-form input[name=namebox]').val().toLowerCase();
+      var randomNum = Math.floor(Math.random() * 10);
+      var picname = fname + lname + "Profile" + randomNum;
+      $('#new-user-form input[name=namebox]').val(picname);
+      }
+
+      $('#new-user-form input[name=Fname]').on('keyup', createPicname);
+      $('#new-user-form input[name=Lname]').on('keyup', createPicname);
+      $('#new-user-form input[name=namebox]').on('keyup', createPicname);
+      profname.disabled = true;
     </script>
   </body>
 </html>

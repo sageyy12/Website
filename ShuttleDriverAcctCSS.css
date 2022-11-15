@@ -450,6 +450,7 @@ tr, td #update{
 
 #myimg{
   margin: 20px;
+  border-radius: 50%;
 }
 
 .modal-body input[type=text]{
