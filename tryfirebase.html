@@ -26,7 +26,7 @@
           <th>Phone Number</th>
           <th>Username</th>
           <th>Password</th>
-          <th>Profile</th>
+          <th>Profile Name</th>
           <th>Control Center</th>
         </thead>
         <tbody id="tbody1"></tbody>
@@ -184,12 +184,13 @@
       }
 
       //retrieval process
-      function getProf(){
-        // document.getElementById('retrieve').onclick = function(){
+      // function getProf(){
+        document.getElementById('retrieve').onclick = function(){
         ImgNAme = document.getElementById('namebox').value;
         firebase.database().ref('Pictures/' + ImgNAme).on('value', function(snapshot){
           document.getElementById('myimg').src = snapshot.val().Link;
-          alert(ImgNAme);
+          // alert(ImgNAme);
+          ImgNAme.disabled = true;
         })
       // }
       }
@@ -208,6 +209,7 @@
       };
       firebase.initializeApp(firebaseConfig);
 
+      var counter = 1;
       //select all data
       function Select_AllData(){
         firebase.database().ref('users').once('value', function (snapshot){
@@ -221,11 +223,19 @@
             var num = childSnapshot.val().phonenum;
             var unamey = childSnapshot.val().username;
             var passs = childSnapshot.val().password;
-            var prof = childSnapshot.val().profile;
+
+            firebase.database().ref('Pictures').once('value', function (snapshot){
+            snapshot.forEach(function(childSnapshot){
+            var prof = childSnapshot.val().Name;
             AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
+            // alert("adding items" + counter++) //multiple uploads
           });
         });
-      }
+            // AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
+            // alert("adding items" + counter++) //hindi makuha data ni prof
+      });
+    });
+  }
       window.onload = Select_AllData;
 
       //table filling
@@ -337,7 +347,7 @@
           // BtnModDeact.style.display = 'none';
           // BtnModAct.style.display = 'none';
           // BtnUploadPic.style.display = 'inline-block';
-          // BtnRetrievePic.style.display = 'none';
+          BtnRetrievePic.style.display = 'none';
 
         }else if(email.value === stdList[index]){
           alert("Email already exist");
@@ -358,7 +368,7 @@
           email.value = stdList[index][1];
           document.getElementById("status").value = stdList[index][3];
           regdate.value = stdList[index][2];
-          profname.value = getProf(); //hindi maget yung laman
+          document.getElementById("namebox").value = stdList[index][9]; //hindi maget yung laman
 
           password.style.display = 'inline-block';
           passText.style.display = 'inline-block';
@@ -371,7 +381,7 @@
           // BtnModDeact.style.display = 'inline-block';
           // BtnModAct.style.display = 'inline-block';
           // BtnUploadPic.style.display = 'none';
-          // BtnRetrievePic.style.display = 'inline-block';
+          BtnRetrievePic.style.display = 'inline-block';
         }
       }
 
@@ -396,7 +406,7 @@
             address: address.value,
             phonenum: phonenum.value,
             username: username.value,
-            profname: getProf()
+            profname: profname.value
           },
           (error)=>{
             if(error){
@@ -444,7 +454,7 @@
             address: address.value,
             phonenum: phonenum.value,
             username: username.value,
-            profile: getProf()
+            profile: profname.value
             //need din pala si profile dito kasi kung wala sya dito di rin nag aupdate yung laman nya
           },
           (error)=>{
