@@ -1,512 +1,769 @@
 <!DOCTYPE html>
 <html>
-    <head> <title>Shuttle Driver Account</title>
-        <link rel="stylesheet" href="ShuttleDriverAcctCSS.css">
-        <!-- bootstrap for the table -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <!-- boxicon -->
-        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-        <!-- font awesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- Adding firebaseUI authenticaion -->
-        <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-        <!-- js for view account -->
-        <!-- <script src="try.js"></script> -->
-    </head>
-    <body>
-      <nav class="nav">
-          <div class="logo-content">
-            <div class="logo">
-              <a href="dashboard.html">
-                <img src="images/logo.png"></a>
-                  <div class="logo-name">Shuttle Driver's Account</div>
-                  <button id="logout">Logout</button>
-              </div>
+  <head>
+    <title>Read, Write, Update, Delete Data Firebase JS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="ShuttleDriverAcctCSS.css">
+    <!-- bootstrap for the table -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- boxicon -->
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Adding firebaseUI authenticaion -->
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="logo-content">
+        <div class="logo">
+          <a href="dashboard.html">
+            <img src="images/logo.png"></a>
+              <div class="logo-name">Shuttle Driver's Account</div>
+              <button id="logout">Logout</button>
           </div>
-      </nav>
-
-      <div class="topnav">
-        <!--img src="images/search.png">
-        <input type="text" placeholder="Search.."!-->
-        <a href="AddDriverAccount.html">
-          <button type="submit" id="btnAdd">ADD ACCOUNT</button>
-        </a>
-        <a href="#print">
-          <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
-        </a>
-        <a href="addShuttle.html">
-          <button type="submit" id="btnshuttle">ADD SHUTTLE</button>
-        </a>
       </div>
+  </nav>
 
-      <div class="sidebar">
-        <i class='bx bx-menu' id="btn"></i>
-        <ul class="navList">
-            <li>
-                <a href="adminProfile.html">
-                <img src="images/admin.png">
-                <span class="links_name">Admin Profile</span>
-                </a>
-                <span class="tooltip">Admin</span>
-            </li>
-            <li>
-                <a href="announcement.html">
-                <img src="images/announcement.png">
-                <span class="links_name">Announcement</span>
-                </a>
-                <span class="tooltip">Announcement</span>
-            </li>
-            <li>
-                <a href="ShuttleDriverAcct.html">
-                <img src="images/Shuttle Drivers Account.png">
-                <span class="links_name">Shuttle Driver’s Account</span>
-                </a>
-                <span class="tooltip">Driver</span>
-            </li>
-            <li>
-                <a href="CoomutersAcct.html">
-                <img src="images/Commuters Account.png">
-                <span class="links_name">driver’s Account</span>
-                </a>
-                <span class="tooltip">Commuters</span>
-            </li>
-            <li>
-                <a href="complaintsNfeedback.html">
-                <img src="images/Complaints and Feedbacks.png">
-                <span class="links_name">Complaints and Feedbacks</span>
-                </a>
-                <span class="tooltip">Complaints</span>
-            </li>
-            <li>
-                <a href="boundaryRemit.html">
-                <img src="images/Boundary Remittance.png">
-                <span class="links_name">Boundary Remittance</span>
-                </a>
-                <span class="tooltip">Boundary</span>
-            </li>
-            <li>
-                <a href="reload.html">
-                <!--img src="images/reload.png"!-->
-                <i class='bx bx-wallet'></i>
-                <span class="links_name">Reload</span>
-                </a>
-                <span class="tooltip">Reload</span>
-            </li>
-        </ul>
-    </div>
+  <div class="topnav">
+    <!--img src="images/search.png">
+    <input type="text" placeholder="Search.."!-->
+    <!-- <a href="AddDriverAccount.html">
+      <button type="submit" id="btnAdd">ADD ACCOUNT</button>
+    </a> -->
+    <a href="#print">
+      <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
+    </a>
+    <a href="addShuttle.html">
+      <button type="submit" id="btnshuttle">ADD SHUTTLE</button>
+    </a>
+  </div>
 
-    <div id="dvContents" class="tableDiv">
+  <div class="sidebar">
+    <i class='bx bx-menu' id="btn"></i>
+    <ul class="navList">
+        <li>
+            <a href="adminProfile.html">
+            <img src="images/admin.png">
+            <span class="links_name">Admin Profile</span>
+            </a>
+            <span class="tooltip">Admin</span>
+        </li>
+        <li>
+            <a href="announcement.html">
+            <img src="images/announcement.png">
+            <span class="links_name">Announcement</span>
+            </a>
+            <span class="tooltip">Announcement</span>
+        </li>
+        <li>
+            <a href="ShuttleDriverAcct.html">
+            <img src="images/Shuttle Drivers Account.png">
+            <span class="links_name">Shuttle Driver’s Account</span>
+            </a>
+            <span class="tooltip">Driver</span>
+        </li>
+        <li>
+            <a href="CoomutersAcct.html">
+            <img src="images/Commuters Account.png">
+            <span class="links_name">driver’s Account</span>
+            </a>
+            <span class="tooltip">Commuters</span>
+        </li>
+        <li>
+            <a href="complaintsNfeedback.html">
+            <img src="images/Complaints and Feedbacks.png">
+            <span class="links_name">Complaints and Feedbacks</span>
+            </a>
+            <span class="tooltip">Complaints</span>
+        </li>
+        <li>
+            <a href="boundaryRemit.html">
+            <img src="images/Boundary Remittance.png">
+            <span class="links_name">Boundary Remittance</span>
+            </a>
+            <span class="tooltip">Boundary</span>
+        </li>
+        <li>
+            <a href="reload.html">
+            <!--img src="images/reload.png"!-->
+            <i class='bx bx-wallet'></i>
+            <span class="links_name">Reload</span>
+            </a>
+            <span class="tooltip">Reload</span>
+        </li>
+    </ul>
+</div>
+   <div id="dvContents" class="tableDiv">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <table id="example" class="display" width="100%" cellspacing="0">
-      <thead>
-        <tr>
+      <!-- bootstrap link for the table -->
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+      <table id="example" class="display" width="100%" cellspacing="0">
+        <thead>
           <th>ID</th>
-          <th>NAME</th>
-          <th>EMAIL</th>
-          <th>REGISTRATION DATE</th>
-          <th>STATUS</th>
-          <th class="tago">ID</th>
-          <th class="tago">ACCOUNT</th>
-          <th class="tago">EDIT</th>
-          <th class="tago">ACTION</th>
-        </tr>
-      </thead>
-      <tbody id ="tbody1"> </tbody>
-        <!-- <tr>
-          <td>001</td>
-          <td>Maria Anders</td>
-          <td>maria.anders@gmail.com</td>
-          <td>26 July 2022</td>
-          <td>Active</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </td></a>
-        </tr>
-        <tr>
-          <td>002</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Active</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>003</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>004</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>005</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>006</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>007</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>008</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>009</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>010</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>011</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></td></a>
-          <td> <a href="#delete"><img src="images/delete.png"></td></a>
-        </tr>
-        <tr>
-          <td>012</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>013</td>
-          <td>Maria Anders</td>
-          <td>Germany</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>014</td>
-          <td>Francisco Changlingzum</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-        <tr>
-          <td>015</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-          <td>26 July 2022</td>
-          <td>Inactive</td>
-          <td>
-            <a href="viewID.html">
-              <button type="button" name="button" class="viewIDbtn">View ID</button>
-            </a>
-          </td>
-          <td class="tago"> <a href="editShuttleDriverAcct.html"><img src="images/update.png"></a></td>
-          <td class="tago"> <a href="#delete"><img src="images/delete.png"></a></td>
-        </tr>
-      </tbody> -->
-      <script type="text/javascript">
-        //for public variables
-        var std;
-
-      </script>
-      <script type="module">
-      var tbody = document.getElementById("tbody1");
-        function AddItem(name,email,registration, status) {
-          let trow = document.createElement("tr");
-          let td1 = document.createElement("td");
-          let td2 = document.createElement("td");
-          let td3 = document.createElement("td");
-          let td4 = document.createElement("td");
-          let td5 = document.createElement("td");
-          let td6 = document.createElement("td");
-          let td7 = document.createElement("td");
-          let td8 = document.createElement("td");
-          let td9 = document.createElement("td");
-
-          td1.innerHTML = ++std;
-          td2.innerHTML = name;
-          td3.innerHTML = email;
-          td4.innerHTML = registration;
-          td5.innerHTML = status; //<label class='switch' id='status_slider'><input type='checkbox' onclick='animatedToggle()'><span class='slider round'></span></label><p id='slider_status'>keme</p>
-          td6.innerHTML = "<a href='viewID.html'><button type='button' name='button' class='viewIDbtn'>View ID</button></a>";
-          td7.innerHTML = "<center> <td class='tago'> <a href='viewDriversAcct.html' id='view' onclick='AddItemz()'><img src='images/view.png' id='acct_logo'></a></td> </center>";
-          td8.innerHTML = "<center> <td class='tago'> <a href='editCommutersAcct.html'><img src='images/update.png' id='update'></a></td> </center>";
-          td9.innerHTML = "<td colspan='2' class='actionbtn'> <a href='#activate_action'><img src='images/checkAction.png' id='active_actionbtns'></a><a href='#deactivate_action'><img src='images/Xaction.png' id='actionbtns'></a></td>";
-
-          trow.appendChild(td1);
-          trow.appendChild(td2);
-          trow.appendChild(td3);
-          trow.appendChild(td4);
-          trow.appendChild(td5);
-          trow.appendChild(td6);
-          trow.appendChild(td7);
-          trow.appendChild(td8);
-          trow.appendChild(td9);
-
-          tbody.appendChild(trow);
-
-        }
-
-        function AddAllItems(users) {
-          std=0;
-          tbody.innerHTML="";
-          users.forEach(element => {
-            var name =element.firstName + " " + element.lastName;
-            AddItem(name, element.email, element.registration,  element.status)
-          });
-        }
-
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-analytics.js";
-
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-          apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
-          authDomain: "shuttle-go-8d87a.firebaseapp.com",
-          databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
-          projectId: "shuttle-go-8d87a",
-          storageBucket: "shuttle-go-8d87a.appspot.com",
-          messagingSenderId: "509853219067",
-          appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
-          measurementId: "G-3YGP2PY9QX"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-
-        import {getDatabase, ref, child, onValue, get } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js";
-        const db = getDatabase();
-
-        //getting items from firebase
-
-        function getAllData() {
-            const dbref = ref(db);
-            get(child(dbref, "users"))
-            .then((snapshot) => {
-              var commuter = [];
-              snapshot.forEach(childSnapshot => {
-                commuter.push(childSnapshot.val());
-              });
-              AddAllItems(commuter);
-            })
-        }
-
-        function getAllDataRT() {
-            const dbRef = ref(db, "users");
-
-            onValue(dbRef,(snapshot)=>{
-              var commuters = [];
-              snapshot.forEach(childsnapshot => {
-                commuters.push(childsnapshot.val());
-              });
-              AddAllItems(commuters);
-            })
-        }
-
-        window.onLoad = getAllDataRT();
-      </script>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Registration Date</th>
+          <th>Status</th>
+          <th>License</th>
+          <th>Address</th>
+          <th>Phone Number</th>
+          <th>Username</th>
+          <th>Password</th>
+          <th>Profile Name</th>
+          <th>Control Center</th>
+        </thead>
+        <tbody id="tbody1"></tbody>
       </table>
     </div>
-    <footer class="footer-distributed">
 
-        <div class="footer-left">
-            <h3>Washington <span>Place</span></h3>
+<!-- Modal starts here-->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Driver's Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="new-user-form">
 
-            <p class="footer-links">
-                <a href="dashboard.html">Dashboard</a>
-                |
-                <a href="driversTable.html">All drivers</a>
-                |
-                <a href="login.html">Log in</a>
-            </p>
+        <label class="labs">First name:</label>
+        <input type="text" name= "Fname" id="Fname"/> <br>
 
-            <p id="coltext">DOWNLOAD OUR APP HERE:</p>
-            <div class="content">
-              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
-              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
-            </div>
+        <label class="labs">Middle name:</label>
+        <input type="text" id="Mname"> <br>
+
+        <label class="labs">Last name:</label>
+        <input type="text" name= "Lname" id="Lname"> <br>
+
+        <label class="labs" id="passText">Password</label>
+        <input type="password" id="pass">
+        <label class="checkContainer">
+        <span id="spany"><input type="checkbox" id= "trigger" onclick="hidePass()">Show Password <span>
+        </label>
+
+        <label class="labs">Phone Number:</label>
+        <input type="text" id="num" name="num"> <br>
+
+        <label class="labs">Address:</label>
+        <input type="text" id="address" name="address"> <br>
+
+        <label class="labs">License:</label>
+        <input type="text" id="license" name="license"> <br>
+
+        <label class="labs">Username:</label>
+        <input type="text" name= "uname" id="uname"> <br>
+
+        <label class="labs">Email:</label>
+        <input type="email" id="eeemail" name="eeemail"> <br>
+
+        <label class="labs">Status:</label>
+        <input type="text" id="status" name="status"> <br>
+
+        <label class="labs">Reg Date:</label>
+        <input type="text" id="regdate" name="regdate" placeholder="Click to auto generate the date" onclick="CurrentDate()"> <br>
+
+        <label class="labs" id="prof_text">Select Picture</label>
+        <button id="prof"> Choose Picture </button> <br>
+
+        <center><img id="myimg" height="200px" width="200px"> <label id="upProgress"> </label>
+          <input type="text" id="namebox" name="namebox" placeholder="Insert picture's name here">
+          <button id="upload"> Upload Profile </button> <br>
+          <button id="retrieve">Load profile</button> 
+        </center>
+      </div>
+
+      <div class="modal-footer">
+        <button id="addBtn" type="button" class="btn btn-primary" onclick="validate()">Add new account</button>
+        <button id="updBtn" type="button" class="btn btn-success" onclick="Upd()">Update</button>
+        <!-- <button id="act" type="button" class="btn btn-success">Activate</button>
+        <button id="deact" type="button" class="btn btn-warning">Deactivate</button> -->
+        <button id="delBtn" type="button" class="btn btn-danger" onclick="Del()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="viewProf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Driver's Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="viewprof_iframe" src="viewDriversAcct.html" frameborder="0" height="400" width="1000"></iframe>
         </div>
+      </div>
+      </div>
+      </div>
+<!-- modal ends here -->
 
-        <div class="footer-center">
-            <div>
-                <i class="fa fa-map-marker"></i>
-                <p><span>Sampaloc II, Dasmariñas,</span>
-                    <strong>Philippines</strong></p>
-            </div>
+<footer class="footer-distributed">
 
-            <div>
-                <i class="fa fa-phone"></i>
-                <p>0943 302 9424</p>
-            </div>
-            <div>
-                <i class="fa fa-envelope"></i>
-                <p><a href="mailto:peteregencia@yahoo.com">peteregencia@yahoo.com</a></p>
-            </div>
-            <div>
-                <i class="fa fa-facebook"></i>
-                <p><a href="https://www.facebook.com/cavitewashington">Washington Place facebook page</a></p>
-            </div>
-            <div>
-              <p class="footer-company-name">Copyright © 2022 <strong>WashingtonPlaceDasmarinas</strong> <br>
-                All rights reserved</p>
-            </div>
-        </div>
-        <div class="footer-right">
-            <p class="footer-company-about">
-                <span>About Washington Place Dasmarinas</span>
-                <strong>Washington Place Dasmarinas</strong> Stateland’s newest and to date, the
-                grandest development, is set to rise in the emerging city of Dasmariñas in Cavite. Encompassing 40
-                hectares of prime property along Aguinaldo Highway, it is envisioned to become a landmark community
-                that boasts of modern-themed architectural designs.
-            </p>
-            <!--div class="footer-icons">
-                <a href="https://www.facebook.com/cavitewashington"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
-            </div!-->
-        </div>
-    </footer>
-    </body>
+  <div class="footer-left">
+      <h3>Washington <span>Place</span></h3>
 
-    <!-- printing css starts here  -->
-    <style id="table_style" type="text/css">
+      <p class="footer-links">
+          <a href="dashboard.html">Dashboard</a>
+          |
+          <a href="driversTable.html">All drivers</a>
+          |
+          <a href="login.html">Log in</a>
+      </p>
+
+      <p id="coltext">DOWNLOAD OUR APP HERE:</p>
+      <div class="content">
+        <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+        <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+      </div>
+  </div>
+
+  <div class="footer-center">
+      <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>Sampaloc II, Dasmariñas,</span>
+              <strong>Philippines</strong></p>
+      </div>
+
+      <div>
+          <i class="fa fa-phone"></i>
+          <p>0943 302 9424</p>
+      </div>
+      <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:peteregencia@yahoo.com">peteregencia@yahoo.com</a></p>
+      </div>
+      <div>
+          <i class="fa fa-facebook"></i>
+          <p><a href="https://www.facebook.com/cavitewashington">Washington Place facebook page</a></p>
+      </div>
+      <div>
+        <p class="footer-company-name">Copyright © 2022 <strong>WashingtonPlaceDasmarinas</strong> <br>
+          All rights reserved</p>
+      </div>
+  </div>
+  <div class="footer-right">
+      <p class="footer-company-about">
+          <span>About Washington Place Dasmarinas</span>
+          <strong>Washington Place Dasmarinas</strong> Stateland’s newest and to date, the
+          grandest development, is set to rise in the emerging city of Dasmariñas in Cavite. Encompassing 40
+          hectares of prime property along Aguinaldo Highway, it is envisioned to become a landmark community
+          that boasts of modern-themed architectural designs.
+      </p>
+      <!--div class="footer-icons">
+          <a href="https://www.facebook.com/cavitewashington"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-youtube"></i></a>
+      </div!-->
+  </div>
+</footer>
+
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-storage.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    <script>
+        let btn= document.querySelector("#btn");
+        let sidebar= document.querySelector(".sidebar");
+
+        btn.onclick= function(){
+          sidebar.classList.toggle("active");
+        }
+    </script>
+
+    <script id="MainScript">
+
+      //variable for picture uploading
+      var ImgNAme, ImgUrl;
+      var files = [];
+      var reader;
+
+      //selection process of the picture
+      document.getElementById("prof").onclick = function(e){
+        var input = document.createElement("input");
+        input.type = 'file';
+
+        input.onchange = e =>{
+          files = e.target.files;
+          reader = new FileReader();
+          reader.onload = function(){
+            document.getElementById("myimg").src = reader.result;
+          }
+          reader.readAsDataURL(files[0]);
+        }
+        input.click();
+      }
+
+      //uploading picture to the firebase storage
+      document.getElementById("upload").onclick = function(){
+        ImgNAme = document.getElementById("namebox").value;
+        var uploadTask = firebase.storage().ref('Images/' + ImgNAme+ ".png").put(files[0]);
+
+        uploadTask.on('state_changed', function(snapshot){
+          var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
+          // document.getElementById('upProgress').innerHTML = 'Uploading s' + progress + '%';
+        },
+        //error handling
+        function(error){
+          alert('Error in saving the image');
+        },
+        //submitting image link to the firebase
+        function(){
+          if(!String(ImgNAme)){
+          alert("Picture's name must be indicated");
+        }else{
+          uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+            ImgUrl = url;
+          
+            firebase.database().ref('Pictures/' + ImgNAme).set({
+              Name: ImgNAme,
+              Link: ImgUrl
+          });
+          alert("Image added succesfully");
+        }
+        );
+        }
+      });
+      }
+
+      //retrieval process
+      // function getProf(){
+        document.getElementById('retrieve').onclick = function(){
+        ImgNAme = document.getElementById('namebox').value;
+        firebase.database().ref('Pictures/' + ImgNAme).on('value', function(snapshot){
+          document.getElementById('myimg').src = snapshot.val().Link;
+          // alert(ImgNAme);
+          ImgNAme.disabled = true;
+        })
+      // }
+      }
+
+      //configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
+        authDomain: "shuttle-go-8d87a.firebaseapp.com",
+        databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
+        projectId: "shuttle-go-8d87a",
+        storageBucket: "shuttle-go-8d87a.appspot.com",
+        messagingSenderId: "509853219067",
+        appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
+        measurementId: "G-3YGP2PY9QX"
+      };
+      firebase.initializeApp(firebaseConfig);
+
+      var counter = 1;
+      //select all data
+      function Select_AllData(){
+        firebase.database().ref('users').once('value', function (snapshot){
+          snapshot.forEach(function(childSnapshot){
+            var name = childSnapshot.val().firstName + " " + childSnapshot.val().midName + " " + childSnapshot.val().lastName;
+            var emaily = childSnapshot.val().email;
+            var regdate = childSnapshot.val().registration;
+            var statusy = childSnapshot.val().status;
+            var licensey = childSnapshot.val().license;
+            var add = childSnapshot.val().address;
+            var num = childSnapshot.val().phonenum;
+            var unamey = childSnapshot.val().username;
+            var passs = childSnapshot.val().password;
+
+            firebase.database().ref('Pictures').once('value', function (snapshot){
+            // snapshot.forEach(function(childSnapshot){
+            var prof = childSnapshot.val().Name;
+            AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
+            alert("adding items" + counter++ + " " + prof) //multiple uploads
+          // });
+        });
+            // AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
+            // alert("adding items" + counter++) //hindi makuha data ni prof
+      });
+    });
+  }
+      window.onload = Select_AllData;
+
+      //table filling
+      var studentNo = 0;
+      var stdList = [];
+
+      function AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof){
+        var tbody1 = document.getElementById("tbody1");
+        let trow = document.createElement("tr");
+        let td0 = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
+        let td5 = document.createElement("td");
+        let td6 = document.createElement("td");
+        let td7 = document.createElement("td");
+        let td8 = document.createElement("td");
+        let td9 = document.createElement("td");
+        let td10 = document.createElement("td");
+
+        stdList.push([name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof]);
+
+        td0.innerHTML = ++studentNo;
+        td1.innerHTML = name;
+        td2.innerHTML = emaily;
+        td3.innerHTML = regdate;
+        td4.innerHTML = statusy;
+        td5.innerHTML = licensey;
+        td6.innerHTML = add;
+        td7.innerHTML = num;
+        td8.innerHTML = unamey;
+        td9.innerHTML = passs;
+        td10.innerHTML = prof;
+        trow.appendChild(td0);
+        trow.appendChild(td1);
+        trow.appendChild(td2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+        trow.appendChild(td6);
+        trow.appendChild(td7);
+        trow.appendChild(td8);
+        trow.appendChild(td9);
+        trow.appendChild(td10);
+
+        var ControlDiv = document.createElement("div");
+        ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'
+        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#viewProf">View ID </button>'
+
+        trow.appendChild(ControlDiv);
+        tbody1.appendChild(trow);
+      }
+
+      var firstName = document.getElementById('Fname');
+      var midName = document.getElementById('Mname');
+      var lastName = document.getElementById('Lname');
+      var address = document.getElementById('address');
+      var license = document.getElementById('license');
+      var email = document.getElementById('eeemail');
+      var status = document.getElementById('status');
+      var phonenum = document.getElementById('num');
+      var username = document.getElementById('uname');
+      var registration = document.getElementById('regdate');
+      var password = document.getElementById('pass');
+      var profname = document.getElementById("namebox");
+
+      var passText = document.getElementById('passText');
+      var trigger = document.getElementById('trigger');
+      var spany = document.getElementById('spany');
+      var profile = document.getElementById('prof');
+      var profile_text = document.getElementById('prof_text');
+
+      var BtnModAdd = document.getElementById('addBtn');
+      var BtnModUpd = document.getElementById('updBtn');
+      var BtnModDel = document.getElementById('delBtn');
+      var BtnModDeact = document.getElementById('deact');
+      var BtnModAct = document.getElementById('act');
+      var BtnUploadPic = document.getElementById('upload');
+      var BtnRetrievePic = document.getElementById('retrieve');
+
+      function FillTboxes(index){
+        if(index == null){
+          firstName.value = "";
+          midName.value = "";
+          lastName.value = "";
+          address.value = "";
+          license.value = "";
+          email.value = "";
+          status.value = "";
+          phonenum.value = "";
+          uname.value = "";
+          regdate.value = "";
+          password.value = "";
+          profname.value = "";
+
+          password.style.display = 'none';
+          passText.style.display = 'none';
+          trigger.style.display = 'none';
+          spany.style.display = 'none';
+          regdate.disabled = false;
+          profile.disabled = false;
+          license.disabled = false;
+
+          BtnModAdd.style.display = 'inline-block';
+          BtnModUpd.style.display = 'none';
+          BtnModDel.style.display = 'none';
+          // BtnModDeact.style.display = 'none';
+          // BtnModAct.style.display = 'none';
+          // BtnUploadPic.style.display = 'inline-block';
+          BtnRetrievePic.style.display = 'none';
+
+        }else if(email.value === stdList[index]){
+          alert("Email already exist");
+        }
+        else{
+          --index;
+          regdate.disabled = true;
+          license.disabled = true;
+
+          firstName.value = stdList[index][0]; //firstName.value = stdList[index][0];
+          midName.value = stdList[index][0];
+          lastName.value =  stdList[index][0];
+          document.getElementById("pass").value = stdList[index][8];
+          phonenum.value = stdList[index][6];
+          address.value = stdList[index][5];
+          license.value = stdList[index][4];
+          uname.value = stdList[index][7];
+          email.value = stdList[index][1];
+          document.getElementById("status").value = stdList[index][3];
+          regdate.value = stdList[index][2];
+          document.getElementById("namebox").value = prof; //hindi maget yung laman
+
+          password.style.display = 'inline-block';
+          passText.style.display = 'inline-block';
+          trigger.style.display = 'inline-block';
+          spany.style.display = 'inline-block';
+
+          BtnModAdd.style.display = 'none';
+          BtnModUpd.style.display = 'inline-block';
+          BtnModDel.style.display = 'inline-block';
+          // BtnModDeact.style.display = 'inline-block';
+          // BtnModAct.style.display = 'inline-block';
+          // BtnUploadPic.style.display = 'none';
+          BtnRetrievePic.style.display = 'inline-block';
+        }
+      }
+
+       //updating accounts
+       function Upd(){
+
+      var status = document.getElementById('status').value;
+      // var password = document.getElementById('pass').value;
+      password.hidden = false;
+
+        firebase.database().ref("users/" + email.value).update( //set
+          {
+            email: email.value,
+            password: password.value,
+            firstName: firstName.value,
+            midName: midName.value,
+            lastName: lastName.value,
+            license: license.value,
+            profile: profile.value,
+            registration: registration.value,
+            status: status,
+            address: address.value,
+            phonenum: phonenum.value,
+            username: username.value
+          },
+          (error)=>{
+            if(error){
+              alert("Account was not updated " + error);
+            }else{
+              alert("Account successfully updated!");
+              // Select_AllData()
+              //hiding the modal
+              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+              regdate.disabled = true;
+              license.disabled = true;
+            }
+          }
+        );
+      }
+
+      //creating new accounts
+      function Add(){
+
+      var status = document.getElementById('status').value; //kailangan to para hindi mag [object HTMLInputElement] value ni status
+      
+      //auto generate password
+        var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        var passwordLength = 7;
+        var password = "";
+        for (var i = 0; i <= passwordLength; i++) {
+          var randomNumber = Math.floor(Math.random() * chars.length);
+          password += chars.substring(randomNumber, randomNumber +1);
+          }
+          // document.getElementById("pass").value = password;
+          // document.getElementById("pass").disabled = true;
+          // alert("pass value: " + password)
+
+        firebase.database().ref("users/" + email.value).set( //update
+          {
+            email: email.value,
+            password: document.getElementById("pass").value = password,
+            firstName: firstName.value,
+            midName: midName.value,
+            lastName: lastName.value,
+            license: license.value,
+            profile: profile.value,
+            registration: registration.value,
+            status: status,
+            address: address.value,
+            phonenum: phonenum.value,
+            username: username.value,
+          },
+          (error)=>{
+            if(error){
+              alert("Account was not updated " + error);
+            }else{
+              alert("Account successfully updated!");
+              // Select_AllData()
+              //hiding the modal
+              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+              regdate.disabled = true;
+              license.disabled = true;
+            }
+          }
+        )
+      }
+
+      //deleting the accounts
+      function Del(){
+        firebase.database().ref("users/" + email.value).remove().then(
+          // firebase.database().ref("Pictures/" + Name.value).remove().then(
+          function(){
+            alert("Succesfully deleted!"); //nag dodoble yung display after successfully deleted
+            // Select_AllData()
+              //hiding the modal
+              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+          }
+        )
+        // )
+      }
+
+      // // //auto generate password
+      // function genPassword() {
+      //   var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      //   var passwordLength = 12;
+      //   var password = "";
+      //   for (var i = 0; i <= passwordLength; i++) {
+      //     var randomNumber = Math.floor(Math.random() * chars.length);
+      //     password += chars.substring(randomNumber, randomNumber +1);
+      //     }
+      //     document.getElementById("pass").value = password;
+      //     document.getElementById("pass").disabled = true;
+      // }
+
+      function hidePass(){
+        var x = document.getElementById("pass");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+
+      //getting current date
+      function CurrentDate(){
+      const date = new Date();
+
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+
+      let currentDate = `${year}-${month}-${day}`;
+      registration.value = (currentDate);
+      registration.disabled = true;
+      }
+
+      function validate(){
+        var fname2 = $('#new-user-form input[name=Fname]').val();
+        var lname2 = $('#new-user-form input[name=Lname]').val();
+        var midName2 = $('#new-user-form input[name=Mname]').val();
+        var address2 = $('#new-user-form input[name=address]').val();
+        var license2 = $('#new-user-form input[name=license]').val();
+        var email2 = $('#new-user-form input[name=eeemail]').val();
+        var status2 = $('#new-user-form input[name=status]').val();
+        var phonenum2 = $('#new-user-form input[name=num]').val();
+        var registration2 = $('#new-user-form input[name=regdate]').val();
+
+        if(!String(fname2) || !String(lname2) || !String(midName2) || !String(address2) || !String(license2) || !String(email2) || !String(status2) || !String(phonenum2) || !String(registration2)){
+           alert('Fill all the fields');
+        }else{
+          Add();
+        }
+      }
+
+      //auto generate uname
+      function createUsername()  {
+      var fname = $('#new-user-form input[name=Fname]').val().toLowerCase();
+      var lname = $('#new-user-form input[name=Lname]').val().toLowerCase();
+      var randomNum = Math.floor(Math.random() * 10);
+      var username = fname + lname + randomNum;
+      $('#new-user-form input[name=uname]').val(username);
+      }
+
+      $('#new-user-form input[name=Fname]').on('keyup', createUsername);
+      $('#new-user-form input[name=Lname]').on('keyup', createUsername);
+      username.disabled = true;
+
+      //auto generate picture's name
+      function createPicname()  {
+      var fname = $('#new-user-form input[name=Fname]').val().toLowerCase();
+      var lname = $('#new-user-form input[name=Lname]').val().toLowerCase();
+      var profileName = $('#new-user-form input[name=namebox]').val().toLowerCase();
+      var randomNum = Math.floor(Math.random() * 10);
+      var picname = fname + lname + "Profile" + randomNum;
+      $('#new-user-form input[name=namebox]').val(picname);
+      }
+
+      $('#new-user-form input[name=Fname]').on('keyup', createPicname);
+      $('#new-user-form input[name=Lname]').on('keyup', createPicname);
+      $('#new-user-form input[name=namebox]').on('keyup', createPicname);
+      profname.disabled = true;
+    </script>
+  <!-- printing css ends here  -->
+
+  <script type="text/javascript"> 
+  //printing script
+    function PrintTable() {
+    var printWindow = window.open('', '', 'height=700,width=1200');
+    printWindow.document.write('<html><head><title>Table Contents</title>');
+
+    //Print the Table CSS.
+    var table_style = document.getElementById("table_style").innerHTML;
+    printWindow.document.write('<stylestd type = "text/css">');
+    printWindow.document.write(table_style);
+    printWindow.document.write('</style>');
+    printWindow.document.write('</head>');
+
+    //Print the DIV contents i.e. the HTML Table.
+    printWindow.document.write('<body>');
+    var divContents = document.getElementById("dvContents").innerHTML;
+    printWindow.document.write(divContents);
+    printWindow.document.write('</body>');
+
+    printWindow.document.write('</html>');
+    printWindow.document.close();
+    printWindow.print();
+}
+</script>
+  </body>
+
+  <!-- printing css starts here  -->
+  <style id="table_style" type="text/css">
     table img{
       height: 45px;
       width: 46px;
       left: 12px;
       position: relative;
     }
-
+  
     td .viewIDbtn{
       font-family: "Salsa";
       width: 90px;
@@ -531,100 +788,6 @@
       #example_length label, #example_filter label{ /*show entries number*/
         display: none;
       }
-}
-</style>
-<!-- printing css ends here  -->
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-
-    <script>
-        let btn= document.querySelector("#btn");
-        let sidebar= document.querySelector(".sidebar");
-
-        btn.onclick= function(){
-          sidebar.classList.toggle("active");
-        }
-
-          //delete function
-          /*$(document).on('click', '.delete', function() {
-            $(this).parents('tr').remove();
-          });*/
-
-          //table filter
-          $(document).ready(function() {
-            $('#example').DataTable( {
-              "pagingType": "full_numbers",
-            } );
-          } );
-        </script>
-
-        <script type="text/javascript"> //printing script
-        function PrintTable() {
-        var printWindow = window.open('', '', 'height=700,width=1200');
-        printWindow.document.write('<html><head><title>Table Contents</title>');
-
-        //Print the Table CSS.
-        var table_style = document.getElementById("table_style").innerHTML;
-        printWindow.document.write('<stylestd type = "text/css">');
-        printWindow.document.write(table_style);
-        printWindow.document.write('</style>');
-        printWindow.document.write('</head>');
-
-        //Print the DIV contents i.e. the HTML Table.
-        printWindow.document.write('<body>');
-        var divContents = document.getElementById("dvContents").innerHTML;
-        printWindow.document.write(divContents);
-        printWindow.document.write('</body>');
-
-        printWindow.document.write('</html>');
-        printWindow.document.close();
-        printWindow.print();
-    }
-
-        // //viewing acct
-        function AddItemz() {
-              //var std= "keme";
-                // let namey = document.querySelector(".name").parentNode.nodeName;
-                // namey.innerHTML = name;
-                // namey.append(name);
-                //document.querySelector("#viewAcct").innerHTML = std;
-                // var view = document.querySelector("#viewAcct");
-                // view.addEventListener('click', (e) => {
-                // });
-                //std
-                // const params = (new URL(document.location)).searchParams;
-                // const std = std;
-                // document.querySelector("#view").innerHTML = std;
-                alert("id: " + std);
-        var aydi = document.getElementById(std);
-        aydi.forEach(function(postBox) {
-        postBox.addEventListener('click', function() {
-          var postId = this.getAttribute(std)
-          console.log(postId)
-          //document.getElementById('comment-form-' + postId).style.display = 'block'
-  })
-})
-            }
-        // //     function AddAllItemsz(users) {
-        // //     users.forEach(element => {
-        // //     var name =element.firstName + " " + element.lastName;
-        // //     AddItemz(name)
-        // //   });
-        // // }
-        // // AddItemz()
-
-    //toggle
-    // let toggle= document.querySelector("#status_slider");
-    //     let text= document.querySelector("#slider_status");
-
-    //     function animatedToggle(){
-    //       toggle.classList.toggle("active");
-    //       if(toggle.classList.contains("active")){
-    //         text.innerHTML = "ACTIVE"; //palitan to na retreived from the firebase
-    //         alert("active");
-    //       }else{
-    //         text.innerHTML = "INACTIVE"; //palitan to na retreived from the firebase
-    //       }
-    //     }
-</script>
+  }
+  </style>
 </html>
