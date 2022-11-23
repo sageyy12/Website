@@ -133,6 +133,14 @@
         </button>
       </div>
       <div class="modal-body" id="new-user-form">
+        <label class="labs" id="prof_text">Select Picture</label>
+        <button id="prof"> Choose Picture </button> <br>
+
+        <center><img id="myimg" height="200px" width="200px"> <label id="upProgress"> </label>
+          <input type="text" id="namebox" name="namebox" placeholder="Picture's name here">
+          <!-- <button id="upload"> Upload Profile </button> <br> -->
+          <!-- <button id="retrieve" onclick="getProf()">Load profile</button>  -->
+        </center> <br>
 
         <label class="labs">First name:</label>
         <input type="text" name= "Fname" id="Fname"/> <br>
@@ -168,16 +176,7 @@
         <input type="text" id="status" name="status"> <br>
 
         <label class="labs">Reg Date:</label>
-        <input type="text" id="regdate" name="regdate" placeholder="Click to auto generate the date" onclick="CurrentDate()"> <br>
-
-        <label class="labs" id="prof_text">Select Picture</label>
-        <button id="prof"> Choose Picture </button> <br>
-
-        <center><img id="myimg" height="200px" width="200px"> <label id="upProgress"> </label>
-          <input type="text" id="namebox" name="namebox" placeholder="Insert picture's name here">
-          <button id="upload"> Upload Profile </button> <br>
-          <button id="retrieve">Load profile</button> 
-        </center>
+        <input type="text" id="regdate" name="regdate" placeholder="Click to auto generate the date" onclick="CurrentDate()">
       </div>
 
       <div class="modal-footer">
@@ -314,50 +313,6 @@
         input.click();
       }
 
-      //uploading picture to the firebase storage
-      document.getElementById("upload").onclick = function(){
-        ImgNAme = document.getElementById("namebox").value;
-        var uploadTask = firebase.storage().ref('Images/' + ImgNAme+ ".png").put(files[0]);
-
-        uploadTask.on('state_changed', function(snapshot){
-          var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
-          // document.getElementById('upProgress').innerHTML = 'Uploading s' + progress + '%';
-        },
-        //error handling
-        function(error){
-          alert('Error in saving the image');
-        },
-        //submitting image link to the firebase
-        function(){
-          if(!String(ImgNAme)){
-          alert("Picture's name must be indicated");
-        }else{
-          uploadTask.snapshot.ref.getDownloadURL().then(function(url){
-            ImgUrl = url;
-          
-            firebase.database().ref('Pictures/' + ImgNAme).set({
-              Name: ImgNAme,
-              Link: ImgUrl
-          });
-          alert("Image added succesfully");
-        }
-        );
-        }
-      });
-      }
-
-      //retrieval process
-      // function getProf(){
-        document.getElementById('retrieve').onclick = function(){
-        ImgNAme = document.getElementById('namebox').value;
-        firebase.database().ref('Pictures/' + ImgNAme).on('value', function(snapshot){
-          document.getElementById('myimg').src = snapshot.val().Link;
-          // alert(ImgNAme);
-          ImgNAme.disabled = true;
-        })
-      // }
-      }
-
       //configuration
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
@@ -372,7 +327,6 @@
       };
       firebase.initializeApp(firebaseConfig);
 
-      var counter = 1;
       //select all data
       function Select_AllData(){
         firebase.database().ref('users').once('value', function (snapshot){
@@ -386,16 +340,8 @@
             var num = childSnapshot.val().phonenum;
             var unamey = childSnapshot.val().username;
             var passs = childSnapshot.val().password;
-
-            firebase.database().ref('Pictures').once('value', function (snapshot){
-            // snapshot.forEach(function(childSnapshot){
-            var prof = childSnapshot.val().Name;
+            var prof = childSnapshot.val().NameOfTheProf;
             AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
-            alert("adding items" + counter++ + " " + prof) //multiple uploads
-          // });
-        });
-            // AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
-            // alert("adding items" + counter++) //hindi makuha data ni prof
       });
     });
   }
@@ -478,8 +424,8 @@
       var BtnModDel = document.getElementById('delBtn');
       var BtnModDeact = document.getElementById('deact');
       var BtnModAct = document.getElementById('act');
-      var BtnUploadPic = document.getElementById('upload');
-      var BtnRetrievePic = document.getElementById('retrieve');
+      // var BtnUploadPic = document.getElementById('upload');
+      // var BtnRetrievePic = document.getElementById('retrieve');
 
       function FillTboxes(index){
         if(index == null){
@@ -510,7 +456,7 @@
           // BtnModDeact.style.display = 'none';
           // BtnModAct.style.display = 'none';
           // BtnUploadPic.style.display = 'inline-block';
-          BtnRetrievePic.style.display = 'none';
+          // BtnRetrievePic.style.display = 'none';
 
         }else if(email.value === stdList[index]){
           alert("Email already exist");
@@ -520,7 +466,7 @@
           regdate.disabled = true;
           license.disabled = true;
 
-          firstName.value = stdList[index][0]; //firstName.value = stdList[index][0];
+          firstName.value = stdList[index][0];
           midName.value = stdList[index][0];
           lastName.value =  stdList[index][0];
           document.getElementById("pass").value = stdList[index][8];
@@ -531,7 +477,15 @@
           email.value = stdList[index][1];
           document.getElementById("status").value = stdList[index][3];
           regdate.value = stdList[index][2];
-          document.getElementById("namebox").value = prof; //hindi maget yung laman
+          profname.value = stdList[index][9];
+
+          
+      //img retrieval process
+      ImgNAme = document.getElementById('namebox').value;
+      firebase.database().ref('users/' + email.value).on('value', function(snapshot){
+        document.getElementById('myimg').src = snapshot.val().Link;
+        ImgNAme.disabled = true;
+      })
 
           password.style.display = 'inline-block';
           passText.style.display = 'inline-block';
@@ -544,7 +498,7 @@
           // BtnModDeact.style.display = 'inline-block';
           // BtnModAct.style.display = 'inline-block';
           // BtnUploadPic.style.display = 'none';
-          BtnRetrievePic.style.display = 'inline-block';
+          // BtnRetrievePic.style.display = 'inline-block';
         }
       }
 
@@ -555,36 +509,52 @@
       // var password = document.getElementById('pass').value;
       password.hidden = false;
 
-        firebase.database().ref("users/" + email.value).update( //set
-          {
-            email: email.value,
-            password: password.value,
-            firstName: firstName.value,
-            midName: midName.value,
-            lastName: lastName.value,
-            license: license.value,
-            profile: profile.value,
-            registration: registration.value,
-            status: status,
-            address: address.value,
-            phonenum: phonenum.value,
-            username: username.value
-          },
-          (error)=>{
-            if(error){
-              alert("Account was not updated " + error);
-            }else{
-              alert("Account successfully updated!");
-              // Select_AllData()
-              //hiding the modal
-              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-              regdate.disabled = true;
-              license.disabled = true;
-            }
-          }
-        );
-      }
+      ImgNAme = document.getElementById("namebox").value;
+      var uploadTask = firebase.storage().ref('Images/' + ImgNAme+ ".png").put(files[0]);
 
+      uploadTask.on('state_changed', function(snapshot){
+        var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
+        // document.getElementById('upProgress').innerHTML = 'Uploading s' + progress + '%';
+      },
+      //error handling
+      function(error){
+          alert('Error in saving the image');
+        },
+        //submitting image link to the firebase
+        function(){
+          if(!String(ImgNAme)){
+          alert("Picture's name must be indicated");
+        }else{
+          uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+            ImgUrl = url;
+          
+            firebase.database().ref('users/' + email.value).update({
+              email: email.value,
+              password: password.value,
+              firstName: firstName.value,
+              midName: midName.value,
+              lastName: lastName.value,
+              license: license.value,
+              profile: profile.value,
+              registration: registration.value,
+              status: status,
+              address: address.value,
+              phonenum: phonenum.value,
+              username: username.value,
+              // profname: profname.value,
+              NameOfTheProf: ImgNAme,
+              Link: ImgUrl
+          });
+          alert("Account successfully updated!");
+          $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+          regdate.disabled = true;
+          license.disabled = true;
+        }
+        );
+        }
+      });
+      }
+      
       //creating new accounts
       function Add(){
 
@@ -598,66 +568,66 @@
           var randomNumber = Math.floor(Math.random() * chars.length);
           password += chars.substring(randomNumber, randomNumber +1);
           }
-          // document.getElementById("pass").value = password;
-          // document.getElementById("pass").disabled = true;
-          // alert("pass value: " + password)
 
-        firebase.database().ref("users/" + email.value).set( //update
-          {
-            email: email.value,
-            password: document.getElementById("pass").value = password,
-            firstName: firstName.value,
-            midName: midName.value,
-            lastName: lastName.value,
-            license: license.value,
-            profile: profile.value,
-            registration: registration.value,
-            status: status,
-            address: address.value,
-            phonenum: phonenum.value,
-            username: username.value,
-          },
-          (error)=>{
-            if(error){
-              alert("Account was not updated " + error);
-            }else{
-              alert("Account successfully updated!");
-              // Select_AllData()
-              //hiding the modal
-              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-              regdate.disabled = true;
-              license.disabled = true;
-            }
-          }
-        )
+      //uploading picture to the firebase storage
+      // document.getElementById("upload").onclick = function(){
+        ImgNAme = document.getElementById("namebox").value;
+        var uploadTask = firebase.storage().ref('Images/' + ImgNAme+ ".png").put(files[0]);
+
+        uploadTask.on('state_changed', function(snapshot){
+          var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
+          // document.getElementById('upProgress').innerHTML = 'Uploading s' + progress + '%';
+        },
+        //error handling
+        function(error){
+          alert('Error in saving the image');
+        },
+        //submitting image link to the firebase
+        function(){
+          if(!String(ImgNAme)){
+          alert("Picture's name must be indicated");
+        }else{
+          uploadTask.snapshot.ref.getDownloadURL().then(function(url){
+            ImgUrl = url;
+          
+            firebase.database().ref('users/' + email.value).set({
+              email: email.value,
+              password: document.getElementById("pass").value = password,
+              firstName: firstName.value,
+              midName: midName.value,
+              lastName: lastName.value,
+              license: license.value,
+              profile: profile.value,
+              registration: registration.value,
+              status: status,
+              address: address.value,
+              phonenum: phonenum.value,
+              username: username.value,
+              // profname: profname.value,
+              NameOfTheProf: ImgNAme,
+              Link: ImgUrl
+          });
+          alert("Account added succesfully");
+          $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+          regdate.disabled = true;
+          license.disabled = true;
+        }
+        );
+        }
+      });
       }
 
       //deleting the accounts
       function Del(){
         firebase.database().ref("users/" + email.value).remove().then(
-          // firebase.database().ref("Pictures/" + Name.value).remove().then(
           function(){
-            alert("Succesfully deleted!"); //nag dodoble yung display after successfully deleted
-            // Select_AllData()
+            alert("Succesfully deleted!");
               //hiding the modal
               $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
           }
         )
         // )
       }
-
-      // // //auto generate password
-      // function genPassword() {
-      //   var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      //   var passwordLength = 12;
-      //   var password = "";
-      //   for (var i = 0; i <= passwordLength; i++) {
-      //     var randomNumber = Math.floor(Math.random() * chars.length);
-      //     password += chars.substring(randomNumber, randomNumber +1);
-      //     }
-      //     document.getElementById("pass").value = password;
-      //     document.getElementById("pass").disabled = true;
-      // }
 
       function hidePass(){
         var x = document.getElementById("pass");
@@ -726,8 +696,9 @@
       $('#new-user-form input[name=Lname]').on('keyup', createPicname);
       $('#new-user-form input[name=namebox]').on('keyup', createPicname);
       profname.disabled = true;
+
+    
     </script>
-  <!-- printing css ends here  -->
 
   <script type="text/javascript"> 
   //printing script
