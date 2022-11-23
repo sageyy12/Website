@@ -160,24 +160,17 @@
 
             <div class="buttons">
               <a href="#Commutersbtn" id="Commuters">
-                <button>Attendance</button>
+                <button>Admins</button>
+                <!-- <p>list of admins with their information</p>
+                <p>Drivers: License No., Driver's Name, Bukyo Vehicle</p> -->
               </a>
 
                 <a href="#TotalSalesbtn" id="TotalSales">
-                  <button>Drivers</button>
+                  <button>Active Drivers</button>
                 </a>
-
-                  <!--a href="#Feedbacksbtn" id="Feedbacks">
-                    <button>Violations</button>
-                  </a>
-
-                    <a href="#Complaintsbtn" id="Complaints">
-                      <button>Complaints</button>
-                    </a!-->
-
-                      <a href="#Reloadbtn" id="Reload">
+                      <!-- <a href="#Reloadbtn" id="Reload">
                         <button>Bukyo Vehicles</button>
-                      </a>
+                      </a> -->
             </div>
 
             <!-- charts  -->
@@ -198,325 +191,32 @@
                 <div class="cardsy">
                   <div class="card-header">
                     <h3>Recent Activity</h3>
-                    <a href="#seeAllbtn" id="seeAllbtn">
+                    <!-- <a href="#seeAllbtn" id="seeAllbtn">
                     <button>See all
                       <span class="fa">&#xf178;</span>
-                    </button></a>
+                    </button></a> -->
                   </div>
+                  
+                  <!-- pang bungad -->
                   <div class="card-body">
                     <div class="table-responsive">
-                    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-                    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-                    <table id="example" class="display" width="100%" cellspacing="0">
-                        <!--p id="result">Result here</p>
-                        <p><select name="select" id="opt">
-                               <option value="table">--- Select an option ---</option>
-                               <option value="CommsDiv" id="comm">Commuters</option>
-                               <option value="totalsalesTbl" id="tsales">Total Sales</option>
-                               <option value="content" id="feed">Feedbacks</option>
-                               <option value="content" id="compl">Complaints</option>
-                               <option value="content" id="rel">Reload</option>
-                               <option value="content" id="all">See all</option>
-                           </p!-->
-                           <!--input type="button" id="bt" value="Show data" onclick="GetSelectedText()" /!-->
-                        <thead>
-                          <tr>
-                            <td>No.</td>
-                            <td>Activity</td>
-                            <td>Name</td>
-                            <td>Time</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>001</td>
-                            <td>Booking</td>
-                            <td>Alphanille Reyes</td>
-                            <td>13:00</td>
-                          </tr>
-                          <tr>
-                            <td>002</td>
-                            <td>Reservation</td>
-                            <td>Stephanie Santos</td>
-                            <td>18:00</td>
-                          </tr>
-                          <tr>
-                            <td>003</td>
-                            <td>Complaint</td>
-                            <td>Justin Geronimo</td>
-                            <td>14:00</td>
-                          </tr>
-                          <tr>
-                            <td>004</td>
-                            <td>Complaint</td>
-                            <td>Maria Zaragosa</td>
-                            <td>15:00</td>
-                          </tr>
-                          <tr>
-                            <td>005</td>
-                            <td>Booking</td>
-                            <td>Alphanille Reyes</td>
-                            <td>13:00</td>
-                          </tr>
-
-                            <tr>
-                              <td>006</td>
-                              <td>Booking</td>
-                              <td>Alphanille Reyes</td>
-                              <td>13:00</td>
-                            </tr>
-                            <tr>
-                              <td>007</td>
-                              <td>Reservation</td>
-                              <td>Stephanie Santos</td>
-                              <td>18:00</td>
-                            </tr>
-                            <tr>
-                              <td>008</td>
-                              <td>Complaint</td>
-                              <td>Justin Geronimo</td>
-                              <td>14:00</td>
-                            </tr>
-                            <tr>
-                              <td>009</td>
-                              <td>Complaint</td>
-                              <td>Maria Zaragosa</td>
-                              <td>15:00</td>
-                            </tr>
-                            <tr>
-                              <td>010</td>
-                              <td>Booking</td>
-                              <td>Alphanille Reyes</td>
-                              <td>13:00</td>
-                            </tr>
-                        </tbody>
-                      </table>
+                    <iframe id="viewprof_iframe" src="listOfAdmins.html" frameborder="0" height="400" width="1000"></iframe>
                     </div>
                   </div>
-                  <!--div class="CommsDiv">
-                    <div id="commsTbl">
-                    <div id="resp-table-caption">Responsive Table without Table tag</div>
-                      <div id=“resp-table-header”></div>
-                      <div class="table-header-cell">No.</div>
-                      <div class="table-header-cell">Name</div>
-                      <div class="table-header-cell">Address</div>
-                      <div class="table-header-cell">Contact Number</div>
-                      <div id="resp-table-body"></div>
-                      <div class="resp-table-row"></div>
-                      <div class="table-body-cell"></div>
-                      <div class="table-body-cell">001</div>
-                      <div class="table-body-cell">Alphanille Reyes</div>
-                      <div class="table-body-cell">Blk. 26 L. 9</div>
-                      <div class="table-body-cell">09876543212</div>
-
-                      <div id="resp-table-body"></div>
-                      <div class="resp-table-row"></div>
-                      <div class="table-body-cell"></div>
-                      <div class="table-body-cell">002</div>
-                      <div class="table-body-cell">Alphanille Reyes</div>
-                      <div class="table-body-cell">Blk. 26 L. 9</div>
-                      <div class="table-body-cell">09876543212</div>
-
-                      <div id="resp-table-body"></div>
-                      <div class="resp-table-row"></div>
-                      <div class="table-body-cell"></div>
-                      <div class="table-body-cell">003</div>
-                      <div class="table-body-cell">Alphanille Reyes</div>
-                      <div class="table-body-cell">Blk. 26 L. 9</div>
-                      <div class="table-body-cell">09876543212</div>
-
-                      <div id="resp-table-body"></div>
-                      <div class="resp-table-row"></div>
-                      <div class="table-body-cell"></div>
-                      <div class="table-body-cell">004</div>
-                      <div class="table-body-cell">Alphanille Reyes</div>
-                      <div class="table-body-cell">Blk. 26 L. 9</div>
-                      <div class="table-body-cell">09876543212</div>
-
-                      <div id="resp-table-body"></div>
-                      <div class="resp-table-row"></div>
-                      <div class="table-body-cell"></div>
-                      <div class="table-body-cell">005</div>
-                      <div class="table-body-cell">Alphanille Reyes</div>
-                      <div class="table-body-cell">Blk. 26 L. 9</div>
-                      <div class="table-body-cell">09876543212</div>
-                    </div>
-                  </div!-->
+                  
+                  <!-- admins btn -->
                   <div class="CommsDiv">
-                  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-                  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-                  <table id="example" class="display" width="100%" cellspacing="0">
-                        <thead>
-                          <tr>
-                            <td>No.</td>
-                            <td>Name</td>
-                            <td>Date</td>
-                            <td>Attendance</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>001</td>
-                            <td>Alphanille Reyes</td>
-                            <td>Feb. 20, 2022</td>
-                            <td><i class='bx bxs-check-circle'></i></td>
-                          </tr>
-                          <tr>
-                            <td>002</td>
-                            <td>Stephanie Santos</td>
-                            <td>Feb. 21, 2022</td>
-                            <td><i class='bx bxs-x-circle'></i></td>
-                          </tr>
-                          <tr>
-                            <td>003</td>
-                            <td>Alphanille Reyes</td>
-                            <td>Feb. 22, 2022</td>
-                            <td><i class='bx bxs-check-circle'></i></td>
-                          </tr>
-                          <tr>
-                            <td>004</td>
-                            <td>Stephanie Santos</td>
-                            <td>Feb. 23, 2022</td>
-                            <td><i class='bx bxs-check-circle'></i></td>
-                          </tr>
-                          <tr>
-                            <td>005</td>
-                            <td>Alphanille Reyes</td>
-                            <td>Feb. 24, 2022</td>
-                            <td><i class='bx bxs-check-circle'></i></td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <iframe id="viewprof_iframe" src="listOfAdmins.html" frameborder="0" height="400" width="1000"></iframe>
                   </div>
+
+                  <!-- active drivers btn -->
                   <div class="totalSalesDiv">
-                  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-                  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-                  <table id="example" class="display" width="100%" cellspacing="0">
-                        <thead>
-                          <tr>
-                            <td>License No.</td>
-                            <td>Name</td>
-                            <td>Address</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>A01-23-456789</td>
-                            <td>Jose Picardo</td>
-                            <td>Blk. 2 Lot 2</td>
-                          </tr>
-                          <tr>
-                            <td>A02-25-409689</td>
-                            <td>Kenneth Librado</td>
-                            <td>Blk. 5 Lot 23</td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <iframe id="viewprof_iframe" src="activeDrivers.html" frameborder="0" height="400" width="1000"></iframe>
                   </div>
-                  <!--div class="feedbacksDiv">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <td>No.</td>
-                            <td>Name</td>
-                            <td>No. of Feedbacks given</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>001</td>
-                            <td>Alphanille Reyes</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>002</td>
-                            <td>Stephanie Santos</td>
-                            <td>1</td>
-                          </tr>
-                          <tr>
-                            <td>003</td>
-                            <td>Justin Geronimo</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <td>004</td>
-                            <td>Maria Zaragosa</td>
-                            <td>2</td>
-                          </tr>
-                          <tr>
-                            <td>005</td>
-                            <td>Alphanille Reyes</td>
-                            <td>5</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div>
-                  <div class="complaintsDiv">
-                      <table class="table table-striped">
-                        <thead>
-                          <tr>
-                            <td>No.</td>
-                            <td>Name</td>
-                            <td>No. of complaints given</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>001</td>
-                            <td>Alphanille Reyes</td>
-                            <td>4</td>
-                          </tr>
-                          <tr>
-                            <td>002</td>
-                            <td>Stephanie Santos</td>
-                            <td>1</td>
-                          </tr>
-                          <tr>
-                            <td>003</td>
-                            <td>Justin Geronimo</td>
-                            <td>5</td>
-                          </tr>
-                          <tr>
-                            <td>004</td>
-                            <td>Maria Zaragosa</td>
-                            <td>1</td>
-                          </tr>
-                          <tr>
-                            <td>005</td>
-                            <td>Alphanille Reyes</td>
-                            <td>3</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div!-->
-                  <div class="reloadDiv">
-                    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-                    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-                    <table id="example" class="display" width="100%" cellspacing="0">
-                        <thead>
-                          <tr>
-                            <td>Vehicle No.</td>
-                            <td>Driver</td>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Bukyo OY 8006</td>
-                            <td>Jose Picardo</td>
-                          </tr>
-                          <tr>
-                            <td>Bukyo AAA 1234</td>
-                            <td>Kenneth Librado</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                  </div>
-                </div>
+
+                </div><!-- cardsy -->
               </div>
+
               <div class="customers">
                 <div class="projects">
                   <div class="cardsy">
@@ -789,18 +489,13 @@
             //show / hide button
             const CommtoggleBtn = document.querySelector('#Commuters');
             const toggleBtn = document.querySelector('#TotalSales');
-            //const feedBtn = document.querySelector('#Feedbacks');
-            //const compBtn = document.querySelector('#Complaints');
             const reloadBtn = document.querySelector('#Reload');
             const seeAllBtn = document.querySelector('#seeAllbtn');
             const divList = document.querySelector('.card-body');
 
             const commsDiv = document.querySelector('.CommsDiv');
             const totalDiv = document.querySelector('.totalSalesDiv');
-            //const feedsDiv = document.querySelector('.feedbacksDiv');
-            //const complaintsDiv = document.querySelector('.complaintsDiv');
             const reloadDiv = document.querySelector('.reloadDiv');
-            //const reloadDivh5 = document.querySelector('.h5');
 
             CommtoggleBtn.addEventListener('click', () => {
               if (commsDiv.style.display === 'block') {
@@ -808,16 +503,10 @@
                 totalDiv.style.display = 'none';
                 feedsDiv.style.display = 'none';
                 complaintsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-                /*reloadDivh5.style.display = 'none';*/
               } else {
                 commsDiv.style.display = 'block';
                 divList.style.display = 'none';
                 totalDiv.style.display = 'none';
-                /*feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';
-                reloadDivh5.style.display = 'none';*/
-                reloadDiv.style.display = 'none';
               }
             });
 
@@ -827,86 +516,10 @@
                 commsDiv.style.display = 'none';
                 feedsDiv.style.display = 'none';
                 complaintsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-                /*reloadDivh5.style.display = 'none';*/
               } else {
                 totalDiv.style.display = 'block';
                 divList.style.display = 'none';
                 commsDiv.style.display = 'none';
-                /*feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';
-                reloadDivh5.style.display = 'none';*/
-                reloadDiv.style.display = 'none';
-              }
-            });
-
-            /*feedBtn.addEventListener('click', () => {
-              if (feedsDiv.style.display === 'block') {
-                divList.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-              } else {
-                feedsDiv.style.display = 'block';
-                divList.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-              }
-            });
-
-            compBtn.addEventListener('click', () => {
-              if (complaintsDiv.style.display === 'block') {
-                divList.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                feedsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-              } else {
-                complaintsDiv.style.display = 'block';
-                divList.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                feedsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-              }
-            });*/
-
-            reloadBtn.addEventListener('click', () => {
-              if (reloadDiv.style.display === 'block') {
-                divList.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                /*feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';*/
-              } else {
-                reloadDiv.style.display = 'block';
-                divList.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                /*feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';*/
-              }
-            });
-
-            seeAllBtn.addEventListener('click', () => {
-              if (divList.style.display === 'block') {
-                reloadDiv.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                /*reloadDivh5.style.display = 'none';
-                feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';*/
-              } else {
-                divList.style.display = 'block';
-                reloadDiv.style.display = 'none';
-                commsDiv.style.display = 'none';
-                totalDiv.style.display = 'none';
-                /*reloadDivh5.style.display = 'none';
-                feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';*/
               }
             });
 
@@ -986,14 +599,6 @@
                var insi = $('#opt').val();
                 $("#tblID").removeClass( ).addClass( insi );
             });*/
-
-            //table
-            $(document).ready(function() {
-              $('.display').DataTable( {
-                "pagingType": "full_numbers"
-              } );
-            } );
-
             </script>
     </body>
 </html>

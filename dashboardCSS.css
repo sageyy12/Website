@@ -265,7 +265,7 @@ main{
   align-items: center;
   padding: 1rem;
   margin-top: 44.5px;
-  margin-left: 378px;
+  margin-left: 193px;
   position: absolute;
 }
 
@@ -404,26 +404,34 @@ main{
 }
 
 table{
-  max-width: 97%;
+  max-width: 85%;
 }
 
 thead tr{
   border-top: 1px solid #f0f0f0;
   border-bottom: 2px solid #f0f0f0;
+  background-color: #E0FBFC;
 }
 
 thead td{
   font-weight: 700;
+  border-bottom: 1px solid #000;
+}
+
+thead tr th,
+tbody tr td{
+  border-bottom: 1px solid rgb(226, 226, 226);
 }
 
 td{
   padding: .5rem 1rem;
   font-size: .9rem;
+  border-bottom: 1px solid rgb(226, 226, 226);
 }
 
-tr:nth-child(odd){
+/* tr:nth-child(odd){
   background-color: #E0FBFC;
-}
+} */
 
 .table-responsive{
   width: 100%;
