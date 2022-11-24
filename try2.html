@@ -128,72 +128,21 @@
     </div>
 
     <!-- Modal starts here-->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Driver's Account</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="new-user-form">
-        <label class="labs" id="prof_text">Select Picture</label>
-        <button id="prof"> Choose Picture </button> <br>
-
-        <center><img id="myimg" height="200px" width="200px"> <label id="upProgress"> </label>
-          <input type="text" id="namebox" name="namebox" placeholder="Picture's name here">
-          <!-- <button id="upload"> Upload Profile </button> <br> -->
-          <!-- <button id="retrieve" onclick="getProf()">Load profile</button>  -->
-        </center> <br>
-
-        <label class="labs">First name:</label>
-        <input type="text" name= "Fname" id="Fname"/> <br>
-
-        <label class="labs">Middle name:</label>
-        <input type="text" id="Mname"> <br>
-
-        <label class="labs">Last name:</label>
-        <input type="text" name= "Lname" id="Lname"> <br>
-
-        <label class="labs" id="passText">Password</label>
-        <input type="password" id="pass">
-        <label class="checkContainer">
-        <span id="spany"><input type="checkbox" id= "trigger" onclick="hidePass()">Show Password <span>
-        </label>
-
-        <label class="labs">Phone Number:</label>
-        <input type="text" id="num" name="num"> <br>
-
-        <label class="labs">Address:</label>
-        <input type="text" id="address" name="address"> <br>
-
-        <label class="labs">License:</label>
-        <input type="text" id="license" name="license"> <br>
-
-        <label class="labs">Username:</label>
-        <input type="text" name= "uname" id="uname"> <br>
-
-        <label class="labs">Email:</label>
-        <input type="email" id="eeemail" name="eeemail"> <br>
-
-        <label class="labs">Status:</label>
-        <input type="text" id="status" name="status"> <br>
-
-        <label class="labs">Reg Date:</label>
-        <input type="text" id="regdate" name="regdate" placeholder="Click to auto generate the date" onclick="CurrentDate()">
-      </div>
-
-      <div class="modal-footer">
-        <button id="addBtn" type="button" class="btn btn-primary" onclick="validate()">Add new account</button>
-        <button id="updBtn" type="button" class="btn btn-success" onclick="Upd()">Update</button>
-        <!-- <button id="act" type="button" class="btn btn-success">Activate</button>
-        <button id="deact" type="button" class="btn btn-warning">Deactivate</button> -->
-        <button id="delBtn" type="button" class="btn btn-danger" onclick="Del()">Delete</button>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="modal fade" id="viewProf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Driver's Profile</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe id="viewprof_iframe" src="idlayout.html" frameborder="0" height="400" width="1000"></iframe>
+            </div>
+          </div>
+          </div>
+          </div>
 <!-- modal ends here -->
 
       <footer class="footer-distributed">
@@ -401,112 +350,14 @@
         trow.appendChild(td3);
 
         var ControlDiv = document.createElement("div");
-        ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Respond</button>'
+        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes()" data-toggle="modal" data-target="#viewProf">Respond</button>'
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
       }
 
-      var firstName = document.getElementById('Fname');
-      var midName = document.getElementById('Mname');
-      var lastName = document.getElementById('Lname');
-      var address = document.getElementById('address');
-      var license = document.getElementById('license');
-      var email = document.getElementById('eeemail');
-      var status = document.getElementById('status');
-      var phonenum = document.getElementById('num');
-      var username = document.getElementById('uname');
-      var registration = document.getElementById('regdate');
-      var password = document.getElementById('pass');
-      var profname = document.getElementById("namebox");
-
-      var passText = document.getElementById('passText');
-      var trigger = document.getElementById('trigger');
-      var spany = document.getElementById('spany');
-      var profile = document.getElementById('prof');
-      var profile_text = document.getElementById('prof_text');
-
-      var BtnModAdd = document.getElementById('addBtn');
-      var BtnModUpd = document.getElementById('updBtn');
-      var BtnModDel = document.getElementById('delBtn');
-      var BtnModDeact = document.getElementById('deact');
-      var BtnModAct = document.getElementById('act');
-      // var BtnUploadPic = document.getElementById('upload');
-      // var BtnRetrievePic = document.getElementById('retrieve');
-
-      function FillTboxes(index){
-        if(index == null){
-          firstName.value = "";
-          midName.value = "";
-          lastName.value = "";
-          address.value = "";
-          license.value = "";
-          email.value = "";
-          status.value = "";
-          phonenum.value = "";
-          uname.value = "";
-          regdate.value = "";
-          password.value = "";
-          profname.value = "";
-
-          password.style.display = 'none';
-          passText.style.display = 'none';
-          trigger.style.display = 'none';
-          spany.style.display = 'none';
-          regdate.disabled = false;
-          profile.disabled = false;
-          license.disabled = false;
-
-          BtnModAdd.style.display = 'inline-block';
-          BtnModUpd.style.display = 'none';
-          BtnModDel.style.display = 'none';
-          // BtnModDeact.style.display = 'none';
-          // BtnModAct.style.display = 'none';
-          // BtnUploadPic.style.display = 'inline-block';
-          // BtnRetrievePic.style.display = 'none';
-
-        }else if(email.value === stdList[index]){
-          alert("Email already exist");
-        }
-        else{
-          --index;
-          regdate.disabled = true;
-          license.disabled = true;
-
-          firstName.value = stdList[index][0];
-          midName.value = stdList[index][0];
-          lastName.value =  stdList[index][0];
-          document.getElementById("pass").value = stdList[index][8];
-          phonenum.value = stdList[index][6];
-          address.value = stdList[index][5];
-          license.value = stdList[index][4];
-          uname.value = stdList[index][7];
-          email.value = stdList[index][1];
-          document.getElementById("status").value = stdList[index][3];
-          regdate.value = stdList[index][2];
-          profname.value = stdList[index][9];
-
-          
-      //img retrieval process
-      // ImgNAme = document.getElementById('namebox').value;
-      // firebase.database().ref('users/' + email.value).on('value', function(snapshot){
-      //   document.getElementById('myimg').src = snapshot.val().Link;
-      //   ImgNAme.disabled = true;
-      // })
-
-          password.style.display = 'inline-block';
-          passText.style.display = 'inline-block';
-          trigger.style.display = 'inline-block';
-          spany.style.display = 'inline-block';
-
-          BtnModAdd.style.display = 'none';
-          BtnModUpd.style.display = 'inline-block';
-          BtnModDel.style.display = 'inline-block';
-          // BtnModDeact.style.display = 'inline-block';
-          // BtnModAct.style.display = 'inline-block';
-          // BtnUploadPic.style.display = 'none';
-          // BtnRetrievePic.style.display = 'inline-block';
-        }
+      function FillTboxes(){
+        alert("gumana na")
       }
 
   </script>

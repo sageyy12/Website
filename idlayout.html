@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Salsa' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+    
+</head>
+<style>
+    *{
+        font-family: 'Raleway';
+    }
+    .body{
+        width: 100%;
+        overflow-x: hidden;
+        margin: auto;
+    }
+    .container {
+        height: 500px;
+        background-color: #C1CDCB;
+        width: 700px;
+        border: 5px solid #405C81;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+       
+    }
+    .header{
+        background-color: #80A4B7;
+        height: 80px;
+        width: 100.2%;
+        text-align: center;
+        margin-top: -22px;
+        margin-left: -1px;
+    }
+    .header h1{
+        font-family: "Raleway";
+        padding-top: 20px;
+    }
+    .profile{
+        padding-top: 25px;
+        padding-left: 15px;
+    }
+    .watermark{
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.2;
+        z-index: -1;
+    }
+    .driverInfo{
+        font-weight: bold;
+        font-size: 22px;
+        position: relative;
+        top: -200px;
+        left: 35%;
+        margin: 15px;
+        display: block;
+    }
+    #info1, #info2, #info3, #info4, #info5, #info6{
+        font-size: 20px;
+        float: right;
+        position: absolute;
+        top: -20px;
+        left: 220px;
+        display: block;
+    }
+    .Date{
+        position: absolute;
+        top: 85%;
+        left: 68%;
+        font-size: 18px;
+    }
+    #dateInfo{
+        float: right;
+        position: absolute;
+        top: -18px;
+        left: 80px;
+    }
+   
+</style>
+<body>
+    <div class="container">
+        <div class="header"><h1>SHUTTLEGO IDENTIFICATION CARD</h1></div>
+        <div class="profile">
+            <figure> <img src="images/girl.jpg" width="180px" height="180px"> </figure>
+        </div>
+        <div class="watermark">
+            <figure> <img src="images/logo.png" width="350px" height="350px"> </figure>
+        </div>
+        <div>
+            <div class="driverInfo">
+                DRIVER ID:
+                <p id="info1">12345</p>
+            </div>
+            <div class="driverInfo">
+                FIRST NAME:
+                <p id="info2">Rhen Dhel</p>
+            </div>
+            <div class="driverInfo">
+                MIDDLE NAME:
+                <p id="info3">Balansag</p>
+            </div>
+            <div class="driverInfo">
+                LAST NAME:
+                <p id="info4">Patigayon</p>
+            </div>
+            <div class="driverInfo">
+                ADDRESS:
+                <p id="info5">B16 L14 Eme St.</p>
+            </div>
+            <div class="driverInfo">
+                PHONE NUMBER:
+                <p id="info6">0123445678</p>
+            </div>
+        </div>
+        <div class="Date">
+            ISSUED:
+            <p id="dateInfo">23/09/2022</p>
+        </div>
+    </div>
+</body>
+</html>
