@@ -41,18 +41,18 @@ body{
     overflow-x: hidden;
 }
 
-.nav {
+/* .nav {
     background: #3D5A80;
     position: absolute;
     width: 1440px;
     height: 67px;
     left: 0px;
     top: 0px;
-}
+} */
 
 .nav .logo-content .logo .logo-name{
     position: absolute;
-    left: 161px; /*147px*/
+    left: 161px; 
     top: 7px;
     font-family: 'Salsa';
     font-style: normal;
@@ -60,14 +60,13 @@ body{
     font-size: 35px;
     line-height: 55px;
     text-align: center;
-
-color: #E0FBFC;
+    color: #E0FBFC;
 }
 
 .nav .logo-content .logo img{
     height: 50px;
     width: 50px;
-    left: 107px; /*86px*/
+    left: 107px; 
     top: 8px;
     border-radius: 93px;
     position: absolute;
@@ -86,7 +85,7 @@ color: #E0FBFC;
     font-weight: 900;
     font-size: 21px;
     color: #3D5A80;
-}
+} 
 
 .sidebar{
   position: fixed;
@@ -96,7 +95,7 @@ color: #E0FBFC;
   width: 5vw;
   /*width: 15vw;*/
   background: #3D5A80;
-  padding: 6px 14px;
+  padding: 6px 27px;
   transition: all 0.5s ease;
   z-index: 1;
 }
@@ -105,7 +104,10 @@ color: #E0FBFC;
   height: 100%;
   width: 20vw;
 }
-
+/* .sidebar #btn {
+  width: 25px;
+  height: 25px;
+} */
 /*.sidebar.open {
     width: 293vw;
 }*/
@@ -121,6 +123,7 @@ color: #E0FBFC;
   line-height: 90px;
   transform: translateX(-50%);
   pointer-events: auto;
+  z-index: 1;
 }
 
 .sidebar.active #btn{
@@ -216,7 +219,7 @@ color: #E0FBFC;
   width: 143px;
   height: 42px;
   left: 100px;
-  top: 93px;
+  /* top: 93px; */
   background-color: #3D5A80;
   border-color: transparent;
   border-radius: 66px;
@@ -244,6 +247,7 @@ table{
 position: relative;
 /*margin-left: 130px;*/
 top: 11px;
+left: 50px;
 max-width: 97%;
 /*border: 2px solid #3D5A80;
 box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -307,6 +311,139 @@ table td #paid, #pending, #balance{
   position: relative;
   margin-top: 9px;
   margin-right: 1px;
+}
+a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5, #viewBtnModal6,
+#viewBtnModal7, #viewBtnModal8, #viewBtnModal9, #viewBtnModal10
+{
+  color: #3D5A80;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+#myBtn {
+  color: #3D5A80;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+#myBtn:hover{
+  color: #42a5f5;
+}
+
+#receiptCont{
+  /*display: none;*/
+  padding-left: 15px;
+  padding-right: 15px;
+  /*width: 90%;
+  height: 500px;*/
+}
+
+.seemoreModal-body #receiptCont img{
+  height: 50%;
+  width: 50%;
+  position: relative;
+  top: -38px;
+}
+
+td #seemoreModal .seemoremodal-content .seemoreModal-body #receiptCont .buttons{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  /*margin: 16px 118px;*/
+  margin: 0 90px;
+}
+
+td #seemoreModal .seemoremodal-content .seemoreModal-body #receiptCont .buttons .accept,
+td #seemoreModal .seemoremodal-content .seemoreModal-body #receiptCont .buttons .decline{
+  padding: .5rem;
+  border-radius: 8px;
+  border-color: transparent;
+  background-color: #4caf50;
+  color: #E0FBFC;
+}
+
+td #seemoreModal .seemoremodal-content .seemoreModal-body #receiptCont .buttons .decline{
+  background-color: #d60000;
+}
+
+td #seemoreModal .seemoremodal-content .seemoreModal-body #receiptCont .buttons .accept .fa{
+  color: #E0FBFC;
+}
+
+.seemoreModal-body form{
+  position: relative;
+  top: -43px;
+  margin-bottom: -22px;
+}
+
+#amount, #csname{
+  position: relative;
+  width: auto;
+  height: auto;
+  border: 1px solid #293241;
+  border-radius: 15px;
+  border-color: #293241;
+  background-color: white;
+  margin-top: 12px;
+  padding: .5rem;
+  color: #293241;
+  box-shadow: 3px 3px 2px .2px grey;
+}
+
+.modal-backdrop.in,  .modal-backdrop{
+    filter: alpha(opacity=50);
+    opacity: .5;
+    z-index: 0;
+
+}
+
+.modal-backdrop.show{
+  z-index: 0;
+}
+
+#csname{
+  right: -8px;
+}
+#seemoreModal{
+  position: absolute;
+  top: calc(100% - 200%);
+  left: 300px;
+  width: 380px;
+  max-height: 700px;
+  background: #E0FBFC;
+  border: 2px solid #3D5A80;
+  border-radius: 10px;
+  z-index: 1;
+  display: none; /*none*/
+}
+#seemoreModal.show{
+  opacity: 1;
+  display: block; /*inline-block*/
+}
+.seemoremodal-content{
+  position: relative;
+  overflow-y: hidden;
+  margin: 10px auto;
+  padding: 0;
+  width: 600px;
+  max-width: 90%;
+  animation: open 0.5s ease;
+}
+
+.seemoreclose-btn{
+  position: relative;
+  color: #3D5A80;
+  left: 328px;
+  top: -20px;
+  font-family: "Raleway";
+  font-size: 30px;
+  font-weight: bold;
+  padding: 1px 5px;
+  text-decoration: none;
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
 }
 
 /* sort by date */
