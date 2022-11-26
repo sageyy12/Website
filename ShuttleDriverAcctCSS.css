@@ -458,7 +458,8 @@ tr, td #update{
 
 #myimg{
   margin: 20px;
-  border-radius: 50%;
+  margin-left: 132px;
+  border-radius: 5%;
 }
 
 .modal-body input[type=text]{
@@ -469,6 +470,10 @@ tr, td #update{
   border: 1px solid #194F82;
   padding: 6px;
   font-size: 14px;
+}
+
+#namebox{
+  margin-left: 118px !important;
 }
 
 .modal-body input[type=text], input[type=password], input[type=email]{
