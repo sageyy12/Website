@@ -223,6 +223,89 @@ color: #E0FBFC;
   box-shadow: 3px 3px 2px 0.2px grey;
 }
 
+/* id */
+.container{
+  position: absolute;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 47%;
+  width: 47%;
+  top: 16%;
+  left: 8%;
+  margin-bottom: 15%;
+  border: 5px solid #405C81;
+  background-color: #C1CDCB;
+}
+
+.containerheader{
+    background-color: #80A4B7;
+    height: 80px;
+    width: 100.2%;
+    text-align: center;
+    margin-top: -22px;
+    margin-left: -1px;
+}
+
+.containerheader h1{
+  font-family: "Raleway";
+  padding-top: 20px;
+}
+
+
+.profile{
+  padding-top: 25px;
+  padding-left: 15px;
+}
+
+.watermark{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.driverInfo{
+  font-weight: bold;
+  font-size: 22px;
+  position: relative;
+  top: -200px;
+  left: 35%;
+  margin: 15px;
+  display: block;
+}
+
+.container .driverInfo .info{
+  font-size: 20px;
+  float: right;
+  position: absolute;
+  top: -20px;
+  left: 220px;
+  display: block;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.Date{
+  position: absolute;
+  top: 85%;
+  left: 68%;
+  font-size: 18px;
+}
+
+#dateInfo{
+  float: right;
+  position: absolute;
+  top: -18px;
+  left: 80px;
+  background-color: transparent;
+  border-color: transparent;
+}
+
 .ID-content{
   position: relative;
   display: block;
@@ -233,6 +316,7 @@ color: #E0FBFC;
   width: 500px;
   top: 120px;
   left: 120px;
+  margin-bottom: 15%;
 }
 
 .ID-container .ID-content .ID-img #driver_id{
@@ -241,6 +325,13 @@ color: #E0FBFC;
   margin-bottom: 200px;
   /*height: 400px;
   width: 400px;*/
+}
+
+#imgTest img{
+  height: 140%;
+  width: 140%;
+  margin: 30px;
+  margin-left: 90%;
 }
 
 #try{
