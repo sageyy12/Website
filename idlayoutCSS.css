@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Arya&family=Inter:wght@100&family=Quicksand:wght@300&family=Raleway:wght@100&family=Rozha+One&family=Salsa&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Salsa";
+}
+
+.container {
+    position: absolute;
+    height: 500px;
+    background-color: #C1CDCB;
+    width: 700px;
+    border: 5px solid #405C81;
+    /* top: 50%;
+    left: 50%; */
+    margin-right: 50%;
+    /* transform: translate(-50%, -50%); */
+   
+}
+.header{
+    background-color: #80A4B7;
+    height: 80px;
+    width: 100.2%;
+    text-align: center;
+    margin-top: -22px;
+    margin-left: -1px;
+}
+.header h1{
+    font-family: "Raleway";
+    padding-top: 20px;
+}
+.profile{
+    padding-top: 25px;
+    /* padding-left: 15px; */
+}
+.profile img{
+    border-radius: 5%;
+    margin-top: 25px;
+}
+.watermark{
+    position: absolute;
+    top: 17%;left: 25%;
+    margin-right: -50%;
+    opacity: 0.1;
+}
+.content{
+    position: relative;
+    top: -250px;
+}
+.driverInfo{
+    font-weight: bold;
+    font-size: 22px;
+    position: relative;
+    /* top: -250px; */
+    /* left: 35%; */
+    margin: 2% 0% 0 40%;
+    display: block;
+}
+.container .driverInfo .info{
+    font-size: 20px;
+    float: right;
+    position: absolute;
+    top: -15px;
+    /* left: 220px; */
+    margin: 3% 0 0 45%; /* top right bottom left */
+    display: block;
+    background-color: transparent;
+    border-color: transparent;
+}
+.Date{
+    position: absolute;
+    top: 85%;
+    left: 68%;
+    font-size: 18px;
+}
+#dateInfo{
+    float: right;
+    position: absolute;
+    /* top: -18px; */
+    left: 80px;
+    background-color: transparent;
+    border-color: transparent;
+}
+#namebox2{
+    position: relative;
+    right: 28%;
+}
+
+#load{
+    position: relative;
+    top: 120px;
+    left: -120px;
+}

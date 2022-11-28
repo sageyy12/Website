@@ -405,9 +405,11 @@ tr, td #update{
   height: 24px;
 }
 
-/* .modal-body{
-  width: 1120px;
+/* iframe::-webkit-scrollbar-thumb{
+  background-color: #3D5A80;
+  border-radius: 10vw;
 } */
+
 
 /* para sa add new acct modal */
 .labs{
@@ -427,6 +429,12 @@ tr, td #update{
 
 .modal-content{
   width: auto !important;
+}
+
+#idModalContent{
+  /* width: 700px !important; */
+  height: 604px !important;
+  background-color: rebeccapurple;
 }
 
 #prof, #upload, #retrieve{
@@ -454,6 +462,10 @@ tr, td #update{
   margin-right: 80px;
   /* width: 1020px; */
   padding-right: 400px !important; /*540*/
+}
+
+#viewprof_iframe{
+  overflow: hidden;
 }
 
 #myimg{

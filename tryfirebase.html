@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Read, Write, Update, Delete Data Firebase JS</title>
+    <title>Shuttle Driver's Account</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="ShuttleDriverAcctCSS.css">
     <!-- bootstrap for the table -->
@@ -192,15 +192,59 @@
 
 <div class="modal fade" id="viewProf" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+    <div class="modal-content" id="idModalContent">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Driver's Profile</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Driver's ID</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <iframe id="viewprof_iframe" src="viewDriversAcct.html" frameborder="0" height="400" width="1000"></iframe>
+        <!-- <iframe id="viewprof_iframe" src="idlayout.html" frameborder="100" height="520" width="730"></iframe> -->
+        <link rel="stylesheet" href="idlayoutCSS.css">
+        <div class="container">
+          <div class="header"><h1>SHUTTLEGO IDENTIFICATION CARD</h1></div>
+          <div class="profile">
+              <figure>
+                  <img id="myimg2" width="230px" height="230px">
+                  <input type="text" id="namebox2" class="info" placeholder="lagayan ng name link ng profile" disabled hidden>
+              </figure>
+          </div>
+          <div class="watermark">
+              <figure> <img src="images/logo.png" width="350px" height="350px"> </figure>
+          </div>
+          <div class="content">
+              <div class="driverInfo">
+                  <!-- <button id="load" onclick="FillTboxes2('+studentNo+')">load data</button> -->
+                  LICENSE:
+                  <input type="text" id="info1" class="info" placeholder="License" disabled>
+              </div>
+              <div class="driverInfo">
+                  FIRST NAME:
+                  <input type="text" id="info2" class="info" placeholder="First name" disabled>
+              </div>
+              <div class="driverInfo">
+                  MIDDLE INITIAL:
+                  <input type="text" id="info3" class="info" placeholder="Middle initial" disabled>
+              </div>
+              <div class="driverInfo">
+                  LAST NAME:
+                  <input type="text" id="info4" class="info" placeholder="Last name" disabled>
+              </div>
+              <div class="driverInfo">
+                  ADDRESS:
+                  <input type="text" id="info5" class="info" placeholder="Address" disabled>
+              </div>
+              <div class="driverInfo">
+                  PHONE NUMBER:
+                  <input type="text" id="info6" class="info" placeholder="Phone number" disabled>
+              </div>
+          </div>
+          <div class="Date">
+              ISSUED:
+                  <input type="text" id="dateInfo" placeholder="Date" disabled>
+          </div>
+      </div>
         </div>
       </div>
       </div>
@@ -394,7 +438,7 @@
         var ControlDiv = document.createElement("div");
         ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'
         ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
-        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#viewProf">View Profile </button>'
+        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#viewProf">View ID </button>'
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
@@ -627,6 +671,51 @@
           }
         )
         // )
+      }
+
+      // for id content
+
+      var lic = document.getElementById("info1");
+      var fname = document.getElementById("info2");
+      var mname = document.getElementById("info3");
+      var lname = document.getElementById("info4");
+      var add = document.getElementById("info5");
+      var phone = document.getElementById("info6");
+      var datey = document.getElementById("dateInfo");
+
+      function FillTboxes2(index){
+        if(index == null){
+          lic.value = "";
+          midName.value = "";
+          fname.value = "";
+          mname.value = "";
+          lname.value = "";
+          email.value = "";
+          add.value = "";
+          phone.value = "";
+          datey.value = "";
+          profname.value = "";
+        }
+        else{
+          --index;
+
+          fname.value = stdList[index][0];
+          midName.value = stdList[index][0];
+          fname.value =  stdList[index][0];
+          phone.value = stdList[index][6];
+          add.value = stdList[index][5];
+          lic.value = stdList[index][4];
+          regdate.value = stdList[index][2];
+          profname.value = stdList[index][9];
+
+          
+      //img retrieval process
+      ImgNAme = document.getElementById('namebox2').value;
+      firebase.database().ref('users/' + license.value).on('value', function(snapshot){
+        document.getElementById('myimg2').src = snapshot.val().Link;
+        ImgNAme.disabled = true;
+      })
+        }
       }
 
       function hidePass(){
