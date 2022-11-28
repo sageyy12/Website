@@ -215,7 +215,7 @@
           </div>
           <div class="content">
               <div class="driverInfo">
-                  <!-- <button id="load" onclick="FillTboxes2('+studentNo+')">load data</button> -->
+                  <button id="load" onclick="FillTboxes2('+studentNo+')">load data</button>
                   LICENSE:
                   <input type="text" id="info1" class="info" placeholder="License" disabled>
               </div>
@@ -468,8 +468,6 @@
       var BtnModDel = document.getElementById('delBtn');
       var BtnModDeact = document.getElementById('deact');
       var BtnModAct = document.getElementById('act');
-      // var BtnUploadPic = document.getElementById('upload');
-      // var BtnRetrievePic = document.getElementById('retrieve');
 
       function FillTboxes(index){
         if(index == null){
@@ -539,10 +537,6 @@
           BtnModAdd.style.display = 'none';
           BtnModUpd.style.display = 'inline-block';
           BtnModDel.style.display = 'inline-block';
-          // BtnModDeact.style.display = 'inline-block';
-          // BtnModAct.style.display = 'inline-block';
-          // BtnUploadPic.style.display = 'none';
-          // BtnRetrievePic.style.display = 'inline-block';
         }
       }
 
@@ -683,7 +677,10 @@
       var phone = document.getElementById("info6");
       var datey = document.getElementById("dateInfo");
 
+      ++studentNo;
+
       function FillTboxes2(index){
+        alert(index)
         if(index == null){
           lic.value = "";
           midName.value = "";
@@ -698,6 +695,7 @@
         }
         else{
           --index;
+          alert(index)
 
           fname.value = stdList[index][0];
           midName.value = stdList[index][0];
