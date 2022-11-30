@@ -279,11 +279,12 @@
       <center>
         <img src="images/receipt.png" id="#receiptimg">
         
-      </center>
+      <!-- </center>
       <button onclick="zoomin()">Zoom-In</button>
         <button onclick="zoomout()">Zoom-Out</button>
       
-      <center><form>
+      <center> -->
+        <form>
       <label for="csname" id="csnamelabel">Driver's Name: </label>
       <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
       <br>
@@ -303,7 +304,7 @@
 
 
            
-        </tbody>
+        <!-- </tbody> -->
        
       </table>
     </div>
@@ -503,6 +504,7 @@
             tbody1.innerHTML="";
             boundary.forEach(element => {
               AddItemToTable(element.driver, element.receipt , element.email2, element.status, element.time, element.date)
+              alert("AddAllItems pang laman")
             });
           }
 
@@ -517,6 +519,7 @@
                 });
                 AddAllItems(commuter);
               })
+                alert("getAllData")
           }
 
           function getAllDataRT() {
@@ -529,6 +532,7 @@
                 });
                 AddAllItems(commuters);
               })
+                alert("getAllDataRT")
           }
 
           window.onLoad = getAllDataRT();
