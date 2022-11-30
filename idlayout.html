@@ -96,15 +96,34 @@
     #namebox{
         position: relative;
         right: 28%;
+        border-radius: 5%;
+    }
+    #genID{
+        position: relative;
+        right: 67%;
+        bottom: 12%;
+        font-family: "Salsa";
+        background: #3d5a80;
+        border-color: transparent;
+        border-radius: 11px;
+        letter-spacing: 1.5px;
+        color: #E0FBFC;
+        width: 130px;
+        height: 40px;
+        cursor: pointer;
     }
 
 </style>
 <body>
+    <div class="driverInfo">
+        <button onclick="forID()" id="genID">Generate ID</button>
+    </div>
+    <br>
     <div class="container">
         <div class="header"><h1>SHUTTLEGO IDENTIFICATION CARD</h1></div>
         <div class="profile">
             <figure>
-                <img src="images/girl.jpg" width="230px" height="230px">
+                <img id="myimg" width="230px" height="230px">
                 <input type="text" id="namebox" class="info" placeholder="lagayan ng name link ng profile" disabled hidden>
             </figure>
         </div>
@@ -113,20 +132,19 @@
         </div>
         <div class="content">
             <div class="driverInfo">
-                <button onclick="FillTboxes('+studentNo+')">load data</button>
                 LICENSE:
                 <input type="text" id="info1" class="info" placeholder="License" disabled>
             </div>
             <div class="driverInfo">
-                FIRST NAME:
+                NAME:
                 <input type="text" id="info2" class="info" placeholder="First name" disabled>
             </div>
             <div class="driverInfo">
-                MIDDLE INITIAL:
+                USERNAME:
                 <input type="text" id="info3" class="info" placeholder="Middle initial" disabled>
             </div>
             <div class="driverInfo">
-                LAST NAME:
+                EMAIL:
                 <input type="text" id="info4" class="info" placeholder="Last name" disabled>
             </div>
             <div class="driverInfo">
@@ -165,114 +183,45 @@
     };
     firebase.initializeApp(firebaseConfig);
 
-    function Select_AllData(){
-      firebase.database().ref('users').once('value', function (snapshot){
-        snapshot.forEach(function(childSnapshot){
-            var name = childSnapshot.val().firstName;
-            var middle = childSnapshot.val().midName;
-            var last = childSnapshot.val().lastName;
-            var regdate = childSnapshot.val().registration;
-            var licensey = childSnapshot.val().license;
-            var add = childSnapshot.val().address;
-            var num = childSnapshot.val().phonenum;
-            var prof = childSnapshot.val().NameOfTheProf;
-            AddItemToTable(name, middle, last, regdate, add, num, prof);
-    });
-  });
-}
-    window.onload = Select_AllData;
 
     //table filling
     var studentNo = 0;
       var stdList = [];
+      
+      function forID(){
+        var lic = document.getElementById("info1");
+        var fname = document.getElementById("info2");
+        var mname = document.getElementById("info3");
+        var lname = document.getElementById("info4");
+        var add = document.getElementById("info5");
+        var num = document.getElementById("info6");
+        var date = document.getElementById("dateInfo");
+        var imgcont = document.getElementById("namebox");
 
-      function AddItemToTable(name, middle, last, regdate, add, num, prof){
-        let katawan = document.getElementById("keme");
-        let divi = document.createElement("div");
-        let td0 = document.createElement("p");
-        // let td0 = document.createElement("tr");
-        // let td1 = document.createElement("td");
-        // let td2 = document.createElement("td");
-        // let td3 = document.createElement("td");
-        // let td4 = document.createElement("td");
-        // let td5 = document.createElement("td");
-        // let td6 = document.createElement("td");
-        // let td7 = document.createElement("td");
-        // let td8 = document.createElement("td");
-        // let td9 = document.createElement("td");
-        // let td10 = document.createElement("td");
+        var licc = sessionStorage.getItem("licc");
+        var fnamey = sessionStorage.getItem("fnamey");
+        var mnamey = sessionStorage.getItem("mnamey");
+        var lnamey = sessionStorage.getItem("lnamey");
+        var addressy = sessionStorage.getItem("addressy");
+        var numm = sessionStorage.getItem("numy");
+        var dateeee = sessionStorage.getItem("datey");
+        var imageeee = sessionStorage.getItem("imgggg");
 
-        stdList.push([name, middle, last, regdate, add, num, prof]);
+        lic.value = licc;
+        fname.value = fnamey;
+        mname.value = mnamey;
+        lname.value = lnamey;
+        add.value = addressy;
+        num.value = numm;
+        date.value = dateeee;
+        imgcont.value = imageeee;
 
-        td0.innerHTML = name;
-        // td1.innerHTML = name;
-        // td2.innerHTML = emaily;
-        // td3.innerHTML = regdate;
-        // td4.innerHTML = statusy;
-        // td5.innerHTML = licensey;
-        // td6.innerHTML = add;
-        // td7.innerHTML = num;
-        // td8.innerHTML = unamey;
-        // td9.innerHTML = passs;
-        // td10.innerHTML = prof;
-        // trow.appendChild(td0);
-        // trow.appendChild(td1);
-        // trow.appendChild(td2);
-        // trow.appendChild(td3);
-        // trow.appendChild(td4);
-        // trow.appendChild(td5);
-        // trow.appendChild(td6);
-        // trow.appendChild(td7);
-        // trow.appendChild(td8);
-        // trow.appendChild(td9);
-        // trow.appendChild(td10);
-
-        divi.appendChild(td0);
-      }
-
-      var lic = document.getElementById("info1");
-      var fname = document.getElementById("info2");
-      var mname = document.getElementById("info3");
-      var lname = document.getElementById("info4");
-      var add = document.getElementById("info5");
-      var phone = document.getElementById("info6");
-      var datey = document.getElementById("dateInfo");
-
-      function FillTboxes(index){
-        if(index == null){
-          lic.value = "";
-          midName.value = "";
-          fname.value = "";
-          mname.value = "";
-          lname.value = "";
-          email.value = "";
-          add.value = "";
-          phone.value = "";
-          datey.value = "";
-          profname.value = "";
-        }
-        else{
-          --index;
-
-          fname.value = stdList[index][0];
-          midName.value = stdList[index][0];
-          fname.value =  stdList[index][0];
-          phone.value = stdList[index][6];
-          add.value = stdList[index][5];
-          lic.value = stdList[index][4];
-          regdate.value = stdList[index][2];
-          profname.value = stdList[index][9];
-
-          
-      //img retrieval process
-      ImgNAme = document.getElementById('namebox').value;
-      firebase.database().ref('users/' + email.value).on('value', function(snapshot){
-        document.getElementById('myimg').src = snapshot.val().Link;
-        ImgNAme.disabled = true;
-      })
-        }
-      }
+        var ImgNAme = document.getElementById('namebox').value;
+        firebase.database().ref('users/' + lname.value).on('value', function(snapshot){
+            document.getElementById('myimg').src = snapshot.val().Link;
+            ImgNAme.disabled = true;
+        })
+    }
     </script>
-
 </body>
 </html>

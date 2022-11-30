@@ -200,50 +200,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <!-- <iframe id="viewprof_iframe" src="idlayout.html" frameborder="100" height="520" width="730"></iframe> -->
-        <link rel="stylesheet" href="idlayoutCSS.css">
-        <div class="container">
-          <div class="header"><h1>SHUTTLEGO IDENTIFICATION CARD</h1></div>
-          <div class="profile">
-              <figure>
-                  <img id="myimg2" width="230px" height="230px">
-                  <input type="text" id="namebox2" class="info" placeholder="lagayan ng name link ng profile" disabled hidden>
-              </figure>
-          </div>
-          <div class="watermark">
-              <figure> <img src="images/logo.png" width="350px" height="350px"> </figure>
-          </div>
-          <div class="content">
-              <div class="driverInfo">
-                  <button id="load" onclick="FillTboxes2('+studentNo+')">load data</button>
-                  LICENSE:
-                  <input type="text" id="info1" class="info" placeholder="License" disabled>
-              </div>
-              <div class="driverInfo">
-                  FIRST NAME:
-                  <input type="text" id="info2" class="info" placeholder="First name" disabled>
-              </div>
-              <div class="driverInfo">
-                  MIDDLE INITIAL:
-                  <input type="text" id="info3" class="info" placeholder="Middle initial" disabled>
-              </div>
-              <div class="driverInfo">
-                  LAST NAME:
-                  <input type="text" id="info4" class="info" placeholder="Last name" disabled>
-              </div>
-              <div class="driverInfo">
-                  ADDRESS:
-                  <input type="text" id="info5" class="info" placeholder="Address" disabled>
-              </div>
-              <div class="driverInfo">
-                  PHONE NUMBER:
-                  <input type="text" id="info6" class="info" placeholder="Phone number" disabled>
-              </div>
-          </div>
-          <div class="Date">
-              ISSUED:
-                  <input type="text" id="dateInfo" placeholder="Date" disabled>
-          </div>
+        <iframe id="viewprof_iframe" src="idlayout.html" frameborder="100" height="600" width="750"></iframe>
       </div>
         </div>
       </div>
@@ -468,6 +425,7 @@
       var BtnModDel = document.getElementById('delBtn');
       var BtnModDeact = document.getElementById('deact');
       var BtnModAct = document.getElementById('act');
+      
 
       function FillTboxes(index){
         if(index == null){
@@ -520,6 +478,25 @@
           document.getElementById("status").value = stdList[index][3];
           regdate.value = stdList[index][2];
           profname.value = stdList[index][9];
+
+          //for id
+          var licc = license.value;
+          var fnamey = firstName.value;
+          var mnamey = uname.value;
+          var lnamey = email.value;
+          var addressy = address.value;
+          var numy = phonenum.value;
+          var datey = regdate.value;
+          var imgggg = profname.value;
+
+          sessionStorage.setItem("licc", licc);
+          sessionStorage.setItem("fnamey", fnamey);
+          sessionStorage.setItem("mnamey", mnamey);
+          sessionStorage.setItem("lnamey", lnamey);
+          sessionStorage.setItem("addressy", addressy);
+          sessionStorage.setItem("numy", numy);
+          sessionStorage.setItem("datey", datey);
+          sessionStorage.setItem("imgggg", imgggg);
 
           
       //img retrieval process
@@ -665,55 +642,6 @@
           }
         )
         // )
-      }
-
-      // for id content
-
-      var lic = document.getElementById("info1");
-      var fname = document.getElementById("info2");
-      var mname = document.getElementById("info3");
-      var lname = document.getElementById("info4");
-      var add = document.getElementById("info5");
-      var phone = document.getElementById("info6");
-      var datey = document.getElementById("dateInfo");
-
-      ++studentNo;
-
-      function FillTboxes2(index){
-        alert(index)
-        if(index == null){
-          lic.value = "";
-          midName.value = "";
-          fname.value = "";
-          mname.value = "";
-          lname.value = "";
-          email.value = "";
-          add.value = "";
-          phone.value = "";
-          datey.value = "";
-          profname.value = "";
-        }
-        else{
-          --index;
-          alert(index)
-
-          fname.value = stdList[index][0];
-          midName.value = stdList[index][0];
-          fname.value =  stdList[index][0];
-          phone.value = stdList[index][6];
-          add.value = stdList[index][5];
-          lic.value = stdList[index][4];
-          regdate.value = stdList[index][2];
-          profname.value = stdList[index][9];
-
-          
-      //img retrieval process
-      ImgNAme = document.getElementById('namebox2').value;
-      firebase.database().ref('users/' + license.value).on('value', function(snapshot){
-        document.getElementById('myimg2').src = snapshot.val().Link;
-        ImgNAme.disabled = true;
-      })
-        }
       }
 
       function hidePass(){

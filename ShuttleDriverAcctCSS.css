@@ -431,11 +431,11 @@ tr, td #update{
   width: auto !important;
 }
 
-#idModalContent{
-  /* width: 700px !important; */
+/* #idModalContent{
+  width: 700px !important;
   height: 604px !important;
   background-color: rebeccapurple;
-}
+} */
 
 #prof, #upload, #retrieve{
   width: 259px; /*259*/

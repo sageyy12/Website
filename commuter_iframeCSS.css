@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Arya&family=Inter:wght@100&family=Quicksand:wght@300&family=Raleway:wght@100&family=Rozha+One&family=Salsa&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Salsa";
+}
+
+/* para sa add new acct modal */
+.labs{
+    display: inline-block;
+    width: 150px;
+  }
+  
+  .modal-body #trigger{
+    width: 25px !important; /*259*/
+    height: 20px !important;
+    border-color: transparent !important;
+  }
+  
+  .modal-body span{
+    margin-left: 153px;
+  }
+  
+  .modal-content{
+    width: auto !important;
+  }
+  
+  /* #idModalContent{
+    width: 700px !important;
+    height: 604px !important;
+    background-color: rebeccapurple;
+  } */
+  
+  #prof, #upload, #retrieve{
+    width: 259px; /*259*/
+    height: 40px;
+    margin: 5px !important;
+    border-radius: 10px;
+    border: 1px solid #194F82;
+    box-shadow: 3px 3px 2px 0.2px grey;
+    padding: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  #upload, #retrieve{
+    width: 159px; /*259*/
+    height: 40px;
+  }
+
+  /* buttons sa action center */
+#addAcct{
+    font-family: "Salsa";
+    /* width: 90px;
+    height: 26px; */
+    background: #3d5a80;
+    border-color: transparent;
+    border-radius: 11px;
+    letter-spacing: 1.5px;
+    color: #E0FBFC;
+  }
+  
+  #addAcct:hover{
+    background: #E0FBFC;
+    color: rgb(113, 110, 110);
+  }
+
+  .modal-content .modal-header .close{
+    background-color: transparent;
+    border-color: transparent;
+  }
+  
+  .modal-content .modal-header .close:hover{
+    background-color: #e3d5d530;
+  }
+  
+  .modal-content .modal-header .close span{
+    font-size: 30px;
+  }

@@ -243,14 +243,14 @@
     top: -30px;
     /* left: 120px; */
     /* margin-bottom: 400px; */
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
     "header header"
     "userProfile userDetails"
-    "work_skills timeline_about";
+    "work_skills timeline_about"; */
     /*background-color: #E0FBFC;*/
-    background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+    /* background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)); */
     /* height: 90vh;
     width: 85%; */
     padding: 1.5rem;
@@ -280,6 +280,7 @@
     border-radius: .5rem;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
     padding: 1.5rem;
+    top: 500px;
   }
   
   .containerism .userProfile{
@@ -290,6 +291,7 @@
     padding: 1rem;
     background: none;
     width: 400px;
+    top: 0;
   }
   
   .containerism .userProfile .profile figure img{
@@ -372,7 +374,7 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 2.5rem;
+    /* margin-bottom: 2.5rem; */
   }
   
   .timeline_about .tabs ul::before{
@@ -429,7 +431,7 @@
   .timeline_about .contact_info ul li,
   .timeline_about .basic_info ul li{
     display: flex;
-    margin: 0.5rem 0;
+    margin: 1rem 0;
   }
   
   .timeline_about .contact_info ul li h1,
@@ -439,9 +441,25 @@
     min-width: 12rem;
   }
   
-  .timeline_about .contact_info ul li span,
-  .timeline_about .basic_info ul li span{
+  .timeline_about .contact_info ul li input[type=text],
+  .timeline_about .basic_info ul li input[type=text]{
     font-size: 0.9rem;
+    background-color: transparent;
+    border-color: transparent;
+  }
+  
+  #genID{
+      position: relative;
+      right: 30%;
+      font-family: "Salsa";
+      background: #3d5a80;
+      border-color: transparent;
+      border-radius: 11px;
+      letter-spacing: 1.5px;
+      color: #E0FBFC;
+      width: 130px;
+      height: 40px;
+      cursor: pointer;
   }
   
   .tableDiv{
