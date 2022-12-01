@@ -342,7 +342,7 @@ a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5
   height: 50%;
   width: 50%;
   position: relative;
-  top: -38px;
+  /* top: -38px; */
 }
 
 td #seemoreModal .seemoremodal-content .seemoreModal-body #receiptCont .buttons{

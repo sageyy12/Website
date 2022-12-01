@@ -119,6 +119,49 @@
 }
 
     </style>
+    
+
+    <!-- printing css starts here  -->
+    <style id="table_style" type="text/css">
+      table td #paid, #pending, #balance{
+        width: 90px;
+        height: 26px;
+        background: #4caf50;
+        border-radius: 11px;
+        border-color: transparent;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 15px;
+        letter-spacing: 1.5px;
+        color: #E0FBFC;
+      }
+      #pending{
+        background: #FFA000;
+      }
+      #balance{
+        background: #d60000;
+      }
+      @media print{
+        table td #paid, #pending, #balance{
+          color: #4caf50;
+          background-color: red;
+        }
+        #pending{
+          color: #FFA000;
+        }
+        #balance{
+          color: #d60000;
+        }
+        table
+        {
+            border: transparent;
+        }
+        #example_length label, #example_filter label{ /*show entries number and search*/
+          display: none;
+        }
+      }
+      </style>
+      <!-- printing css ends here  -->
     <body>
 
       <div class="topnav" id="myTopnav">
@@ -207,26 +250,66 @@
           </div>
 
           <div id="dvContents" class="tableDiv">
-            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-            <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-              <!-- bootstrap link for the table -->
-              <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-              <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-              <table id="example" class="display" width="100%" cellspacing="0">
-                <thead>
+          <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+          <!-- para sa show entries number option  -->
+          <!--div class="dataTables_length" id="example_length">
+            <label>Show <select name="example_length" aria-controls="example" class="">
+              <option value="10">12</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+            </select> entries</label>
+          </div!-->
+          <!-- <button id="myBtn">Open Modal</button> -->
+
+
+
+          <!-- <table id="example" class="display" width="100%" cellspacing="0">
+            <thead>
                   <th>ID</th>
-                  <th>Name</th>
-                  <th>Contact Number</th>
-                  <th>Receipt</th>
-                  <th>Receipt Name</th>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Status</th>
-                  <th>Action Center</th>
-                </thead>
-                <tbody id="tbody1"></tbody>
+                  <th>DRIVER</th> 
+                  <th>RECEIPT</th>
+                  <th>EMAIL</th>
+                  <th>DATE</th>
+                  <th>TIME</th>
+                  <th>ISSUE RECEIPT</th>
+
+                 
+            </thead>
+            <tr>
+              <td>
+                <a href="#exampleModalCenter" id="viewBtn1">
+                  <button id="viewBtnModal1">View Receipt</button>
+                </a>
+                <button id="myBtn">View Receipt</button>
+            </tr>
+           
+            <tbody id="tbody1"> -->
+      
+          
+  
+      
+
+
+          <table id="example" class="display" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+              <th>ID</th>
+              <th id="tbtprofile">PROFILE</th>
+              <th>RECEIPT</th>
+              <th>EMAIL</th>
+              <th>DATE</th>
+              <th>TIME</th>
+              <th>ISSUE RECEIPT</th>
+            </tr>
+          </thead>
+
+          
+          <tbody id="tbody1"></tbody>
+      
 
 <!-- The Modal -->
 <div id="seemoreModal">
@@ -237,27 +320,32 @@
   <div class="seemoreModal-body">
     <div id="receiptCont">
       <center>
-        <img id="#myimg">
-        <input type="text" id="namebox" name="namebox" placeholder="Picture's name here">
+        <img id="myimg" height="200px" width="200px">
         <form>
       <label for="csname" id="csnamelabel">Driver's Name: </label>
       <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
       <br>
       <label for="amount">Boundary Amount: </label>
       <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
-    </form></center>
+    </form>
+  </center>
       <div class="buttons">
         <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
-        <a href="#reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+        <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <!-- Modal ends here-->
+
+
+           
+        <!-- </tbody> -->
+       
       </table>
     </div>
-
     <footer class="footer-distributed">
 
         <div class="footer-left">
@@ -329,102 +417,133 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-    <script>
-      //configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      const firebaseConfig = {
-        apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
-        authDomain: "shuttle-go-8d87a.firebaseapp.com",
-        databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
-        projectId: "shuttle-go-8d87a",
-        storageBucket: "shuttle-go-8d87a.appspot.com",
-        messagingSenderId: "509853219067",
-        appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
-        measurementId: "G-3YGP2PY9QX"
-      };
-      firebase.initializeApp(firebaseConfig);
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script id="MainScript">
+
+            const firebaseConfig = {
+                    apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
+                    authDomain: "shuttle-go-8d87a.firebaseapp.com",
+                    databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
+                    projectId: "shuttle-go-8d87a",
+                    storageBucket: "shuttle-go-8d87a.appspot.com",
+                    messagingSenderId: "509853219067",
+                    appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
+                    measurementId: "G-3YGP2PY9QX"
+                  };
+                  firebase.initializeApp(firebaseConfig);
+
+                console.log(firebase);
+
+
+    // let btn= document.querySelector("#btn");
+    // let sidebar= document.querySelector(".sidebar");
+
+    // btn.onclick= function(){
+    // sidebar.classList.toggle("active");
+    // }
+
+    // //table filter
+    // $(document).ready(function() {
+    //   $('#example').DataTable( {
+    //     "pagingType": "full_numbers",
+    //   } );
+    // } );
+    // function zoomIn() {
+    //   var pic = document.getElementById("receiptimg");
+    //   var width = pic.clientWidth;
+    //   pic.style.width = width + 100 + "px";
+    // }
+    // function zoomOut() {
+    //   var pic = document.getElementById("receiptimg");
+    //   var width = pic.clientWidth;
+    //   pic.style.width = width - 100 + "px";
+    // }
 
       //select all data
       function Select_AllData(){
         firebase.database().ref('boundary').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
             var driverr = childSnapshot.val().driver;
-            var contactt = childSnapshot.val().contact;
+            var receiptt = childSnapshot.val().receiptt;
+            var email22 = childSnapshot.val().email2;
             var datee = childSnapshot.val().date;
             var stats = childSnapshot.val().status;
             var timee = childSnapshot.val().time;
-            var prof = childSnapshot.val().PicName;
           
-            AddItemToTable(driverr, contactt,stats, datee, timee, prof);
-      });
-    });
-  }
+            AddItemToTable(driverr, receiptt, email22,stats, datee, timee);
+          });
+        });
+      }
+      // window.onload = Select_AllData;
 
-      //table filling
-      var studentNo = 0;
+       //table filling
+       var studentNo = 0;
       var stdList = [];
-      var profname = document.getElementById("namebox");
-      var ImgUrl;
+      
 
-      function AddItemToTable(driverr, contactt,stats, datee, timee, prof){
+        function AddItemToTable(driverr, receiptt, email22,stats, datee, timee){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
-        let td0 = document.createElement("tr");
+        let td0 = document.createElement("td");
         let td1 = document.createElement("td");
         let td2 = document.createElement("td");
         let td3 = document.createElement("td");
         let td4 = document.createElement("td");
         let td5 = document.createElement("td");
         let td6 = document.createElement("td");
-        let td7 = document.createElement("td");
+       
 
-        stdList.push([driverr, contactt,stats, datee, timee, prof]);
+        stdList.push([driverr, receiptt, email22,stats, datee, timee ]);
+        
 
         td0.innerHTML = ++studentNo;
         td1.innerHTML = driverr;
-        td7.innerHTML = contactt;
-        td2.innerHTML = prof;
-        td3.innerHTML = datee;
-        td4.innerHTML = timee;
-        td5.innerHTML = stats;
+        td2.innerHTML = receiptt;
+        td3.innerHTML = email22;
+        td4.innerHTML = datee;
+        td5.innerHTML = timee;
         td6.innerHTML = stats;
 
-        var ControlDiv = document.createElement("div");
-        ControlDiv.innerHTML = '<td id="receipt"> <a href="#exampleModalCenter" id="viewBtn1"> <button id="myBtn" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#seemoreModal">View Receipt</button>'
         
-        var ControlDiv2 = document.createElement("div");
-        ControlDiv2.innerHTML = '<select id="status'+studentNo+'" onchange="Update('+studentNo+')">' + 
+        var ControlDiv2 = document.createElement("div2");
+        ControlDiv2.innerHTML ='<td id="receipt"> <a href="#exampleModalCenter" id="viewBtn1">' +
+                          '<button id="myBtn" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#seemoreModal">View Receipt</button>'
+                         
+                        
+        trow.appendChild(td0);
+        trow.appendChild(td1);
+        trow.appendChild(ControlDiv2);
+        trow.appendChild(td3);
+        trow.appendChild(td4);
+        trow.appendChild(td5);
+       // trow.appendChild(td6);
+        trow.append(td6);
+    
+
+        var ControlDiv = document.createElement("div");
+        ControlDiv.innerHTML = '<select id="status'+studentNo+'" onchange="Update('+studentNo+')">' + 
                         '<option>Status</option>' +
                         '<option value="Paid">Paid</option>' +
                         '<option value="Pending">Pending</option>' +
                         '<option value="Unpaid">Unpaid</option>' +
                         '</select>' + 
-                        '<input type="hidden"  id="h_text'+studentNo+ '">'
+                        '<input hidden id="h_text'+studentNo+'">'
 
-        trow.appendChild(td0);
-        trow.appendChild(td1);
-        trow.appendChild(td7);
         trow.appendChild(ControlDiv);
-        trow.appendChild(td2);
-        trow.appendChild(td3);
-        trow.appendChild(td4);
-        trow.appendChild(td5);
-        // trow.appendChild(td6);
-        trow.appendChild(ControlDiv2);
         tbody1.appendChild(trow);
       }
 
-      //for realtime table refreshing
       function AddAllItems(boundary) {
             std=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.driver, element.contact , element.status, element.time, element.date, element.PicName)
+              AddItemToTable(element.driver, element.receipt , element.email2, element.status, element.time, element.date)
             });
           }
 
+          
           function getAllData() {
               const dbref = firebase.database().ref("boundary");
               get(child(dbref, "boundary"))
@@ -450,45 +569,43 @@
           }
 
           window.onLoad = getAllDataRT();
-          //for realtime table refreshing ending
-          
-          //updating accounts
-          function Update(index){
-            var status = document.getElementById('status'+index).value;
-            var tryy = document.getElementById('h_text'+index);
-            --index;
-            tryy.value = stdList[index][0];
-            firebase.database().ref("boundary/" + tryy.value).update(
-              {
-                status: status,
-                Link: ImgUrl
-              },
-              (error)=>{
-                if(error){
-                  alert("Account was not updated " + error);
-                }else{
+
+      //updating accounts
+      function Update(index){
+        var status = document.getElementById('status'+index).value;
+        var tryy = document.getElementById('h_text'+index);
+        --index;
+        tryy.value = stdList[index][0];
+              firebase.database().ref("boundary/" + tryy.value).update(
+                  {
+                    status: status
+                  },
+                  (error)=>{
+                    if(error){
+                      alert("Account was not updated " + error);
+                    }else{
                       alert("Account successfully updated!");
                     }
                   }
                 )
-              }
+          }
 
-              function FillTboxes(index){
-                var tryy = document.getElementById('h_text'+index);
-                if(index == null){
-                  tryy.value = stdList[index][0];
-                  profname.value = stdList[index];
-                }else{
-                  --index;
-                  //img retrieval process
-                  var ImgNAme = document.getElementById('namebox').value;
-                  firebase.database().ref('boundary/' + tryy.value).on('value', function(snapshot){
-                    document.getElementById('myimg').src = snapshot.val().Link;
-                    ImgNAme.disabled = true;
-                  })
-                }
-              }
-    </script>
+            //img retrieval process
+          function FillTboxes(index){
+            var ImgNAme = document.getElementById('h_text'+index);
+            var tryy = document.getElementById('h_text'+index);
+            --index;
+            tryy.value = stdList[index][0];
+            firebase.database().ref('boundary/' + tryy.value).on('value', function(snapshot){
+              document.getElementById('myimg').src = snapshot.val().Link;
+              ImgNAme.disabled = true;
+              ImgNAme.hidden = true;
+            })
+          }
+
+          
+          
+  </script>
 
     <script> //Modal script
       // Get the modal
@@ -499,11 +616,11 @@
       
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-
+      
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
         modal.style.display = "none";
-        modal.style.zIndex = -1;
+        modal.style.zIndex = 1;
       }
       
       // When the user clicks anywhere outside of the modal, close it
@@ -514,47 +631,30 @@
       }
       </script>
 
-    <!-- printing css starts here  -->
-    <style id="table_style" type="text/css">
-    table td #paid, #pending, #balance{
-      width: 90px;
-      height: 26px;
-      background: #4caf50;
-      border-radius: 11px;
-      border-color: transparent;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 15px;
-      letter-spacing: 1.5px;
-      color: #E0FBFC;
-    }
-    #pending{
-      background: #FFA000;
-    }
-    #balance{
-      background: #d60000;
-    }
-    @media print{
-      table td #paid, #pending, #balance{
-        color: #4caf50;
-        background-color: red;
-      }
-      #pending{
-        color: #FFA000;
-      }
-      #balance{
-        color: #d60000;
-      }
-      table
-      {
-          border: transparent;
-      }
-      #example_length label, #example_filter label{ /*show entries number and search*/
-        display: none;
-      }
-    }
-    </style>
-    <!-- printing css ends here  -->
+<script type="text/javascript"> 
+  //printing script
+    function PrintTable() {
+    var printWindow = window.open('', '', 'height=700,width=1200');
+    printWindow.document.write('<table>');
+
+    //Print the Table CSS.
+    var table_style = document.getElementById("table_style").innerHTML;
+    printWindow.document.write('<stylestd type = "text/css">');
+    printWindow.document.write(table_style);
+    printWindow.document.write('</style>');
+    printWindow.document.write('</head>');
+
+    //Print the DIV contents i.e. the HTML Table.
+    printWindow.document.write('<body>');
+    var divContents = document.getElementById("dvContents").innerHTML;
+    printWindow.document.write(divContents);
+    printWindow.document.write('</body>');
+
+    printWindow.document.write('</html>');
+    printWindow.document.close();
+    printWindow.print();
+}
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script>
@@ -566,20 +666,6 @@ window.onclick = function(event) {
   }
 }
   </script>
-
-<script type="text/javascript">
-  function zoomin() {
-      var GFG = document.getElementById("receiptimg");
-      var currWidth = GFG.clientWidth;
-      GFG.style.width = (currWidth + 100) + "px";
-  }
-    
-  function zoomout() {
-      var GFG = document.getElementById("receiptimg");
-      var currWidth = GFG.clientWidth;
-      GFG.style.width = (currWidth - 100) + "px";
-  }
-</script>
 
 <script>
   let btn= document.querySelector("#btn");
