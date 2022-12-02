@@ -536,7 +536,7 @@
       }
 
       function AddAllItems(boundary) {
-            std=0;
+        studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
               AddItemToTable(element.driver, element.receipt , element.email2, element.status, element.time, element.date)
@@ -675,39 +675,5 @@ window.onclick = function(event) {
     sidebar.classList.toggle("active");
   }
   </script>
-
-  <script type="text/javascript"> //printing script
-  
-      var driverName = document.getElementById('dName');
-      var boundAmount = document.getElementById('bAmount');
-
-    function Upd(){
-
-var status = document.getElementById('status').value;
-// var password = document.getElementById('pass').value;
-password.hidden = false;
-
-  firebase.database().ref("users/" + email.value).update( //set
-    {
-      driverName: driverName.value,
-      boundAmount: boundAmount.value,
-
-    },
-    (error)=>{
-      if(error){
-        alert("Account was not updated " + error);
-      }else{
-        alert("Account successfully updated!");
-        // Select_AllData()
-        //hiding the modal
-        $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-        regdate.disabled = true;
-        license.disabled = true;
-      }
-    }
-  );
-}
-
-    </script>
   </body>
 </html>

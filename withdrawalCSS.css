@@ -341,7 +341,7 @@ tr td:nth-child(2) {
   height: 500px;*/
 }
 
-a #viewReceiptbtn{
+#myBtn{
   text-decoration: none;
   font-family: 'Salsa';
   font-size: 17px;
@@ -350,7 +350,7 @@ a #viewReceiptbtn{
   background-color: transparent;
 }
 
-a #viewReceiptbtn:hover{
+#myBtn:hover{
   color: #42a5f5;
 }
 

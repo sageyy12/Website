@@ -278,13 +278,37 @@ main{
 
 /*table*/
 .tableDiv{
-  /*max-width: 123%;*/
-  max-width: 97%;
+  max-width: 90%;
   position: relative;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  top: -80px;
-  left: 3.5rem;
+  /* top: 8rem; */
+  left: 6.3rem;
+  margin-bottom: 220px;
+}
+
+table{
+position: relative;
+top: 5px;
+border-radius: 0.5rem;
+/*left: 129px;
+max-width: 95%;*/
+text-align: center;
+align-items: center;
+background-color: transparent;
+}
+
+thead tr th{
+  align-items: center;
+  text-align: center;
+  background-color: #E0FBFC;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+thead tr th,
+tbody tr td{
+  border: 1px solid black;
 }
 
 /*data table*/
@@ -304,7 +328,7 @@ main{
 }
 
 /*read more*/
-#lowertbt .read-more-container{
+/* #lowertbt .read-more-container{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -328,19 +352,19 @@ main{
 
 #lowertbt thead tr th{
   background-color: #fff;
-}
+} */
 
 /*#lowertbt tr:nth-child(odd){
   background-color: #3D5A80;
 }*/
 
-#lowertbt tr td:nth-child(3){
+/* #lowertbt tr td:nth-child(3){
   width: 15%;
 }
 
 #lowertbt tr td:nth-child(4){
   width: 10%;
-}
+} */
 
 /*see more*/
 .read-more-btn{

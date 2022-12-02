@@ -119,6 +119,49 @@
 }
 
     </style>
+    
+
+    <!-- printing css starts here  -->
+    <style id="table_style" type="text/css">
+      table td #paid, #pending, #balance{
+        width: 90px;
+        height: 26px;
+        background: #4caf50;
+        border-radius: 11px;
+        border-color: transparent;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 15px;
+        letter-spacing: 1.5px;
+        color: #E0FBFC;
+      }
+      #pending{
+        background: #FFA000;
+      }
+      #balance{
+        background: #d60000;
+      }
+      @media print{
+        table td #paid, #pending, #balance{
+          color: #4caf50;
+          background-color: red;
+        }
+        #pending{
+          color: #FFA000;
+        }
+        #balance{
+          color: #d60000;
+        }
+        table
+        {
+            border: transparent;
+        }
+        #example_length label, #example_filter label{ /*show entries number and search*/
+          display: none;
+        }
+      }
+      </style>
+      <!-- printing css ends here  -->
     <body>
 
       <div class="topnav" id="myTopnav">
@@ -277,20 +320,15 @@
   <div class="seemoreModal-body">
     <div id="receiptCont">
       <center>
-        <img src="images/receipt.png" id="#receiptimg">
-        
-      <!-- </center>
-      <button onclick="zoomin()">Zoom-In</button>
-        <button onclick="zoomout()">Zoom-Out</button>
-      
-      <center> -->
+        <img id="myimg" height="200px" width="200px">
         <form>
       <label for="csname" id="csnamelabel">Driver's Name: </label>
       <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
       <br>
       <label for="amount">Boundary Amount: </label>
       <input type="text" id="amount" name="amount" value="P 1000.00" disabled>
-    </form></center>
+    </form>
+  </center>
       <div class="buttons">
         <a href="#accepted"><button class="accept"><i class="fa fa-check-circle"></i> Accept</button></a>
         <a href="reload.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
@@ -471,7 +509,7 @@
         
         var ControlDiv2 = document.createElement("div2");
         ControlDiv2.innerHTML ='<td id="receipt"> <a href="#exampleModalCenter" id="viewBtn1">' +
-                          '<button id="myBtn" data-toggle="modal" data-target="#seemoreModal">View Receipt</button>'
+                          '<button id="myBtn" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#seemoreModal">View Receipt</button>'
                          
                         
         trow.appendChild(td0);
@@ -491,20 +529,17 @@
                         '<option value="Pending">Pending</option>' +
                         '<option value="Unpaid">Unpaid</option>' +
                         '</select>' + 
-                        '<input type="hidden"  id="h_text'+studentNo+ '">'
+                        '<input hidden id="h_text'+studentNo+'">'
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
-
-        
       }
 
       function AddAllItems(boundary) {
-            std=0;
+        studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
               AddItemToTable(element.driver, element.receipt , element.email2, element.status, element.time, element.date)
-              alert("AddAllItems pang laman")
             });
           }
 
@@ -519,7 +554,6 @@
                 });
                 AddAllItems(commuter);
               })
-                alert("getAllData")
           }
 
           function getAllDataRT() {
@@ -532,21 +566,16 @@
                 });
                 AddAllItems(commuters);
               })
-                alert("getAllDataRT")
           }
 
           window.onLoad = getAllDataRT();
 
-      
-      
       //updating accounts
       function Update(index){
         var status = document.getElementById('status'+index).value;
         var tryy = document.getElementById('h_text'+index);
         --index;
         tryy.value = stdList[index][0];
-            // alert(stdList[index][0]);
-            // var tdd = stdList[index][0];
               firebase.database().ref("boundary/" + tryy.value).update(
                   {
                     status: status
@@ -555,16 +584,23 @@
                     if(error){
                       alert("Account was not updated " + error);
                     }else{
-                      // alert("Account successfully updated!");
-                      // Select_AllData()
-                      //hiding the modal
-                      // $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-                      // password.disabled = true;
-                      // regdate.disabled = true;
-                      // license.disabled = true;
+                      alert("Account successfully updated!");
                     }
                   }
                 )
+          }
+
+            //img retrieval process
+          function FillTboxes(index){
+            var ImgNAme = document.getElementById('h_text'+index);
+            var tryy = document.getElementById('h_text'+index);
+            --index;
+            tryy.value = stdList[index][0];
+            firebase.database().ref('boundary/' + tryy.value).on('value', function(snapshot){
+              document.getElementById('myimg').src = snapshot.val().Link;
+              ImgNAme.disabled = true;
+              ImgNAme.hidden = true;
+            })
           }
 
           
@@ -580,18 +616,11 @@
       
       // Get the <span> element that closes the modal
       var span = document.getElementsByClassName("close")[0];
-
-      
-      
-      // When the user clicks the button, open the modal 
-      // btn1.onclick = function() {
-      //   modal.style.display = "block";
-      // }
       
       // When the user clicks on <span> (x), close the modal
       span.onclick = function() {
         modal.style.display = "none";
-        modal.style.zIndex = -1;
+        modal.style.zIndex = 1;
       }
       
       // When the user clicks anywhere outside of the modal, close it
@@ -602,47 +631,30 @@
       }
       </script>
 
-    <!-- printing css starts here  -->
-    <style id="table_style" type="text/css">
-    table td #paid, #pending, #balance{
-      width: 90px;
-      height: 26px;
-      background: #4caf50;
-      border-radius: 11px;
-      border-color: transparent;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 15px;
-      letter-spacing: 1.5px;
-      color: #E0FBFC;
-    }
-    #pending{
-      background: #FFA000;
-    }
-    #balance{
-      background: #d60000;
-    }
-    @media print{
-      table td #paid, #pending, #balance{
-        color: #4caf50;
-        background-color: red;
-      }
-      #pending{
-        color: #FFA000;
-      }
-      #balance{
-        color: #d60000;
-      }
-      table
-      {
-          border: transparent;
-      }
-      #example_length label, #example_filter label{ /*show entries number and search*/
-        display: none;
-      }
-    }
-    </style>
-    <!-- printing css ends here  -->
+<script type="text/javascript"> 
+  //printing script
+    function PrintTable() {
+    var printWindow = window.open('', '', 'height=700,width=1200');
+    printWindow.document.write('<table>');
+
+    //Print the Table CSS.
+    var table_style = document.getElementById("table_style").innerHTML;
+    printWindow.document.write('<stylestd type = "text/css">');
+    printWindow.document.write(table_style);
+    printWindow.document.write('</style>');
+    printWindow.document.write('</head>');
+
+    //Print the DIV contents i.e. the HTML Table.
+    printWindow.document.write('<body>');
+    var divContents = document.getElementById("dvContents").innerHTML;
+    printWindow.document.write(divContents);
+    printWindow.document.write('</body>');
+
+    printWindow.document.write('</html>');
+    printWindow.document.close();
+    printWindow.print();
+}
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script>
@@ -655,20 +667,6 @@ window.onclick = function(event) {
 }
   </script>
 
-<script type="text/javascript">
-  function zoomin() {
-      var GFG = document.getElementById("receiptimg");
-      var currWidth = GFG.clientWidth;
-      GFG.style.width = (currWidth + 100) + "px";
-  }
-    
-  function zoomout() {
-      var GFG = document.getElementById("receiptimg");
-      var currWidth = GFG.clientWidth;
-      GFG.style.width = (currWidth - 100) + "px";
-  }
-</script>
-
 <script>
   let btn= document.querySelector("#btn");
   let sidebar= document.querySelector(".sidebar");
@@ -677,39 +675,5 @@ window.onclick = function(event) {
     sidebar.classList.toggle("active");
   }
   </script>
-
-  <script type="text/javascript"> //printing script
-  
-      var driverName = document.getElementById('dName');
-      var boundAmount = document.getElementById('bAmount');
-
-    function Upd(){
-
-var status = document.getElementById('status').value;
-// var password = document.getElementById('pass').value;
-password.hidden = false;
-
-  firebase.database().ref("users/" + email.value).update( //set
-    {
-      driverName: driverName.value,
-      boundAmount: boundAmount.value,
-
-    },
-    (error)=>{
-      if(error){
-        alert("Account was not updated " + error);
-      }else{
-        alert("Account successfully updated!");
-        // Select_AllData()
-        //hiding the modal
-        $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-        regdate.disabled = true;
-        license.disabled = true;
-      }
-    }
-  );
-}
-
-    </script>
   </body>
 </html>

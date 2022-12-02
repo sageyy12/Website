@@ -35,9 +35,6 @@
     <a href="#print">
       <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
     </a>
-    <a href="addShuttle.html">
-      <button type="submit" id="btnshuttle">ADD SHUTTLE</button>
-    </a>
   </div>
 
   <div class="sidebar">
@@ -201,8 +198,6 @@
       </div>
       <div class="modal-body">
         <iframe id="viewprof_iframe" src="idlayout.html" frameborder="100" height="600" width="750"></iframe>
-        <!-- <input type="button" value="Store To Session Storage" onclick="forID()"/> -->
-        <!-- <link rel="stylesheet" href="idlayoutCSS.css"> -->
       </div>
         </div>
       </div>
@@ -348,7 +343,7 @@
       });
     });
   }
-      window.onload = Select_AllData;
+      // window.onload = Select_AllData;
 
       //table filling
       var studentNo = 0;
@@ -402,6 +397,38 @@
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
       }
+      function AddAllItems(boundary) {
+        studentNo=0;
+            tbody1.innerHTML="";
+            boundary.forEach(element => {
+              AddItemToTable(element.firstName + " " + element.midName + " " + element.lastName , element.email, element.registration, element.status,element.license, element.address, element.phonenum, element.username, element.password, element.NameOfTheProf)
+            });
+          }
+
+          function getAllData() {
+              const dbref = firebase.database().ref("users");
+              get(child(dbref, "users"))
+              .then((snapshot) => {
+                var commuter = [];
+                snapshot.forEach(childSnapshot => {
+                  commuter.push(childSnapshot.val());
+                });
+                AddAllItems(commuter);
+              })
+          }
+
+          function getAllDataRT() {
+              const dbRef = firebase.database().ref("users");
+              
+              dbRef.on('value', (snapshot)=>{
+                var commuters = [];
+                snapshot.forEach(childsnapshot => {
+                  commuters.push(childsnapshot.val());
+                });
+                AddAllItems(commuters);
+              })
+          }
+          window.onLoad = getAllDataRT();
 
       var firstName = document.getElementById('Fname');
       var midName = document.getElementById('Mname');
