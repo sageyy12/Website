@@ -85,7 +85,14 @@
             </ul>
         </div>
 
-      <div id="modal">
+        <div class="content">
+          <span class="upper">
+            <img src="images/announce.png">
+            <h1>POSTED ANNOUNCEMENTS:</h1>
+            </span>
+            </div>
+
+      <!-- <div id="modal">
           <div class="modal-content">
             <div class="modal-header" id="close">
               <h2>Add Announcement</h2>
@@ -94,14 +101,14 @@
             <div class="modal-body">
               <form>
                 
-                <input type="text" placeholder="TITLE:" id="title">
+                <input type="text" placeholder="TITLE:" id="title"> -->
 
                  <!-- dropdown  -->
-                 <div class="wrapper">
-                  <div class="collapsible">
-                    <input type="checkbox" id="collapsible-head"> <!-- for the trigger of the collapsible  -->
+                 <!-- <div class="wrapper">
+                  <div class="collapsible"> -->
+                    <!-- <input type="checkbox" id="collapsible-head"> <!-- for the trigger of the collapsible  -->
                 
-                      <center>
+                      <!-- <center>
                         <select id="recipient" onchange="r()">
                           <option selected hidden>RECIPIENT</option>
                           <option value="all">ALL</option>
@@ -120,23 +127,12 @@
 
                 <a href="#post" id="Post" onclick="adddd()">Post</a>
                 <a href="announcement.html" id="Cancel">Cancel</a>
-                 
-                       
-                      
-                      <!-- <label for="collapsible-head">RECIPIENT:</label>
-                        <div class="collapsible-text">
-                          <center>
-                          <p id="driversdp">DRIVERS</p> <hr>
-                          <p id="commutersdp">COMMUTERS</p><hr>
-                          <p id="alldp">ALL</p>
-                        </center> -->
                         </div>
                       </div>
                     </div>
                   </div>
               </form>
             </div>
-          </div>
 
         <div class="container" id="blur">
         <div class="content">
@@ -147,9 +143,17 @@
               <button id="btnAdd">Add Announcement</button>
             </a>
           </span>
-        </div>
+        </div> -->
 
-        <table class="table table-striped" id="lowertbt">
+        <div id="dvContents" class="tableDiv">
+          <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+          <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+            <!-- bootstrap link for the table -->
+            <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+            <table id="example" class="display" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th>ID</th>
@@ -163,6 +167,46 @@
           </thead>
           <tbody id="tbody1"></tbody>
         </table>
+      </div>
+
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Create Announcement</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="new-user-form">
+
+              <input type="text" placeholder="TITLE:" id="title">
+
+              <center>
+              <textarea rows="8" cols="80" placeholder="Content:" id="contentlorem"></textarea>
+
+                <select id="recipient" onchange="r()">
+                  <option selected hidden>RECIPIENT</option>
+                  <option value="all">ALL</option>
+                  <option value="drivers">DRIVERS</option>
+                  <option value="commuters">COMMUTER</option>
+                </select>
+            
+              </center>
+      
+              <input type="hidden" placeholder="DATE:" id="date"><br>
+              <input type="hidden" placeholder="TIME:" id="time"><br>
+              <input type="hidden" id="text_v">
+            </div>
+      
+            <div class="modal-footer">
+              <button id="addBtn" type="button" class="btn btn-primary" onclick="adddd()">Post</button>
+              <button id="updBtn" type="button" class="btn btn-success" onclick="edit_done()">Update</button>
+              <button id="delBtn" type="button" class="btn btn-danger" onclick="Del()">Delete</button>
+              <button id="delBtn" type="button" class="btn btn-danger" onClick="window.location.reload(true)">Cancel</button>
+            </div>
+          </div>
+        </div>
       </div>
 
     <footer class="footer-distributed">
@@ -255,6 +299,16 @@
 
               console.log(firebase);
 
+              var studentNo = 0;
+              var stdList = [];
+
+              var title = document.getElementById("title");
+              var contentlorem = document.getElementById("contentlorem");
+
+              var BtnModUpd = document.getElementById("updBtn");
+              var BtnModAdd = document.getElementById("addBtn");
+              var BtnModDel = document.getElementById('delBtn');
+
       function r() {
 				var select = document.getElementById('recipient');
 				var receipt = select.options[select.selectedIndex];
@@ -264,7 +318,7 @@
       r();
                    
         function add_announcement(){
-       
+
            firebase.database().ref("announcement/"+recipient.value).update(
              {
               title:title.value,
@@ -278,8 +332,6 @@
                  alert("Announcement was not created!" + error);
                }else{
                  alert("Announcement successfully added!");
-                 // Select_AllData()
-                 //hiding the modal
                  $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
                }
              }
@@ -287,11 +339,89 @@
          }
 
          function adddd(){
-         
          CurrentDate();
          CurrentTime();
          add_announcement();
        }
+
+       function add_announcement(){
+       
+           firebase.database().ref("announcement/"+title.value).update(
+             {
+              title:title.value,
+              date:date.value,
+              time:time.value,
+              content:contentlorem.value,
+              recipient:text_v.value
+             },
+             (error)=>{
+               if(error){
+                 alert("Announcement was not created!" + error);
+               }else{
+                 alert("Announcement successfully added!");
+                 $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+               }
+             }
+           )
+         }
+
+         function adddd(){
+         CurrentDate();
+         CurrentTime();
+         add_announcement();
+         FillTboxes(index);
+       }
+
+       //update announcement
+       function edit_announcement(){
+       
+       firebase.database().ref("announcement/"+title.value).set(
+         {
+          title:title.value,
+          date:date.value,
+          time:time.value,
+          content:contentlorem.value,
+          recipient:text_v.value
+         },
+         (error)=>{
+           if(error){
+             alert("Announcement was not created!" + error);
+           }else{
+             alert("Announcement updated added!");
+             $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+           }
+         }
+       )
+     }
+
+     function edit_done(){
+          CurrentDate();
+          CurrentTime();
+          edit_announcement();
+        }
+   
+        function FillTboxes(index){
+          if(index == null){
+            title.value = "";
+            contentlorem.value = "";
+
+          }else{
+            --index;
+
+            title.value = stdList[index][0];
+            contentlorem.value = stdList[index][2];
+          }
+        }
+
+        //deleting the announcement
+      function Del(){
+        firebase.database().ref("announcement/" + title.value).remove().then(
+          function(){
+            alert("Succesfully deleted!");
+              $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+          }
+        )
+      }
 
        function CurrentDate(){
 
@@ -335,9 +465,6 @@
       }
       // window.onload = Select_AllData;
 
-      var studentNo = 0;
-      var stdList = [];
-
         function AddItemToTable(titlee, recipientt, contentt,datee, timee){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
@@ -348,6 +475,7 @@
         let td4 = document.createElement("td");
         let td5 = document.createElement("td");
         let td6 = document.createElement("td");
+        
        
         stdList.push([titlee, recipientt, contentt, datee, timee ]);
         
@@ -364,8 +492,12 @@
         trow.appendChild(td3);
         trow.appendChild(td4);
         trow.appendChild(td5);
+
         var ControlDiv3 = document.createElement("div3");
-        ControlDiv3.innerHTML = '<a href="#" ><i style="color:black"; class= "bx bxs-trash-alt" id="delete" onclick="deletee('+studentNo+')" ></i></a>'
+        ControlDiv3.innerHTML = '<center><button type="button" id= "addAcct" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter">Add announcement </button></center>'
+        ControlDiv3.innerHTML += '<center><button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit announcement</button></center>'
+        ControlDiv3.innerHTML += '<hr id="hrr">'
+
         
         trow.appendChild(ControlDiv3);
         trow.append(td6);
@@ -374,7 +506,7 @@
       }
 
       function AddAllItems(announcement) {
-            std=0;
+        studentNo=0;
             tbody1.innerHTML="";
             announcement.forEach(element => {
               AddItemToTable(element.title, element.recipient , element.content, element.time, element.date)
@@ -407,11 +539,11 @@
 
         window.onLoad = getAllDataRT();
 </script>
-
-
       </body>
+
+
       <style>
-        /*navbar responsive*/
+      /*navbar responsive*/
 .topnav {
   overflow: hidden;
   background-color: #3D5A80;

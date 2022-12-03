@@ -324,9 +324,9 @@ tbody tr td{
   text-align: center;
 }
 
-/* tr:nth-child(odd) {
+tr:nth-child(odd) {
   background-color: #E0FBFC;
-} */
+}
 
 td:nth-child(2) {
   width: 11%;
@@ -501,6 +501,13 @@ tr, td #update{
 
 .modal-body input[type=number]{
   margin-left: 0 !important;
+}
+
+#hrr{
+  background-color: black;
+  position: relative;
+  top: 17px;
+  height: 1.5px;
 }
 
 .modal-content .modal-header .close{

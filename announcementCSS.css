@@ -271,38 +271,6 @@ body{
     text-align: justify;
 }
 
-#lowertbt{
-  position: absolute;
-  top: 270px;
-  margin-left: 52px;
-  max-width: 85%;
-  border: none;
-}
-
-#lowertbt thead tr th{
-  background-color: #fff;
-}
-
-#lowertbt tr:nth-child(odd) {
-  background: #E0FBFC;
-}
-
-#lowertbt tr td:nth-child(2){
-  width: 15%;
-}
-
-#lowertbt tr td:nth-child(4){
-  width: 10%;
-}
-
-/*#lowertbt tr td:nth-child(3){
-  width: 15%;
-}
-
-#lowertbt>:not(caption)>*>* {
-    width: 25%;
-}*/
-
 #btns{
   display: flex;
   justify-content: center;
@@ -382,15 +350,6 @@ td a .bx:hover{
   filter: blur(15px);
 }
 
-.modal-content{
-  position: relative;
-  margin: 100px auto;
-  padding: 0;
-  width: 600px;
-  max-width: 90%;
-  animation: open 0.5s ease;
-}
-
 @keyframes open {
   from{
     transform: scale(0);
@@ -401,104 +360,11 @@ td a .bx:hover{
     opacity: 1;
   }
 }
-
-.modal-header{
-  margin-top: -110px;
-  margin-left: -93px;
-  color: #3D5A80;
-  display: flex;
-}
-
-.modal-header h2{
-  font-family: 'Salsa';
-  font-weight: 400;
-  font-size: 28px;
-  margin: 20px 0;
-  color: #293241;
-}
-
-.close-btn{
-  position: absolute;
-  color: #3D5A80;
-  right: -100px;
-  top: -107px;
-  font-family: 'Rozha';
-  font-size: 30px;
-  font-weight: bold;
-  margin-right: 66px;
-  padding: 1px 5px;
-  text-decoration: none;
-  cursor: pointer;
-  visibility: visible;
-  opacity: 1;
-  transition: 0.5s;
-}
-
-.modal-body{
-  padding: 2px 16px;
-}
-
-.modal-body input[type=text]{
-  font-family: 'Raleway';
-  font-weight: 900;
-  text-align: left;
-  background: white;
-  color: #3D5A80;
-  margin: 3% 0; /*pagitan ng mga form yung %*/
-  margin-left: -17px;
-  margin-right: 369px;
-  border: 2px solid #3D5A80;
-  border-radius: 5px;
-}
-
-::-webkit-input-placeholder{
-  color: #3D5A80;
-}
-
-.modal-body img{
-  position: absolute;
-  top: 102px;
-  left: 455px;
-  height: 2.5vh;
-  width: 1.5vw;
-}
-
-#title{
-  width: 260px;
-  height: 32px;
-  position: relative;
-  top: -5px;
-}
-
-input::-webkit-input-placeholder {
-  position: relative;
-  left: 13px;
-}
-
-#recipient{
-  width: 256px;
-  height: 32px;
-}
-
 #date{
   width: 150px;
   height: 32px;
   margin-top: 16px;
   position: absolute;
-}
-
-#contentlorem{
-  position: absolute;
-  width: 711px;
-  height: 235px;
-  left: 7px;
-  top: 80px;
-  border: 2px solid #3D5A80;
-  border-radius: 5px;
-  resize: none;
-  font-family: 'Raleway';
-  font-size: 19px;
-  padding: 5px;
 }
 
 #Post, #Cancel{
@@ -750,8 +616,138 @@ td:hover {
   transition-timing-function: line;
 }
 
-.table {
-  width: 100%;
+/*table*/
+.tableDiv{
+  max-width: 90%;
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  top: 8rem;
+  left: 6.3rem;
+  margin-bottom: 220px;
+}
+
+table{
+  position: relative;
+  top: 5px;
+  border-radius: 0.5rem;
+  /*left: 129px;
+  max-width: 95%;*/
+  text-align: center;
+  align-items: center;
+  background-color: transparent;
+  }
+  
+  thead tr th{
+    align-items: center;
+    text-align: center;
+    background-color: #E0FBFC;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  thead tr th,
+  tbody tr td{
+    border: 1px solid black;
+  }
+
+td:nth-child(4) {
+  width: 40% !important;
+}
+
+tr:nth-child(odd) {
+  background-color: #E0FBFC;
+}
+
+/* para sa add new acct modal */
+.labs{
+  display: inline-block;
+  width: 150px;
+}
+
+.modal-content{
+  width: 1250px !important;
+  margin-right: -60%;
+  animation: open 0.5s ease;
+}
+
+/* buttons sa action center */
+#addAcct{
+  font-family: "Salsa";
+  /* width: 90px;
+  height: 26px; */
+  background: #3d5a80;
+  border-color: transparent;
+  border-radius: 11px;
+  letter-spacing: 1.5px;
+  color: #E0FBFC;
+}
+
+#addAcct:hover{
+  background: #E0FBFC;
+  color: rgb(113, 110, 110);
+}
+
+#hrr{
+  background-color: black;
+  position: relative;
+  top: 17px;
+  height: 1.5px;
+}
+
+.modal-body input[type=text]{
+  width: 259px; /*259*/
+  height: 40px;
+  margin: 5px !important;
+  border-radius: 10px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+  font-size: 14px;
+  padding-left: 12px;
+}
+
+.modal-body #recipient{
+  position: relative;
+  width: 259px; /*259*/
+  height: 40px;
+  margin: 5px !important;
+  top: -292px;
+  left: 40px;
+  border-radius: 10px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+  font-size: 14px;
+}
+
+#contentlorem{
+  position: relative;
+  width: 745px;
+  height: 235px;
+  right: 3px;
+  top: 20px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+  border-radius: 5px;
+  resize: none;
+  font-size: 15px;
+  padding: 12px;
+}
+
+::-webkit-input-placeholder{
+  color: #3D5A80;
+}
+
+.modal-content .modal-header .close{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.modal-content .modal-header .close:hover{
+  background-color: #e3d5d530;
+}
+
+.modal-content .modal-header .close span{
+  font-size: 30px;
 }
 
 .save {
@@ -801,10 +797,11 @@ td:hover {
   padding: 0;
   padding: 3px 5px;
   cursor: pointer;
-  &:hover {
-    background: #ffffff;
-    color: #00adee;
-  }
+}
+
+.add:hover{
+  background: #ffffff;
+  color: #00adee;
 }
 
 /*.save {
