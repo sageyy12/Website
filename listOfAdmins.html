@@ -50,8 +50,7 @@
         firebase.database().ref('admin').once('value', function (snapshot){
           snapshot.forEach(function(snapshot){
             var emaily = snapshot.val().email;
-            var pass = snapshot.val().password;
-            AddItemToTable(emaily, pass);
+            AddItemToTable(emaily);
       });
     });
   }
@@ -59,14 +58,14 @@
     var studentNo = 0;
     var stdList = [];
 
-      function AddItemToTable(emaily, pass){
+      function AddItemToTable(emaily){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
         let td1 = document.createElement("td");
         let td2 = document.createElement("td");
 
-        stdList.push([emaily, pass]);
+        stdList.push([emaily]);
 
         td0.innerHTML = ++studentNo;
         td1.innerHTML = emaily;
