@@ -19,15 +19,16 @@
             <form >
               <img src="images/login_admin.png">
               <p>Login as Admin User</p><br>
-            <input type="email" id="email" placeholder="Email"><br>
+            <input type="email" id="email" placeholder="Email"><br> <br> <br> <br> 
               <input type="password" id="password" placeholder="Password"><br>
-              <!--button type="submit" id="loginbtn">LOGIN</button><br!-->
               <input value="Login" id="loginbtn" onclick="login()" type="button"><br>
-              <!-- <input value="Login" id="loginbtn" onclick="login(this.form)" type="button"><br> -->
+              <input value="Register" id="registerbtn" onclick="register()" type="button"><br>
+              <div class="rem">
               <input type="checkbox" id="rememberMe" name="rememberMe" value="RememberMe">
               <label for="rememberMe" id="rememberMeLabel"> Remember me</label><br>
               <hr><br>
               <a href="ForgotPass.html">Forgot your Password?</a>
+            </div>
             </form>
           </div>
         </div>
@@ -40,6 +41,8 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
+
+
         <script language="javascript">
 
             const firebaseConfig = {
@@ -52,7 +55,6 @@
                     appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
                     measurementId: "G-3YGP2PY9QX"
                   };
-
                   firebase.initializeApp(firebaseConfig);
                   const auth = firebase.auth()
                   const database = firebase.database()
@@ -60,11 +62,6 @@
                   function register(){
                     email = document.getElementById('email').value
                     password = document.getElementById('password').value
-                  
-                    // if(validate_email(email) == false || validate_field(fullname) == false){
-                    //   alert("Email is ........")
-                    //   return
-                    // }
 
                 auth.createUserWithEmailAndPassword(email, password)
                   .then(function(){
@@ -99,6 +96,8 @@
 
                       var database_ref = database.ref()
                       location="dashboard.html"
+
+
                     })
 
                     .catch((error)=>{
@@ -109,95 +108,8 @@
                   })
 
                   }
-
-                  // function validate_email(email){
-
-                  //   expression = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-                  // if(expression.test(email) == true){
-                  //   return true
-                  // }else{
-                  //   return false
-                  // }
-                  // }
-
-                  
-                  
-
-
-
-
-                // var firebaseRef = firebase.database().ref("admin");
-                // firebaseRef.on("value", function(snapshot)){
-                //   snapshot.
-                // }
-
-                // function login(form) {
-                // var ref = firebase.database().ref("admin");
-
-                //   ref.on("value", function(snapshot) {
-                //   snapshot.forEach(function(childSnapshot) {
-                //     var password = childSnapshot.val();
-                //     var username=password.username;
-                //    console.log(childData);
-                //     alert(password);
-                      
-                //   if (form.Uname.value==username) { 
-                //   if (form.pass.value==password) { 
-                //       location="dashboard.html"
-                //   } 
-                //   else { alert("Password is incorrect!") } 
-                //   } 
-                //   else { alert("Username is incorrect!") } 
-                //   }
-
-                
-                //   }
-                // }
-                
-
-          //   var password = document.getElementById('pass');
-          //   var username = document.getElementById('Uname');
-
-          //   function login(form) { 
-          //   if (form.Uname.value==password) { 
-          //   if (form.pass.value==username) { 
-          //     location="dashboard.html" } 
-          //   else { alert("Password is incorrect!") } 
-          //   } 
-          //   else { alert("Username is incorrect!") } 
-          // }
-
-
-
-// function Addd(){
-
-//   firebase.database().ref("admin/" + username.value).set(
-//     {
-//       username:username.value,
-//       password: password.value
-//     },
-
-    
-//     (error)=>{
-//       if(error){
-//         alert("Account was not created " + error);
-//       }else{
-//         alert("Account successfully created!");
-//         // Select_AllData()
-//         //hiding the modal
-//         $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-//       }
-//     }
-//   )
-// }
-//             function login(form) { 
-//             if (form.Uname.value==username) { 
-//             if (form.pass.value==password) { 
-//               location="dashboard.html" } 
-//             else { alert("Password is incorrect!") } 
-//             } 
-//             else { alert("Username is incorrect!") } 
-//             }
         </script>
+
+
     </body>
 </html>

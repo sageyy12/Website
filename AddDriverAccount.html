@@ -300,7 +300,7 @@
         //sign up user
         createUserWithEmailAndPassword(auth, email, password, firstName, midName, lastName, address, license, profile, registration, status, phonenum, username)  
             .then((userCredential) => {
-                // Signed in
+                // Signed in //ssig
                 const user = userCredential.user;
                 // ... user.uid
                 set(ref(database, 'users/' + user.uid), {

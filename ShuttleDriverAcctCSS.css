@@ -488,7 +488,7 @@ tr, td #update{
   margin-left: 118px !important;
 }
 
-.modal-body input[type=text], input[type=password], input[type=email]{
+.modal-body input[type=text], input[type=password], input[type=email], input[type=number]{
   width: 259px; /*259*/
   height: 40px;
   margin: 5px !important;
@@ -497,6 +497,10 @@ tr, td #update{
   box-shadow: 3px 3px 2px 0.2px grey;
   padding: 6px;
   font-size: 14px;
+}
+
+.modal-body input[type=number]{
+  margin-left: 0 !important;
 }
 
 .modal-content .modal-header .close{

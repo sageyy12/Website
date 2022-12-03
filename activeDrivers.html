@@ -58,8 +58,6 @@
     });
   }
 
-  window.onload = Select_AllData;
-
     var studentNo = 0;
     var stdList = [];
 
@@ -84,6 +82,39 @@
 
         tbody1.appendChild(trow);
       }
+
+      function AddAllItems(boundary) {
+        studentNo=0;
+            tbody1.innerHTML="";
+            boundary.forEach(element => {
+              AddItemToTable(element.firstName + " " + element.midName + " " + element.lastName, element.status,element.license, element.status)
+            });
+          }
+
+          function getAllData() {
+              const dbref = firebase.database().ref("users");
+              get(child(dbref, "users"))
+              .then((snapshot) => {
+                var commuter = [];
+                snapshot.forEach(childSnapshot => {
+                  commuter.push(childSnapshot.val());
+                });
+                AddAllItems(commuter);
+              })
+          }
+
+          function getAllDataRT() {
+              const dbRef = firebase.database().ref("users");
+              
+              dbRef.on('value', (snapshot)=>{
+                var commuters = [];
+                snapshot.forEach(childsnapshot => {
+                  commuters.push(childsnapshot.val());
+                });
+                AddAllItems(commuters);
+              })
+          }
+          window.onLoad = getAllDataRT();
     </script>
     </body>
 </html>

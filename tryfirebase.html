@@ -155,7 +155,7 @@
         </label>
 
         <label class="labs">Phone Number:</label>
-        <input type="text" id="num" name="num"> <br>
+        <input type="number" id="num" name="num"> <br>
 
         <label class="labs">Address:</label>
         <input type="text" id="address" name="address"> <br>
@@ -167,7 +167,7 @@
         <input type="text" name= "uname" id="uname"> <br>
 
         <label class="labs">Email:</label>
-        <input type="email" id="eeemail" name="eeemail"> <br>
+        <input type="text" id="eeemail" name="eeemail"> <br>
 
         <label class="labs">Status:</label>
         <input type="text" id="status" name="status"> <br>
@@ -324,6 +324,8 @@
         measurementId: "G-3YGP2PY9QX"
       };
       firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth()
+      const database = firebase.database()
 
       //select all data
       function Select_AllData(){
@@ -343,7 +345,6 @@
       });
     });
   }
-      // window.onload = Select_AllData;
 
       //table filling
       var studentNo = 0;
@@ -397,6 +398,7 @@
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
       }
+
       function AddAllItems(boundary) {
         studentNo=0;
             tbody1.innerHTML="";
@@ -482,10 +484,6 @@
           BtnModAdd.style.display = 'inline-block';
           BtnModUpd.style.display = 'none';
           BtnModDel.style.display = 'none';
-          // BtnModDeact.style.display = 'none';
-          // BtnModAct.style.display = 'none';
-          // BtnUploadPic.style.display = 'inline-block';
-          // BtnRetrievePic.style.display = 'none';
 
         }else if(email.value === stdList[index]){
           alert("Email already exist");
@@ -626,7 +624,6 @@
         function(error){
           alert('Error in saving the image');
         },
-        //submitting image link to the firebase
         function(){
           if(!String(ImgNAme)){
           alert("Picture's name must be indicated");
@@ -634,27 +631,56 @@
           uploadTask.snapshot.ref.getDownloadURL().then(function(url){
             ImgUrl = url;
           
-            firebase.database().ref('users/' + email.value).set({
-              email: email.value,
-              password: document.getElementById("pass").value = password,
-              firstName: firstName.value,
-              midName: midName.value,
-              lastName: lastName.value,
-              license: license.value,
-              profile: profile.value,
-              registration: registration.value,
-              status: status,
-              address: address.value,
-              phonenum: phonenum.value,
-              username: username.value,
-              // profname: profname.value,
-              NameOfTheProf: ImgNAme,
-              Link: ImgUrl
-          });
-          alert("Account added succesfully");
-          $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-          regdate.disabled = true;
-          license.disabled = true;
+          //   firebase.database().ref('users/' + email.value).set({
+          //     email: email.value,
+          //     password: document.getElementById("pass").value = password,
+          //     firstName: firstName.value,
+          //     midName: midName.value,
+          //     lastName: lastName.value,
+          //     license: license.value,
+          //     profile: profile.value,
+          //     registration: registration.value,
+          //     status: status,
+          //     address: address.value,
+          //     phonenum: phonenum.value,
+          //     username: username.value,
+          //     // profname: profname.value,
+          //     NameOfTheProf: ImgNAme,
+          //     Link: ImgUrl
+          // });
+          // alert("Account added succesfully");
+          // $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+          // regdate.disabled = true;
+          // license.disabled = true;
+
+          auth.createUserWithEmailAndPassword(email, password)
+                  .then(function(){
+                const user = userCredential.user;
+                set(ref(database, 'users/' + user.uid), {
+                    email: email,
+                    password: password,
+                    firstName: firstName,
+                    midName: midName,
+                    lastName: lastName,
+                    license: license,
+                    profile: profile,
+                    registration: registration,
+                    status: status,
+                    address: address,
+                    phonenum: phonenum,
+                    username: username
+                })
+                    .then(() => {
+                        // Data saved successfully!
+                        alert('User created successfully');
+        
+                    })
+                    .catch((error) => {
+                      const errorCode = error.code;
+                      const errorMessage = error.message;
+                      alert(error + " User not created");
+                    });
+            })
         }
         );
         }
@@ -740,6 +766,16 @@
       $('#new-user-form input[name=Lname]').on('keyup', createPicname);
       $('#new-user-form input[name=namebox]').on('keyup', createPicname);
       profname.disabled = true;
+
+      //auto generate status
+      function createStatusVal()  {
+      var status = $('#new-user-form input[name=status]').val().toLowerCase();
+      status = "Active";
+      $('#new-user-form input[name=status]').val(status);
+      }
+
+      $('#new-user-form input[name=Fname]').on('keyup', createStatusVal);
+      status.disabled = true;
 
     
     </script>
