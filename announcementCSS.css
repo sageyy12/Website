@@ -665,6 +665,10 @@ tr:nth-child(odd) {
   width: 150px;
 }
 
+#admin_name{
+  width: 120px;
+}
+
 .modal-content{
   width: 1250px !important;
   margin-right: -60%;
@@ -712,7 +716,7 @@ tr:nth-child(odd) {
   height: 40px;
   margin: 5px !important;
   top: -292px;
-  left: 40px;
+  left: 160px;
   border-radius: 10px;
   border: 1px solid #194F82;
   box-shadow: 3px 3px 2px 0.2px grey;

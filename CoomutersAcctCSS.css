@@ -350,6 +350,100 @@ tr td:nth-child(3 ) {
   display: none;
 }
 
+/* para sa add new acct modal */
+.labs{
+  display: inline-block;
+  width: 150px;
+}
+
+#admin_name{
+  width: 120px;
+}
+
+.modal-content{
+  margin-right: -60%;
+  animation: open 0.5s ease;
+}
+
+/* buttons sa action center */
+#addAcct{
+  font-family: "Salsa";
+  /* width: 90px;
+  height: 26px; */
+  background: #3d5a80;
+  border-color: transparent;
+  border-radius: 11px;
+  letter-spacing: 1.5px;
+  color: #E0FBFC;
+}
+
+#addAcct:hover{
+  background: #E0FBFC;
+  color: rgb(113, 110, 110);
+}
+
+#hrr{
+  background-color: black;
+  position: relative;
+  top: 17px;
+  height: 1.5px;
+}
+
+.modal-body input[type=text], input[type=email]{
+  width: 259px; /*259*/
+  height: 40px;
+  margin: 5px !important;
+  border-radius: 10px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+  font-size: 14px;
+  padding-left: 12px;
+}
+
+.modal-body #recipient{
+  position: relative;
+  width: 259px; /*259*/
+  height: 40px;
+  margin: 5px !important;
+  top: -292px;
+  left: 160px;
+  border-radius: 10px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+  font-size: 14px;
+}
+
+#contentlorem{
+  position: relative;
+  width: 745px;
+  height: 235px;
+  right: 3px;
+  top: 20px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+  border-radius: 5px;
+  resize: none;
+  font-size: 15px;
+  padding: 12px;
+}
+
+::-webkit-input-placeholder{
+  color: #3D5A80;
+}
+
+.modal-content .modal-header .close{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.modal-content .modal-header .close:hover{
+  background-color: #e3d5d530;
+}
+
+.modal-content .modal-header .close span{
+  font-size: 30px;
+}
+
 /* The footer is fixed to the bottom of the page */
 footer {
     position: fixed;

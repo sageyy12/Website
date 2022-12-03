@@ -92,59 +92,6 @@
             </span>
             </div>
 
-      <!-- <div id="modal">
-          <div class="modal-content">
-            <div class="modal-header" id="close">
-              <h2>Add Announcement</h2>
-              <a href="" class="close-btn" onclick="toggle()">&times;</a>
-            </div>
-            <div class="modal-body">
-              <form>
-                
-                <input type="text" placeholder="TITLE:" id="title"> -->
-
-                 <!-- dropdown  -->
-                 <!-- <div class="wrapper">
-                  <div class="collapsible"> -->
-                    <!-- <input type="checkbox" id="collapsible-head"> <!-- for the trigger of the collapsible  -->
-                
-                      <!-- <center>
-                        <select id="recipient" onchange="r()">
-                          <option selected hidden>RECIPIENT</option>
-                          <option value="all">ALL</option>
-                          <option value="drivers">DRIVERS</option>
-                          <option value="commuters">COMMUTER</option>
-                        </select>
-                    
-                      </center>
-
-                     
-                <textarea rows="8" cols="80" placeholder="Content:" id="contentlorem"></textarea>
-
-                <input type="hidden" placeholder="DATE:" id="date"><br>
-                <input type="hidden" placeholder="TIME:" id="time"><br>
-                <input type="hidden" id="text_v">
-
-                <a href="#post" id="Post" onclick="adddd()">Post</a>
-                <a href="announcement.html" id="Cancel">Cancel</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </form>
-            </div>
-
-        <div class="container" id="blur">
-        <div class="content">
-          <span class="upper">
-            <img src="images/announce.png">
-            <h1>POSTED ANNOUNCEMENTS:</h1>
-            <a href="#AddAnnouncement" onclick="toggle()">
-              <button id="btnAdd">Add Announcement</button>
-            </a>
-          </span>
-        </div> -->
-
         <div id="dvContents" class="tableDiv">
           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -181,6 +128,7 @@
             <div class="modal-body" id="new-user-form">
 
               <input type="text" placeholder="TITLE:" id="title">
+              <input type="text" placeholder="Amin's name:" id="admin_name" name="admin_name" value="Village Admin" disabled>
 
               <center>
               <textarea rows="8" cols="80" placeholder="Content:" id="contentlorem"></textarea>
@@ -325,7 +273,8 @@
               date:date.value,
               time:time.value,
               content:contentlorem.value,
-              recipient:text_v.value
+              recipient:text_v.value,
+              adminName: admin_name.value
              },
              (error)=>{
                if(error){
@@ -352,7 +301,8 @@
               date:date.value,
               time:time.value,
               content:contentlorem.value,
-              recipient:text_v.value
+              recipient:text_v.value,
+              adminName: admin_name.value
              },
              (error)=>{
                if(error){
@@ -381,7 +331,8 @@
           date:date.value,
           time:time.value,
           content:contentlorem.value,
-          recipient:text_v.value
+          recipient:text_v.value,
+          adminName: admin_name.value
          },
          (error)=>{
            if(error){
@@ -446,8 +397,7 @@
          time.value = (timeee);
 
          time.disabled = true;
-
-       }  
+       }
 
          //select all data
       function Select_AllData(){
