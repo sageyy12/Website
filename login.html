@@ -20,7 +20,7 @@
               <img src="images/login_admin.png">
               <p>Login as Admin User</p><br>
             <input type="email" id="email" placeholder="Email"><br> <br> <br> <br> 
-              <input type="password" id="password" placeholder="Password is auto generated" disabled><br>
+              <input type="password" id="password" placeholder="For new registers: Password is auto generated"><br>
               <input value="Login" id="loginbtn" onclick="login()" type="button"><br>
               <input value="Register" id="registerbtn" onclick="register()" type="button"><br>
               <div class="rem">
@@ -58,6 +58,8 @@
                 firebase.initializeApp(firebaseConfig);
                 const auth = firebase.auth()
                 const database = firebase.database()
+                alert("Fore new registers, the password is auto generated. Leave the password field empty." +
+                "\nFor logging in, typing ypur password is required")
 
                 function register(){
                   email = document.getElementById('email').value

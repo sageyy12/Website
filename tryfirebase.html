@@ -21,7 +21,7 @@
           <a href="dashboard.html">
             <img src="images/logo.png"></a>
               <div class="logo-name">Shuttle Driver's Account</div>
-              <button id="logout">Logout</button>
+              <button id="logout" onclick="window.location.href='login.html'">Logout</button>
           </div>
       </div>
   </nav>
@@ -639,20 +639,10 @@
             status = document.getElementById('status').value;
             email = document.getElementById('eeemail');
             password = document.getElementById('pass');
-          
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(function(){
-                    var admin = auth.currentUser
 
-                    var database_ref = database.ref()
-                    var admin_data ={
+                      firebase.database().ref('users/').child(license.value).set({
                       email: email.value,
-                      password: document.getElementById("pass").value = password
-                    }
-                    alert("Authorized")
-                      firebase.database().ref('users/').child(status).set({
-                      // email: document.getElementById('eeemail').value,
-                      // password: document.getElementById("pass").value = password,
+                      password: document.getElementById("pass").value = password,
                       firstName: firstName.value,
                       midName: midName.value,
                       lastName: lastName.value,
@@ -666,17 +656,25 @@
                       Link: ImgUrl
                   });
                   alert("Account added succesfully");
-                    // alert("Authentication done")
                   })
+          
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(function(){
+                    var admin = auth.currentUser
+
+                    var database_ref = database.ref()
+                    var admin_data ={
+                      email: email.value,
+                      password: document.getElementById("pass").value = password
+                    }
+                    alert("Authorized")
                 .catch((error)=>{
                         var error_code = error.code
                         var error_message = error.message
 
                         alert(error_message)
                       })
-            
-            
-          
+                      
           $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
           regdate.disabled = true;
           license.disabled = true;
@@ -684,7 +682,26 @@
         );
         }
       });
+      //const auth = getAuth();
+      // window.location.href='login.html'
+      // var user = firebase.auth().currentUser;
+      auth.sendEmailVerification().then(function(){
+        alert("Verification link is sent! Kindly tell the driver to check their spam or promotion.");
+      }).catch(function(error){
+        alert(error);
+      })
       }
+
+      // firebase.auth().onAuthStateChanged(function(user){
+      //   if (user){
+      //     alert("Hi")
+      //     var user = firebase.auth().currentUser;
+      //   }if(user != null){
+      //     alert("Hello")
+      //   }else{
+      //     alert("No user is signed in")
+      //   }
+      // })
 
       //deleting the accounts
       function Del(){
