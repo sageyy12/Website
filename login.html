@@ -20,7 +20,7 @@
               <img src="images/login_admin.png">
               <p>Login as Admin User</p><br>
             <input type="email" id="email" placeholder="Email"><br> <br> <br> <br> 
-              <input type="password" id="password" placeholder="Password"><br>
+              <input type="password" id="password" placeholder="Password is auto generated" disabled><br>
               <input value="Login" id="loginbtn" onclick="login()" type="button"><br>
               <input value="Register" id="registerbtn" onclick="register()" type="button"><br>
               <div class="rem">
@@ -63,17 +63,25 @@
                   email = document.getElementById('email').value
                   password = document.getElementById('password').value
 
+                  //auto generate password
+                  var chars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                  var passwordLength = 8;
+                  var password = "";
+                  for (var i = 0; i <= passwordLength; i++) {
+                    var randomNumber = Math.floor(Math.random() * chars.length);
+                    password += chars.substring(randomNumber, randomNumber +1);
+                    }
+
               auth.createUserWithEmailAndPassword(email, password)
                 .then(function(){
                     var admin = auth.currentUser
-
                     var database_ref = database.ref()
                     var admin_data ={
                       email : email,
-                      password : password 
+                      password: document.getElementById("password").value = password
                     }
                     
-                    database_ref.child('admin').set(admin_data)
+                    database_ref.child('admin/' + password).set(admin_data)
                     alert("Admin created!")
                   })
 

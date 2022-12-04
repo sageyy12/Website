@@ -331,7 +331,9 @@
       function Select_AllData(){
         firebase.database().ref('users').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
-            var name = childSnapshot.val().firstName + " " + childSnapshot.val().midName + " " + childSnapshot.val().lastName;
+            var name = childSnapshot.val().firstName;
+            var midname = childSnapshot.val().midName;
+            var lastname = childSnapshot.val().lastName;
             var emaily = childSnapshot.val().email;
             var regdate = childSnapshot.val().registration;
             var statusy = childSnapshot.val().status;
@@ -341,7 +343,7 @@
             var unamey = childSnapshot.val().username;
             var passs = childSnapshot.val().password;
             var prof = childSnapshot.val().NameOfTheProf;
-            AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
+            AddItemToTable(name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
       });
     });
   }
@@ -351,7 +353,7 @@
       var studentNo = 0;
       var stdList = [];
 
-      function AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof){
+      function AddItemToTable(name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
@@ -366,10 +368,10 @@
         let td9 = document.createElement("td");
         let td10 = document.createElement("td");
 
-        stdList.push([name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof]);
+        stdList.push([name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof]);
 
         td0.innerHTML = ++studentNo;
-        td1.innerHTML = name;
+        td1.innerHTML = name + " " + midname + " " + lastname;
         td2.innerHTML = emaily;
         td3.innerHTML = regdate;
         td4.innerHTML = statusy;
@@ -404,7 +406,7 @@
         studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.firstName + " " + element.midName + " " + element.lastName , element.email, element.registration, element.status,element.license, element.address, element.phonenum, element.username, element.password, element.NameOfTheProf)
+              AddItemToTable(element.firstName, element.midName, element.lastName , element.email, element.registration, element.status,element.license, element.address, element.phonenum, element.username, element.password, element.NameOfTheProf)
             });
           }
 
@@ -495,21 +497,21 @@
           license.disabled = true;
 
           firstName.value = stdList[index][0];
-          midName.value = stdList[index][0];
-          lastName.value =  stdList[index][0];
-          document.getElementById("pass").value = stdList[index][8];
-          phonenum.value = stdList[index][6];
-          address.value = stdList[index][5];
-          license.value = stdList[index][4];
-          uname.value = stdList[index][7];
-          email.value = stdList[index][1];
-          document.getElementById("status").value = stdList[index][3];
-          regdate.value = stdList[index][2];
-          profname.value = stdList[index][9];
+          midName.value = stdList[index][1];
+          lastName.value =  stdList[index][2];
+          document.getElementById("pass").value = stdList[index][10];
+          phonenum.value = stdList[index][8];
+          address.value = stdList[index][7];
+          license.value = stdList[index][6];
+          uname.value = stdList[index][9];
+          email.value = stdList[index][3];
+          document.getElementById("status").value = stdList[index][5];
+          regdate.value = stdList[index][4];
+          profname.value = stdList[index][11];
 
           //for id
           var licc = license.value;
-          var fnamey = firstName.value;
+          var fnamey = firstName.value + " " + midName.value + " " + lastName.value;
           var mnamey = uname.value;
           var lnamey = email.value;
           var addressy = address.value;
@@ -578,7 +580,6 @@
               midName: midName.value,
               lastName: lastName.value,
               license: license.value,
-              profile: profile.value,
               registration: registration.value,
               status: status,
               address: address.value,
@@ -602,10 +603,13 @@
       function Add(){
 
       var status = document.getElementById('status').value; //kailangan to para hindi mag [object HTMLInputElement] value ni status
+      email = document.getElementById('eeemail').value
+      password = document.getElementById('pass').value
       
       //auto generate password
         var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var passwordLength = 7;
+        var passwordLength = 8
+        ;
         var password = "";
         for (var i = 0; i <= passwordLength; i++) {
           var randomNumber = Math.floor(Math.random() * chars.length);
@@ -632,51 +636,53 @@
         }else{
           uploadTask.snapshot.ref.getDownloadURL().then(function(url){
             ImgUrl = url;
+            status = document.getElementById('status').value;
+            email = document.getElementById('eeemail');
+            password = document.getElementById('pass');
           
-            firebase.database().ref('users/' + license.value).set({
-              email: email.value,
-              password: document.getElementById("pass").value = password,
-              firstName: firstName.value,
-              midName: midName.value,
-              lastName: lastName.value,
-              license: license.value,
-              profile: profile.value,
-              registration: registration.value,
-              status: status,
-              address: address.value,
-              phonenum: phonenum.value,
-              username: username.value,
-              // profname: profname.value,
-              NameOfTheProf: ImgNAme,
-              Link: ImgUrl
-          });
-          alert("Account added succesfully");
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(function(){
+                    var admin = auth.currentUser
+
+                    var database_ref = database.ref()
+                    var admin_data ={
+                      email: email.value,
+                      password: document.getElementById("pass").value = password
+                    }
+                    alert("Authorized")
+                      firebase.database().ref('users/').child(status).set({
+                      // email: document.getElementById('eeemail').value,
+                      // password: document.getElementById("pass").value = password,
+                      firstName: firstName.value,
+                      midName: midName.value,
+                      lastName: lastName.value,
+                      license: license.value,
+                      registration: registration.value,
+                      status: status,
+                      address: address.value,
+                      phonenum: phonenum.value,
+                      username: username.value,
+                      NameOfTheProf: ImgNAme,
+                      Link: ImgUrl
+                  });
+                  alert("Account added succesfully");
+                    // alert("Authentication done")
+                  })
+                .catch((error)=>{
+                        var error_code = error.code
+                        var error_message = error.message
+
+                        alert(error_message)
+                      })
+            
+            
+          
           $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
           regdate.disabled = true;
           license.disabled = true;
         }
         );
         }
-        auth.createUserWithEmailAndPassword(email, password)
-                .then(function(){
-                    var admin = auth.currentUser
-
-                    var database_ref = database.ref()
-                    var admin_data ={
-                      email : email,
-                      password : password 
-                    }
-                    
-                    database_ref.child('admin').set(admin_data)
-                    alert("Admin created!")
-                  })
-
-                .catch((error)=>{
-                  var error_code = error.code
-                  var error_message = error.message
-
-                  alert(error_message)
-                })
       });
       }
 

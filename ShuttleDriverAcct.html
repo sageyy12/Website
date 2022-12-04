@@ -155,7 +155,7 @@
         </label>
 
         <label class="labs">Phone Number:</label>
-        <input type="text" id="num" name="num"> <br>
+        <input type="number" id="num" name="num"> <br>
 
         <label class="labs">Address:</label>
         <input type="text" id="address" name="address"> <br>
@@ -324,12 +324,16 @@
         measurementId: "G-3YGP2PY9QX"
       };
       firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth()
+      const database = firebase.database()
 
       //select all data
       function Select_AllData(){
         firebase.database().ref('users').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
-            var name = childSnapshot.val().firstName + " " + childSnapshot.val().midName + " " + childSnapshot.val().lastName;
+            var name = childSnapshot.val().firstName;
+            var midname = childSnapshot.val().midName;
+            var lastname = childSnapshot.val().lastName;
             var emaily = childSnapshot.val().email;
             var regdate = childSnapshot.val().registration;
             var statusy = childSnapshot.val().status;
@@ -339,7 +343,7 @@
             var unamey = childSnapshot.val().username;
             var passs = childSnapshot.val().password;
             var prof = childSnapshot.val().NameOfTheProf;
-            AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
+            AddItemToTable(name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
       });
     });
   }
@@ -349,7 +353,7 @@
       var studentNo = 0;
       var stdList = [];
 
-      function AddItemToTable(name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof){
+      function AddItemToTable(name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
@@ -364,10 +368,10 @@
         let td9 = document.createElement("td");
         let td10 = document.createElement("td");
 
-        stdList.push([name, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof]);
+        stdList.push([name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof]);
 
         td0.innerHTML = ++studentNo;
-        td1.innerHTML = name;
+        td1.innerHTML = name + " " + midname + " " + lastname;
         td2.innerHTML = emaily;
         td3.innerHTML = regdate;
         td4.innerHTML = statusy;
@@ -402,7 +406,7 @@
         studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.firstName + " " + element.midName + " " + element.lastName , element.email, element.registration, element.status,element.license, element.address, element.phonenum, element.username, element.password, element.NameOfTheProf)
+              AddItemToTable(element.firstName, element.midName, element.lastName , element.email, element.registration, element.status,element.license, element.address, element.phonenum, element.username, element.password, element.NameOfTheProf)
             });
           }
 
@@ -483,10 +487,6 @@
           BtnModAdd.style.display = 'inline-block';
           BtnModUpd.style.display = 'none';
           BtnModDel.style.display = 'none';
-          // BtnModDeact.style.display = 'none';
-          // BtnModAct.style.display = 'none';
-          // BtnUploadPic.style.display = 'inline-block';
-          // BtnRetrievePic.style.display = 'none';
 
         }else if(email.value === stdList[index]){
           alert("Email already exist");
@@ -497,21 +497,21 @@
           license.disabled = true;
 
           firstName.value = stdList[index][0];
-          midName.value = stdList[index][0];
-          lastName.value =  stdList[index][0];
-          document.getElementById("pass").value = stdList[index][8];
-          phonenum.value = stdList[index][6];
-          address.value = stdList[index][5];
-          license.value = stdList[index][4];
-          uname.value = stdList[index][7];
-          email.value = stdList[index][1];
-          document.getElementById("status").value = stdList[index][3];
-          regdate.value = stdList[index][2];
-          profname.value = stdList[index][9];
+          midName.value = stdList[index][1];
+          lastName.value =  stdList[index][2];
+          document.getElementById("pass").value = stdList[index][10];
+          phonenum.value = stdList[index][8];
+          address.value = stdList[index][7];
+          license.value = stdList[index][6];
+          uname.value = stdList[index][9];
+          email.value = stdList[index][3];
+          document.getElementById("status").value = stdList[index][5];
+          regdate.value = stdList[index][4];
+          profname.value = stdList[index][11];
 
           //for id
           var licc = license.value;
-          var fnamey = firstName.value;
+          var fnamey = firstName.value + " " + midName.value + " " + lastName.value;
           var mnamey = uname.value;
           var lnamey = email.value;
           var addressy = address.value;
@@ -531,7 +531,7 @@
           
       //img retrieval process
       ImgNAme = document.getElementById('namebox').value;
-      firebase.database().ref('users/' + email.value).on('value', function(snapshot){
+      firebase.database().ref('users/' + license.value).on('value', function(snapshot){
         document.getElementById('myimg').src = snapshot.val().Link;
         ImgNAme.disabled = true;
       })
@@ -573,7 +573,7 @@
           uploadTask.snapshot.ref.getDownloadURL().then(function(url){
             ImgUrl = url;
           
-            firebase.database().ref('users/' + email.value).update({
+            firebase.database().ref('users/' + license.value).update({
               email: email.value,
               password: password.value,
               firstName: firstName.value,
@@ -635,7 +635,7 @@
           uploadTask.snapshot.ref.getDownloadURL().then(function(url){
             ImgUrl = url;
           
-            firebase.database().ref('users/' + email.value).set({
+            firebase.database().ref('users/' + license.value).set({
               email: email.value,
               password: document.getElementById("pass").value = password,
               firstName: firstName.value,
@@ -664,7 +664,7 @@
 
       //deleting the accounts
       function Del(){
-        firebase.database().ref("users/" + email.value).remove().then(
+        firebase.database().ref("users/" + license.value).remove().then(
           function(){
             alert("Succesfully deleted!");
               //hiding the modal
