@@ -264,34 +264,6 @@
 				document.getElementById('text_v').value = receipt.text;
 			}
       r();
-                   
-        function add_announcement(){
-
-           firebase.database().ref("announcement/"+recipient.value).update(
-             {
-              title:title.value,
-              date:date.value,
-              time:time.value,
-              content:contentlorem.value,
-              recipient:text_v.value,
-              adminName: admin_name.value
-             },
-             (error)=>{
-               if(error){
-                 alert("Announcement was not created!" + error);
-               }else{
-                 alert("Announcement successfully added!");
-                 $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
-               }
-             }
-           )
-         }
-
-         function adddd(){
-         CurrentDate();
-         CurrentTime();
-         add_announcement();
-       }
 
        function add_announcement(){
        
@@ -319,7 +291,6 @@
          CurrentDate();
          CurrentTime();
          add_announcement();
-         FillTboxes(index);
        }
 
        //update announcement
@@ -349,6 +320,7 @@
           CurrentDate();
           CurrentTime();
           edit_announcement();
+         FillTboxes(index);
         }
    
         function FillTboxes(index){

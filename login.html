@@ -45,70 +45,71 @@
 
         <script language="javascript">
 
-            const firebaseConfig = {
-                    apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
-                    authDomain: "shuttle-go-8d87a.firebaseapp.com",
-                    databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
-                    projectId: "shuttle-go-8d87a",
-                    storageBucket: "shuttle-go-8d87a.appspot.com",
-                    messagingSenderId: "509853219067",
-                    appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
-                    measurementId: "G-3YGP2PY9QX"
-                  };
-                  firebase.initializeApp(firebaseConfig);
-                  const auth = firebase.auth()
-                  const database = firebase.database()
+          const firebaseConfig = {
+                  apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
+                  authDomain: "shuttle-go-8d87a.firebaseapp.com",
+                  databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
+                  projectId: "shuttle-go-8d87a",
+                  storageBucket: "shuttle-go-8d87a.appspot.com",
+                  messagingSenderId: "509853219067",
+                  appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
+                  measurementId: "G-3YGP2PY9QX"
+                };
+                firebase.initializeApp(firebaseConfig);
+                const auth = firebase.auth()
+                const database = firebase.database()
 
-                  function register(){
-                    email = document.getElementById('email').value
-                    password = document.getElementById('password').value
+                function register(){
+                  email = document.getElementById('email').value
+                  password = document.getElementById('password').value
 
-                auth.createUserWithEmailAndPassword(email, password)
+              auth.createUserWithEmailAndPassword(email, password)
+                .then(function(){
+                    var admin = auth.currentUser
+
+                    var database_ref = database.ref()
+                    var admin_data ={
+                      email : email,
+                      password : password 
+                    }
+                    
+                    database_ref.child('admin').set(admin_data)
+                    alert("Admin created!")
+                  })
+
+                .catch((error)=>{
+                  var error_code = error.code
+                  var error_message = error.message
+
+                  alert(error_message)
+                })
+             
+                }
+
+                function login(){
+                  email = document.getElementById('email').value
+                  password = document.getElementById('password').value
+              
+                  auth.signInWithEmailAndPassword(email, password)
                   .then(function(){
-                      var admin = auth.currentUser
+                    var admin = auth.currentUser
 
-                      var database_ref = database.ref()
-                      var admin_data ={
-                        email : email,
-                        // password : password 
-                      }
-                      
-                      database_ref.child('admin').set(admin_data)
-                      alert("Admin created!")
-                    })
+                    var database_ref = database.ref()
+                    location="dashboard.html"
+
+
+                  })
 
                   .catch((error)=>{
-                    var error_code = error.code
-                    var error_message = error.message
+                  var error_code = error.code
+                  var error_message = error.message
 
-                    alert(error_message)
-                  })
-               
-                  }
+                  alert(error_message)
+                })
 
-                  function login(){
-                    email = document.getElementById('email').value
-                    password = document.getElementById('password').value
-                
-                    auth.signInWithEmailAndPassword(email, password)
-                    .then(function(){
-                      var admin = auth.currentUser
+                }
 
-                      var database_ref = database.ref()
-                      location="dashboard.html"
-
-
-                    })
-
-                    .catch((error)=>{
-                    var error_code = error.code
-                    var error_message = error.message
-
-                    alert(error_message)
-                  })
-
-                  }
-        </script>
+      </script>
 
 
     </body>

@@ -88,12 +88,12 @@
       <form class="reg">
           <center><h4>New Message</h4>
             <div class="content">
-            <input type="text" name="" placeholder="Recipients"> <br>
-            <input type="text" name="" placeholder="Subject"> <br>
-            <textarea name="name" rows="8" cols="80" placeholder="Type something here:"></textarea> </center>
+            <input type="text" name="recepients" id="recepients" placeholder="Recipients"> <br>
+            <input type="text" name="subject" id="subject" placeholder="Subject"> <br>
+            <textarea name="content" id="content" rows="8" cols="80" placeholder="Type something here:"></textarea> </center>
         <div class="btns">
-          <button type="submit" id="addAccountbtn">SAVE</button>
-          <a href="complaintsNfeedback.html" id="cancelbtn">CANCEL</a>
+          <button type="button" onclick="respond()" id="addAccountbtn">Post</button>
+          <a href="complaintsNfeedback.html" id="cancelbtn">Cancel</a>
           </form>
         </div>
       </div>
@@ -169,4 +169,55 @@
     }
   </script>
 
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script id="MainScript">
+  const firebaseConfig = {
+                  apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
+                  authDomain: "shuttle-go-8d87a.firebaseapp.com",
+                  databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
+                  projectId: "shuttle-go-8d87a",
+                  storageBucket: "shuttle-go-8d87a.appspot.com",
+                  messagingSenderId: "509853219067",
+                  appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
+                  measurementId: "G-3YGP2PY9QX"
+                };
+                firebase.initializeApp(firebaseConfig);
+
+              console.log(firebase);
+
+              var studentNo = 0;
+              var stdList = [];
+
+              var recepients = document.getElementById("recepients");
+              var subject = document.getElementById("subject");
+              var content = document.getElementById("content");
+
+              function respond(){
+       
+                firebase.database().ref("Respond/"+recepients.value).set(
+                  {
+                    recepients:recepients.value,
+                    subject:subject.value,
+                    content:content.value
+                  },
+                  (error)=>{
+                    if(error){
+                      alert("Respond was not sended!" + error);
+                    }else{
+                      alert("Respond successfully sent!");
+                      $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+                    }
+                  }
+                )
+         }
+  </script>
 </html>

@@ -329,10 +329,6 @@ tr:nth-child(odd) {
   background-color: #E0FBFC;
 }
 
-tr td:nth-child(2) {
-  width: 25%;
-}
-
 #receiptCont{
   /*display: none;*/
   padding-left: 15px;
@@ -352,6 +348,29 @@ tr td:nth-child(2) {
 
 #myBtn:hover{
   color: #42a5f5;
+}
+
+.modal-backdrop.in,  .modal-backdrop{
+  filter: alpha(opacity=50);
+  opacity: .5;
+  z-index: 0;
+}
+
+.modal-backdrop.show{
+z-index: 0;
+}
+
+.seemoreModal-header .close{
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.seemoreModal-header .close:hover{
+  background-color: #e3d5d530;
+}
+
+.seemoreModal-header .close span{
+  font-size: 30px;
 }
 
 .seemoreModal-body #receiptCont img{

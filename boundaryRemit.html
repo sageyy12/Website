@@ -254,46 +254,6 @@
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
           <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 
-          <!-- para sa show entries number option  -->
-          <!--div class="dataTables_length" id="example_length">
-            <label>Show <select name="example_length" aria-controls="example" class="">
-              <option value="10">12</option>
-              <option value="25">25</option>
-              <option value="50">50</option>
-              <option value="100">100</option>
-            </select> entries</label>
-          </div!-->
-          <!-- <button id="myBtn">Open Modal</button> -->
-
-
-
-          <!-- <table id="example" class="display" width="100%" cellspacing="0">
-            <thead>
-                  <th>ID</th>
-                  <th>DRIVER</th> 
-                  <th>RECEIPT</th>
-                  <th>EMAIL</th>
-                  <th>DATE</th>
-                  <th>TIME</th>
-                  <th>ISSUE RECEIPT</th>
-
-                 
-            </thead>
-            <tr>
-              <td>
-                <a href="#exampleModalCenter" id="viewBtn1">
-                  <button id="viewBtnModal1">View Receipt</button>
-                </a>
-                <button id="myBtn">View Receipt</button>
-            </tr>
-           
-            <tbody id="tbody1"> -->
-      
-          
-  
-      
-
-
           <table id="example" class="display" width="100%" cellspacing="0">
             <thead>
             <tr>
@@ -306,11 +266,8 @@
               <th>ISSUE RECEIPT</th>
             </tr>
           </thead>
-
-          
           <tbody id="tbody1"></tbody>
       
-
 <!-- The Modal -->
 <div id="seemoreModal">
   <div class="seemoremodal-content">
@@ -337,13 +294,8 @@
     </div>
   </div>
 </div>
-
 <!-- Modal ends here-->
 
-
-           
-        <!-- </tbody> -->
-       
       </table>
     </div>
     <footer class="footer-distributed">
@@ -510,8 +462,7 @@
         var ControlDiv2 = document.createElement("div2");
         ControlDiv2.innerHTML ='<td id="receipt"> <a href="#exampleModalCenter" id="viewBtn1">' +
                           '<button id="myBtn" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#seemoreModal">View Receipt</button>'
-                         
-                        
+                       
         trow.appendChild(td0);
         trow.appendChild(td1);
         trow.appendChild(ControlDiv2);

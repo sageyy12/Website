@@ -236,203 +236,43 @@ body{
   color: white;
 }
 
-/*profile*/
-.containerism{
+/*table*/
+.tableDiv{
+  max-width: 90%;
   position: relative;
-  top: 70px;
-  left: 132px;
-  margin-bottom: 200px;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-  "header header"
-  "userProfile userDetails"
-  "work_skills timeline_about";
-  /*background-color: #E0FBFC;*/
-  background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
-  height: 90vh;
-  width: 85%;
   padding: 1.5rem;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5) 0 0 25px rgba(0, 0, 0, 0.8);
-  grid-gap: 1rem;
-}
-
-.userProfile{
-  grid-area: userProfile;
-}
-
-.userDetails{
-  grid-area: userDetails;
-}
-
-.timeline_about{
-  grid-area: timeline_about;
-}
-
-.containerism .card{
-  background-image: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
-  backdrop-filter: blur(3rem);
-  border-radius: .5rem;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
-  padding: 1.5rem;
-}
-
-.containerism .userProfile{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background: none;
-  width: 400px;
-}
-
-.containerism .userProfile .profile figure img{
-  width: 15rem;
-  height: 15rem;
-  border-radius: 50%;
-}
-
-.containerism .work_skills{
-  padding: 1.5rem;
-}
-
-.userProfile{
-  position: relative;
-  padding: 1.5rem 2.5rem;
-}
-
-.userProfile .username .map{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.userProfile .username .map .bx{
-  font-size: 0.8rem;
-  color: #0099cc;
-}
-
-.userProfile .username .map span{
-  font-size: 1rem;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.userProfile .btns ul{
-  margin-left: -2.5rem;
-}
-
-.userProfile .btns ul,
-.userProfile .btns ul li{
-  margin-top: 1.5rem;
-  display: flex;
-  align-items: center;
-  list-style: none;
-}
-
-.userProfile .btns ul li{
   border-radius: 0.5rem;
-  padding: 0.5rem 0.5rem;
+  top: 2rem;
+  left: 6.3rem;
+  margin-bottom: 220px;
 }
 
-.userProfile .btns ul li .bx{
-  margin-right: 0.5rem;
-  font-size: 1.4rem;
+table{
+position: relative;
+top: 5px;
+border-radius: 0.5rem;
+/*left: 129px;
+max-width: 95%;*/
+text-align: center;
+align-items: center;
+background-color: transparent;
 }
 
-.userProfile .btns ul li a{
-  font-size: 1rem;
-  color: #000; /*#000*/
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.userProfile .btns ul li:hover{
-  background-color: #e6f2ff;
-}
-
-/*timeline_about*/
-.timeline_about{
-  /*padding: 2.5rem;*/
-  margin-top: -490px;
-  max-height: 654px;
-}
-
-.timeline_about .tabs ul{
-  position: relative;
-  display: flex;
+thead tr th{
   align-items: center;
-  margin-bottom: 2.5rem;
+  text-align: center;
+  background-color: #E0FBFC;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-.timeline_about .tabs ul::before{
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.2);
+thead tr th,
+tbody tr td{
+  border: 1px solid black;
 }
 
-.timeline_about .tabs ul li{
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-right: 2.5rem;
-  margin-bottom: 0.8rem;
-}
-
-.timeline_about .tabs ul li a:hover{
-  background-color: #e6f2ff;
-  border-radius: .5rem;
-  padding: .2rem .5rem;
-}
-
-.timeline_about .tabs ul li a{
-  font-size: 1rem;
-  font-weight: 500;
-  color: #000;
-  margin-right: 3rem;
-  text-decoration: none;
-}
-
-.timeline_about .tabs ul li .bx,
-.timeline_about .tabs ul li .fa{
-  margin-right: 0.5rem;
-}
-
-/*.timeline_about .tabs ul .active::before{
-  content: "";
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #0099cc;
-}*/
-
-.timeline_about .contact_info ul,
-.timeline_about .basic_info ul{
-  margin-bottom: 1.5rem;
-}
-
-.timeline_about .contact_info ul li,
-.timeline_about .basic_info ul li{
-  display: flex;
-  margin: 0.5rem 0;
-}
-
-.timeline_about .contact_info ul li h1,
-.timeline_about .basic_info ul li h1{
-  font-weight: 500;
-  font-size: 0.9rem;
-  min-width: 12rem;
-}
-
-.timeline_about .contact_info ul li span,
-.timeline_about .basic_info ul li span{
-  font-size: 0.9rem;
+tr:nth-child(odd) {
+  background-color: #E0FBFC;
 }
 
 /* The footer is fixed to the bottom of the page */
@@ -624,7 +464,7 @@ footer {
     }
 }
 
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav input[type=text] {
     float: none;
@@ -637,4 +477,4 @@ footer {
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
-}*/
+}
