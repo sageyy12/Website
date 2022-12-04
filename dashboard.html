@@ -18,7 +18,7 @@
               <div class="logo">
                   <img src="images/logo.png"></a>
                     <div class="logo-name">Dashboard</div>
-                    <button id="logout" onclick="window.location.href='login.html'">Logout</button>
+                    <button id="logout">Logout</button>
                 </div>
             </div>
         </nav>
@@ -99,7 +99,7 @@
             <div class="cards">
               <div class="card-single">
                 <div>
-                  <h1>160</h1>
+                  <h1 id="No.OfCommuters"></h1>
                   <span><a href="commutersTable.html" id="link">Commuters </a> </span>
                 </div>
                 <div>
@@ -111,7 +111,7 @@
 
               <div class="card-single">
                 <div>
-                  <h1>12,000</h1>
+                  <h1 id="total"></h1>
                   <span>Total Sales</span>
                 </div>
                 <div>
@@ -123,8 +123,9 @@
 
               <div class="card-single">
                 <div>
-                  <h1>250</h1>
-                  <span><a href="feedbacks.html" id="link">Feedbacks </a></span>
+                  <h1 id="No.OfF&C"></h1>
+                  <h6>Feedback: <span id="FeedbackNum"> </span> | Complaint: <span id="ComplaintNum"></span></h6>
+                  <span><a href="cusComplaints.html" id="link">Feedbacks And <br> Complaints</a></span>
                 </div>
                 <div>
                   <span>
@@ -135,8 +136,9 @@
 
               <div class="card-single">
                 <div>
-                  <h1>100</h1>
-                  <span><a href="cusComplaints.html" id="link">Complaints </a></span>
+                  <h1 id="No.OfBoundary"></h1>
+                  <h6>Pending: <span id="PendingBoundary"> </span> | Paid: <span id="PaidBoundary"></span></h6>
+                  <span><a href="boundaryRemit.html" id="link">Boundary Remittance </a></span>
                 </div>
                 <div>
                   <span>
@@ -147,7 +149,8 @@
 
               <div class="card-single">
                 <div>
-                  <h1>10</h1>
+                  <h1 id="No.OfReload"></h1>
+                  <h6>Pending: <span id="PendingNum"> </span> | Paid: <span id="PaidNum"></span></h6>
                   <span><a href="reload.html" id="link">Reload </a></span>
                 </div>
                 <div>
@@ -168,30 +171,50 @@
                 <a href="#TotalSalesbtn" id="TotalSales">
                   <button>Active Drivers</button>
                 </a>
+                      <!-- <a href="#Reloadbtn" id="Reload">
+                        <button>Bukyo Vehicles</button>
+                      </a> -->
             </div>
+
+            <!-- charts  -->
+            <!--div class="graphBox">
+              <div class="boxy">
+                <canvas id="myChart"></canvas>
+                <a href="CommEveryMonth.html" id="chartbtn">View more</a>
+              </div>
+              <div class="boxy">
+              <canvas id="everyMonth"></canvas>
+              <a href="CommEveryMonth.html" id="chartbtn2">View more</a>
+            </div>
+            <h3>Record of commuters</h3>
+          </div!-->
 
             <div class="recent-grid">
               <div class="projects">
                 <div class="cardsy">
                   <div class="card-header">
                     <h3>Recent Activity</h3>
+                    <!-- <a href="#seeAllbtn" id="seeAllbtn">
+                    <button>See all
+                      <span class="fa">&#xf178;</span>
+                    </button></a> -->
                   </div>
                   
                   <!-- pang bungad -->
                   <div class="card-body">
                     <div class="table-responsive">
-                    <iframe id="viewprof_iframe" src="listOfAdmins.html" frameborder="0" height="400" width="1000"></iframe>
+                    <iframe id="viewprof_iframe" src="listOfAdmins.html" frameborder="0" height="400" width="900"></iframe>
                     </div>
                   </div>
                   
                   <!-- admins btn -->
                   <div class="CommsDiv">
-                    <iframe id="viewprof_iframe" src="listOfAdmins.html" frameborder="0" height="400" width="1000"></iframe>
+                    <iframe id="viewprof_iframe" src="listOfAdmins.html" frameborder="0" height="400" width="900"></iframe>
                   </div>
 
                   <!-- active drivers btn -->
                   <div class="totalSalesDiv">
-                    <iframe id="viewprof_iframe" src="activeDrivers.html" frameborder="0" height="400" width="1000"></iframe>
+                    <iframe id="viewprof_iframe" src="activeDrivers.html" frameborder="0" height="400" width="900"></iframe>
                   </div>
 
                 </div><!-- cardsy -->
@@ -201,191 +224,28 @@
                 <div class="projects">
                   <div class="cardsy">
                     <div class="card-header">
-                      <h3>New registers</h3>
-                      <a href="#seeAllRegsbtn" id="seeAllRegsbtn">
+                      <h3>New Registers</h3>
+                      <a href="commutersTable.html" id="seeAllRegsbtn">
                       <button>See all
                         <span class="fa">&#xf178;</span>
                       </button></a>
                     </div>
-                    <div class="card-body">
-                      <div class="customer">
-                        <div class="info">
+                    <div id="sd" class="card-body">
+                      <div  class="customer">
+                        <!-- <div class="info">
                           <img src="images/user.png" width="40px" height="40px">
                           <div>
-                            <h4>Samantha Glorieta</h4>
-                            <small>Phase 2</small>
+                            <h4 id="CommuterName">Samantha Glorieta</h4>
+                            <small id="CommuterAddress">Phase 2</small>
                           </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
+                        </div> -->
+                        <!-- <div class="contact">
+                          <i class="fa">&#xf007;</i> 
+                          <i class="fa">&#xf27a;</i> 
+                          <i class="fa">&#xf095;</i> 
+                        </div> -->
                       </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta2</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta3</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta4</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta5</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta6</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta7</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta8</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta9</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta10</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta11</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
-                      </div>
-
-                      <div class="customer">
-                        <div class="info">
-                          <img src="images/user.png" width="40px" height="40px">
-                          <div>
-                            <h4>Samantha Glorieta12</h4>
-                            <small>Phase 2</small>
-                          </div>
-                        </div>
-                        <div class="contact">
-                          <i class="fa">&#xf007;</i> <!-- user icon -->
-                          <i class="fa">&#xf27a;</i> <!-- feedback/complaint icon -->
-                          <i class="fa">&#xf095;</i> <!-- phone icon -->
-                        </div>
+                    </div>
                       </div>
                     </div>
               </div>
@@ -455,6 +315,122 @@
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+
+    <script>
+alert("updated")
+            const firebaseConfig = {
+                    apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
+                    authDomain: "shuttle-go-8d87a.firebaseapp.com",
+                    databaseURL: "https://shuttle-go-8d87a-default-rtdb.firebaseio.com",
+                    projectId: "shuttle-go-8d87a",
+                    storageBucket: "shuttle-go-8d87a.appspot.com",
+                    messagingSenderId: "509853219067",
+                    appId: "1:509853219067:web:5e6b7fb55bbdba9cc0985e",
+                    measurementId: "G-3YGP2PY9QX"
+                  };
+                  firebase.initializeApp(firebaseConfig);
+
+                console.log(firebase);
+
+                //Dashboard count
+                var count;
+                
+                //Commuter
+                firebase.database().ref('Commuters').once('value', function(snapshot){
+                  count = snapshot.numChildren();
+                  document.getElementById("No.OfCommuters").innerHTML = count;
+                });
+
+                //Feedback & Complaint
+                var countFeedback , countComplaint;
+                firebase.database().ref('Feedbacks').once('value', function(snapshot){
+                  countFeedback = snapshot.numChildren();
+                  document.getElementById("FeedbackNum").innerHTML = countFeedback;
+                  
+                firebase.database().ref('Complaints').once('value', function(snapshot){
+                  countComplaint = snapshot.numChildren();
+                  document.getElementById("ComplaintNum").innerHTML = countComplaint;
+
+                  totalFeed = countFeedback + countComplaint;
+                  document.getElementById("No.OfF&C").innerHTML = totalFeed;                
+                });              
+                });
+
+                //Boundary
+                firebase.database().ref('boundary').once('value', function(snapshot){
+                  count = snapshot.numChildren();
+                  document.getElementById("No.OfBoundary").innerHTML = count;
+                });
+                firebase.database().ref('boundary').orderByChild('status').equalTo('Pending').once('value', function(snapshot){
+                  count = snapshot.numChildren();
+                  document.getElementById("PendingBoundary").innerHTML = count;
+                });
+
+                firebase.database().ref('boundary').orderByChild('status').equalTo('Paid').once('value', function(snapshot){
+                  count = snapshot.numChildren();
+                  document.getElementById("PaidBoundary").innerHTML = count;
+                });
+
+                //Reload
+                firebase.database().ref('Reload').once('value', function(snapshot){
+                  count = snapshot.numChildren();
+                  document.getElementById("No.OfReload").innerHTML = count;
+                });
+
+                firebase.database().ref('Reload').orderByChild('status').equalTo('Pending').once('value', function(snapshot){
+                  count = snapshot.numChildren();
+                  document.getElementById("PendingNum").innerHTML = count;
+                });
+
+                firebase.database().ref('Reload').orderByChild('status').equalTo('Paid').once('value', function(snapshot){
+                  count = snapshot.numChildren();
+                  document.getElementById("PaidNum").innerHTML = count;
+                });
+
+              // TOTAL SALES
+              var sales;
+              var salesAmount = 0;
+              firebase.database().ref('boundary').once('value', function (snapshot){
+                  snapshot.forEach(function(childSnapshot){
+                   sales = childSnapshot.val().amount;
+                   salesAmount += parseInt(sales);
+                  document.getElementById("total").innerHTML = salesAmount;
+                  //alert(salesAmount);      
+                });
+              });
+                
+              //New registers
+
+              function Select_AllData(){
+                firebase.database().ref('Commuters').once('value', function (snapshot){
+                  snapshot.forEach(function(childSnapshot){
+                  var name = childSnapshot.val().first_Name + " " + childSnapshot.val().last_Name;
+                  var address = childSnapshot.val().address;
+
+                 AddItemToTable(name, address);
+              });
+            });
+           }
+              window.onload = Select_AllData;  
+
+              function AddItemToTable(name,address){
+                
+                let newDiv = document.getElementById("sd");
+                let ComName = document.createElement("h4");
+                let ComAddress= document.createElement("small");
+
+              ComName.innerHTML= name+ '<i class="fa">&#xf007;</i> </i> <i class="fa">&#xf27a;</i> <i class="fa">&#xf095;</i>';
+              ComAddress.innerHTML = address;
+              
+              newDiv.append(ComName,ComAddress);
+              }
+                
+
+    </script>
+
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
         <!--script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"></script!--> <!-- link for chart  -->
 
@@ -502,83 +478,6 @@
                 commsDiv.style.display = 'none';
               }
             });
-
-            //chart
-            /*const ctx = document.getElementById('myChart').getContext('2d');
-            const myChart = new Chart(ctx, {
-              type: 'bar',
-              data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
-                'September', 'October', 'November', 'December'],
-                datasets: [{
-                  label: 'No. of commuters every month',
-                  data: [120, 100, 310, 350, 220, 340, 120, 190, 310, 350, 200, 400],
-                  backgroundColor: [
-                    '#3D5A80'
-                  ]
-                }]
-              },
-              options: {
-                responsive: true,
-              }
-            });
-
-            const monthly = document.getElementById('everyMonth').getContext('2d');
-            const everyMonth = new Chart(monthly, {
-              type: 'line',
-              data: {
-                labels: ['2020', '2021', '2022'],
-                datasets: [{
-                  label: 'No. of commuters every year',
-                  data: [1200, 1000, 3000],
-                  borderColor: [
-                    '#3D5A80'
-                  ],
-                  backgroundColor: [
-                    '#3D5A80'
-                  ]
-                }]
-              },
-              options: {
-                responsive: true,
-              }
-            });*/
-
-            //dropdown
-            /*function GetSelectedText(){
-              const commsDiv = document.querySelector('.CommsDiv');
-              const totalDiv = document.querySelector('.totalSalesDiv');
-              const feedsDiv = document.querySelector('.feedbacksDiv');
-              const complaintsDiv = document.querySelector('.complaintsDiv');
-              const reloadDiv = document.querySelector('.reloadDiv');
-
-              const opt1= document.getElementById("comm");
-
-              var e = document.getElementById("opt");
-              var result = e.options[e.selectedIndex].text;
-
-              if (e.option == opt1) {
-                commsDiv.style.display ='block';
-                divList.style.display = 'none';
-                totalDiv.style.display = 'none';
-                feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-              }else if (e.option == "Total Sales") {
-                totalDiv.style.display ='block';
-                divList.style.display = 'none';
-                commsDiv.style.display = 'none';
-                feedsDiv.style.display = 'none';
-                complaintsDiv.style.display = 'none';
-                reloadDiv.style.display = 'none';
-              }
-
-              document.getElementById("result").innerHTML = result;
-
-              $("#opt").change(function(){
-               var insi = $('#opt').val();
-                $("#tblID").removeClass( ).addClass( insi );
-            });*/
             </script>
     </body>
 </html>

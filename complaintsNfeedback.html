@@ -86,7 +86,7 @@
         <div class="cards">
           <div class="card-single">
             <div>
-              <h1>160</h1>
+              <h1 id="complaintsCount">160</h1>
               <span> <a href="cusComplaints.html" id="link"> Complaints </a></span>
             </div>
             <div>
@@ -98,7 +98,7 @@
 
           <div class="card-single">
             <div>
-              <h1>250</h1>
+              <h1 id="feedbaksCount">250</h1>
               <span> <a href="feedbacks.html" id="link"> Feedbacks </a></span>
             </div>
             <div>
@@ -315,12 +315,12 @@
 
       //select all data
       function Select_AllData(){
-        firebase.database().ref('users').once('value', function (snapshot){
+        firebase.database().ref('Complaints').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
-            var name = childSnapshot.val().firstName;
-            var regdate = childSnapshot.val().registration;
-            var licensey = childSnapshot.val().license;
-            AddItemToTable(name, regdate,licensey);
+            var name = childSnapshot.val().Subject;
+            var regdate = childSnapshot.val().Subject;
+            var subjecty = childSnapshot.val().Report;
+            AddItemToTable(name, regdate,subjecty);
       });
     });
   }
@@ -329,7 +329,7 @@
       var studentNo = 0;
       var stdList = [];
 
-      function AddItemToTable(name, regdate,licensey){
+      function AddItemToTable(name, regdate,subjecty){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
@@ -337,12 +337,12 @@
         let td2 = document.createElement("td");
         let td3 = document.createElement("td");
 
-        stdList.push([name, regdate,licensey]);
+        stdList.push([name, regdate,subjecty]);
 
         td0.innerHTML = ++studentNo;
         td1.innerHTML = name;
         td2.innerHTML = regdate;
-        td3.innerHTML = licensey;
+        td3.innerHTML = subjecty;
 
         trow.appendChild(td0);
         trow.appendChild(td1);
@@ -360,13 +360,13 @@
         studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.firstName + " " + element.lastName , element.registration, element.license)
+              AddItemToTable(element.Subject, element.Subject, element.Report)
             });
           }
 
           function getAllData() {
-              const dbref = firebase.database().ref("users");
-              get(child(dbref, "users"))
+              const dbref = firebase.database().ref("Complaints");
+              get(child(dbref, "Complaints"))
               .then((snapshot) => {
                 var commuter = [];
                 snapshot.forEach(childSnapshot => {
@@ -377,7 +377,7 @@
           }
 
           function getAllDataRT() {
-              const dbRef = firebase.database().ref("users");
+              const dbRef = firebase.database().ref("Complaints");
               
               dbRef.on('value', (snapshot)=>{
                 var commuters = [];
@@ -389,5 +389,16 @@
           }
           window.onLoad = getAllDataRT();
 
+          //Feedback & Complaint
+          var countFeedback , countComplaint;
+                firebase.database().ref('Feedbacks').once('value', function(snapshot){
+                  countFeedback = snapshot.numChildren();
+                  document.getElementById("feedbaksCount").innerHTML = countFeedback;
+                  
+                firebase.database().ref('Complaints').once('value', function(snapshot){
+                  countComplaint = snapshot.numChildren();
+                  document.getElementById("complaintsCount").innerHTML = countComplaint;                
+                });              
+                });
   </script>
 </html>

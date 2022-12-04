@@ -282,7 +282,7 @@ main{
   position: relative;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  /* top: 8rem; */
+  /* top: 3rem; */
   left: 6.3rem;
   margin-bottom: 220px;
 }
@@ -293,8 +293,8 @@ top: 5px;
 border-radius: 0.5rem;
 /*left: 129px;
 max-width: 95%;*/
-text-align: center;
-align-items: center;
+text-align: center !important;
+align-items: center !important;
 background-color: transparent;
 }
 
@@ -309,6 +309,16 @@ thead tr th{
 thead tr th,
 tbody tr td{
   border: 1px solid black;
+}
+
+tr:nth-child(odd) {
+  background-color: #E0FBFC;
+}
+
+td:nth-child(4) {
+  width: 40%;
+  text-align: justify;
+  padding: 20px;
 }
 
 /*data table*/

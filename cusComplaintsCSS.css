@@ -211,105 +211,7 @@ color: #E0FBFC;
   transform: translateY(2px);
 }
 
-/*table*/
-.tableDiv{
-  /*max-width: 123%;*/
-  max-width: 97%;
-  position: relative;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  top: 8rem;
-  left: 3.5rem;
-}
-
-table{
-position: relative;
-/*margin-left: 14rem;*/
-top: 1rem;
-max-width: 97%;
-margin-bottom: 2rem;
-/*border: 2px solid #3D5A80;
-box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-text-align: center;
-color: black;
-text-align: left;*/
-}
-
-/*data table*/
-.dataTables_wrapper .dataTables_info { /*show entries*/
-    clear: both;
-    float: left;
-    padding-top: 0.755em;
-    margin-left: 17px;
-}
-
-#example_length label{ /*show entries number*/
-  position: relative;
-  margin-left: 19px;
-}
-
-#example_filter label{ /*search*/
-  position: relative;
-  margin-right: 21px;
-}
-
-#example_paginate{ /*next page*/
-  position: relative;
-  margin-top: 14px;
-  margin-right: 1px;
-}
-
-tr:nth-child(odd) {
-  background: #E0FBFC;
-}
-
-table tr td:nth-child(2) {
-  width: 20%;
-}
-
-table tr td:nth-child(5) {
-  width: 10%;
-}
-
-table tr td:nth-child(6) {
-  width: 10%;
-}
-
-/*dropdown sa table*/
-td .dropdown .btn{
-  background-color: #E0FBFC;
-  color: black;
-  border: none;
-}
-
-.title{
-  position: absolute;
-  left: 121px;
-  top: 162px;
-  font-family: 'Raleway';
-  font-weight: 700;
-  font-size: 23px;
-  line-height: 29px;
-  text-align: left;
-  color: #3D5A80;
-}
-
-.title .text{
-  left: -20px;
-  position: relative;
-}
-
-/*table*/
-.tableDiv{
-  /*max-width: 123%;*/
-  max-width: 97%;
-  position: relative;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  top: -40px;
-  left: 3.5rem;
-}
-
+/*widgets*/
 main{
   /*margin-top: 30px*/
   padding: 5rem 30rem;
@@ -318,11 +220,12 @@ main{
 
 .cards{
   display: flex;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 4rem; /*pagitan ng grids*/
   right: 104px;
   top: 26px;
   position: relative;
+  z-index: 1;
 }
 
 .card-single{
@@ -334,6 +237,15 @@ main{
   padding: 2rem;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+}
+
+.cards .card-single #link{
+  text-decoration: none;
+  color: gray;
+}
+
+.cards .card-single #link:hover{
+  color: #42a5f5;
 }
 
 .card-single div:last-child span{
@@ -352,20 +264,273 @@ main{
   left: 9px;
 }
 
-#cusComplaintsbtn{
+.title{
   position: absolute;
-  width: 143px;
-  height: 50px;
-  left: 933px;
-  top: -10px;
-  background: #3D5A80;
+  left: 121px;
+  top: 162px;
+  font-family: 'Raleway';
+  font-weight: 700;
+  font-size: 23px;
+  line-height: 29px;
+  text-align: left;
+  color: #3D5A80;
+}
+
+/*table*/
+.tableDiv{
+  max-width: 90%;
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  /* top: 3rem; */
+  left: 6.3rem;
+  margin-bottom: 220px;
+}
+
+table{
+position: relative;
+top: 5px;
+border-radius: 0.5rem;
+/*left: 129px;
+max-width: 95%;*/
+text-align: center !important;
+align-items: center !important;
+background-color: transparent;
+}
+
+thead tr th{
+  align-items: center;
+  text-align: center;
+  background-color: #E0FBFC;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+thead tr th,
+tbody tr td{
+  border: 1px solid black;
+}
+
+tr:nth-child(odd) {
+  background-color: #E0FBFC;
+}
+
+td:nth-child(4) {
+  width: 40%;
+  text-align: justify;
+  padding: 20px;
+}
+
+/*data table*/
+.dataTables_wrapper .dataTables_info { /*show entries*/
+    clear: both;
+    float: left;
+}
+
+#example_length label{ /*show entries number*/
+  position: relative;
+  top: -27px;
+}
+
+#example_filter label{ /*search*/
+  position: relative;
+  top: -27px;
+}
+
+/*read more*/
+/* #lowertbt .read-more-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    gap: 1rem;
+    text-align: justify;
+}
+
+#lowertbt{
+  position: absolute;
+  top: 100px;
+  margin-left: 140px;
+  max-width: 85%;
+  border: none;
+}
+
+#tbtProfileImg img{
+  width: 75px;
+  height: 75px;
+}
+
+#lowertbt thead tr th{
+  background-color: #fff;
+} */
+
+/*#lowertbt tr:nth-child(odd){
+  background-color: #3D5A80;
+}*/
+
+/* #lowertbt tr td:nth-child(3){
+  width: 15%;
+}
+
+#lowertbt tr td:nth-child(4){
+  width: 10%;
+} */
+
+/*see more*/
+.read-more-btn{
+  position: relative;
+  top: -22px;
+  color: #3D5A80;;
+  cursor: pointer;
+}
+
+.read-more-btn:hover{
+  color: #42a5f5;
+}
+
+.invisible-text{
+  display: none;
+}
+
+.invisible-text--show{
+  display: inline;
+}
+
+.rating{ /*di need na napipindot to since manggagaling sa db ang rating*/
+  position: relative;
+  display: flex;
+  /*top: 82px;
+  right: -907px;*/
+}
+
+.rating .fa{
+  color: #b8e7e8;
+  display: block;
+  cursor: pointer;
+  width: 35px;
+  font-size: 30px;
+}
+
+/*see more modal*/
+a #seemoreBtnModal, #seemoreBtnModal2, #seemoreBtnModal3, #seemoreBtnModal4, #seemoreBtnModal5, #seemoreBtnModal6,
+#seemoreBtnModal7, #seemoreBtnModal8, #seemoreBtnModal9, #seemoreBtnModal10{
+  color: #3D5A80;
+  border-color: transparent;
+  background-color: transparent;
+  padding: 5px 0px;
+  top: -30px;
+  position: relative;
+}
+
+a #seemoreBtnModal:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal2:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal3:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal4:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal5:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal6:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal7:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal8:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal9:hover{
+  color: #42a5f5;
+}
+
+a #seemoreBtnModal10:hover{
+  color: #42a5f5;
+}
+
+#seemoreModal {
+  position: absolute;
+  right: 26%;
+  top: calc(100% - 91%);
+  overflow: auto;
+  width: 620px;
+  height: 350px;
+  background: #E0FBFC;
+  border: 2px solid #3D5A80;
+  border-radius: 10px;
+  z-index: 1;
+  display: none; /*none*/
+}
+
+#seemoreModal::-webkit-scrollbar{
+  width: 10px;
+}
+
+#seemoreModal::-webkit-scrollbar-thumb{
+  background-color: #3D5A80;
+  border-radius: 10vw;
+}
+
+#seemoreModal::-webkit-scrollbar-thumb:hover{
+  background-color: #2E496D;
+}
+
+#seemoreModal.show{
+  opacity: 1;
+  display: block; /*inline-block*/
+}
+
+.seemoremodal-content{
+  position: relative;
+  overflow-y: hidden;
+  margin: 10px auto;
+  padding: 0;
+  width: 600px;
+  max-width: 90%;
+  animation: open 0.5s ease;
+}
+
+.seemoreclose-btn{
+  position: relative;
+  color: #3D5A80;
+  left: 510px;
+  top: -14px;
+  font-family: "Raleway";
+  font-size: 30px;
+  font-weight: bold;
+  padding: 1px 5px;
+  text-decoration: none;
+  cursor: pointer;
+  visibility: visible;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+/*respond btn*/
+td a #respondbtn{
   border-radius: 66px;
   border-color: transparent;
-  font-family: 'Raleway';
-  font-weight: 900;
-  font-size: 14px;
-  line-height: 15px;
-  color: #E0FBFC;
+  background-color: transparent;
+  font-family: 'Salsa';
+  color: #3D5A80;
+}
+
+td a #respondbtn:hover{
+  color: #42a5f5;
 }
 
 /* The footer is fixed to the bottom of the page */
@@ -556,18 +721,3 @@ footer {
         margin-left: 0;
     }
 }
-
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
-@media screen and (max-width: 600px) {
-  .topnav a, .topnav input[type=text] {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;
-  }
-}*/

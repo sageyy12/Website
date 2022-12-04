@@ -258,12 +258,14 @@
             <thead>
             <tr>
               <th>ID</th>
-              <th id="tbtprofile">PROFILE</th>
+              <th>Name</th>
               <th>RECEIPT</th>
-              <th>EMAIL</th>
-              <th>DATE</th>
-              <th>TIME</th>
-              <th>ISSUE RECEIPT</th>
+              <th>Contact Number</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Amount</th>
+              <th>Status</th>
+              <th>Update Status</th>
             </tr>
           </thead>
           <tbody id="tbody1"></tbody>
@@ -277,8 +279,8 @@
   <div class="seemoreModal-body">
     <div id="receiptCont">
       <center>
-        <img id="myimg" height="200px" width="200px">
-        <form>
+        <img id="myimg" height="200px" width="200px"> <br>
+        <form> <br><br>
       <label for="csname" id="csnamelabel">Driver's Name: </label>
       <input type="text" id="csname" name="csname" value="Maria Anders" disabled>
       <br>
@@ -388,43 +390,19 @@
 
                 console.log(firebase);
 
-
-    // let btn= document.querySelector("#btn");
-    // let sidebar= document.querySelector(".sidebar");
-
-    // btn.onclick= function(){
-    // sidebar.classList.toggle("active");
-    // }
-
-    // //table filter
-    // $(document).ready(function() {
-    //   $('#example').DataTable( {
-    //     "pagingType": "full_numbers",
-    //   } );
-    // } );
-    // function zoomIn() {
-    //   var pic = document.getElementById("receiptimg");
-    //   var width = pic.clientWidth;
-    //   pic.style.width = width + 100 + "px";
-    // }
-    // function zoomOut() {
-    //   var pic = document.getElementById("receiptimg");
-    //   var width = pic.clientWidth;
-    //   pic.style.width = width - 100 + "px";
-    // }
-
       //select all data
       function Select_AllData(){
         firebase.database().ref('boundary').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
             var driverr = childSnapshot.val().driver;
             var receiptt = childSnapshot.val().receiptt;
-            var email22 = childSnapshot.val().email2;
+            var email22 = childSnapshot.val().amount;
             var datee = childSnapshot.val().date;
             var stats = childSnapshot.val().status;
             var timee = childSnapshot.val().time;
+            var num = childSnapshot.val().contact;
           
-            AddItemToTable(driverr, receiptt, email22,stats, datee, timee);
+            AddItemToTable(driverr, receiptt, email22,stats, datee, timee, num);
           });
         });
       }
@@ -435,7 +413,7 @@
       var stdList = [];
       
 
-        function AddItemToTable(driverr, receiptt, email22,stats, datee, timee){
+        function AddItemToTable(driverr, receiptt, email22,stats, datee, timee, num){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("td");
@@ -445,33 +423,35 @@
         let td4 = document.createElement("td");
         let td5 = document.createElement("td");
         let td6 = document.createElement("td");
+        let td7 = document.createElement("td");
+        let td8 = document.createElement("td");
        
 
-        stdList.push([driverr, receiptt, email22,stats, datee, timee ]);
+        stdList.push([driverr, receiptt, email22,stats, datee, timee, num]);
         
 
         td0.innerHTML = ++studentNo;
         td1.innerHTML = driverr;
         td2.innerHTML = receiptt;
-        td3.innerHTML = email22;
-        td4.innerHTML = datee;
-        td5.innerHTML = timee;
-        td6.innerHTML = stats;
+        td3.innerHTML = num;
+        td4.innerHTML = timee;
+        td5.innerHTML = datee;
+        td6.innerHTML = email22;
+        td7.innerHTML = stats;
 
         
         var ControlDiv2 = document.createElement("div2");
         ControlDiv2.innerHTML ='<td id="receipt"> <a href="#exampleModalCenter" id="viewBtn1">' +
-                          '<button id="myBtn" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#seemoreModal">View Receipt</button>'
-                       
+                          '<button id="myBtn" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#seemoreModal">View Receipt</button></a>'
+
         trow.appendChild(td0);
         trow.appendChild(td1);
         trow.appendChild(ControlDiv2);
         trow.appendChild(td3);
         trow.appendChild(td4);
         trow.appendChild(td5);
-       // trow.appendChild(td6);
         trow.append(td6);
-    
+        trow.appendChild(td7);
 
         var ControlDiv = document.createElement("div");
         ControlDiv.innerHTML = '<select id="status'+studentNo+'" onchange="Update('+studentNo+')">' + 
@@ -484,13 +464,44 @@
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
+
+        // color customization not working properly
+        // function Paid(){
+        // firebase.database().ref('boundary').orderByChild('status').equalTo('Paid').once('value', function(snapshot){
+        //           td7.style.fontFamily  = "Salsa";
+        //           td7.style.color = "#4caf50";
+        //           td7.style.borderRadius  = "11px";
+        //           td7.style.fontWeight  = "400";
+        //           td7.style.fontSize  = "small";
+        //         });
+        //       }
+        
+        // function Pending(){
+        //   firebase.database().ref('boundary').orderByChild('status').equalTo('Pending').once('value', function(snapshot){
+        //           td7.style.fontFamily  = "Salsa";
+        //           td7.style.color = "#ce9a00";
+        //           td7.style.borderRadius  = "11px";
+        //           td7.style.fontWeight  = "400";
+        //           td7.style.fontSize  = "small";
+        //         });
+        //       }
+
+        // function Unpaid(){
+        //         firebase.database().ref('boundary').orderByChild('status').equalTo('Unpaid').once('value', function(snapshot){
+        //           td7.style.fontFamily  = "Salsa";
+        //           td7.style.color = "#d60000";
+        //           td7.style.borderRadius  = "11px";
+        //           td7.style.fontWeight  = "400";
+        //           td7.style.fontSize  = "small";
+        //         });
+        //       }
       }
 
       function AddAllItems(boundary) {
         studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.driver, element.receipt , element.email2, element.status, element.time, element.date)
+              AddItemToTable(element.driver, element.receipt , element.amount, element.status, element.time, element.date, element.contact)
             });
           }
 
@@ -552,10 +563,7 @@
               ImgNAme.disabled = true;
               ImgNAme.hidden = true;
             })
-          }
-
-          
-          
+          }     
   </script>
 
     <script> //Modal script

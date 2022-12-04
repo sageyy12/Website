@@ -228,13 +228,47 @@ body{
 
 /*table*/
 .tableDiv{
-  /*max-width: 123%;*/
-  max-width: 97%;
+  max-width: 90%;
   position: relative;
   padding: 1.5rem;
   border-radius: 0.5rem;
-  top: -40px;
-  left: 3.5rem;
+  /* top: 3rem; */
+  left: 6.3rem;
+  margin-bottom: 220px;
+}
+
+table{
+position: relative;
+top: 5px;
+border-radius: 0.5rem;
+/*left: 129px;
+max-width: 95%;*/
+text-align: center !important;
+align-items: center !important;
+background-color: transparent;
+}
+
+thead tr th{
+  align-items: center;
+  text-align: center;
+  background-color: #E0FBFC;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+thead tr th,
+tbody tr td{
+  border: 0.1px solid black;
+}
+
+td:nth-child(4) {
+  width: 40%;
+  text-align: justify;
+  padding: 20px;
+}
+
+tr:nth-child(odd) {
+  background-color: #E0FBFC;
 }
 
 /*widgets*/
