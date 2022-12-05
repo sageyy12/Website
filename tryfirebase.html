@@ -104,15 +104,14 @@
         <thead>
           <th>ID</th>
           <th>Name</th>
-          <th>Email</th>
-          <th>Registration Date</th>
-          <th>Status</th>
           <th>License</th>
+          <th>Email</th>
+          <th>Status</th>
           <th>Address</th>
           <th>Phone Number</th>
           <th>Username</th>
-          <th>Password</th>
           <th>Profile Name</th>
+          <th>Date Registered</th>
           <th>Control Center</th>
         </thead>
         <tbody id="tbody1"></tbody>
@@ -329,21 +328,22 @@
 
       //select all data
       function Select_AllData(){
-        firebase.database().ref('users').once('value', function (snapshot){
+        firebase.database().ref('Driver').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
-            var name = childSnapshot.val().firstName;
-            var midname = childSnapshot.val().midName;
-            var lastname = childSnapshot.val().lastName;
+            var name = childSnapshot.val().first_Name;
+            var lastname = childSnapshot.val().last_Name;
             var emaily = childSnapshot.val().email;
-            var regdate = childSnapshot.val().registration;
             var statusy = childSnapshot.val().status;
-            var licensey = childSnapshot.val().license;
-            var add = childSnapshot.val().address;
-            var num = childSnapshot.val().phonenum;
-            var unamey = childSnapshot.val().username;
-            var passs = childSnapshot.val().password;
-            var prof = childSnapshot.val().NameOfTheProf;
-            AddItemToTable(name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof);
+            var addy = childSnapshot.val().license;
+            var numy = childSnapshot.val().address;
+            var unameyy = childSnapshot.val().phone_Number;
+            var license = childSnapshot.val().username;
+            var passs = childSnapshot.val().pass;
+            var picnameyy = childSnapshot.val().wallet;
+            var picname = childSnapshot.val().PicName;
+            var link = childSnapshot.val().Link;
+            var datey = childSnapshot.val().date;
+            AddItemToTable(name, lastname, emaily, statusy, addy, nnumy, unameyy, license, passs, picnameyy, picname, datey);
       });
     });
   }
@@ -353,7 +353,7 @@
       var studentNo = 0;
       var stdList = [];
 
-      function AddItemToTable(name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof){
+      function AddItemToTable(name, lastname, emaily, statusy, addy, numy, unameyy, license, passs, picnameyy, picname, datey){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
@@ -366,21 +366,21 @@
         let td7 = document.createElement("td");
         let td8 = document.createElement("td");
         let td9 = document.createElement("td");
-        let td10 = document.createElement("td");
+      
 
-        stdList.push([name, midname, lastname, emaily, regdate, statusy, licensey, add, num, unamey, passs, prof]);
+        stdList.push([name, lastname, emaily, statusy, addy, numy, unameyy, license, passs, picnameyy, picname, datey]);
 
         td0.innerHTML = ++studentNo;
-        td1.innerHTML = name + " " + midname + " " + lastname;
-        td2.innerHTML = emaily;
-        td3.innerHTML = regdate;
+        td1.innerHTML = name + " " + lastname;
+        td2.innerHTML = license;
+        td3.innerHTML = emaily;
         td4.innerHTML = statusy;
-        td5.innerHTML = licensey;
-        td6.innerHTML = add;
-        td7.innerHTML = num;
-        td8.innerHTML = unamey;
-        td9.innerHTML = passs;
-        td10.innerHTML = prof;
+        td5.innerHTML = addy;
+        td6.innerHTML = numy;
+        td7.innerHTML = unameyy;
+        td8.innerHTML = picnameyy;
+        td9.innerHTML = datey;
+
         trow.appendChild(td0);
         trow.appendChild(td1);
         trow.appendChild(td2);
@@ -391,11 +391,10 @@
         trow.appendChild(td7);
         trow.appendChild(td8);
         trow.appendChild(td9);
-        trow.appendChild(td10);
 
         var ControlDiv = document.createElement("div");
         // ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'
-        // ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+        // ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
         ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#viewProf">View ID </button>'
 
         trow.appendChild(ControlDiv);
@@ -405,13 +404,13 @@
         studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.firstName, element.midName, element.lastName , element.email, element.registration, element.status,element.license, element.address, element.phonenum, element.username, element.password, element.NameOfTheProf)
+              AddItemToTable(element.first_Name, element.last_Name , element.email, element.status, element.address, element.phone_Number, element.username, element.license, element.wallet, element.PicName)
             });
           }
 
           function getAllData() {
-              const dbref = firebase.database().ref("users");
-              get(child(dbref, "users"))
+              const dbref = firebase.database().ref("Driver");
+              get(child(dbref, "Driver"))
               .then((snapshot) => {
                 var commuter = [];
                 snapshot.forEach(childSnapshot => {
@@ -422,7 +421,7 @@
           }
 
           function getAllDataRT() {
-              const dbRef = firebase.database().ref("users");
+              const dbRef = firebase.database().ref("Driver");
               
               dbRef.on('value', (snapshot)=>{
                 var commuters = [];
@@ -495,7 +494,7 @@
           regdate.disabled = true;
           license.disabled = true;
 
-          firstName.value = stdList[index][0];
+          firstName.value = stdList[index];
           midName.value = stdList[index][1];
           lastName.value =  stdList[index][2];
           document.getElementById("pass").value = stdList[index][10];
@@ -509,13 +508,13 @@
           profname.value = stdList[index][11];
 
           //for id
-          var licc = license.value;
-          var fnamey = firstName.value + " " + midName.value + " " + lastName.value;
-          var mnamey = uname.value;
-          var lnamey = email.value;
-          var addressy = address.value;
-          var numy = phonenum.value;
-          var datey = regdate.value;
+          var licc = address.value;
+          var fnamey = firstName.value + " " + midName.value;
+          var mnamey = license.value;
+          var lnamey = lastName.value;
+          var addressy = regdate.value;
+          var numy = document.getElementById("status").value;
+          var datey = email.value;
           var imgggg = profname.value;
 
           sessionStorage.setItem("licc", licc);

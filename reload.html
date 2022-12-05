@@ -226,7 +226,6 @@
   
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
       <script id="MainScript">
-      alert("Di makakapag add si admin pero may update. Di pa yon nagagawa")
   
               const firebaseConfig = {
                       apiKey: "AIzaSyBfq-ptJkg7y-hJpyJrVq8x0PNoM4fT7cY",
@@ -391,6 +390,14 @@
                 ImgNAme.disabled = true;
                 ImgNAme.hidden = true;
               })
+
+              firebase.database().ref('Reload').once('value', function (snapshot){
+                  snapshot.forEach(function(childSnapshot){
+                  var sales = childSnapshot.val().load_amount;
+          
+                   var reload_amount= document.getElementById("amount").value= sales;  
+                });
+              });
           }
         }
   
@@ -474,6 +481,7 @@
             starCountRef.once('value', (snapshot) => {
               var receiptt = snapshot.val().wallet;
               transact(receiptt)
+              alert("Succesfully added!")
             });
   
         function transact(receiptt)

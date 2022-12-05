@@ -328,28 +328,9 @@ tr:nth-child(odd) {
   background-color: #E0FBFC;
 }
 
-td:nth-child(2) {
-  width: 11%;
-}
-
-td:nth-child(3) {
-  width: 11%;
-}
-
 td:nth-child(6) {
-  width: 11%;
-}
-
-td:nth-child(7) {
-  width: 11%;
-}
-
-td:nth-child(8) {
-  width: 11%;
-}
-
-td:nth-child(9) {
-  width: 11%;
+  width: 20%;
+  text-align: justify;
 }
 
 table img{
