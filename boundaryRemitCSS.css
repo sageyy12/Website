@@ -231,6 +231,61 @@ body{
   box-shadow: 3px 3px 2px 0.2px grey;
 }
 
+.add-record-container{ 
+  /* margin-top: 100px; */
+  float: right;
+  top: 100px;
+}
+
+
+.add-record-btn a button{
+  position: relative;
+  left: 810px;
+  width: 143px;
+  height: 42px;
+  background: #194F82;
+  border-radius: 66px;
+  border-color: transparent;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 25px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #E0FBFC;
+  box-shadow: 4px 4px 4px rgb(0 0 0 / 25%);
+  cursor: pointer;
+}
+
+/* #btnPrint{
+  left: -600px;
+} */
+
+.add-record-forms{
+  position: relative;
+  display: inline-grid;
+  right: 843px;
+}
+
+.add-record-forms form input{
+    position: relative;
+    justify-content: space-between;
+    display: inline-flex;
+    /*left: 505px;
+    bottom: 40px;*/
+    margin: 0 0 0 14px;
+    top: -42px;
+    left: 528px;
+}
+
+.add-record-forms input[type=text], input[type=number]{
+  padding: 6px;
+  width: 259px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #194F82;
+  box-shadow: 3px 3px 2px 0.2px grey;
+}
+
 /*table*/
 .tableDiv{
   max-width: 90%;
@@ -657,6 +712,22 @@ a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5
   color: #4277bd;
 }
 
+#addAcct{
+  font-family: "Salsa";
+  /* width: 90px;
+  height: 26px; */
+  background: #3d5a80;
+  border-color: transparent;
+  border-radius: 11px;
+  letter-spacing: 1.5px;
+  color: #E0FBFC;
+}
+
+#addAcct:hover{
+  background: #E0FBFC;
+  color: rgb(113, 110, 110);
+}
+
 /* The footer is fixed to the bottom of the page */
 footer {
     position: fixed;
@@ -847,7 +918,7 @@ footer {
 }
 
 
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav input[type=text] {
     float: none;
@@ -860,4 +931,4 @@ footer {
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
-}*/
+}

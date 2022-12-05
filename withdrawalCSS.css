@@ -360,6 +360,12 @@ tr:nth-child(odd) {
 z-index: 0;
 }
 
+.labs{
+  display: inline-block;
+  width: 150px;
+  background-color: rebeccapurple;
+}
+
 .seemoreModal-header .close{
   background-color: transparent;
   border-color: transparent;

@@ -394,10 +394,9 @@
         trow.appendChild(td10);
 
         var ControlDiv = document.createElement("div");
-        ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'
-        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
-        ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#viewProf">View ID </button>'
-        ControlDiv.innerHTML += '<hr id="hrr">'
+        // ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'
+        // ControlDiv.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+        ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#viewProf">View ID </button>'
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
@@ -602,14 +601,11 @@
       //creating new accounts
       function Add(){
 
-      var status = document.getElementById('status').value; //kailangan to para hindi mag [object HTMLInputElement] value ni status
-      email = document.getElementById('eeemail').value
-      password = document.getElementById('pass').value
+        var status = document.getElementById('status').value; //kailangan to para hindi mag [object HTMLInputElement] value ni status
       
       //auto generate password
         var chars = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var passwordLength = 8
-        ;
+        var passwordLength = 7;
         var password = "";
         for (var i = 0; i <= passwordLength; i++) {
           var randomNumber = Math.floor(Math.random() * chars.length);
@@ -682,26 +678,7 @@
         );
         }
       });
-      //const auth = getAuth();
-      // window.location.href='login.html'
-      // var user = firebase.auth().currentUser;
-      auth.sendEmailVerification().then(function(){
-        alert("Verification link is sent! Kindly tell the driver to check their spam or promotion.");
-      }).catch(function(error){
-        alert(error);
-      })
       }
-
-      // firebase.auth().onAuthStateChanged(function(user){
-      //   if (user){
-      //     alert("Hi")
-      //     var user = firebase.auth().currentUser;
-      //   }if(user != null){
-      //     alert("Hello")
-      //   }else{
-      //     alert("No user is signed in")
-      //   }
-      // })
 
       //deleting the accounts
       function Del(){

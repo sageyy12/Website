@@ -135,25 +135,26 @@
         </center> <br>
 
         <label class="labs">Full name:</label>
-        <input type="text" name= "Fname" id="Fname"/> <br>
+        <input type="text" name= "Fname" id="Fname" disabled> <br>
 
         <label class="labs">Phone Number:</label>
-        <input type="text" id="num" name="num"> <br>
+        <input type="text" id="num" name="num" disabled> <br>
 
         <label class="labs">Address:</label>
-        <input type="text" id="address" name="address"> <br>
+        <input type="text" id="address" name="address" disabled> <br>
 
         <label class="labs">Username:</label>
-        <input type="text" name= "uname" id="uname"> <br>
+        <input type="text" name= "uname" id="uname" disabled> <br>
 
         <label class="labs">Email:</label>
-        <input type="email" id="eeemail" name="eeemail"> <br>
+        <input type="email" id="eeemail" name="eeemail" disabled> <br>
 
         <label class="labs">Status:</label>
-        <input type="text" id="status" name="status"> <br>      </div>
+        <input type="text" id="status" name="status" disabled> <br>
+      </div>
 
       <div class="modal-footer">
-        <button id="updBtn" type="button" class="btn btn-success" onclick="Upd()">Update</button>
+        <!-- <button id="updBtn" type="button" class="btn btn-success" onclick="Upd()">Update</button> -->
       </div>
     </div>
   </div>
@@ -163,7 +164,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content" id="idModalContent">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Driver's ID</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Commuter's ID</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -357,7 +358,7 @@
         trow.appendChild(td5);
 
         var ControlDiv = document.createElement("div");
-        ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+        ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">View account</button>'
 
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
@@ -393,7 +394,6 @@
                   commuters.push(childsnapshot.val());
                 });
                 AddAllItems(commuters);
-                alert("di pa to maayos. instead of update, nag aadd sya")
               })
           }
           window.onLoad = getAllDataRT();

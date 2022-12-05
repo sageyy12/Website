@@ -295,7 +295,7 @@ color: #E0FBFC;
 }
 
 #btnPrint{
-  left: -105px;
+  left: 0;
 }
 
 .add-record-forms{
@@ -423,6 +423,22 @@ a #viewReceiptbtn:hover{
 .labs{
   display: inline-block;
   width: 150px;
+}
+
+#addAcct{
+  font-family: "Salsa";
+  /* width: 90px;
+  height: 26px; */
+  background: #3d5a80;
+  border-color: transparent;
+  border-radius: 11px;
+  letter-spacing: 1.5px;
+  color: #E0FBFC;
+}
+
+#addAcct:hover{
+  background: #E0FBFC;
+  color: rgb(113, 110, 110);
 }
 
 #amount, #name{

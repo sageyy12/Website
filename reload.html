@@ -88,24 +88,13 @@
       <div class="add-record-container">
         <div class="add-record-content">
           <div class="add-record-btn">
-            <a href="#addNewLoadRecord">
-            <button type="button" name="button">Add record</button>
-          </a>
             <a href="#print">
               <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
             </a>
           </div>
-          <div class="add-record-forms">
-          <form>
-            <input type="text" name="name" placeholder="Full name:">
-
-            <input type="text" name="contact-number" placeholder="Contact number:">
-
-            <input type="text" name="remarks" placeholder="Remarks">
-          </form>
-        </div>
         </div>
       </div>
+
       <div id="dvContents" class="tableDiv">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -330,7 +319,8 @@
           trow.append(td6);
       
           var ControlDiv3 = document.createElement("div3");
-          ControlDiv3.innerHTML = '<a href="#" ><i style="color:black"; class= "bx bxs-trash-alt" id="delete" onclick="deletee('+studentNo+')" ></i></a>'
+          ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+          ControlDiv3.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="deletee('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Archieved</button>'
           
           trow.appendChild(ControlDiv3);
           
@@ -451,9 +441,7 @@
           }
   
           function add_reload(){
-            //var status = document.getElementById('status').value; //kailangan to para hindi mag [object HTMLInputElement] value ni status
-  
-  
+
               firebase.database().ref("Reload/" + commuter.value).update(
                 {
                   phone_numer: contact.value,
@@ -521,7 +509,7 @@
   
           firebase.database().ref("Reload/" + remarksss.value).remove().then(
             function(){
-              alert("Succesfully deleted!");
+              alert("Succesfully archieved!");
             
                 $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
             }
@@ -579,21 +567,6 @@
             sidebar.classList.toggle("active");
           }
           </script>
-  
-  
-          <script>
-          //table
-          $(document).ready(function() {
-            $('#example').DataTable( {
-              "pagingType": "full_numbers",
-              /*columnDefs[{
-                "targets": {2,6},
-                "orderable": false
-              }]*/
-            } );
-          } );
-        
-        </script>
         
         <script> //Modal script
       // Get the modal

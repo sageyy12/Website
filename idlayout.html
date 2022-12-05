@@ -217,7 +217,7 @@
         imgcont.value = imageeee;
 
         var ImgNAme = document.getElementById('namebox').value;
-        firebase.database().ref('users/' + lname.value).on('value', function(snapshot){
+        firebase.database().ref('users/' + lic.value).on('value', function(snapshot){
             document.getElementById('myimg').src = snapshot.val().Link;
             ImgNAme.disabled = true;
         })
