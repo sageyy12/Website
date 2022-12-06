@@ -90,7 +90,8 @@
             <!-- <img src="images/announce.png"> -->
             <h1>POSTED ANNOUNCEMENTS:</h1>
             </span>
-            </div>
+
+        <button type="button" class="kemeadd" id= "addAcct" onclick="hidenbtn()" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter">Add announcement </button>
 
         <div id="dvContents" class="tableDiv">
           <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
@@ -256,6 +257,9 @@
               var BtnModUpd = document.getElementById("updBtn");
               var BtnModAdd = document.getElementById("addBtn");
               var BtnModDel = document.getElementById('delBtn');
+        
+              // $('#delBtn').hide();
+              // $('#updBtn').hide();
 
       function r() {
 				var select = document.getElementById('recipient');
@@ -267,7 +271,7 @@
 
        function add_announcement(){
        
-           firebase.database().ref("announcement/"+title.value).update(
+           firebase.database().ref("announcement/"+contentlorem.value).update(
              {
               title:title.value,
               date:date.value,
@@ -293,10 +297,16 @@
          add_announcement();
        }
 
+       function hidenbtn(){
+        BtnModAdd.style.display = "inline-block";
+        BtnModUpd.style.display = "none";
+        BtnModDel.style.display = "none";
+       }
+
        //update announcement
        function edit_announcement(){
        
-       firebase.database().ref("announcement/"+title.value).set(
+       firebase.database().ref("announcement/"+contentlorem.value).set(
          {
           title:title.value,
           date:date.value,
@@ -328,11 +338,20 @@
             title.value = "";
             contentlorem.value = "";
 
+            // BtnModAdd.style.display = 'inline-block';
+            // BtnModUpd.style.display = 'none';
+            // BtnModDel.style.display = 'none';
+
           }else{
             --index;
 
             title.value = stdList[index][0];
             contentlorem.value = stdList[index][2];
+
+            BtnModAdd.style.display = "none";
+            BtnModUpd.style.display = "inline-block";
+            BtnModDel.style.display = "inline-block";
+            BtnModDel.style.display = "inline-block";
           }
         }
 
@@ -416,11 +435,10 @@
         trow.appendChild(td5);
 
         var ControlDiv3 = document.createElement("div3");
-        ControlDiv3.innerHTML = '<center><button type="button" id= "addAcct" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter">Add announcement </button></center>'
-        ControlDiv3.innerHTML += '<center><button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit announcement</button></center>'
-        ControlDiv3.innerHTML += '<hr id="hrr">'
+        // ControlDiv3.innerHTML = '<center><button type="button" id= "addAcct" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter">Add announcement </button></center>'
+        ControlDiv3.innerHTML = '<center><button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit announcement</button></center>'
+        // ControlDiv3.innerHTML += '<hr id="hrr">'
 
-        
         trow.appendChild(ControlDiv3);
         trow.append(td6);
         tbody1.appendChild(trow);

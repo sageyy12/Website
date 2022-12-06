@@ -279,6 +279,9 @@
         td0.innerHTML = ++studentNo;
         td1.innerHTML = emaily;
         td2.innerHTML = pass;
+        td0.style.border= "1px solid black";
+        td0.style.position= "relative";
+        td0.style.display= "flex";
         trow.appendChild(td0);
         trow.appendChild(td1);
         trow.appendChild(td2);
@@ -315,7 +318,6 @@
                   commuters.push(snapshot.val());
                 });
                 AddAllItems(commuters);
-                alert("Di pa makuha data ng table ni admin")
               })
           }
           window.onLoad = getAllDataRT();

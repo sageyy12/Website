@@ -258,15 +258,14 @@
 
                 console.log(firebase);
 
-
                  //select all data
       function Select_AllData(){
-        firebase.database().ref('Reload').once('value', function (snapshot){
+        firebase.database().ref('Queue/Guest/').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
-            var guestt = childSnapshot.val().guest;
-            var contactt = childSnapshot.val().contact;
-            var datee = childSnapshot.val().date;
-            var timee = childSnapshot.val().time;
+            var guestt = childSnapshot.val().Bookfor;
+            var contactt = childSnapshot.val().PhoneNumber;
+            var datee = childSnapshot.val().To;
+            var timee = childSnapshot.val().Time;
           
             AddItemToTable(guestt, contact, datee, timee);
           });
@@ -306,7 +305,7 @@
             studentNo=0;
             tbody1.innerHTML="";
             guest.forEach(element => {
-              AddItemToTable(element.guest, element.contact, element.time, element.date)
+              AddItemToTable(element.Bookfor, element.PhoneNumber, element.To, element.Time)
             });
           }
 

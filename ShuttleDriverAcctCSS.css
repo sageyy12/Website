@@ -67,8 +67,10 @@ body{
   position: absolute;
   width: 120px;
   height: 35px;
-  left: 1306px;
-  top: 14px;
+  /* left: 1306px;
+  top: 14px; */
+  left: 90%;
+  top: 1%;
   background-color: #E0FBFC;
   border-radius: 66px;
   border-color: #E0FBFC;
@@ -293,7 +295,12 @@ border-radius: 0.5rem;
 max-width: 95%;*/
 text-align: center;
 align-items: center;
+justify-content: center;
 background-color: transparent;
+border-left: 1px solid black;
+border-top: 1px solid black;
+border-right: .1px solid black;
+border-bottom: .1px solid black;
 }
 
 thead tr th{
@@ -326,55 +333,6 @@ tbody tr td{
 tr:nth-child(odd) {
   background-color: #E0FBFC;
 }
-
-td:nth-child(6) {
-  width: 20%;
-  text-align: justify;
-}
-
-table img{
-  height: 45px;
-  width: 46px;
-  left: 12px;
-  position: relative;
-}
-
-tr, td #active_actionbtns{ /*.actionbtn*/
-  position: relative;
-  margin: 0 0 0 -14px;
-  height: 32px;
-  width: 35px;
-}
-
-tr, td #actionbtns{ /*.actionbtn*/
-  position: relative;
-  margin: -68px 0 0 25px;
-  height: 32px;
-  width: 35px;
-}
-
-tr, td #acct_logo{
-  position: relative;
-  margin: 0 0 0 -12px;
-}
-
-tr, td #update{
-  position: relative;
-  margin: 0 0 0 -17px;
-}
-
-/* td .viewIDbtn{
-  font-family: "Salsa";
-  width: 90px;
-  height: 26px;
-  background: #3d5a80;
-  border-radius: 11px;
-  border-color: transparent;
-  font-size: 14px;
-  line-height: 15px;
-  letter-spacing: 1.5px;
-  color: #E0FBFC;
-} */
 
 /*active/inactive*/
 .switch {

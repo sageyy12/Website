@@ -240,11 +240,11 @@
   
         //select all data
         function Select_AllData(){
-          firebase.database().ref('boundary').once('value', function (snapshot){
+          firebase.database().ref('withdrawal').once('value', function (snapshot){
             snapshot.forEach(function(childSnapshot){
-            var driverr = childSnapshot.val().driver;
-            var receiptt = childSnapshot.val().receipt;
-            var contactt = childSnapshot.val().contact;
+            var driverr = childSnapshot.val().full_name;
+            var receiptt = childSnapshot.val().transaction_ID;
+            var contactt = childSnapshot.val().phone_numer;
             var datee = childSnapshot.val().date;
             var statuss = childSnapshot.val().status;
             var timee = childSnapshot.val().time;
@@ -313,7 +313,7 @@
             std=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.driver, element.receipt , element.contact, element.status, element.time, element.date)
+              AddItemToTable(element.full_name, element.transaction_ID , element.phone_numer, element.status, element.time, element.date)
             });
           }
 
@@ -359,7 +359,7 @@
           }else{
             --index;
             commuterr.value = stdList[index][0];
-            namebox.value = stdList[index][2];
+            namebox.value = stdList[index][1];
           }
         }
   
@@ -443,14 +443,15 @@
           function update_wallet(index){
               var receiptt;
               --index;
-              
-            return firebase.database().ref('/Driver/' + namebox.value).once('value').then((snapshot) => {
+              return firebase.database().ref('/Driver/' + namebox.value).once('value').then((snapshot) => {
               receiptt = snapshot.val().wallet;
+              
               transact(receiptt);
             });
   
             function transact(receiptt)
             {
+              
               var rd = parseInt(receiptt); // rd is the wallet of the driver
               var load = parseInt(amountt.value); // amountt.value is from boundary.
               // alert("rd: " + rd)
@@ -480,7 +481,7 @@
                     if(error){
                       alert("Error in loading!" + error);
                     }else{
-                      alert("Succesfully loaded!");
+                      alert("Succesfully updated!");
                       //td is the transaction ID. remarksss is the status. stdlist.index[0] ang laman nyan ay is name
                     }
                   }
@@ -518,7 +519,7 @@
               receiptt = snapshot.val().wallet;
             });
                   //updating the status of the reload
-                  firebase.database().ref("boundary/" + namebox.value).update(
+                  firebase.database().ref("withdrawal/" + namebox.value).update(
                   {
                     status: "Declined"
                   },

@@ -170,14 +170,12 @@
         <thead>
           <th>ID</th>
           <th>Name</th>
-          <th>License</th>
           <th>Email</th>
           <th>Status</th>
           <th>Address</th>
           <th>Phone Number</th>
           <th>Username</th>
           <th>Profile Name</th>
-          <th>Date Registered</th>
           <th>Control Center</th>
         </thead>
         <tbody id="tbody1"></tbody>
@@ -424,39 +422,39 @@
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
         let td1 = document.createElement("td");
-        let td2 = document.createElement("td");
+        // let td2 = document.createElement("td");
         let td3 = document.createElement("td");
         let td4 = document.createElement("td");
         let td5 = document.createElement("td");
         let td6 = document.createElement("td");
         let td7 = document.createElement("td");
         let td8 = document.createElement("td");
-        let td9 = document.createElement("td");
+        // let td9 = document.createElement("td");
       
 
         stdList.push([name, lastname, emaily, statusy, addy, numy, unameyy, license, passs, picnameyy, picname, datey]);
 
         td0.innerHTML = ++studentNo;
         td1.innerHTML = name + " " + lastname;
-        td2.innerHTML = license;
+        // td2.innerHTML = license;
         td3.innerHTML = emaily;
         td4.innerHTML = statusy;
         td5.innerHTML = addy;
         td6.innerHTML = numy;
         td7.innerHTML = unameyy;
         td8.innerHTML = picnameyy;
-        td9.innerHTML = datey;
+        // td9.innerHTML = datey;
 
         trow.appendChild(td0);
         trow.appendChild(td1);
-        trow.appendChild(td2);
+        // trow.appendChild(td2);
         trow.appendChild(td3);
         trow.appendChild(td4);
         trow.appendChild(td5);
         trow.appendChild(td6);
         trow.appendChild(td7);
         trow.appendChild(td8);
-        trow.appendChild(td9);
+        // trow.appendChild(td9);
 
         var ControlDiv = document.createElement("div");
         // ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'
@@ -560,7 +558,7 @@
           regdate.disabled = true;
           license.disabled = true;
 
-          firstName.value = stdList[index];
+          firstName.value = stdList[index][0];
           midName.value = stdList[index][1];
           lastName.value =  stdList[index][2];
           document.getElementById("pass").value = stdList[index][10];

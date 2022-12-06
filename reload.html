@@ -512,11 +512,9 @@
               var receiptt;
               --index;
               
-            return firebase.database().ref('/Commuters/' + namebox.value).once('value').then((snapshot) => {
+              return firebase.database().ref('/Commuters/' + namebox.value).once('value').then((snapshot) => {
               receiptt = snapshot.val().wallet;
-
               transact(receiptt);
-              // ...
             });
   
             function transact(receiptt)

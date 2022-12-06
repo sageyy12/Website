@@ -362,6 +362,8 @@
       };
       firebase.initializeApp(firebaseConfig);
 
+      alert("Di pa maayos si Guest table. This alert is from the Guest webpage")
+
       //select all data
       function Select_AllData(){
         firebase.database().ref('Commuters').once('value', function (snapshot){
@@ -370,7 +372,7 @@
             var emaily = childSnapshot.val().email;
             var add = childSnapshot.val().address;
             var statusy = childSnapshot.val().status;
-            var num = childSnapshot.val().phone;
+            var num = childSnapshot.val().phone_Number;
             var unamey = childSnapshot.val().username;
             AddItemToTable(name, emaily, statusy, add, num, unamey);
       });
@@ -405,8 +407,8 @@
         td0.innerHTML = ++studentNo;
         td1.innerHTML = name;
         td2.innerHTML = emaily;
-        td3.innerHTML = statusy;
-        td4.innerHTML = add;
+        td3.innerHTML = add;
+        td4.innerHTML = unamey;
         td5.innerHTML = num;
         trow.appendChild(td0);
         trow.appendChild(td1);
@@ -426,7 +428,7 @@
         studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.first_Name + " " + element.last_Name , element.email, element.status, element.phone, element.username)
+              AddItemToTable(element.first_Name + " " + element.last_Name , element.email, element.status, element.phone_Number, element.username, element.address)
             });
           }
 
@@ -473,7 +475,7 @@
 
           firstName.value = stdList[index][0];
           phonenum.value = stdList[index][3];
-          address.value = stdList[index][0];
+          address.value = stdList[index][5];
           uname.value = stdList[index][4];
           email.value = stdList[index][1];
           document.getElementById("status").value = stdList[index][2];

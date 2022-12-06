@@ -76,8 +76,10 @@ body{
     position: absolute;
     width: 25vh;
     height: 3vw;
-    left: 1104px;
-    top: 14px;
+    /* left: 1306px;
+    top: 14px; */
+    left: 90%;
+    top: 1%;
     background-color: #E0FBFC;
     border-radius: 66px;
     border-color: #E0FBFC;

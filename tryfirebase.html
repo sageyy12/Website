@@ -14,29 +14,86 @@
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
   </head>
-  <body>
-    <nav class="nav">
-      <div class="logo-content">
-        <div class="logo">
-          <a href="dashboard.html">
-            <img src="images/logo.png"></a>
-              <div class="logo-name">Shuttle Driver's Account</div>
-              <button id="logout" onclick="window.location.href='login.html'">Logout</button>
-          </div>
-      </div>
-  </nav>
+  <style>
+     /*navbar responsive*/
+.topnav {
+  overflow: hidden;
+  background-color: #3D5A80;
+  height: 67px;
+  padding-left: 80px;
+}
 
-  <div class="topnav">
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+}
+  </style>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <nav class="nav">
+        <div class="logo-content">
+          <div class="logo">
+            <a href="dashboard.html">
+              <img src="images/logo.png"></a>
+                <div class="logo-name">Shuttle Driver's Account</div>
+                <button id="logout" onclick="window.location.href='login.html'">Logout</button>
+            </div>
+        </div>
+    </nav>
+    </div>
+  <div class="">
     <!--img src="images/search.png">
     <input type="text" placeholder="Search.."!-->
     <!-- <a href="AddDriverAccount.html">
       <button type="submit" id="btnAdd">ADD ACCOUNT</button>
     </a> -->
-    <a href="#print">
-      <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
-    </a>
+    
   </div>
-
+  <a href="#print">
+    <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
+  </a>
   <div class="sidebar">
     <i class='bx bx-menu' id="btn"></i>
     <ul class="navList">
@@ -90,8 +147,17 @@
             </a>
             <span class="tooltip">Reload</span>
         </li>
+        <li>
+          <a href="withdrawal.html">
+            <!--img src="images/reload.png"!-->
+            <i class='bx bx-money-withdraw'></i>
+          <span class="links_name">Withdraw</span>
+          </a>
+          <span class="tooltip">Withdraw</span>
+      </li>
     </ul>
 </div>
+
    <div id="dvContents" class="tableDiv">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -104,14 +170,12 @@
         <thead>
           <th>ID</th>
           <th>Name</th>
-          <th>License</th>
           <th>Email</th>
           <th>Status</th>
           <th>Address</th>
           <th>Phone Number</th>
           <th>Username</th>
           <th>Profile Name</th>
-          <th>Date Registered</th>
           <th>Control Center</th>
         </thead>
         <tbody id="tbody1"></tbody>
@@ -358,39 +422,39 @@
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
         let td1 = document.createElement("td");
-        let td2 = document.createElement("td");
+        // let td2 = document.createElement("td");
         let td3 = document.createElement("td");
         let td4 = document.createElement("td");
         let td5 = document.createElement("td");
         let td6 = document.createElement("td");
         let td7 = document.createElement("td");
         let td8 = document.createElement("td");
-        let td9 = document.createElement("td");
+        // let td9 = document.createElement("td");
       
 
         stdList.push([name, lastname, emaily, statusy, addy, numy, unameyy, license, passs, picnameyy, picname, datey]);
 
         td0.innerHTML = ++studentNo;
         td1.innerHTML = name + " " + lastname;
-        td2.innerHTML = license;
+        // td2.innerHTML = license;
         td3.innerHTML = emaily;
         td4.innerHTML = statusy;
         td5.innerHTML = addy;
         td6.innerHTML = numy;
         td7.innerHTML = unameyy;
         td8.innerHTML = picnameyy;
-        td9.innerHTML = datey;
+        // td9.innerHTML = datey;
 
         trow.appendChild(td0);
         trow.appendChild(td1);
-        trow.appendChild(td2);
+        // trow.appendChild(td2);
         trow.appendChild(td3);
         trow.appendChild(td4);
         trow.appendChild(td5);
         trow.appendChild(td6);
         trow.appendChild(td7);
         trow.appendChild(td8);
-        trow.appendChild(td9);
+        // trow.appendChild(td9);
 
         var ControlDiv = document.createElement("div");
         // ControlDiv.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2" onclick="FillTboxes(null)" data-toggle="modal" data-target="#exampleModalCenter">Add new account</button>'

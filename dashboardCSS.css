@@ -76,8 +76,10 @@ body{
   position: absolute;
   width: 120px;
   height: 35px;
-  left: 1306px;
-  top: 14px;
+  /* left: 1306px;
+  top: 14px; */
+  left: 90%;
+  top: 1%;
   background-color: #E0FBFC;
   border-radius: 66px;
   border-color: #E0FBFC;
@@ -255,6 +257,13 @@ main{
   border-radius: 10px;
 }
 
+.card-single .tryNga{
+  /* background-color: rgb(203, 165, 165) !important;
+  width: 11rem; */
+  display: flex;
+  flex-direction: column;
+}
+
 .card-single h1{
   position: relative;
   display: flex;
@@ -265,6 +274,8 @@ main{
   position: relative;
   display: flex;
   float: left;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 /*.card-single:hover{
@@ -307,6 +318,8 @@ main{
 .cards .card-single #link{
   text-decoration: none;
   color: gray;
+  /* position: relative;
+  left: -8rem; */
 }
 
 .cards .card-single #link:hover{

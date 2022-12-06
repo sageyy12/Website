@@ -76,8 +76,10 @@ body{
   position: absolute;
   width: 120px;
   height: 35px;
-  left: 1306px;
-  top: 14px;
+  /* left: 1306px;
+  top: 14px; */
+  left: 90%;
+  top: 1%;
   background-color: #E0FBFC;
   border-radius: 66px;
   border-color: #E0FBFC;
@@ -278,6 +280,10 @@ max-width: 95%;*/
 text-align: center;
 align-items: center;
 background-color: transparent;
+border-left: 1px solid black;
+border-top: 1px solid black;
+border-right: .1px solid black;
+border-bottom: .1px solid black;
 }
 
 thead tr th{
