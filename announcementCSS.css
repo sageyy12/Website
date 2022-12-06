@@ -52,7 +52,7 @@ body{
 
 .nav .logo-content .logo .logo-name{
     position: absolute;
-    left: 147px;
+    left: 170px;
     top: 7px;
     font-family: 'Salsa';
     font-style: normal;
@@ -64,27 +64,27 @@ body{
 }
 
 .nav .logo-content .logo img{
-    height: 10vh;
-    width: 4.5vw;
-    left: 86px;
-    top: 8px;
-    border-radius: 93px;
-    position: absolute;
+  height: 50px;
+  width: 50px;
+  left: 107px;
+  top: 8px;
+  border-radius: 93px;
+  position: absolute;
 }
 
 .nav #logout{
-    position: absolute;
-    width: 25vh;
-    height: 3vw;
-    left: 1104px;
-    top: 14px;
-    background-color: #E0FBFC;
-    border-radius: 66px;
-    border-color: #E0FBFC;
-    font-family: "Raleway";
-    font-weight: 900;
-    font-size: 21px;
-    color: #3D5A80;
+  position: absolute;
+  width: 120px;
+  height: 35px;
+  left: 1306px;
+  top: 14px;
+  background-color: #E0FBFC;
+  border-radius: 66px;
+  border-color: #E0FBFC;
+  font-family: "Salsa";
+  font-weight: 900;
+  font-size: 20px;
+  color: #3D5A80;
 }
 
 .sidebar{
@@ -212,17 +212,17 @@ body{
 
 .content .upper img{
   position: absolute;
-  width: 8vh;
-  height: 4vw;
-  left: 387px;
-  top: 78px;
+    width: 5vh;
+    height: 3vw;
+    left: 508px;
+    top: 78px;
 }
 
 .content .upper h1{
   position: absolute;
-  left: 437px;
-  top: 83px;
-  font-family: 'Raleway';
+  left: 560px;
+  top: 113px;
+  font-family: 'Salsa';
   font-weight: 700;
   font-size: 30px;
   line-height: 47px;

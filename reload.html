@@ -14,7 +14,7 @@
             <div class="logo">
               <a href="dashboard.html">
                 <img src="images/logo.png"></a>
-                  <div class="logo-name">Boundary Remittance</div>
+                  <div class="logo-name">Reloading</div>
                   <button id="logout">Logout</button>
               </div>
           </div>
@@ -133,7 +133,8 @@
         <label for="csname" id="csnamelabel" class="labs">Commuter's Name: </label>
         <input type="text" id="name" name="name" class="labs"> <br>
         <label for="amount" class="labs">Reload Amount: </label>
-        <input type="number" id="amount" name="amount" class="labs"> <br> <br>
+        <input type="number" id="amount" name="amount" class="labs"> <br>
+        <input type="text" id="namebox" name="amount" class="labs" hidden> <br> <br>
       </form></center>
         <div class="buttons">
           <a href="# "><button class="accept"  onclick="wallet()"><i class="fa fa-check-circle"></i> Accept</button></a>
@@ -334,7 +335,7 @@
               studentNo=0;
               tbody1.innerHTML="";
               reload.forEach(element => {
-                AddItemToTable(element.full_name, element.transaction_ID , element.phone_numer, element.status, element.time, element.date, element.imageUrl)
+                AddItemToTable(element.full_name, element.transaction_ID , element.phone_numer, element.status, element.time, element.date, element.imageUrl, element.load_amount)
               });
             }
   
@@ -366,42 +367,65 @@
   
   
        var commuterr = document.getElementById('name');
-       var amountt = document.getElementById('amount') 
+       var amountt = document.getElementById('amount');
+       var namebox = document.getElementById('namebox');
   
   
        function FillTboxes(index){
   
           if(index == null){
             commuterr.value = "";
+            amountt.value = "";
+            namebox.value = "";
             
           }else{
-            // --index;
-            // commuterr.value = stdList[index][0];
-            commuterr.disabled = true;
-  
-  
-            var ImgNAme = document.getElementById('pic'+index);
-              var tryy = document.getElementById('td'+index);
-             --index;
-              commuterr.value = stdList[index][0];
-  
-                firebase.database().ref('Reload/' + tryy.value).on('value', function(snapshot){
-                document.getElementById('r').src = snapshot.val().imageUrl;
-                ImgNAme.disabled = true;
-                ImgNAme.hidden = true;
-              })
+            --index;
+            commuterr.value = stdList[index][0];
+            amountt.value = stdList[index][7];
+            namebox.value = stdList[index][1];
 
-              firebase.database().ref('Reload').once('value', function (snapshot){
-                  snapshot.forEach(function(childSnapshot){
-                  var sales = childSnapshot.val().load_amount;
+            //img retrieval process
+      // ImgNAme = document.getElementById('namebox').value;
+      firebase.database().ref('Reload/' + namebox.value).on('value', function(snapshot){
+        document.getElementById('r').src = snapshot.val().imageUrl;
+        namebox.disabled = true;
+      })
+            // commuterr.value = stdList[index][0];
+            // commuterr.disabled = true;
+  
+            //pang get ni Mich sa pic 
+            // var ImgNAme = document.getElementById('pic'+index);
+            //   var tryy = document.getElementById('td'+index);
+            //  --index;
+            //   commuterr.value = stdList[index][0];
+  
+            //     firebase.database().ref('Reload/' + tryy.value).on('value', function(snapshot){
+            //     document.getElementById('r').src = snapshot.val().imageUrl;
+            //     ImgNAme.disabled = true;
+            //     ImgNAme.hidden = true;
+            //   })
+
+            // pang get ni Mich kay amount
+            //   firebase.database().ref('Reload').once('value', function (snapshot){
+            //       snapshot.forEach(function(childSnapshot){
+            //       var sales = childSnapshot.val().load_amount;
           
-                   var reload_amount= document.getElementById("amount").value= sales;  
-                });
-              });
+            //        var reload_amount= document.getElementById("amount").value= sales;  
+            //     });
+            //   });
           }
         }
   
         function accept(index){
+  
+         // var remarkss = document.getElementById('remarks')
+          var remarkss = document.getElementById('h_text' + index);
+          var td = document.getElementById('td' + index);
+          --index;
+          remarkss.value = stdList[index][0];
+          }
+          
+        function decline(index){
   
          // var remarkss = document.getElementById('remarks')
           var remarkss = document.getElementById('h_text' + index);
@@ -470,42 +494,67 @@
                 }
               )
             }
-  
-          function update_wallet(index){
-            var remarkss = document.getElementById('h_text' + index);
-          var td = document.getElementById('td' + index);
-          --index;
-          remarkss.value = stdList[index][0];
+
+            // function getAmountFromCommsTbt(){
+            //   var idref = document.getElementById('h_text' + index);
+            //   --index;
+
+            //   var starCountRef = firebase.database().ref('Commuters/' + idref.value);
+            //     starCountRef.once('value', (snapshot) => {
+            //        receiptt = snapshot.val().wallet;
+            //       transact(receiptt)
+            //       alert("Succesfully added!"+ idref.value)
+            //     });
+            // }
           
-            var starCountRef = firebase.database().ref('Commuters/' + td.value);
-            starCountRef.once('value', (snapshot) => {
-              var receiptt = snapshot.val().wallet;
-              transact(receiptt)
-              alert("Succesfully added!")
+          // pang access sa transact id ni Commuter na naka based kay fillTBoxes namebox
+          function update_wallet(index){
+              var receiptt;
+              --index;
+              
+            return firebase.database().ref('/Commuters/' + namebox.value).once('value').then((snapshot) => {
+              receiptt = snapshot.val().wallet;
+
+              transact(receiptt);
+              // ...
             });
   
-        function transact(receiptt)
-        {
-          var rd = parseInt(receiptt)
-          var load = parseInt(amountt.value)
-  
-          var total = rd + load;
-          var newwal = total.toString();
-  
-            firebase.database().ref("Commuters/" + td.value).update(
-                {
-                  wallet:newwal
-                },
-                (error)=>{
-                  if(error){
-                    alert("Account was not created" + error);
-                  }else{
-                
-                    $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+            function transact(receiptt)
+            {
+              var rd = parseInt(receiptt)
+              var load = parseInt(amountt.value);
+      
+              var total = rd + load;
+              var newwal = total.toString();
+                // after adding maupdate na ulit yung wallet ni comms
+                firebase.database().ref("Commuters/" + namebox.value).update(
+                    {
+                      wallet:newwal
+                    },
+                    (error)=>{
+                      if(error){
+                        alert("Account was not created" + error);
+                      }else{
+                        // alert("SA WAKAS!!" + newwal);
+                        $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
+                      }
+                    }
+                  )
+                  //updating the status of the reload
+                  firebase.database().ref("Reload/" + namebox.value).update(
+                  {
+                    status: "Loaded"
+                  },
+                  (error)=>{
+                    if(error){
+                      alert("Error in loading!" + error);
+                    }else{
+                      alert("Succesfully loaded!");
+                      //td is the transaction ID. remarksss is the status. stdlist.index[0] ang laman nyan ay is name
+                    }
                   }
+                ) 
                 }
-              )
-            }
           }
 
           function deletee(index){
@@ -523,6 +572,36 @@
             }
           )
         }
+
+        //decline btn
+        function declinebtn(){
+            decline(studentNo);
+            update_wallet_decline(studentNo);
+          }
+
+        // pang access sa transact id ni Commuter na naka based kay fillTBoxes namebox
+        function update_wallet_decline(index){
+              var receiptt;
+              --index;
+              
+            return firebase.database().ref('/Commuters/' + namebox.value).once('value').then((snapshot) => {
+              receiptt = snapshot.val().wallet;
+            });
+                  //updating the status of the reload
+                  firebase.database().ref("Reload/" + namebox.value).update(
+                  {
+                    status: "Declined"
+                  },
+                  (error)=>{
+                    if(error){
+                      alert("Error in loading!" + error);
+                    }else{
+                      alert("Load request is declined");
+                      //td is the transaction ID. remarksss is the status. stdlist.index[0] ang laman nyan ay is name
+                    }
+                  }
+                ) 
+                }
         </script>
   
       <!-- printing css starts here  -->
