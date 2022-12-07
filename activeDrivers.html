@@ -16,8 +16,8 @@
                     <thead>
                         <tr>
                           <td>No.</td>
-                          <td>License</td>
                           <td>Name</td>
+                          <td>Email</td>
                           <td>Status</td>
                         </tr>
                       </thead>
@@ -50,50 +50,62 @@
       function Select_AllData(){
         firebase.database().ref('users').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
-            var name = childSnapshot.val().firstName + " " + childSnapshot.val().midName + " " + childSnapshot.val().lastName;
-            var license = childSnapshot.val().license;
-            var status = childSnapshot.val().status;
-            AddItemToTable(name, license, status);
+            var name = childSnapshot.val().first_Name;
+            var lastname = childSnapshot.val().last_Name;
+            var emaily = childSnapshot.val().email;
+            var statusy = childSnapshot.val().status;
+            var addy = childSnapshot.val().license;
+            var numy = childSnapshot.val().address;
+            var unameyy = childSnapshot.val().phone_Number;
+            var license = childSnapshot.val().username;
+            var passs = childSnapshot.val().pass;
+            var picnameyy = childSnapshot.val().wallet;
+            var picname = childSnapshot.val().PicName;
+            var link = childSnapshot.val().Link;
+            var datey = childSnapshot.val().date;
+            AddItemToTable(name, lastname, emaily, statusy, addy, nnumy, unameyy, license, passs, picnameyy, picname, datey);
       });
     });
   }
+      // window.onload = Select_AllData;
 
-    var studentNo = 0;
-    var stdList = [];
+      //table filling
+      var studentNo = 0;
+      var stdList = [];
 
-      function AddItemToTable(name, license, status){
+      function AddItemToTable(name, lastname, emaily, statusy, addy, numy, unameyy, license, passs, picnameyy, picname, datey){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("tr");
         let td1 = document.createElement("td");
         let td2 = document.createElement("td");
         let td3 = document.createElement("td");
+      
 
-        stdList.push([name, license, status]);
+        stdList.push([name, lastname, emaily, statusy, addy, numy, unameyy, license, passs, picnameyy, picname, datey]);
 
         td0.innerHTML = ++studentNo;
-        td1.innerHTML = license;
-        td2.innerHTML = name;
-        td3.innerHTML = status;
+        td1.innerHTML = name + " " + lastname;
+        td2.innerHTML = emaily;
+        td3.innerHTML = statusy;
+
         trow.appendChild(td0);
         trow.appendChild(td1);
         trow.appendChild(td2);
         trow.appendChild(td3);
-
         tbody1.appendChild(trow);
       }
-
       function AddAllItems(boundary) {
         studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.firstName + " " + element.midName + " " + element.lastName, element.status,element.license, element.status)
+              AddItemToTable(element.first_Name, element.last_Name , element.email, element.status, element.address, element.phone_Number, element.username, element.license, element.wallet, element.PicName)
             });
           }
 
           function getAllData() {
-              const dbref = firebase.database().ref("users");
-              get(child(dbref, "users"))
+              const dbref = firebase.database().ref("Driver");
+              get(child(dbref, "Driver"))
               .then((snapshot) => {
                 var commuter = [];
                 snapshot.forEach(childSnapshot => {
@@ -104,7 +116,7 @@
           }
 
           function getAllDataRT() {
-              const dbRef = firebase.database().ref("users");
+              const dbRef = firebase.database().ref("Driver");
               
               dbRef.on('value', (snapshot)=>{
                 var commuters = [];

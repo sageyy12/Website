@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head> <title>Boundary Remittance</title>
-        <link rel="stylesheet" href="reloadCSS.css">
+        <link rel="stylesheet" href="boundaryRemitCSS.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -12,7 +12,7 @@
         <nav class="nav">
           <div class="logo-content">
             <div class="logo">
-              <a href="dashboard.html">
+              <a href="index.html">
                 <img src="images/logo.png"></a>
                   <div class="logo-name">Boundary Remittance</div>
                   <button id="logout">Logout</button>
@@ -89,28 +89,31 @@
         <div class="add-record-content">
           <div class="add-record-btn">
             <a href="#print">
-              <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
+              <button type="submit" onclick="window.print()" id="btnPrint">PRINT</button>
             </a>
           </div>
         </div>
       </div>
 
+      <button type="button" class="kemeadd" id= "addAcct" onclick="FillTboxes('+studentNo+')" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter">Update Boundary Fee</button>
+
       <div id="dvContents" class="tableDiv">
+        <center><h1 id="tableTitle" style="display: none">Boundary Remittance Record</h1></center>
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-        
+                
         <table id="example" class="display" width="100%" cellspacing="0">
           <thead>
           <tr>
             <th>ID</th>
-            <th id="tbtname">NAME</th>
-            <th>RECEIPT</th>
-            <th>CONTACT NUMBER</th>
-            <th>TIME</th>
-            <th>DATE</th>
-            <th>REMARKS</th>
-            <th>CONTROL CENTER</th>
+            <th id="tbtname">Name</th>
+            <th>Receipt</th>
+            <th>Contact Number</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th id="ControlCenter">Control Center</th>
           </tr>
         </thead>
         <tbody id="tbody1"></tbody>
@@ -125,18 +128,17 @@
     <div class="seemoreModal-body">
       <div id="receiptCont">
         <center>
-          <img id="r" height="300px" width="300px">
-          
+          <!-- <img id="r" height="300px" width="300px"> <br> <br> <br> -->
       <form>
-        <label for="csname" id="csnamelabel" class="labs">Commuter's Name: </label>
-        <input type="text" id="name" name="name" class="labs"> <br>
-        <label for="amount" class="labs">Reload Amount: </label>
-        <input type="number" id="amount" name="amount" class="labs"> <br>
+        <label for="csname" id="csnamelabel" class="labs">Driver's Name: </label>
+        <input type="text" id="name" name="name" class="labs" disabled> <br> <br>
+        <label for="amount" class="labs">Boundary Amount: </label>
+        <input type="number" id="amount" name="amount" class="labs" disabled> <br>
         <input type="text" id="namebox" name="amount" class="labs" hidden> <br> <br>
       </form></center>
         <div class="buttons">
-          <a href="# "><button class="accept"  onclick="wallet()"><i class="fa fa-check-circle"></i> Accept</button></a>
-          <a href="#boundaryRemit.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a>
+          <a href="#"><button class="accept"  onclick="wallet()"><i class="fa fa-check-circle"></i> Accept</button></a>
+          <!-- <a href="#boundaryRemit.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a> -->
           </div>
         </div>
       </div>
@@ -144,6 +146,31 @@
   </div>
   
   <!-- Modal ends here-->
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Boundary Fee</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="new-user-form">
+
+          <label class="labs">Current fee:</label>
+          <input type="text" id="currentFee" class="labs"> <br> <br>
+          <label class="labs">New fee:</label>
+          <input type="text" id="newFee" class="labs">
+        </div>
+  
+        <div class="modal-footer">
+          <button id="updBtn" type="button" class="btn btn-success"  onclick="edit_done()">Update</button>
+          <button id="delBtn" type="button" class="btn btn-danger" onClick="window.location.reload(true)">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
   
   </tbody>
         </table>
@@ -157,7 +184,7 @@
               <h3>Washington <span>Place</span></h3>
   
               <p class="footer-links">
-                  <a href="dashboard.html">Dashboard</a>
+                  <a href="index.html">Dashboard</a>
                   |
                   <a href="commutersTable.html">All commuters</a>
                   |
@@ -166,8 +193,8 @@
   
               <p id="coltext">DOWNLOAD OUR APP HERE:</p>
               <div class="content">
-                <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
-                <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+                <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For commuters click here </a></p>
+                <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For drivers click here </a></p>
               </div>
           </div>
   
@@ -246,13 +273,14 @@
           snapshot.forEach(function(childSnapshot){
               var driverr = childSnapshot.val().full_name;
               var receiptt = childSnapshot.val().transaction_ID;
-              var contactt = childSnapshot.val().contact_number;
+              var contactt = childSnapshot.val().phone_numer;
               var datee = childSnapshot.val().date;
               var remarkss = childSnapshot.val().status;
               var picture = childSnapshot.val().imageUrl;
               var amountt = childSnapshot.val().payment;
+              var timee = childSnapshot.val().time;
           
-            AddItemToTable(driverr, receiptt, contactt, remarkss, datee, picture, amountt);
+            AddItemToTable(driverr, receiptt, contactt, remarkss, datee, picture, amountt, timee);
           });
         });
       }
@@ -261,12 +289,11 @@
         var stdList = [];
         
   
-        function AddItemToTable(driverr, receiptt, contactt, remarkss, datee, picture, amountt){
+        function AddItemToTable(driverr, receiptt, contactt, remarkss, datee, picture, amountt, timee){
           var tbody1 = document.getElementById("tbody1");
           let trow = document.createElement("tr");
           let td0 = document.createElement("td");
           let td1 = document.createElement("td");
-          let td2 = document.createElement("td");
           let td3 = document.createElement("td");
           let td4 = document.createElement("td");
           let td5 = document.createElement("td");
@@ -275,14 +302,14 @@
          
           var TDD = receiptt;
         var profile = receiptt;
-        stdList.push([driverr, receiptt, contactt, remarkss, datee, picture, amountt ]);
+        stdList.push([driverr, receiptt, contactt, remarkss, datee, picture, amountt, timee]);
         
         td0.innerHTML = ++studentNo;
         td1.innerHTML = driverr;
-        td2.innerHTML = receiptt;
         td3.innerHTML = contactt;
-        td4.innerHTML = datee;
-        td6.innerHTML = remarkss;
+        td4.innerHTML = timee;
+        td5.innerHTML = remarkss;
+        td6.innerHTML = datee;
            
         var ControlDiv2 = document.createElement("div2");
           ControlDiv2.innerHTML ='<td id="receipt"> <a href="#exampleModalCenter" id="viewBtn1">' +
@@ -296,11 +323,11 @@
         trow.appendChild(td3);
         trow.appendChild(td4);
         trow.appendChild(td5);
-       // trow.appendChild(td6);
+       // trow.appendChild(td6);value=
         trow.append(td6);
       
         var ControlDiv3 = document.createElement("div3");
-        ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="deletee('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Archieved</button>'
+        ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="deletee('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Archieve</button>'
         
         trow.appendChild(ControlDiv3);
 
@@ -324,7 +351,7 @@
           studentNo=0;
             tbody1.innerHTML="";
             boundary.forEach(element => {
-              AddItemToTable(element.full_name, element.transaction_ID , element.contact_number, element.payment ,element.status, element.date, element.imageUrl)
+              AddItemToTable(element.full_name, element.transaction_ID , element.phone_numer, element.date ,element.status, element.imageUrl, element.payment, element.time)
             });
           }
 
@@ -358,40 +385,42 @@
        var commuterr = document.getElementById('name');
        var amountt = document.getElementById('amount');
        var namebox = document.getElementById('namebox');
+       var newFee = document.getElementById('newFee');
+       var currentFee = document.getElementById('currentFee');
   
   
        function FillTboxes(index){
   
           if(index == null){
             commuterr.value = "";
-            amountt.value = "";
+            // amountt.value = "";
             namebox.value = "";
+            newFee.value = "";
+            currentFee.value = "";
             
           }else{
             --index;
             commuterr.value = stdList[index][0];
-            amountt.value = stdList[index][3];
+            // amountt.value = stdList[index][3];
             namebox.value = stdList[index][1];
+            // currentFee.value = stdList[index][0];
 
             //img retrieval process
             // ImgNAme = document.getElementById('namebox').value;
-            firebase.database().ref('boundary/' + namebox.value).on('value', function(snapshot){
-              document.getElementById('r').src = snapshot.val().imageUrl;
-              namebox.disabled = true;
+            // firebase.database().ref('boundary/' + namebox.value).on('value', function(snapshot){
+            //   document.getElementById('r').src = snapshot.val().imageUrl;
+            //   namebox.disabled = true;
+            // })
+
+            firebase.database().ref('Payment').on('value', function(snapshot){
+              currentFee.value = snapshot.val().Boundary;
+              amountt.value = snapshot.val().Boundary;
+              // alert("amount sa loob ni filltboxes: " + amountt.value)
             })
           }
         }
   
         function accept(index){
-  
-         // var remarkss = document.getElementById('remarks')
-          var remarkss = document.getElementById('h_text' + index);
-          var td = document.getElementById('td' + index);
-          --index;
-          remarkss.value = stdList[index][0];
-          }
-          
-        function decline(index){
   
          // var remarkss = document.getElementById('remarks')
           var remarkss = document.getElementById('h_text' + index);
@@ -436,7 +465,7 @@
             accept(studentNo);
             update_wallet(studentNo);
           }
-  
+
           function add_reload(){
             firebase.database().ref("boundary/" + driver.value).update(
              {
@@ -470,10 +499,12 @@
             function transact(receiptt)
             {
               var rd = parseInt(receiptt); // rd is the wallet of the driver
-              var load = parseInt(amountt.value); // amountt.value is from boundary.
+              var load = parseInt(amountt.value); // amountt.value is from Payment.
       // alert("rd: " + rd)
+      // alert("load: " + load)
               var total = rd - load;
               var newwal = total.toString();
+              // alert(newwal)
                 // after adding maupdate na ulit yung wallet ni comms
                 firebase.database().ref("Driver/" + namebox.value).update(
                     {
@@ -481,7 +512,7 @@
                     },
                     (error)=>{
                       if(error){
-                        alert("Account was not created" + error);
+                        alert("Boundary has not deducted. " + error);
                       }else{
                         alert("Boundary has succesfully deducted!");
                         // alert("SA WAKAS!!" + newwal);
@@ -496,9 +527,9 @@
                   },
                   (error)=>{
                     if(error){
-                      alert("Error in loading!" + error);
+                      alert("Error in paying boundary!" + error);
                     }else{
-                      alert("Succesfully loaded!");
+                      alert("Succesfull boundary payment!");
                       //td is the transaction ID. remarksss is the status. stdlist.index[0] ang laman nyan ay is name
                     }
                   }
@@ -506,14 +537,24 @@
                 }
           }
 
+         //update announcement
+       function edit_done(){
+        firebase.database().ref('Payment').set({
+          Boundary: currentFee.value,
+          Transpo: newFee.value
+        });
+        alert("Boundary updated succesfully");
+        window.location.reload(true);
+      }
+
           function deletee(index){
   
-            var remarksss = document.getElementById('h_text' + index);
-            var remarksss = document.getElementById('td' + index);
-          --index;
-          remarksss.value = stdList[index][0];
+          //   var remarksss = document.getElementById('h_text' + index);
+          //   var remarksss = document.getElementById('td' + index);
+          // --index;
+          // remarksss.value = stdList[index][0];
   
-          firebase.database().ref("boundary/" + remarksss.value).remove().then(
+          firebase.database().ref("boundary/" + namebox.value).remove().then(
             function(){
               alert("Succesfully archieved!");
             
@@ -521,76 +562,7 @@
             }
           )
         }
-
-        //decline btn
-        function declinebtn(){
-            decline(studentNo);
-            update_wallet_decline(studentNo);
-          }
-
-        // pang access sa transact id ni Commuter na naka based kay fillTBoxes namebox
-        function update_wallet_decline(index){
-              var receiptt;
-              --index;
-              
-            return firebase.database().ref('/Commuters/' + namebox.value).once('value').then((snapshot) => {
-              receiptt = snapshot.val().wallet;
-            });
-                  //updating the status of the reload
-                  firebase.database().ref("boundary/" + namebox.value).update(
-                  {
-                    status: "Declined"
-                  },
-                  (error)=>{
-                    if(error){
-                      alert("Error in loading!" + error);
-                    }else{
-                      alert("Load request is declined");
-                      //td is the transaction ID. remarksss is the status. stdlist.index[0] ang laman nyan ay is name
-                    }
-                  }
-                ) 
-                }
         </script>
-  
-      <!-- printing css starts here  -->
-      <style id="table_style" type="text/css">
-      @media print{
-        a #seemoreBtnModal, #seemoreBtnModal2, #seemoreBtnModal3, #seemoreBtnModal4, #seemoreBtnModal5, #seemoreBtnModal6,
-        #seemoreBtnModal7, #seemoreBtnModal8, #seemoreBtnModal9, #seemoreBtnModal10, #seemoreBtnModal11, #seemoreBtnModal12,
-        #seemoreBtnModal13, #seemoreBtnModal14, #seemoreBtnModal15{
-          color: #3D5A80;
-          border-color: transparent;
-          background-color: transparent;
-        }
-  
-        td #loaded{
-          color: #3d5a80;
-          border-color: transparent;
-          background-color: transparent;
-        }
-  
-        td #notloaded{
-          color: #d60000;
-          border-color: transparent;
-          background-color: transparent;
-        }
-        #seemoreModal{
-          display: none; /*none*/
-        }
-        #seemoreModal, .seemoreModal-body #receiptCont img, .seemoreModal-body form{
-          display: none;
-        }
-        table
-        {
-            border: transparent;
-        }
-        #example_length label, #example_filter label{ /*show entries number and search*/
-          display: none;
-        }
-      }
-      </style>
-      <!-- printing css ends here  -->
       </body>
   
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -625,30 +597,6 @@
         if (event.target == modal) {
           modal.style.display = "none";
         }
-      }
-      </script>
-  
-        <script type="text/javascript"> //printing script
-      function PrintTable() {
-          var printWindow = window.open('', '', 'height=700,width=1200');
-          printWindow.document.write('<html><head><title>Table Contents</title>');
-  
-          //Print the Table CSS.
-          var table_style = document.getElementById("table_style").innerHTML;
-          printWindow.document.write('<style type = "text/css">');
-          printWindow.document.write(table_style);
-          printWindow.document.write('</style>');
-          printWindow.document.write('</head>');
-  
-          //Print the DIV contents i.e. the HTML Table.
-          printWindow.document.write('<body>');
-          var divContents = document.getElementById("dvContents").innerHTML;
-          printWindow.document.write(divContents);
-          printWindow.document.write('</body>');
-  
-          printWindow.document.write('</html>');
-          printWindow.document.close();
-          printWindow.print();
       }
       </script>
     </body>

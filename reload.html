@@ -12,7 +12,7 @@
         <nav class="nav">
           <div class="logo-content">
             <div class="logo">
-              <a href="dashboard.html">
+              <a href="index.html">
                 <img src="images/logo.png"></a>
                   <div class="logo-name">Reloading</div>
                   <button id="logout">Logout</button>
@@ -89,13 +89,14 @@
         <div class="add-record-content">
           <div class="add-record-btn">
             <a href="#print">
-              <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
+              <button type="submit" onclick="window.print()" id="btnPrint">PRINT</button>
             </a>
           </div>
         </div>
       </div>
 
       <div id="dvContents" class="tableDiv">
+        <center><h1 id="tableTitle" style="display: none">Reloading Requests</h1></center>
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -104,17 +105,15 @@
           <thead>
           <tr>
             <th>ID</th>
-            <th id="tbtname">NAME</th>
-            <th>RECEIPT</th>
-            <th>CONTACT NUMBER</th>
-            <th>TIME</th>
-            <th>DATE</th>
-            <th>REMARKS</th>
-            <th>CONTROL CENTER</th>
+            <th>Name</th>
+            <th>Receipt</th>
+            <th>Contact Number</th>
+            <th>Time</th>
+            <th>Date</th>
+            <th>Remarks</th>
+            <th id="ControlCenter">Control Center</th>
           </tr>
         </thead>
-  
-        
         <tbody id="tbody1"></tbody>
   
   
@@ -159,7 +158,7 @@
               <h3>Washington <span>Place</span></h3>
   
               <p class="footer-links">
-                  <a href="dashboard.html">Dashboard</a>
+                  <a href="index.html">Dashboard</a>
                   |
                   <a href="commutersTable.html">All commuters</a>
                   |
@@ -168,8 +167,8 @@
   
               <p id="coltext">DOWNLOAD OUR APP HERE:</p>
               <div class="content">
-                <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
-                <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+                <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For commuters click here </a></p>
+                <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For drivers click here </a></p>
               </div>
           </div>
   
@@ -319,8 +318,8 @@
           trow.append(td6);
       
           var ControlDiv3 = document.createElement("div3");
-          ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
-          ControlDiv3.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="deletee('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Archieved</button>'
+          // ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+          ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="deletee('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Archieve</button>'
           
           trow.appendChild(ControlDiv3);
           
@@ -601,45 +600,6 @@
                 ) 
                 }
         </script>
-  
-      <!-- printing css starts here  -->
-      <style id="table_style" type="text/css">
-      @media print{
-        a #seemoreBtnModal, #seemoreBtnModal2, #seemoreBtnModal3, #seemoreBtnModal4, #seemoreBtnModal5, #seemoreBtnModal6,
-        #seemoreBtnModal7, #seemoreBtnModal8, #seemoreBtnModal9, #seemoreBtnModal10, #seemoreBtnModal11, #seemoreBtnModal12,
-        #seemoreBtnModal13, #seemoreBtnModal14, #seemoreBtnModal15{
-          color: #3D5A80;
-          border-color: transparent;
-          background-color: transparent;
-        }
-  
-        td #loaded{
-          color: #3d5a80;
-          border-color: transparent;
-          background-color: transparent;
-        }
-  
-        td #notloaded{
-          color: #d60000;
-          border-color: transparent;
-          background-color: transparent;
-        }
-        #seemoreModal{
-          display: none; /*none*/
-        }
-        #seemoreModal, .seemoreModal-body #receiptCont img, .seemoreModal-body form{
-          display: none;
-        }
-        table
-        {
-            border: transparent;
-        }
-        #example_length label, #example_filter label{ /*show entries number and search*/
-          display: none;
-        }
-      }
-      </style>
-      <!-- printing css ends here  -->
       </body>
   
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
@@ -674,30 +634,6 @@
         if (event.target == modal) {
           modal.style.display = "none";
         }
-      }
-      </script>
-  
-        <script type="text/javascript"> //printing script
-      function PrintTable() {
-          var printWindow = window.open('', '', 'height=700,width=1200');
-          printWindow.document.write('<html><head><title>Table Contents</title>');
-  
-          //Print the Table CSS.
-          var table_style = document.getElementById("table_style").innerHTML;
-          printWindow.document.write('<style type = "text/css">');
-          printWindow.document.write(table_style);
-          printWindow.document.write('</style>');
-          printWindow.document.write('</head>');
-  
-          //Print the DIV contents i.e. the HTML Table.
-          printWindow.document.write('<body>');
-          var divContents = document.getElementById("dvContents").innerHTML;
-          printWindow.document.write(divContents);
-          printWindow.document.write('</body>');
-  
-          printWindow.document.write('</html>');
-          printWindow.document.close();
-          printWindow.print();
       }
       </script>
     </body>

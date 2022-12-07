@@ -76,8 +76,8 @@ body{
   position: absolute;
   width: 120px;
   height: 35px;
-  left: 1104px;
-  top: 14px;
+  left: 90%;
+  top: 21%;
   background-color: #E0FBFC;
   border-radius: 66px;
   border-color: #E0FBFC;
@@ -276,7 +276,7 @@ main{
   color: #3D5A80;
 }
 
-/*table*/
+/* table */
 .tableDiv{
   max-width: 90%;
   position: relative;
@@ -308,7 +308,7 @@ thead tr th{
 
 thead tr th,
 tbody tr td{
-  border: 1px solid black;
+  border: 0.1px solid black;
 }
 
 tr:nth-child(odd) {

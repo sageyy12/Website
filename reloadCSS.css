@@ -71,13 +71,13 @@ color: #E0FBFC;
     /* left: 1306px;
     top: 14px; */
     left: 90%;
-    top: 1%;
+    top: 21%;
     background-color: #E0FBFC;
     border-radius: 66px;
     border-color: #E0FBFC;
     font-family: "Raleway";
     font-weight: 900;
-    font-size: 21px;
+    font-size: 20px;
     color: #3D5A80;
 }
 .sidebar{
@@ -338,10 +338,20 @@ color: #E0FBFC;
 table{
   position: relative;
   top: 5px;
+  border-radius: 0.5rem;
   /*left: 129px;
   max-width: 95%;*/
-  text-align: left;
+  text-align: center !important;
+  align-items: center !important;
   background-color: transparent;
+  border: 1px solid black !important;
+  border-collapse: collapse !important;
+}
+
+thead tr th,
+tbody tr td{
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 }
 
 /*data table*/
@@ -436,6 +446,7 @@ a #viewReceiptbtn:hover{
   border-radius: 11px;
   letter-spacing: 1.5px;
   color: #E0FBFC;
+  margin: .5rem;
 }
 
 #addAcct:hover{
@@ -544,7 +555,7 @@ a #seemoreBtnModal10:hover{
   border-radius: 10px;
   z-index: 1;
   display: none; /*none*/
-  margin-left: 33%;
+  margin-left: calc(100% - 70%);
 }
 
 /*#seemoreModal::-webkit-scrollbar{
@@ -840,7 +851,7 @@ footer {
     }
 }
 
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav input[type=text] {
     float: none;
@@ -853,4 +864,27 @@ footer {
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
-}*/
+}
+
+@media print{
+  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, footer { 
+    display: none !important; 
+  }
+
+  #dvContents{
+    position: relative;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  table, th, td{
+    border: 1px solid black !important;
+    border-collapse: collapse !important;
+    padding: .5rem;
+  }
+
+  #tableTitle{
+    display: block !important;
+  }
+}

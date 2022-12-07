@@ -69,7 +69,7 @@
       <nav class="nav">
         <div class="logo-content">
           <div class="logo">
-            <a href="dashboard.html">
+            <a href="index.html">
               <img src="images/logo.png"></a>
                 <div class="logo-name">Commuter's Account</div>
                 <button id="logout" onclick="window.location.href='login.html'">Logout</button>
@@ -145,15 +145,16 @@
     <div class="btn-container">
       <div class="btn">
         <a href="guest.html">
-          <button type="button" name="button">Guest List</button>
+          <button type="button" name="button" id="guest">Guest List</button>
         </a>
         <a href="#print">
-          <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
+          <button type="submit" onclick="window.print()" id="btnPrint">PRINT</button>
         </a>
       </div>
     </div>
 
     <div id="dvContents" class="tableDiv">
+      <center><h1 id="tableTitle" style="display: none">Commuter's Account</h1></center>
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
       <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -169,7 +170,7 @@
             <th>Phone Number</th>
             <th>Address</th>
             <th>Username</th>
-            <th>Control Center</th>
+            <th id="ControlCenter">Control Center</th>
           </thead>
           <tbody id="tbody1"></tbody>
         </table>
@@ -242,7 +243,7 @@
             <h3>Washington <span>Place</span></h3>
 
             <p class="footer-links">
-                <a href="dashboard.html">Dashboard</a>
+                <a href="index.html">Dashboard</a>
                 |
                 <a href="commutersTable.html">All commuters</a>
                 |
@@ -251,8 +252,8 @@
 
             <p id="coltext">DOWNLOAD OUR APP HERE:</p>
             <div class="content">
-              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
-              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+              <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For commuters click here </a></p>
+              <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For drivers click here </a></p>
             </div>
         </div>
 
@@ -298,44 +299,6 @@
         </div>
     </footer>
     </body>
-
-    <!-- printing css starts here  -->
-    <style id="table_style" type="text/css">
-    table img{
-      height: 32px;
-      width: 35px;
-    }
-    td .viewIDbtn{
-      font-family: "Salsa";
-      width: 90px;
-      height: 26px;
-      background: #3d5a80;
-      border-radius: 11px;
-      border-color: transparent;
-      font-size: 14px;
-      line-height: 15px;
-      letter-spacing: 1.5px;
-      color: #E0FBFC;
-    }
-    @media print{
-      .tago, #active_actionbtns, #actionbtns, #view, #update {
-        display: none;
-        border: transparent;
-      }
-      table
-      {
-          border: transparent;
-      }
-
-      td tr:nth-child(2){
-        width: 28%;
-      }
-      #example_length label, #example_filter label, #example_info, #example_paginate{ /*show entries number and search*/
-        display: none;
-      }
-    }
-    </style>
-    <!-- printing css ends here  -->
 
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
@@ -512,29 +475,5 @@
     btn.onclick= function(){
       sidebar.classList.toggle("active");
     }
-  </script>
-
-    <script type="text/javascript"> //printing script
-  function PrintTable() {
-      var printWindow = window.open('', '', 'height=700,width=1200');
-      printWindow.document.write('<html><head><title>Table Contents</title>');
-
-      //Print the Table CSS.
-      var table_style = document.getElementById("table_style").innerHTML;
-      printWindow.document.write('<style type = "text/css">');
-      printWindow.document.write(table_style);
-      printWindow.document.write('</style>');
-      printWindow.document.write('</head>');
-
-      //Print the DIV contents i.e. the HTML Table.
-      printWindow.document.write('<body>');
-      var divContents = document.getElementById("dvContents").innerHTML;
-      printWindow.document.write(divContents);
-      printWindow.document.write('</body>');
-
-      printWindow.document.write('</html>');
-      printWindow.document.close();
-      printWindow.print();
-  }
   </script>
 </html>

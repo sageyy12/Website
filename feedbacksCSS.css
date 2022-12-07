@@ -285,8 +285,8 @@ main{
   display: flex;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 4rem; /*pagitan ng grids*/
-  right: 104px;
-  top: 26px;
+  /* right: 104px;
+  top: 26px; */
   position: relative;
 }
 

@@ -70,7 +70,7 @@ body{
   /* left: 1306px;
   top: 14px; */
   left: 90%;
-  top: 1%;
+  top: 2%;
   background-color: #E0FBFC;
   border-radius: 66px;
   border-color: #E0FBFC;
@@ -765,7 +765,7 @@ footer {
     }
 }
 
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav input[type=text] {
     float: none;
@@ -778,4 +778,25 @@ footer {
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
-}*/
+}
+
+@media print{
+  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, footer { 
+    display: none !important; 
+  }
+
+  #dvContents{
+    position: relative;
+    /* top: 0; */
+    left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+  table{
+    padding: 10px !important;
+  }
+
+  #tableTitle{
+    display: block !important;
+  }
+}

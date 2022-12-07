@@ -72,7 +72,7 @@
         <nav class="nav">
           <div class="logo-content">
             <div class="logo">
-              <a href="dashboard.html">
+              <a href="index.html">
                 <img src="images/logo.png"></a>
                   <div class="logo-name">Dashboard</div>
                   <button id="logout" onclick="window.location.href='login.html'">Logout</button>
@@ -157,7 +157,7 @@
                 <div class="tryNga">
                   <h1 id="No.OfCommuters"></h1>
                   <span>
-                    <a href="commutersTable.html" id="link">Commuters </a> </span>
+                    <a href="CoomutersAcct.html" id="link">Commuters </a> </span>
                 </div>
                 <div>
                   <span>
@@ -207,7 +207,7 @@
               <div class="card-single">
                 <div class="tryNga">
                   <h1 id="No.OfReload"></h1>
-                  <h6>Pending: <span id="PendingNum"> </span>Paid: <span id="PaidNum"></span></h6> <br>
+                  <h6>Pending: <span id="PendingNum"> </span> Loaded: <span id="PaidNum"></span></h6> <br>
                   <span><a href="reload.html" id="link">Reload </a></span>
                 </div>
                 <div>
@@ -282,7 +282,7 @@
                   <div class="cardsy">
                     <div class="card-header">
                       <h3>New Registers</h3>
-                      <a href="commutersTable.html" id="seeAllRegsbtn">
+                      <a href="CoomutersAcct.html" id="seeAllRegsbtn">
                       <button>See all
                         <span class="fa">&#xf178;</span>
                       </button></a>
@@ -316,7 +316,7 @@
             <h3>Washington <span>Place</span></h3>
 
             <p class="footer-links">
-                <a href="dashboard.html">Dashboard</a>
+                <a href="index.html">Dashboard</a>
                 |
                 <a href="commutersTable.html">All commuters</a>
                 |
@@ -325,8 +325,8 @@
 
             <p id="coltext">DOWNLOAD OUR APP HERE:</p>
             <div class="content">
-              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For commuters click here </a></p>
-              <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+              <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For commuters click here </a></p>
+              <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For drivers click here </a></p>
             </div>
         </div>
 
@@ -442,34 +442,34 @@
                   
                 });
 
-                firebase.database().ref('Reload').orderByChild('status').equalTo('Paid').once('value', function(snapshot){
+                firebase.database().ref('Reload').orderByChild('status').equalTo('Loaded').once('value', function(snapshot){
                   count = snapshot.numChildren();
                   document.getElementById("PaidNum").innerHTML = count;
                 });
 
               // TOTAL SALES
+              // var sales;
+              // var salesAmount = 0;
+              // firebase.database().ref('boundary').once('value', function (snapshot){
+              //     snapshot.forEach(function(childSnapshot){
+              //      sales = childSnapshot.val().payment;
+              //      salesAmount += parseInt(sales);
+              //     document.getElementById("total").innerHTML = salesAmount;
+              //     //alert(salesAmount);      
+              //   });
+              // });
+              
               var sales;
-              var salesAmount = 0;
-              firebase.database().ref('boundary').once('value', function (snapshot){
-                  snapshot.forEach(function(childSnapshot){
-                   sales = childSnapshot.val().payment;
-                   salesAmount += parseInt(sales);
+              var salesAmount=0;
+              firebase.database().ref('boundary').orderByChild('status').equalTo('Paid').once('value', function(snapshot){
+                snapshot.forEach(function(childSnapshot){
+                  sales = childSnapshot.val().payment;
+                  salesAmount += parseInt(sales);
                   document.getElementById("total").innerHTML = salesAmount;
-                  //alert(salesAmount);      
                 });
               });
-              
-              // firebase.database().ref('boundary').orderByChild('status').equalTo('Paid').once('value', function(snapshot){
-              //     count = snapshot.val().payment;
-              //     alert(count);
-              //     // sales = snapshot.val().payment;
-              //     // //sales = childSnapshot.val().payment;
-              //     // salesAmount += parseInt(sales);
-              //     // document.getElementById("total").innerHTML = salesAmount;
-              //   });
                 
               //New registers
-
               function Select_AllData(){
                 firebase.database().ref('Commuters').once('value', function (snapshot){
                   snapshot.forEach(function(childSnapshot){

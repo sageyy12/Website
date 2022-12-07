@@ -79,7 +79,7 @@ body{
   /* left: 1306px;
   top: 14px; */
   left: 90%;
-  top: 1%;
+  top: 2%;
   background-color: #E0FBFC;
   border-radius: 66px;
   border-color: #E0FBFC;
@@ -120,7 +120,7 @@ body{
   text-align: center;
   line-height: 90px;
   transform: translateX(-50%);
-  pointer-events: auto;
+  cursor: pointer;
 }
 
 .sidebar.active #btn{
@@ -638,4 +638,26 @@ footer {
     .footer-distributed .footer-center i {
         margin-left: 0;
     }
+}
+
+@media print{
+  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, #btn, #guest, footer { 
+    display: none !important; 
+  }
+
+  #dvContents{
+    position: relative;
+    /* top: 0; */
+    left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+  table{
+    width: 100%;
+    padding: 10px;
+  }
+
+  #tableTitle{
+    display: block !important;
+  }
 }

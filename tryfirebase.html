@@ -75,7 +75,7 @@
       <nav class="nav">
         <div class="logo-content">
           <div class="logo">
-            <a href="dashboard.html">
+            <a href="index.html">
               <img src="images/logo.png"></a>
                 <div class="logo-name">Shuttle Driver's Account</div>
                 <button id="logout" onclick="window.location.href='login.html'">Logout</button>
@@ -92,7 +92,7 @@
     
   </div>
   <a href="#print">
-    <button type="submit" onclick="PrintTable();" id="btnPrint">PRINT</button>
+    <button type="submit" onclick="window.print()" id="btnPrint">PRINT</button>
   </a>
   <div class="sidebar">
     <i class='bx bx-menu' id="btn"></i>
@@ -159,6 +159,7 @@
 </div>
 
    <div id="dvContents" class="tableDiv">
+    <center><h1 id="tableTitle" style="display: none">Shuttle Driver's Account</h1></center>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -176,7 +177,7 @@
           <th>Phone Number</th>
           <th>Username</th>
           <th>Profile Name</th>
-          <th>Control Center</th>
+          <th id="ControlCenter">Control Center</th>
         </thead>
         <tbody id="tbody1"></tbody>
       </table>
@@ -274,7 +275,7 @@
       <h3>Washington <span>Place</span></h3>
 
       <p class="footer-links">
-          <a href="dashboard.html">Dashboard</a>
+          <a href="index.html">Dashboard</a>
           |
           <a href="driversTable.html">All drivers</a>
           |
@@ -283,8 +284,8 @@
 
       <p id="coltext">DOWNLOAD OUR APP HERE:</p>
       <div class="content">
-        <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
-        <p><a href="https://drive.google.com/file/d/1d8tUT5DQuuEI0k3D9PMNzJ99qE45hrwl/view?usp=sharing"> For drivers click here </a></p>
+        <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For drivers click here </a></p>
+        <p><a href="https://drive.google.com/drive/folders/1JACHKQU4GNaF3-ca2-VM0jZ3Qa-Z6ZCL"> For drivers click here </a></p>
       </div>
   </div>
 
@@ -464,6 +465,7 @@
         trow.appendChild(ControlDiv);
         tbody1.appendChild(trow);
       }
+      
       function AddAllItems(boundary) {
         studentNo=0;
             tbody1.innerHTML="";
@@ -558,7 +560,7 @@
           regdate.disabled = true;
           license.disabled = true;
 
-          firstName.value = stdList[index];
+          firstName.value = stdList[index][0];
           midName.value = stdList[index][1];
           lastName.value =  stdList[index][2];
           document.getElementById("pass").value = stdList[index][10];
@@ -825,66 +827,5 @@
 
     
     </script>
-
-  <script type="text/javascript"> 
-  //printing script
-    function PrintTable() {
-    var printWindow = window.open('', '', 'height=700,width=1200');
-    printWindow.document.write('<html><head><title>Table Contents</title>');
-
-    //Print the Table CSS.
-    var table_style = document.getElementById("table_style").innerHTML;
-    printWindow.document.write('<stylestd type = "text/css">');
-    printWindow.document.write(table_style);
-    printWindow.document.write('</style>');
-    printWindow.document.write('</head>');
-
-    //Print the DIV contents i.e. the HTML Table.
-    printWindow.document.write('<body>');
-    var divContents = document.getElementById("dvContents").innerHTML;
-    printWindow.document.write(divContents);
-    printWindow.document.write('</body>');
-
-    printWindow.document.write('</html>');
-    printWindow.document.close();
-    printWindow.print();
-}
-</script>
   </body>
-
-  <!-- printing css starts here  -->
-  <style id="table_style" type="text/css">
-    table img{
-      height: 45px;
-      width: 46px;
-      left: 12px;
-      position: relative;
-    }
-  
-    td .viewIDbtn{
-      font-family: "Salsa";
-      width: 90px;
-      height: 26px;
-      background: #3d5a80;
-      border-radius: 11px;
-      border-color: transparent;
-      font-size: 14px;
-      line-height: 15px;
-      letter-spacing: 1.5px;
-      color: #E0FBFC;
-    }
-    @media print{
-      .tago, .viewIDbtn {
-        display: none;
-        border: transparent;
-      }
-      table
-      {
-          border: transparent;
-      }
-      #example_length label, #example_filter label{ /*show entries number*/
-        display: none;
-      }
-  }
-  </style>
 </html>
