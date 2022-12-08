@@ -23,7 +23,7 @@
         position: absolute;
         height: 500px;
         background-color: #C1CDCB;
-        width: 700px;
+        width: 775px;
         border: 5px solid #405C81;
         /* top: 50%;
         left: 50%; */
@@ -81,6 +81,9 @@
         background-color: transparent;
         border-color: transparent;
     }
+    /* #info4{
+        font-size: 15px;
+    } */
     .Date{
         position: absolute;
         top: 85%;
@@ -115,10 +118,48 @@
         cursor: pointer;
     }
 
+.driverInfo #btnPrint{
+    position: relative;
+    right: 67%;
+    bottom: 12%;
+    width: 130px;
+    height: 40px;
+    cursor: pointer;
+    color: #E0FBFC;
+    background-color: #3D5A80;
+    border-color: transparent;
+    border-radius: 11px;
+    font-family: "Salsa";
+    font-size: 14px;
+    line-height: 25px;
+    color: #E0FBFC;
+    box-shadow: 3px 3px 2px 0.2px grey;
+  }
+
+@media print{
+  body{
+    
+    -webkit-print-color-adjust: exact !important;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+  
+  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, #genID, footer { 
+    display: none !important; 
+  }
+
+  .info{
+    position: absolute;
+    top: 90px !important;
+    left: 50px !important;
+  }
+}
+
 </style>
 <body>
     <div class="driverInfo">
         <button onclick="forID()" id="genID">Generate ID</button>
+        <button type="submit" onclick="window.print()" id="btnPrint">PRINT</button>
     </div>
     <br>
     <div class="container">
@@ -135,15 +176,15 @@
         <div class="content">
             <div class="driverInfo">
                 NAME:
-                <input type="text" id="info2" class="info" placeholder="First name" disabled>
+                <input type="text" id="info2" class="info" placeholder="Full name" disabled>
             </div>
             <div class="driverInfo">
                 USERNAME:
-                <input type="text" id="info3" class="info" placeholder="Middle initial" disabled>
+                <input type="text" id="info3" class="info" placeholder="Username" disabled>
             </div>
             <div class="driverInfo">
                 EMAIL:
-                <input type="text" id="info4" class="info" placeholder="Last name" disabled>
+                <input type="text" id="info4" class="info" placeholder="Email" disabled>
             </div>
             <div class="driverInfo">
                 ADDRESS:

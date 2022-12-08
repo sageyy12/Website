@@ -459,12 +459,11 @@ a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5
   display: flex;
   /* justify-content: space-between; */
   justify-content: center;
-  /*margin: 16px 118px;*/
-  margin: 0 44px;
+  margin: 0px 2rem 69px 0rem;
+  /* margin: 0 44px; */
 }
 
-.buttons .accept,
-.buttons .decline{
+.buttons .accept{
   position: relative;
   top: -100px;
   padding: .5rem;
@@ -474,8 +473,16 @@ a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5
   color: #E0FBFC;
 }
 
-.buttons .decline{
-  background-color: #d60000;
+#btnPrint2{
+  position: relative;
+  width: 90px;
+  left: 20px;
+  background-color: #3D5A80;
+  border-color: transparent;
+  font-size: 14px;
+  line-height: 25px;
+  color: #E0FBFC;
+  box-shadow: 3px 3px 2px 0.2px grey;
 }
 
 .buttons .accept .fa{
@@ -488,7 +495,7 @@ a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5
   margin-bottom: -22px;
 }
 
-#amount, #name{
+input[type=text], input[type=number]{
   position: relative;
   width: auto;
   height: auto;
@@ -509,7 +516,10 @@ a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5
 
 #amount{
   top: -80px;
-  left: -9px;
+}
+
+#stat{
+  top: -177px;
 }
 
 .modal-backdrop.in,  .modal-backdrop{
@@ -532,7 +542,7 @@ a #viewBtnModal1, #viewBtnModal2, #viewBtnModal3, #viewBtnModal4, #viewBtnModal5
   top: calc(100% - 200%);
   left: 300px;
   width: 380px;
-  height: 350px;
+  /* height: 350px; */
   max-height: 700px;
   background: #E0FBFC;
   border: 2px solid #3D5A80;
@@ -1014,7 +1024,14 @@ footer {
 }
 
 @media print{
-  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, #myBtn, footer { 
+  body{
+    -webkit-print-color-adjust: exact !important;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+    filter: brightness(2);
+  }
+
+  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, #myBtn, .buttons, footer { 
     display: none !important; 
   }
 
@@ -1033,5 +1050,18 @@ footer {
 
   #tableTitle{
     display: block !important;
+  }
+
+  #seemoreModal{
+    position: relative;
+    top: 360px;
+    left: 120px;
+    height: 650px;
+    max-height: 900px;
+  }
+
+  #stat{
+    display: block !important;
+    margin-bottom: 0;
   }
 }

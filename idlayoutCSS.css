@@ -49,7 +49,7 @@
     position: relative;
     top: -250px;
 }
-.driverInfo{
+#genID{
     font-weight: bold;
     font-size: 22px;
     position: relative;
@@ -92,4 +92,45 @@
     position: relative;
     top: 120px;
     left: -120px;
+}
+
+.driverInfo #btnPrint{
+    position: absolute;
+    width: 143px;
+    height: 42px;
+    left: 100px;
+    top: 85px;
+    background-color: #3D5A80;
+    border-color: transparent;
+    border-radius: 66px;
+    font-family: 'Raleway';
+    font-weight: 900;
+    font-size: 14px;
+    line-height: 25px;
+    color: #E0FBFC;
+    box-shadow: 3px 3px 2px 0.2px grey;
+  }
+
+@media print{
+  body{
+    
+    -webkit-print-color-adjust: exact !important;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+  
+  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, footer { 
+    display: none !important; 
+  }
+
+  #dvContents{
+    position: relative;
+    /* top: 0; */
+    left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+  #tableTitle{
+    display: block !important;
+  }
 }

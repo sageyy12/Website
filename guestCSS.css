@@ -528,7 +528,7 @@ footer {
     }
 }
 
-/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally
+/* When the screen is less than 600px wide, stack the links and the search field vertically instead of horizontally */
 @media screen and (max-width: 600px) {
   .topnav a, .topnav input[type=text] {
     float: none;
@@ -541,4 +541,36 @@ footer {
   .topnav input[type=text] {
     border: 1px solid #ccc;
   }
-}*/
+}
+
+@media print{
+  body{
+    
+    -webkit-print-color-adjust: exact !important;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+  
+  .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, footer { 
+    display: none !important; 
+  }
+
+  #dvContents{
+    position: relative;
+    /* top: 0; */
+    left: 50%;
+  transform: translate(-50%, -50%);
+  }
+
+  table{
+    padding: 10px !important;
+  }
+
+  #tableTitle{
+    display: block !important;
+  }
+
+  h3{
+    display: block;
+  }
+}

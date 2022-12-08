@@ -867,6 +867,13 @@ footer {
 }
 
 @media print{
+  body{
+    
+    -webkit-print-color-adjust: exact !important;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+  }
+  
   .topnav, #btnPrint, .sidebar, .btn--call-to-action, #addAcct, #ControlCenter, footer { 
     display: none !important; 
   }

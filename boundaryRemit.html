@@ -128,16 +128,18 @@
     <div class="seemoreModal-body">
       <div id="receiptCont">
         <center>
-          <!-- <img id="r" height="300px" width="300px"> <br> <br> <br> -->
+          <img id="r" height="300px" width="300px"> <br>
       <form>
         <label for="csname" id="csnamelabel" class="labs">Driver's Name: </label>
         <input type="text" id="name" name="name" class="labs" disabled> <br> <br>
         <label for="amount" class="labs">Boundary Amount: </label>
         <input type="number" id="amount" name="amount" class="labs" disabled> <br>
-        <input type="text" id="namebox" name="amount" class="labs" hidden> <br> <br>
+        <input type="text" id="namebox" name="namebox" class="labs" hidden> <br> <br>
+        <input type="text" id="stat" name="stat" value="Paid" class="labs" hidden> <br> <br>
       </form></center>
         <div class="buttons">
-          <a href="#"><button class="accept"  onclick="wallet()"><i class="fa fa-check-circle"></i> Accept</button></a>
+          <a href="#"><button class="accept" id="acceptnbtn"  onclick="wallet()"><i class="fa fa-check-circle"></i> Accept</button></a>
+          <button type="submit" class="accept" onclick="window.print()" id="btnPrint2">PRINT</button>
           <!-- <a href="#boundaryRemit.html"><button class="decline"><i class="fa fa-times-circle"></i> Decline</button></a> -->
           </div>
         </div>
@@ -158,9 +160,9 @@
         </div>
         <div class="modal-body" id="new-user-form">
 
-          <label class="labs">Current fee:</label>
+          <label class="labs">Boundary:</label>
           <input type="text" id="currentFee" class="labs"> <br> <br>
-          <label class="labs">New fee:</label>
+          <label class="labs">Transportation:</label>
           <input type="text" id="newFee" class="labs">
         </div>
   
@@ -387,6 +389,8 @@
        var namebox = document.getElementById('namebox');
        var newFee = document.getElementById('newFee');
        var currentFee = document.getElementById('currentFee');
+
+       var BtnModAccept = document.getElementById('acceptnbtn');
   
   
        function FillTboxes(index){
@@ -400,10 +404,26 @@
             
           }else{
             --index;
+
+            firebase.database().ref('Payment').on('value', function(snapshot){
+              currentFee.value = snapshot.val().Boundary;
+              amountt.value = snapshot.val().Boundary;
+              // alert("amount sa loob ni filltboxes: " + amountt.value)
+            })
+            // commuterr.value = stdList[index][0];
+            // // amountt.value = stdList[index][3];
+            // namebox.value = stdList[index][1];
+            // // currentFee.value = stdList[index][0];
+
             commuterr.value = stdList[index][0];
-            // amountt.value = stdList[index][3];
             namebox.value = stdList[index][1];
-            // currentFee.value = stdList[index][0];
+
+            //img retrieval process
+            // ImgNAme = document.getElementById('namebox').value;
+            firebase.database().ref('boundary/' + namebox.value).on('value', function(snapshot){
+              document.getElementById('r').src = snapshot.val().imageUrl;
+              namebox.disabled = true;
+            })
 
             //img retrieval process
             // ImgNAme = document.getElementById('namebox').value;
@@ -411,12 +431,6 @@
             //   document.getElementById('r').src = snapshot.val().imageUrl;
             //   namebox.disabled = true;
             // })
-
-            firebase.database().ref('Payment').on('value', function(snapshot){
-              currentFee.value = snapshot.val().Boundary;
-              amountt.value = snapshot.val().Boundary;
-              // alert("amount sa loob ni filltboxes: " + amountt.value)
-            })
           }
         }
   
@@ -534,6 +548,7 @@
                     }
                   }
                 ) 
+                      BtnModAccept.hidden = true;
                 }
           }
 
