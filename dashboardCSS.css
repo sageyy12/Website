@@ -430,8 +430,12 @@ main{
   cursor: pointer;
 }
 
+iframe{
+  overflow: hidden;
+}
+
 table{
-  max-width: 85%;
+  max-width: 180%;
 }
 
 thead tr{
