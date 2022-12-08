@@ -77,8 +77,6 @@
       </nav>
       </div>
 
-
-
       <div class="topnav">
         <a href="#print">
           <button type="submit" onclick="window.print()" id="btnPrint">PRINT</button>
@@ -159,7 +157,8 @@
       <tr>
         <th>ID</th>
         <th>Guest name</th>
-        <th>Contact Number</th>
+        <th>Type of Ride</th>
+        <th>Destination</th>
         <th>Time of visit</th>
         <th>Date of visit</th>
       </tr>
@@ -261,14 +260,15 @@
 
                  //select all data
       function Select_AllData(){
-        firebase.database().ref('Queue/Guest/').once('value', function (snapshot){
+        firebase.database().ref('Guest').once('value', function (snapshot){
           snapshot.forEach(function(childSnapshot){
             var guestt = childSnapshot.val().Bookfor;
-            var contactt = childSnapshot.val().PhoneNumber;
-            var datee = childSnapshot.val().To;
+            var contactt = childSnapshot.val().TypeOfRide;
+            var datee = childSnapshot.val().Date;
             var timee = childSnapshot.val().Time;
+            var destination = childSnapshot.val().To;
           
-            AddItemToTable(guestt, contact, datee, timee);
+            AddItemToTable(guestt, contact, datee, timee, destination);
           });
         });
       }
@@ -277,7 +277,7 @@
       var qList = [];
       
 
-        function AddItemToTable(guestt, contactt, datee, timee){
+        function AddItemToTable(guestt, contactt, datee, timee, destination){
         var tbody1 = document.getElementById("tbody1");
         let trow = document.createElement("tr");
         let td0 = document.createElement("td");
@@ -285,18 +285,21 @@
         let td2 = document.createElement("td");
         let td3 = document.createElement("td");
         let td4 = document.createElement("td");
+        let td5 = document.createElement("td");
     
-        qList.push([guestt, contactt,datee, timee]);
+        qList.push([guestt, contactt,datee, timee, destination]);
         
         td0.innerHTML = ++studentNo;
         td1.innerHTML = guestt;
         td2.innerHTML = contactt;
-        td3.innerHTML = datee;
-        td4.innerHTML = timee;
+        td3.innerHTML = timee;
+        td4.innerHTML = datee;
+        td5.innerHTML = destination;
              
         trow.appendChild(td0);
         trow.appendChild(td1);
         trow.appendChild(td2);
+        trow.appendChild(td5);
         trow.appendChild(td3);
         trow.appendChild(td4);
         tbody1.appendChild(trow);
@@ -306,14 +309,14 @@
             studentNo=0;
             tbody1.innerHTML="";
             guest.forEach(element => {
-              AddItemToTable(element.Bookfor, element.PhoneNumber, element.To, element.Time)
+              AddItemToTable(element.Bookfor, element.TypeOfRide, element.Date, element.Time, element.To)
             });
           }
 
 
           function getAllData() {
-              const dbref = firebase.database().ref("Reload");
-              get(child(dbref, "Reload"))
+              const dbref = firebase.database().ref("Guest");
+              get(child(dbref, "Guest"))
               .then((snapshot) => {
                 var commuter = [];
                 snapshot.forEach(childSnapshot => {
@@ -324,7 +327,7 @@
           }
 
         function getAllDataRT() {
-              const dbRef = firebase.database().ref("Reload");
+              const dbRef = firebase.database().ref("Guest");
 
               dbRef.on('value', (snapshot)=>{
                 var commuters = [];
