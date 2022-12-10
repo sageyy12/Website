@@ -117,8 +117,7 @@
           </tr>
         </thead>
         <tbody id="tbody1"></tbody>
-  
-  
+
         <!-- The Modal -->
   <div id="seemoreModal">
     <div class="seemoremodal-content">
@@ -160,10 +159,21 @@
         </div>
         <div class="modal-body" id="new-user-form">
 
-          <label class="labs">Boundary:</label>
+          <label class="labs">Current boundary:</label>
+          <input type="text" id="currentboundary" class="labs" disabled> <br> <br>
+          <label class="labs">Current transportation:</label>
+          <span>Join ride:<p class="labs" id="currentJoin"></p></span> <br>
+          <span>Special ride:<p class="labs" id="currentSpecial"></p></span
+          <span>Emergency ride:<p class="labs" id="currentEmergency"></p></span> <br>
+          <!-- <input type="text" id="currenttranspo" class="labs" disabled> <br> <br> -->
+
+          <label class="labs">Set new boundary:</label>
           <input type="text" id="currentFee" class="labs"> <br> <br>
-          <label class="labs">Transportation:</label>
-          <input type="text" id="newFee" class="labs">
+
+          <label class="labs">Set new transportation fee for:</label> <br>
+          <input type="text" id="join" class="labs2" placeholder="Join ride"> <br>
+          <input type="text" id="special" class="labs2" placeholder="Special ride"> <br>
+          <input type="text" id="emergency" class="labs2" placeholder="Emergency ride"> <br>
         </div>
   
         <div class="modal-footer">
@@ -383,12 +393,17 @@
 
         window.onLoad = getAllDataRT();   
   
-  
        var commuterr = document.getElementById('name');
        var amountt = document.getElementById('amount');
        var namebox = document.getElementById('namebox');
-       var newFee = document.getElementById('newFee');
-       var currentFee = document.getElementById('currentFee');
+       var currentboundary = document.getElementById('currentboundary');
+       var currenttranspo = document.getElementById('currenttranspo');
+       var join = document.getElementById('join');
+       var special = document.getElementById('special');
+       var emergency = document.getElementById('emergency');
+       var currentjoin = document.getElementById('currentJoin');
+       var currentspecial = document.getElementById('currentSpecial');
+       var currentemergency = document.getElementById('currentEmergency');
 
        var BtnModAccept = document.getElementById('acceptnbtn');
   
@@ -397,18 +412,20 @@
   
           if(index == null){
             commuterr.value = "";
-            // amountt.value = "";
+            amountt.value = "";
             namebox.value = "";
-            newFee.value = "";
+            join.value = "";
             currentFee.value = "";
             
           }else{
             --index;
 
             firebase.database().ref('Payment').on('value', function(snapshot){
-              currentFee.value = snapshot.val().Boundary;
+              currentboundary.value = snapshot.val().Boundary;
               amountt.value = snapshot.val().Boundary;
-              // alert("amount sa loob ni filltboxes: " + amountt.value)
+              currentjoin.innerHTML = snapshot.val().Join;
+              currentspecial.innerHTML = snapshot.val().Special;
+              currentemergency.innerHTML = snapshot.val().Emergency;
             })
             // commuterr.value = stdList[index][0];
             // // amountt.value = stdList[index][3];
@@ -424,13 +441,6 @@
               document.getElementById('r').src = snapshot.val().imageUrl;
               namebox.disabled = true;
             })
-
-            //img retrieval process
-            // ImgNAme = document.getElementById('namebox').value;
-            // firebase.database().ref('boundary/' + namebox.value).on('value', function(snapshot){
-            //   document.getElementById('r').src = snapshot.val().imageUrl;
-            //   namebox.disabled = true;
-            // })
           }
         }
   
@@ -519,7 +529,7 @@
               var total = rd - load;
               var newwal = total.toString();
               // alert(newwal)
-                // after adding maupdate na ulit yung wallet ni comms
+                // after adding maupdate na ulit yung wallet ni driver
                 firebase.database().ref("Driver/" + namebox.value).update(
                     {
                       wallet:newwal
@@ -556,7 +566,9 @@
        function edit_done(){
         firebase.database().ref('Payment').set({
           Boundary: currentFee.value,
-          Transpo: newFee.value
+          Join: join.value,
+          Special: special.value,
+          Emergency: emergency.value
         });
         alert("Boundary updated succesfully");
         window.location.reload(true);

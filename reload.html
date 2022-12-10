@@ -561,10 +561,9 @@
           --index;
           remarksss.value = stdList[index][0];
   
-          firebase.database().ref("Reload/" + remarksss.value).remove().then(
+          firebase.database().ref("Reload/" + remarksss.value).remove().then( //namebox.value
             function(){
               alert("Succesfully archieved!");
-            
                 $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component
             }
           )

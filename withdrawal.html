@@ -297,8 +297,8 @@
         trow.append(td6);
       
         var ControlDiv3 = document.createElement("div3");  
-        ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
-        ControlDiv3.innerHTML += '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="deletee('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Archieved</button>'
+        // ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="FillTboxes('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Edit account </button>'
+        ControlDiv3.innerHTML = '<button type="button" id= "addAcct" class="btn btn-primary my-2 ml-2" onclick="deletee('+studentNo+')" data-toggle="modal" data-target="#exampleModalCenter">Archieved</button>'
         trow.appendChild(ControlDiv3);
 
 
@@ -493,11 +493,11 @@
           function deletee(index){
   
             var remarksss = document.getElementById('h_text' + index);
-            var remarksss = document.getElementById('td' + index);
+            var td = document.getElementById('td' + index);
           --index;
           remarksss.value = stdList[index][0];
   
-          firebase.database().ref("withdrawal/" + namebox.value).remove().then(
+          firebase.database().ref("withdrawal/" + commuterr.value).remove().then(
             function(){
               alert("Succesfully archieved!");
                 $("#exampleModalCenter").modal('hide'); //exampleModalCenter is the id of the modal component

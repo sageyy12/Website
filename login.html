@@ -113,11 +113,12 @@
                 firebase.initializeApp(firebaseConfig);
                 const auth = firebase.auth()
                 const database = firebase.database()
+                const user = firebase.auth().currentUser;
 
                 alert("Fore new registers, the password is auto generated. Leave the password field empty." +
                 "\nFor logging in, typing ypur password is required")
 
-                function register(){
+                function register(user){
                   email = document.getElementById('email').value
                   password = document.getElementById('password').value
 
@@ -152,26 +153,49 @@
              
                 }
 
-                function login(){
+                function login(user){
                   email = document.getElementById('email').value
                   password = document.getElementById('password').value
-              
-                  auth.signInWithEmailAndPassword(email, password)
-                  .then(function(){
-                    var admin = auth.currentUser
 
-                    var database_ref = database.ref()
+                  firebase.auth().signInWithEmailAndPassword(email, password)
+                  .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    alert("Admin is authenticated!")
+                    // ...
+                    firebase.auth().onAuthStateChanged((user) => {
+                  if (user) {
+                    var uid = user.uid;
+                    alert("current logged in user: " + uid)
                     location="index.html"
+                    // ...
+                  } else {
+                    // User is signed out
+                    alert("no user")
+                  }
+                });
                   })
+                  .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert("error")
+                  });
+              
+                //   auth.signInWithEmailAndPassword(email, password)
+                //   .then(function(){
+                //     var admin = auth.currentUser
 
-                  .catch((error)=>{
-                  var error_code = error.code
-                  var error_message = error.message
+                //     var database_ref = database.ref()
+                //     // location="index.html"  
+                //   })
 
-                  alert(error_message)
-                })
+                //   .catch((error)=>{
+                //   var error_code = error.code
+                //   var error_message = error.message
 
-                }
+                //   alert(error_message)
+                // })
+              }
 
       </script>
 

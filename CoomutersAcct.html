@@ -325,8 +325,6 @@
       };
       firebase.initializeApp(firebaseConfig);
 
-      alert("Di pa maayos si Guest table. This alert is from the Guest webpage")
-
       //select all data
       function Select_AllData(){
         firebase.database().ref('Commuters').once('value', function (snapshot){
