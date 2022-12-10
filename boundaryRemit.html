@@ -549,6 +549,17 @@
                   {
                     status: "Paid"
                   },
+                  
+                  
+                  (error)=>{
+                    if(error){
+                      alert("Error in paying boundary!" + error);
+                    }else{
+                      firebase.database().ref("boundarryyy/" + namebox.value).set(
+                  {
+                    transactID: namebox.value
+                  },
+                  
                   (error)=>{
                     if(error){
                       alert("Error in paying boundary!" + error);
@@ -557,8 +568,15 @@
                       //td is the transaction ID. remarksss is the status. stdlist.index[0] ang laman nyan ay is name
                     }
                   }
+                )
+                      alert("Succesfull boundary payment!");
+                      //td is the transaction ID. remarksss is the status. stdlist.index[0] ang laman nyan ay is name
+                    }
+                  }
+                  
                 ) 
                       BtnModAccept.hidden = true;
+                       
                 }
           }
 
